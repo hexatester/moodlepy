@@ -5,8 +5,18 @@ from .preference_processor import PreferenceProcessor
 
 
 @dataclass
-class NotificationPreference:
+class Preference:
     userid: int
     disableall: int
     processors: List[PreferenceProcessor] = field(default_factory=list)
     components: List[PreferenceComponent] = field(default_factory=list)
+
+
+@dataclass
+class NotificationPreference(Preference):
+    pass
+
+
+@dataclass
+class MessagePreference(Preference):
+    pass
