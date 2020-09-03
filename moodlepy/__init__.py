@@ -5,6 +5,9 @@ from .base.warning import Warning
 from .base.preference import (MessagePreference, NotificationPreference,
                               UserPreference)
 
+from .core.calendar.action_event import ActionEvent
+from .core.calendar.base import BaseCalendar
+
 from .core.course.course_category import CourseCategory
 from .core.course.base import BaseCourse
 
@@ -30,9 +33,9 @@ from .moodle import Moodle
 from .version import __version__  # NOQA
 
 __all__ = [
-    'BaseCourse', 'BaseMessage', 'BaseMobile', 'BaseMoodle', 'BaseNameValue',
-    'BaseUser', 'BaseWebservice', 'Core', 'CourseCategory', 'Forum',
-    'SiteInfo', 'MessagePreference', 'MobileConfig', 'MobilePlugin',
-    'MobilePublicConfig', 'Mod', 'Moodle', 'MoodleObject',
+    'ActionEvent', 'BaseCalendar', 'BaseCourse', 'BaseMessage', 'BaseMobile',
+    'BaseMoodle', 'BaseNameValue', 'BaseUser', 'BaseWebservice', 'Core',
+    'CourseCategory', 'Forum', 'SiteInfo', 'MessagePreference', 'MobileConfig',
+    'MobilePlugin', 'MobilePublicConfig', 'Mod', 'Moodle', 'MoodleObject',
     'NotificationPreference', 'Tool', 'UserPreference', 'Warning'
 ]
