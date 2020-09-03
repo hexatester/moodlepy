@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List
+from typing import Any, List
 from .preference_component import PreferenceComponent
 from .preference_processor import PreferenceProcessor
 
@@ -13,10 +13,14 @@ class Preference:
 
 
 @dataclass
-class NotificationPreference(Preference):
-    pass
+class NotificationPreference:
+    preferences: Preference
+    warnings: List[Any] = field(default_factory=list)
 
 
 @dataclass
-class MessagePreference(Preference):
-    pass
+class MessagePreference:
+    preferences: Preference
+    blocknoncontacts: int
+    entertosend: bool
+    warnings: List[Any] = field(default_factory=list)
