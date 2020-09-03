@@ -2,7 +2,7 @@ import logging
 from dacite import from_dict
 from requests import Session
 from typing import Any
-from moodlepy import Core, Mod, Warning
+from moodlepy import Core, Mod, Tool, Warning
 
 
 class Moodle:
@@ -16,6 +16,7 @@ class Moodle:
         self.token = token
         self._core = Core(self)
         self._mod = Mod(self)
+        self._tool = Tool(self)
 
     def __call__(self,
                  wsfunction: str,
@@ -30,6 +31,10 @@ class Moodle:
     @property
     def mod(self) -> Mod:
         return self._mod
+
+    @property
+    def tool(self) -> Tool:
+        return self._tool
 
     def get(self, wsfunction: str, moodlewsrestformat='json', **kwargs) -> Any:
         params = {

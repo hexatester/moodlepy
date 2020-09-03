@@ -16,6 +16,10 @@ from .core.webservice.base import BaseWebservice
 
 from .mod.forum.forum import Forum
 
+from .tool.mobile.plugin import MobilePlugin
+from .tool.mobile.base import BaseMobile
+from .tool.tool import Tool
+
 from .core.core import Core
 from .mod.mod import Mod
 from .moodle import Moodle
@@ -23,8 +27,8 @@ from .moodle import Moodle
 from .version import __version__  # NOQA
 
 __all__ = [
-    'BaseCourse', 'BaseMessage', 'BaseMoodle', 'BaseUser', 'BaseWebservice',
-    'Core', 'CourseCategory', 'Forum', 'SiteInfo', 'MessagePreference', 'Mod',
-    'Moodle', 'MoodleObject', 'NotificationPreference', 'UserPreference',
-    'Warning'
+    'BaseCourse', 'BaseMessage', 'BaseMobile', 'BaseMoodle', 'BaseUser',
+    'BaseWebservice', 'Core', 'CourseCategory', 'Forum', 'SiteInfo',
+    'MessagePreference', 'MobilePlugin', 'Mod', 'Moodle', 'MoodleObject',
+    'NotificationPreference', 'Tool', 'UserPreference', 'Warning'
 ]
