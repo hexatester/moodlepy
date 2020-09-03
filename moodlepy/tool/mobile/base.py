@@ -1,9 +1,13 @@
 from dacite import from_dict
 from typing import List
-from moodlepy import BaseMoodle, MobilePlugin, MobilePublicConfig
+from moodlepy import BaseMoodle, MobileConfig, MobilePlugin, MobilePublicConfig
 
 
 class BaseMobile(BaseMoodle):
+    def get_config(self) -> MobileConfig:
+        data = self.moodle.get('tool_mobile_get_config')
+        return from_dict(MobileConfig, data)
+
     def get_plugins_supporting_mobile(self) -> List[MobilePlugin]:
         datas = self.moodle.get('tool_mobile_get_plugins_supporting_mobile')
         return [from_dict(MobilePlugin, data)

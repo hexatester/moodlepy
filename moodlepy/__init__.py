@@ -1,4 +1,5 @@
 from .base.moodle_object import MoodleObject
+from .base.name_value import BaseNameValue
 from .base.base_moodle import BaseMoodle
 from .base.warning import Warning
 from .base.preference import (MessagePreference, NotificationPreference,
@@ -16,6 +17,7 @@ from .core.webservice.base import BaseWebservice
 
 from .mod.forum.forum import Forum
 
+from .tool.mobile.config import MobileConfig
 from .tool.mobile.plugin import MobilePlugin
 from .tool.mobile.public_config import MobilePublicConfig
 from .tool.mobile.base import BaseMobile
@@ -28,9 +30,9 @@ from .moodle import Moodle
 from .version import __version__  # NOQA
 
 __all__ = [
-    'BaseCourse', 'BaseMessage', 'BaseMobile', 'BaseMoodle', 'BaseUser',
-    'BaseWebservice', 'Core', 'CourseCategory', 'Forum', 'SiteInfo',
-    'MessagePreference', 'MobilePlugin', 'MobilePublicConfig', 'Mod', 'Moodle',
-    'MoodleObject', 'NotificationPreference', 'Tool', 'UserPreference',
-    'Warning'
+    'BaseCourse', 'BaseMessage', 'BaseMobile', 'BaseMoodle', 'BaseNameValue',
+    'BaseUser', 'BaseWebservice', 'Core', 'CourseCategory', 'Forum',
+    'SiteInfo', 'MessagePreference', 'MobileConfig', 'MobilePlugin',
+    'MobilePublicConfig', 'Mod', 'Moodle', 'MoodleObject',
+    'NotificationPreference', 'Tool', 'UserPreference', 'Warning'
 ]
