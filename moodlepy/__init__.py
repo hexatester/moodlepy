@@ -17,6 +17,7 @@ from .core.webservice.base import BaseWebservice
 from .mod.forum.forum import Forum
 
 from .tool.mobile.plugin import MobilePlugin
+from .tool.mobile.public_config import MobilePublicConfig
 from .tool.mobile.base import BaseMobile
 from .tool.tool import Tool
 
@@ -29,6 +30,7 @@ from .version import __version__  # NOQA
 __all__ = [
     'BaseCourse', 'BaseMessage', 'BaseMobile', 'BaseMoodle', 'BaseUser',
     'BaseWebservice', 'Core', 'CourseCategory', 'Forum', 'SiteInfo',
-    'MessagePreference', 'MobilePlugin', 'Mod', 'Moodle', 'MoodleObject',
-    'NotificationPreference', 'Tool', 'UserPreference', 'Warning'
+    'MessagePreference', 'MobilePlugin', 'MobilePublicConfig', 'Mod', 'Moodle',
+    'MoodleObject', 'NotificationPreference', 'Tool', 'UserPreference',
+    'Warning'
 ]
