@@ -13,6 +13,12 @@ class Moodle:
         self.token = token
         self._mod = Mod(self)
 
+    def __call__(self,
+                 wsfunction: str,
+                 moodlewsrestformat='json',
+                 **kwargs) -> Any:
+        return self.get(wsfunction, moodlewsrestformat, **kwargs)
+
     @property
     def mod(self) -> Mod:
         return self._mod

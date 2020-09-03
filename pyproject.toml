@@ -2,7 +2,7 @@
 name = "moodlepy"
 version = "0.1.0"
 description = ""
-authors = ["hexatester <revolusi147id@gmail.com>"]
+authors = ["hexatester <habibrohman@protonmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
