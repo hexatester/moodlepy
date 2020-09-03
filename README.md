@@ -6,3 +6,45 @@
 [![LICENSE](https://img.shields.io/github/license/hexatester/moodlepy)](https://github.com/hexatester/moodlepy/blob/master/LICENSE)
 
 Python client for moodle webservice
+
+## Introduction
+
+This library provide a pure Python interface for [Moodle Web Service](https://docs.moodle.org/dev/Web_services). It's compatible with Python versions 3.6+
+
+## Moodle Web Service support
+
+Not all types and methods are supported, since moodlepy is not yet released.
+
+## Installing
+
+You can install or upgrade moodlepy with:
+
+```bash
+pip install python-telegram-bot --upgrade
+```
+
+Or you can install from source with:
+
+```bash
+git clone https://github.com/hexatester/moodlepy
+cd moodlepy
+python setup.py install
+```
+
+## Usage
+
+Example usage
+
+```python
+from moodlepy import Moodle
+url = 'https://my.domain/webservice/rest/server.php'
+token = 'super secret token'
+moodle = Moodle(url, token)
+raw_site_info = moodle('core_webservice_get_site_info')
+site_info = moodle.core.webservice.get_site_info()  # return typed site_info
+
+print(raw_site_info)
+print(site_info)
+```
+
+In the future all [Web service functions](https://docs.moodle.org/dev/Web_service_API_functions) will covered by moodlepy
