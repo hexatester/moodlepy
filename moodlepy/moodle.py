@@ -1,6 +1,6 @@
 from requests import Session
 from typing import Any
-from moodlepy import Mod
+from moodlepy import Core, Mod
 
 
 class Moodle:
@@ -11,6 +11,7 @@ class Moodle:
     def __init__(self, url: str, token: str):
         self.url = url
         self.token = token
+        self._core = Core(self)
         self._mod = Mod(self)
 
     def __call__(self,
@@ -18,6 +19,10 @@ class Moodle:
                  moodlewsrestformat='json',
                  **kwargs) -> Any:
         return self.get(wsfunction, moodlewsrestformat, **kwargs)
+
+    @property
+    def core(self) -> Core:
+        return self._core
 
     @property
     def mod(self) -> Mod:
