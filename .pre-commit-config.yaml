@@ -3,7 +3,7 @@ repos:
     rev: v0.30.0
     hooks:
     -   id: yapf
-        files: ^(moodlepy|tests)/.*\.py$
+        files: ^(moodle|tests)/.*\.py$
         args:
         - --diff
 -   repo: https://gitlab.com/pycqa/flake8
@@ -14,7 +14,7 @@ repos:
     rev: v2.5.3
     hooks:
     -   id: pylint
-        files: ^moodlepy/.*\.py$
+        files: ^moodle/.*\.py$
         args:
         - --errors-only
         - --disable=import-error
@@ -22,4 +22,4 @@ repos:
     rev: 'v0.770'
     hooks:
     -   id: mypy
-        files: ^moodlepy/.*\.py$
+        files: ^moodle/.*\.py$

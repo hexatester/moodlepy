@@ -36,7 +36,7 @@ python setup.py install
 Example usage
 
 ```python
-from moodlepy import Moodle
+from moodle import Moodle
 url = 'https://my.domain/webservice/rest/server.php'
 token = 'super secret token'
 moodle = Moodle(url, token)
