@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from typing import Any, List
 from .preference_component import PreferenceComponent
 from .preference_processor import PreferenceProcessor
+from .preference_user import PreferenceUser
 
 
 @dataclass
@@ -23,4 +24,10 @@ class MessagePreference:
     preferences: Preference
     blocknoncontacts: int
     entertosend: bool
+    warnings: List[Any] = field(default_factory=list)
+
+
+@dataclass
+class UserPreference:
+    prefereces: List[PreferenceUser] = field(default_factory=list)
     warnings: List[Any] = field(default_factory=list)
