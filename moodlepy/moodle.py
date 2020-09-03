@@ -50,3 +50,4 @@ class Moodle:
                 warning = from_dict(Warning, data['warnings'])
                 self.logger.warning(str(warning))
             return data
+        return res.text
