@@ -1,6 +1,8 @@
+import logging
+from dacite import from_dict
 from requests import Session
 from typing import Any
-from moodlepy import Core, Mod
+from moodlepy import Core, Mod, Warning
 
 
 class Moodle:
@@ -9,6 +11,7 @@ class Moodle:
     url: str = ''
 
     def __init__(self, url: str, token: str):
+        self.logger = logging.getLogger(self.__class__.__name__)
         self.url = url
         self.token = token
         self._core = Core(self)
@@ -37,4 +40,8 @@ class Moodle:
         params.update(kwargs)
         res = self.session.get(self.url, params=params)
         if res.ok and moodlewsrestformat == 'json':
-            return res.json()
+            data = res.json()
+            if type(data) == dict and 'warnings' in data:
+                warning = from_dict(Warning, data['warnings'])
+                self.logger.warning(str(warning))
+            return data

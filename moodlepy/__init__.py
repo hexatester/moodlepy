@@ -2,6 +2,7 @@ from .base.moodle_object import MoodleObject
 from .base.base_moodle import BaseMoodle
 from .base.preference import (MessagePreference, NotificationPreference,
                               UserPreference)
+from .base.warning import Warning
 
 from .core.course.course_category import CourseCategory
 from .core.course.base import BaseCourse
@@ -24,5 +25,6 @@ from .version import __version__  # NOQA
 __all__ = [
     'BaseCourse', 'BaseMessage', 'BaseMoodle', 'BaseUser', 'BaseWebservice',
     'Core', 'CourseCategory', 'Forum', 'SiteInfo', 'MessagePreference', 'Mod',
-    'Moodle', 'MoodleObject', 'NotificationPreference', 'UserPreference'
+    'Moodle', 'MoodleObject', 'NotificationPreference', 'UserPreference',
+    'Warning'
 ]
