@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "moodle"
+name = "moodlepy"
 version = "0.3.0"
 description = "Client for moodle webservice"
 authors = ["hexatester <habibrohman@protonmail.com>"]
@@ -7,6 +7,9 @@ license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/hexatester/moodlepy"
 repository = "https://github.com/hexatester/moodlepy"
+packages = [
+    { include = "moodle" },
+]
 include = [
     "LICENSE",
     "README.md",
