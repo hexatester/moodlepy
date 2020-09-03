@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='moodlepy',
-      version='0.1.1',
+      version='0.2.0',
       description='Client for moodle webservice',
       author='Habib Rohman',
       author_email="habibrohman@protonmail.com",
