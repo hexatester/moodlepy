@@ -20,7 +20,7 @@ Not all types and methods are supported, since moodlepy is not yet released.
 You can install or upgrade moodlepy with:
 
 ```bash
-pip install python-telegram-bot --upgrade
+pip install moodlepy --upgrade
 ```
 
 Or you can install from source with:
