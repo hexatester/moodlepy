@@ -142,3 +142,7 @@ poetry.lock
 
 # IDE
 .vscode
+
+# Private tests
+*.private.py
+*.private.log
