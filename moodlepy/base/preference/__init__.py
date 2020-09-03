@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
-from typing import Any, List
+from typing import List
+from moodlepy import Warning
 from .preference_component import PreferenceComponent
 from .preference_processor import PreferenceProcessor
 from .preference_user import PreferenceUser
@@ -16,7 +17,7 @@ class Preference:
 @dataclass
 class NotificationPreference:
     preferences: Preference
-    warnings: List[Any] = field(default_factory=list)
+    warnings: List[Warning] = field(default_factory=list)
 
 
 @dataclass
@@ -24,10 +25,10 @@ class MessagePreference:
     preferences: Preference
     blocknoncontacts: int
     entertosend: bool
-    warnings: List[Any] = field(default_factory=list)
+    warnings: List[Warning] = field(default_factory=list)
 
 
 @dataclass
 class UserPreference:
     prefereces: List[PreferenceUser] = field(default_factory=list)
-    warnings: List[Any] = field(default_factory=list)
+    warnings: List[Warning] = field(default_factory=list)
