@@ -5,6 +5,8 @@ from .base.warning import Warning
 from .base.preference import (MessagePreference, NotificationPreference,
                               UserPreference)
 
+from .exception import MoodleException
+
 from .auth.email.base import BaseEmail
 from .auth.auth import Auth
 
@@ -39,7 +41,7 @@ __all__ = [
     'ActionEvent', 'Auth', 'BaseCalendar', 'BaseCourse', 'BaseEmail',
     'BaseMessage', 'BaseMobile', 'BaseMoodle', 'BaseNameValue', 'BaseUser',
     'BaseWebservice', 'Core', 'CourseCategory', 'Forum', 'SiteInfo',
-    'MessagePreference', 'MobileConfig', 'MobilePlugin', 'MobilePublicConfig',
-    'Mod', 'Moodle', 'MoodleObject', 'NotificationPreference', 'Tool',
-    'UserPreference', 'Warning'
+    'MessagePreference', 'MobileConfig', 'MobilePlugin', 'MoodleException',
+    'MobilePublicConfig', 'Mod', 'Moodle', 'MoodleObject',
+    'NotificationPreference', 'Tool', 'UserPreference', 'Warning'
 ]
