@@ -17,6 +17,8 @@ from .core.blog.blog import BaseBlog
 from .core.calendar.action_event import ActionEvent
 from .core.calendar.base import BaseCalendar
 
+from .core.cohort.base import BaseCohort
+
 from .core.course.course_category import CourseCategory
 from .core.course.base import BaseCourse
 
@@ -42,11 +44,11 @@ from .moodle import Moodle
 from .version import __version__  # NOQA
 
 __all__ = [
-    'ActionEvent', 'Auth', 'BaseBlog', 'BaseCalendar', 'BaseCourse',
-    'BaseEmail', 'BaseMessage', 'BaseMobile', 'BaseMoodle', 'BaseNameValue',
-    'BaseUser', 'BaseWebservice', 'BlogEntries', 'BlogEntry', 'Core',
-    'CourseCategory', 'Forum', 'SiteInfo', 'MessagePreference', 'MobileConfig',
-    'MobilePlugin', 'MoodleException', 'MobilePublicConfig', 'Mod', 'Moodle',
-    'MoodleObject', 'NotificationPreference', 'Tool', 'UserPreference',
-    'Warning'
+    'ActionEvent', 'Auth', 'BaseBlog', 'BaseCalendar', 'BaseCohort',
+    'BaseCourse', 'BaseEmail', 'BaseMessage', 'BaseMobile', 'BaseMoodle',
+    'BaseNameValue', 'BaseUser', 'BaseWebservice', 'BlogEntries', 'BlogEntry',
+    'Core', 'CourseCategory', 'Forum', 'SiteInfo', 'MessagePreference',
+    'MobileConfig', 'MobilePlugin', 'MoodleException', 'MobilePublicConfig',
+    'Mod', 'Moodle', 'MoodleObject', 'NotificationPreference', 'Tool',
+    'UserPreference', 'Warning'
 ]
