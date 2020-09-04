@@ -50,3 +50,7 @@ class TestBlogEntry:
         assert entry.summaryfiles == self.summaryfiles
         assert entry.attachmentfiles == self.attachmentfiles
         assert entry.tags == self.tags
+
+    def test_view_entries(self, moodle: Moodle):
+        res = moodle.core.blog.view_entries()
+        assert res is True
