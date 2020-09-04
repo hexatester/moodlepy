@@ -54,7 +54,7 @@ class Moodle:
         if res.ok and moodlewsrestformat == 'json':
             data = res.json()
             if type(data) == dict:
-                if 'warnings' in data:
+                if 'warnings' in data and data['warnings']:
                     warning = from_dict(Warning, data['warnings'])
                     self.logger.warning(str(warning))
                 if 'exception' in data or 'errorcode' in data:
