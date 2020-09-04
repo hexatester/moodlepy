@@ -1,4 +1,5 @@
-from moodle import BaseMoodle, BaseMobile
+from moodle import BaseMoodle
+from . import BaseMobile
 
 
 class Tool(BaseMoodle):

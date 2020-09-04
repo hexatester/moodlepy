@@ -1,6 +1,6 @@
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import List, Type, TYPE_CHECKING
+from typing import Type, TYPE_CHECKING
 from moodle import MoodleObject
 if TYPE_CHECKING:
     from moodle import Moodle
@@ -44,10 +44,3 @@ class Forum(MoodleObject):
     def inject(cls, moodle: Moodle) -> Type[Forum]:
         cls.moodle = moodle
         return cls
-
-    @classmethod
-    def get_forums_by_courses(cls) -> List[Forum]:
-        datas = cls.moodle.get('mod_forum_get_forums_by_courses')
-        if datas:
-            return [cls(**data) for data in datas]
-        return []

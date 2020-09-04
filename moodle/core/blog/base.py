@@ -1,5 +1,6 @@
 from dacite import from_dict
-from moodle import BaseMoodle, BlogEntries
+from moodle import BaseMoodle
+from . import BlogEntries
 
 
 class BaseBlog(BaseMoodle):

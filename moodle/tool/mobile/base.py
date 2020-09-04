@@ -1,6 +1,7 @@
 from dacite import from_dict
 from typing import List
-from moodle import BaseMoodle, MobileConfig, MobilePlugin, MobilePublicConfig
+from moodle import BaseMoodle
+from . import MobileConfig, MobilePlugin, MobilePublicConfig
 
 
 class BaseMobile(BaseMoodle):

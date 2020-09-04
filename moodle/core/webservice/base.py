@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dacite import from_dict
-from moodle import BaseMoodle, SiteInfo
+from moodle import BaseMoodle
+from . import SiteInfo
 
 
 class BaseWebservice(BaseMoodle):

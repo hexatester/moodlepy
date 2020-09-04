@@ -1,10 +1,10 @@
 from dacite import from_dict
 from typing import List
-from moodle import BaseMoodle, CourseCategory
+from moodle import BaseMoodle
+from . import CourseCategory
 
 
 class BaseCourse(BaseMoodle):
-    @property
     def get_categories(self) -> List[CourseCategory]:
         datas = self.moodle.get('core_course_get_categories')
         results: List[CourseCategory] = []

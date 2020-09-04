@@ -1,5 +1,6 @@
-from moodle import (BaseMoodle, BaseBlog, BaseCalendar, BaseCohort, BaseCourse,
-                    BaseMessage, BaseUser, BaseWebservice)
+from moodle import BaseMoodle
+from . import (BaseBlog, BaseCalendar, BaseCohort, BaseCourse, BaseMessage,
+               BaseUser, BaseWebservice)
 
 
 class Core(BaseMoodle):

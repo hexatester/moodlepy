@@ -1,4 +1,5 @@
-from moodle import BaseMoodle, BaseEmail
+from moodle import BaseMoodle
+from . import BaseEmail
 
 
 class Auth(BaseMoodle):
