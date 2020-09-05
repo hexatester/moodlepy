@@ -27,6 +27,7 @@ flake8 = "^3.8.3"
 mypy = "^0.782"
 pre-commit = "^2.7.1"
 rope = "^0.17.0"
+black = "^20.8b1"
 
 [tool.poetry.scripts]
 moodle = "moodle.__main__:main"
