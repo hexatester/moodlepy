@@ -1,4 +1,6 @@
+from typing import List, Optional
 from moodle import BaseMoodle
+from . import Course
 
 
 class BaseCourse(BaseMoodle):
@@ -58,9 +60,19 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_course_module_by_instance")
         return res
 
-    def get_courses(self):
-        res = self.moodle.post("core_course_get_courses")
-        return res
+    def get_courses(self, ids: Optional[List[int]] = None) -> List[Course]:
+        """Get course details
+
+        Args:
+            ids (List[int], optional): List of course id. If empty return all courses except front page course. Defaults to None.
+
+        Returns:
+            List[Course]: Return course details
+        """
+        options = {'id': ids} if ids else {}
+        res = self.moodle.post("core_course_get_courses", options=options)
+        return [self.moodle.from_dict(Course, data)
+                for data in res] if res else []
 
     def get_courses_by_field(self):
         res = self.moodle.post("core_course_get_courses_by_field")
