@@ -10,3 +10,19 @@ class MoodleException(Exception):
 
     def __str__(self):
         return self.message or self.exception or self.errorcode
+
+
+@dataclass
+class BaseException(Exception):
+    msg: str = ''
+
+    def __post_init__(self) -> None:
+        self.msg = self.msg.capitalize()
+
+    def __str__(self) -> str:
+        return self.msg
+
+
+@dataclass
+class InvalidCredentialException(Exception):
+    msg: str = 'Wrong username or password!'

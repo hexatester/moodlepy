@@ -10,6 +10,8 @@ repos:
     rev: 3.8.1
     hooks:
     -   id: flake8
+        args:
+        - --ignore=E501
 -   repo: git://github.com/pre-commit/mirrors-pylint
     rev: v2.5.3
     hooks:

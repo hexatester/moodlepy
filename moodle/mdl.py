@@ -3,8 +3,9 @@ import logging
 import requests
 from dacite import from_dict
 from requests import Session
-from typing import Any, Optional
+from typing import Any
 from moodle import Auth, Core, Mod, MoodleException, Tool, Warning
+from moodle.exception import InvalidCredentialException
 from moodle.utils.helper import make_params
 
 
@@ -26,7 +27,7 @@ class Moodle:
                  wsfunction: str,
                  moodlewsrestformat='json',
                  **kwargs) -> Any:
-        return self.get(wsfunction, moodlewsrestformat, **kwargs)
+        return self.post(wsfunction, moodlewsrestformat, **kwargs)
 
     @property
     def auth(self) -> Auth:
@@ -53,6 +54,17 @@ class Moodle:
             return self.process_data(data)
         return res.text
 
+    def post(self,
+             wsfunction: str,
+             moodlewsrestformat='json',
+             **kwargs) -> Any:
+        params = make_params(self.token, wsfunction, moodlewsrestformat)
+        res = self.session.post(self.url, data=kwargs, params=params)
+        if res.ok and moodlewsrestformat == 'json':
+            data = res.json()
+            return self.process_data(data)
+        return res.text
+
     def process_data(self, data: Any) -> Any:
         if type(data) == dict:
             if 'warnings' in data and data['warnings']:
@@ -63,15 +75,45 @@ class Moodle:
         return data
 
     @classmethod
-    def login(
+    def login(cls,
+              domain: str,
+              username: str,
+              password: str,
+              service: str = 'moodle_mobile_app',
+              loginurl: str = '/login/token.php',
+              web_service_url: str = '/webservice/rest/server.php') -> Moodle:
+        """Get a Moodle instance by using username & password auth
+
+        Args:
+            domain (str): The domain of moodle app
+            username (str): Username
+            password (str): Password
+            service (str, optional): Service name. Defaults to 'moodle_mobile_app'.
+            loginurl (str, optional): Url to get token from. Defaults to '/login/token.php'.
+            web_service_url (str, optional): Moodle Web Service endpoint. Defaults to '/webservice/rest/server.php'.
+
+        Raises:
+            InvalidCredentialException: Wrong credential
+
+        Returns:
+            Moodle: Returns an instance of Moodle
+        """
+        data = cls.get_tokens(domain, username, password, service, loginurl)
+        if 'token' not in data:
+            raise InvalidCredentialException()
+        return cls(url=web_service_url if web_service_url.startswith(domain)
+                   else domain + web_service_url,
+                   token=data['token'])
+
+    @classmethod
+    def get_tokens(
         cls,
         domain: str,
         username: str,
         password: str,
         service: str = 'moodle_mobile_app',
         loginurl: str = '/login/token.php',
-        web_service_url: str = '/webservice/rest/server.php'
-    ) -> Optional[Moodle]:
+    ) -> dict:
         domain = domain.lstrip('/')
         params = {
             'username': username,
@@ -80,12 +122,4 @@ class Moodle:
         }
         url = loginurl if loginurl.startswith(domain) else domain + loginurl
         res = requests.get(url, params=params)
-        if not res.ok:
-            return None
-        data = res.json()
-        if 'token' in data:
-            return cls(url=web_service_url
-                       if web_service_url.startswith(domain) else domain +
-                       web_service_url,
-                       token=data['token'])
-        return None
+        return res.json() if res.ok else {}
