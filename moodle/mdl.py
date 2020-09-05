@@ -5,7 +5,7 @@ from requests import Session
 from typing import Any
 from moodle import Auth, Core, Mod, MoodleException, Tool, Warning
 from moodle.exception import InvalidCredentialException
-from moodle.utils.helper import make_params, from_dict
+from moodle.utils.helper import make_params, from_dict, to_dict
 
 
 class Moodle:
@@ -46,7 +46,7 @@ class Moodle:
 
     def get(self, wsfunction: str, moodlewsrestformat='json', **kwargs) -> Any:
         params = make_params(self.token, wsfunction, moodlewsrestformat)
-        params.update(kwargs)
+        params.update(to_dict(kwargs))
         res = self.session.get(self.url, params=params)
         if res.ok and moodlewsrestformat == 'json':
             data = res.json()
@@ -58,7 +58,7 @@ class Moodle:
              moodlewsrestformat='json',
              **kwargs) -> Any:
         params = make_params(self.token, wsfunction, moodlewsrestformat)
-        res = self.session.post(self.url, data=kwargs, params=params)
+        res = self.session.post(self.url, data=to_dict(kwargs), params=params)
         if res.ok and moodlewsrestformat == 'json':
             data = res.json()
             return self.process_response(data)
