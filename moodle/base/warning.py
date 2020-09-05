@@ -1,10 +1,11 @@
 from dataclasses import dataclass
+from typing import Optional
 
 
 @dataclass
 class Warning:
-    item: str
-    itemid: int
+    item: Optional[str]
+    itemid: Optional[int]
     warningcode: str
     message: str
 
