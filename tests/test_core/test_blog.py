@@ -1,4 +1,5 @@
 from moodle import Moodle
+from typing import Any, List
 
 
 class TestBlogEntry:
@@ -21,9 +22,9 @@ class TestBlogEntry:
     lastmodified = 1411642656
     created = 1411642655
     usermodified = None
-    summaryfiles = []
-    attachmentfiles = []
-    tags = []
+    summaryfiles: List[Any] = []
+    attachmentfiles: List[Any] = []
+    tags: List[Any] = []
 
     def test_get_entries(self, moodle: Moodle):
         entries = moodle.core.blog.get_entries()
