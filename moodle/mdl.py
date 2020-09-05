@@ -2,11 +2,15 @@ from __future__ import annotations
 import logging
 import requests
 from dacite import from_dict
+from dacite.data import Data
 from requests import Session
-from typing import Any
+from typing import Any, Type, TypeVar
 from moodle import Auth, Core, Mod, MoodleException, Tool, Warning
+from moodle.config import DACITE_CONFIG
 from moodle.exception import InvalidCredentialException
 from moodle.utils.helper import make_params
+
+T = TypeVar("T")
 
 
 class Moodle:
@@ -123,3 +127,7 @@ class Moodle:
         url = loginurl if loginurl.startswith(domain) else domain + loginurl
         res = requests.get(url, params=params)
         return res.json() if res.ok else {}
+
+    @staticmethod
+    def from_dict(data_class: Type[T], data: Data) -> T:
+        return from_dict(data_class, data, config=DACITE_CONFIG)
