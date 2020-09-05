@@ -50,7 +50,7 @@ class Moodle:
         res = self.session.get(self.url, params=params)
         if res.ok and moodlewsrestformat == 'json':
             data = res.json()
-            return self.process_data(data)
+            return self.process_response(data)
         return res.text
 
     def post(self,
@@ -61,10 +61,10 @@ class Moodle:
         res = self.session.post(self.url, data=kwargs, params=params)
         if res.ok and moodlewsrestformat == 'json':
             data = res.json()
-            return self.process_data(data)
+            return self.process_response(data)
         return res.text
 
-    def process_data(self, data: Any) -> Any:
+    def process_response(self, data: Any) -> Any:
         if type(data) == dict:
             if 'warnings' in data and data['warnings']:
                 warning = from_dict(Warning, data['warnings'])
