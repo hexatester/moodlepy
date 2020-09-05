@@ -1,10 +1,12 @@
 from moodle import BaseMoodle
-from . import (BaseBlog, BaseCalendar, BaseCohort, BaseComment, BaseCompetency,
-               BaseCourse, BaseMessage, BaseUser, BaseWebservice)
+from . import (BaseBadges, BaseBlog, BaseCalendar, BaseCohort, BaseComment,
+               BaseCompetency, BaseCourse, BaseMessage, BaseUser,
+               BaseWebservice)
 
 
 class Core(BaseMoodle):
     def __post_init__(self, moodle) -> None:
+        self._badges = BaseBadges(moodle)
         self._blog = BaseBlog(moodle)
         self._calendar = BaseCalendar(moodle)
         self._cohort = BaseCohort(moodle)
@@ -14,6 +16,14 @@ class Core(BaseMoodle):
         self._message = BaseMessage(moodle)
         self._user = BaseUser(moodle)
         self._webservice = BaseWebservice(moodle)
+
+    @property
+    def bagdes(self) -> BaseBadges:
+        return self._badges
+
+    @property
+    def blog(self) -> BaseBlog:
+        return self._blog
 
     @property
     def calendar(self) -> BaseCalendar:
@@ -34,10 +44,6 @@ class Core(BaseMoodle):
     @property
     def course(self) -> BaseCourse:
         return self._course
-
-    @property
-    def blog(self) -> BaseBlog:
-        return self._blog
 
     @property
     def message(self) -> BaseMessage:

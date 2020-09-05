@@ -1,3 +1,4 @@
+from .badges import BaseBadges
 from .blog import BaseBlog
 from .calendar import BaseCalendar
 from .cohort import BaseCohort
@@ -11,6 +12,7 @@ from .webservice import BaseWebservice
 from .core import Core
 
 __all__ = [
+    'BaseBadges',
     'BaseBlog',
     'BaseCalendar',
     'BaseCohort',
