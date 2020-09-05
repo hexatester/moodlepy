@@ -1,6 +1,6 @@
-from dacite import from_dict
 from typing import Iterable
 from moodle import BaseMoodle
+from moodle.utils.helper import from_dict
 from . import Forum
 
 

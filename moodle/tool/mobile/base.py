@@ -1,6 +1,6 @@
-from dacite import from_dict
 from typing import List
 from moodle import BaseMoodle
+from moodle.utils.helper import from_dict
 from . import MobileConfig, MobilePlugin, MobilePublicConfig
 
 

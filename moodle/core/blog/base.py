@@ -1,5 +1,5 @@
-from dacite import from_dict
 from moodle import BaseMoodle
+from moodle.utils.helper import from_dict
 from . import BlogEntries
 
 

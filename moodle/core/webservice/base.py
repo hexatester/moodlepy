@@ -1,6 +1,6 @@
 from __future__ import annotations
-from dacite import from_dict
 from moodle import BaseMoodle
+from moodle.utils.helper import from_dict
 from . import SiteInfo
 
 

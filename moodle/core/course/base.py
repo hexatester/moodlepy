@@ -1,5 +1,6 @@
 from typing import List, Optional
 from moodle import BaseMoodle
+from moodle.utils.helper import from_dict
 from . import Course, CourseToCheck, CheckUpdate
 
 
@@ -19,7 +20,7 @@ class BaseCourse(BaseMoodle):
             CheckUpdate: Update
         """
         res = self.moodle.post("core_course_check_updates")
-        return self.moodle.from_dict(CheckUpdate, res)
+        return from_dict(CheckUpdate, res)
 
     def create_categories(self):
         res = self.moodle.post("core_course_create_categories")
@@ -84,8 +85,7 @@ class BaseCourse(BaseMoodle):
         """
         options = {'id': ids} if ids else {}
         res = self.moodle.post("core_course_get_courses", options=options)
-        return [self.moodle.from_dict(Course, data)
-                for data in res] if res else []
+        return [from_dict(Course, data) for data in res] if res else []
 
     def get_courses_by_field(self):
         res = self.moodle.post("core_course_get_courses_by_field")

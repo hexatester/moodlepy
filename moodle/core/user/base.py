@@ -1,5 +1,5 @@
-from dacite import from_dict
 from moodle import BaseMoodle, UserPreference
+from moodle.utils.helper import from_dict
 
 
 class BaseUser(BaseMoodle):
