@@ -5,6 +5,7 @@ from dacite import from_dict
 from requests import Session
 from typing import Any, Optional
 from moodle import Auth, Core, Mod, MoodleException, Tool, Warning
+from moodle.utils.helper import make_params
 
 
 class Moodle:
@@ -44,23 +45,22 @@ class Moodle:
         return self._tool
 
     def get(self, wsfunction: str, moodlewsrestformat='json', **kwargs) -> Any:
-        params = {
-            'wstoken': self.token,
-            'wsfunction': wsfunction,
-            'moodlewsrestformat': moodlewsrestformat
-        }
+        params = make_params(self.token, wsfunction, moodlewsrestformat)
         params.update(kwargs)
         res = self.session.get(self.url, params=params)
         if res.ok and moodlewsrestformat == 'json':
             data = res.json()
-            if type(data) == dict:
-                if 'warnings' in data and data['warnings']:
-                    warning = from_dict(Warning, data['warnings'])
-                    self.logger.warning(str(warning))
-                if 'exception' in data or 'errorcode' in data:
-                    raise from_dict(MoodleException, data)
-            return data
+            return self.process_data(data)
         return res.text
+
+    def process_data(self, data: Any) -> Any:
+        if type(data) == dict:
+            if 'warnings' in data and data['warnings']:
+                warning = from_dict(Warning, data['warnings'])
+                self.logger.warning(str(warning))
+            if 'exception' in data or 'errorcode' in data:
+                raise from_dict(MoodleException, data)
+        return data
 
     @classmethod
     def login(
