@@ -1,12 +1,25 @@
 from typing import List, Optional
 from moodle import BaseMoodle
-from . import Course
+from . import Course, CourseToCheck, CheckUpdate
 
 
 class BaseCourse(BaseMoodle):
-    def check_updates(self):
+    def check_updates(self,
+                      courseid: int,
+                      tocheck: List[CourseToCheck],
+                      filter: List[str] = []) -> CheckUpdate:
+        """Check if there is updates affecting the user for the given course and contexts.
+
+        Args:
+            courseid (int): Course id to check
+            tocheck (List[CourseToCheck]): Instances to check
+            filter (List[str], optional): Check only for updates in these areas. Defaults to [].
+
+        Returns:
+            CheckUpdate: Update
+        """
         res = self.moodle.post("core_course_check_updates")
-        return res
+        return self.moodle.from_dict(CheckUpdate, res)
 
     def create_categories(self):
         res = self.moodle.post("core_course_create_categories")
