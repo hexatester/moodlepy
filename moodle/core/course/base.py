@@ -1,7 +1,9 @@
 from typing import List, Optional
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import Course, CourseToCheck, CheckUpdate
+from . import Course, CheckUpdate
+
+CourseToCheck = CheckUpdate.CourseToCheck
 
 
 class BaseCourse(BaseMoodle):

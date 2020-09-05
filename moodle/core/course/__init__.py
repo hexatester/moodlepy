@@ -1,11 +1,8 @@
-from .to_check import CourseToCheck
 from .check_updates import CheckUpdate
 
 from .course import Course
-from .course_category import CourseCategory
+from .category import CourseCategory
 
 from .base import BaseCourse
 
-__all__ = [
-    'CourseToCheck', 'CheckUpdate', 'Course', 'CourseCategory', 'BaseCourse'
-]
+__all__ = ['CheckUpdate', 'Course', 'CourseCategory', 'BaseCourse']
