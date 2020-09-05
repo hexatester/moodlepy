@@ -11,7 +11,7 @@ from .tool import Tool
 from .auth import Auth
 from .core import Core
 from .mod import Mod
-from .moodle import Moodle
+from .mdl import Moodle
 
 from .version import __version__  # NOQA
 
