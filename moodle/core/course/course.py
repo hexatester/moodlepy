@@ -1,11 +1,11 @@
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List, Optional, Union
 
 
 @dataclass
 class CourseFormatOption:
     name: str  # course format option name
-    value: str  # course format option value
+    value: Union[str, int]  # course format option value
 
 
 @dataclass
