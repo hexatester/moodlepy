@@ -1,4 +1,5 @@
 from moodle import Moodle
+from moodle.core.blog import BlogEntries, ViewEntry
 from typing import Any, List
 
 
@@ -28,6 +29,7 @@ class TestBlogEntry:
 
     def test_get_entries(self, moodle: Moodle):
         entries = moodle.core.blog.get_entries()
+        assert isinstance(entries, BlogEntries)
         entry = entries.first()
         assert entry.id == self.id
         assert entry.module == self.module
@@ -54,4 +56,5 @@ class TestBlogEntry:
 
     def test_view_entries(self, moodle: Moodle):
         res = moodle.core.blog.view_entries()
-        assert res is True
+        assert isinstance(res, ViewEntry)
+        assert res.status is True
