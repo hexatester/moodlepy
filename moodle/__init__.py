@@ -26,9 +26,9 @@ __all__ = [
     'NotificationPreference',
     'UserPreference',
     'MoodleException',
-    'Tool',
     'Auth',
     'Core',
     'Mod',
+    'Tool',
     'Moodle',
 ]
