@@ -1,4 +1,5 @@
 from .badges import BaseBadges
+from .block import BaseBlock
 from .blog import BaseBlog
 from .calendar import BaseCalendar
 from .cohort import BaseCohort
@@ -13,6 +14,7 @@ from .core import Core
 
 __all__ = [
     'BaseBadges',
+    'BaseBlock',
     'BaseBlog',
     'BaseCalendar',
     'BaseCohort',
