@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
-from typing import Iterator, List, Optional
-from moodle import Warning
+from typing import List, Optional
+from moodle import Warning, ResponsesFactory
 
 
 @dataclass
@@ -89,7 +89,7 @@ class BlogEntry:
     params: coursemoduleid: (int): Course module id where the post was created.
     params: subject: (str): Post subject.
     params: summary: (str): Post summary.
-    params: summaryformat: (int): Default untuk "1" # summary format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
+    params: summaryformat: (int): Default for "1" # summary format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
     params: content: (str): Post content.
     params: uniquehash: (str): Post unique hash.
     params: rating: (int): Post rating.
@@ -128,7 +128,7 @@ class BlogEntry:
 
 
 @dataclass
-class BlogEntries:
+class BlogEntries(ResponsesFactory[BlogEntry]):
     """Blog entries.
     Constructor arguments:
     params: entries: (List[BlogEntry]): list of BlogEntry.
@@ -142,17 +142,9 @@ class BlogEntries:
     totalentries: int = 0
     warnings: List[Warning] = field(default_factory=list)
 
-    def __call__(self) -> List[BlogEntry]:
+    @property
+    def items(self) -> List[BlogEntry]:
         return self.entries
-
-    def __iter__(self) -> Iterator[BlogEntry]:
-        return iter(self.entries)
-
-    def __len__(self) -> int:
-        return len(self.entries)
-
-    def first(self) -> BlogEntry:
-        return self.entries[0]
 
     @dataclass
     class Filter:
