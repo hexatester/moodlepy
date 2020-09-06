@@ -21,6 +21,9 @@ class ResponsesFactory(Generic[T]):
     def __len__(self) -> int:
         return len(self.items)
 
+    def __str__(self) -> str:
+        return str(self.items)
+
     def first(self) -> T:
         return getitem(self.items, 0)
 
