@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Iterator, List, Optional
-from moodle import Warning
+from moodle import Warning, ResponsesFactory
 
 
 @dataclass
@@ -33,21 +33,22 @@ class UpdateInstance:
 
 
 @dataclass
-class CheckUpdate:
+class CheckUpdate(ResponsesFactory[UpdateInstance]):
     instances: List[UpdateInstance]
     warnings: List[Warning]
 
-    def __len__(self) -> int:
-        return len(self.instances)
-
-    def __iter__(self) -> Iterator[UpdateInstance]:
-        return iter(self.instances)
-
-    def __getitem__(self, slice: int) -> UpdateInstance:
-        return self.instances[slice]
+    @property
+    def items(self) -> List[UpdateInstance]:
+        return self.instances
 
     @dataclass
-    class CourseToCheck:
-        contextlevel: str  # The context level for the file location. Only module supported right now.
-        id: int  # Context instance id
-        since: int  # Check updates since this time stamp
+    class ToCheck:
+        """Instances to check
+        Constructor arguments:
+        params: contextlevel (str): The context level for the file location. Only module supported right now.
+        params: id (int): Context instance id
+        params: since (int): Check updates since this time stamp
+        """
+        contextlevel: str
+        id: int
+        since: int

@@ -3,21 +3,42 @@ from typing import Optional, Union
 
 
 @dataclass
-class CourseCategory:
-    id: int  # category id
-    name: str  # category name
-    idnumber: Optional[str]  # category id number
-    description: str  # category description
-    descriptionformat: int  # description format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
-    parent: int  # parent category id
-    sortorder: int  # category sorting order
-    coursecount: int  # number of courses in this category
-    visible: Optional[int]  # 1: available, 0:not available
-    visibleold: Optional[int]  # 1: available, 0:not available
-    timemodified: Optional[int]  # timestamp
-    depth: int  # category depth
-    path: str  # category path
-    theme: Optional[str]  # category theme
+class Category:
+    """Category
+
+    Constructor arguments:
+    params: id (int): category id
+    params: name (str): category name
+    params: idnumber (Optional[str]): category id number
+    params: description (str): category description
+    params: descriptionformat (int): description format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
+    params: parent (int): parent category id
+    params: sortorder (int): category sorting order
+    params: coursecount (int): number of courses in this category
+    params: visible (Optional[int]): 1: available, 0:not available
+    params: visibleold (Optional[int]): 1: available, 0:not available
+    params: timemodified (Optional[int]): timestamp
+    params: depth (int): category depth
+    params: path (str): category path
+    params: theme (Optional[str]): category theme
+
+    Returns:
+        Category: Category
+    """
+    id: int
+    name: str
+    idnumber: Optional[str]
+    description: str
+    descriptionformat: int
+    parent: int
+    sortorder: int
+    coursecount: int
+    visible: Optional[int]
+    visibleold: Optional[int]
+    timemodified: Optional[int]
+    depth: int
+    path: str
+    theme: Optional[str]
 
     def __str__(self) -> str:
         return self.name
@@ -42,4 +63,4 @@ class CourseCategory:
             Criteria: Arg for core_course_get_categories
         """
         key: str
-        value: Union[str, int]  # the value to match
+        value: Union[str, int]

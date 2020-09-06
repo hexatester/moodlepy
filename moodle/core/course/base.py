@@ -1,15 +1,13 @@
 from typing import List, Optional
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import Course, CheckUpdate
-
-CourseToCheck = CheckUpdate.CourseToCheck
+from . import Course, CheckUpdate, Category
 
 
 class BaseCourse(BaseMoodle):
     def check_updates(self,
                       courseid: int,
-                      tocheck: List[CourseToCheck],
+                      tocheck: List[CheckUpdate.ToCheck],
                       filter: List[str] = []) -> CheckUpdate:
         """Check if there is updates affecting the user for the given course and contexts.
 
@@ -60,9 +58,13 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_activities_overview")
         return res
 
-    def get_categories(self):
-        res = self.moodle.post("core_course_get_categories")
-        return res
+    def get_categories(
+            self,
+            criteria: Optional[List[Category.Criteria]] = None
+    ) -> List[Category]:
+        res = self.moodle.post("core_course_get_categories",
+                               criteria=criteria or [])
+        return [from_dict(Category, data) for data in res] if res else []
 
     def get_contents(self):
         res = self.moodle.post("core_course_get_contents")
