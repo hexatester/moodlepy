@@ -7,6 +7,7 @@ from .comment import BaseComment
 from .competency import BaseCompetency
 from .course import BaseCourse
 from .message import BaseMessage
+from .notes import BaseNotes
 from .user import BaseUser
 from .webservice import BaseWebservice
 
@@ -22,6 +23,7 @@ __all__ = [
     'BaseCompetency',
     'BaseCourse',
     'BaseMessage',
+    'BaseNotes',
     'BaseUser',
     'BaseWebservice',
     'Core',
