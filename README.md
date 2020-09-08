@@ -9,7 +9,7 @@ Python client for moodle webservice
 
 ## Introduction
 
-This library provide a pure Python interface for [Moodle Web Service](https://docs.moodle.org/dev/Web_services). It's compatible with Python versions 3.6+
+This library provide a pure Python interface for [Moodle Web Service](https://docs.moodle.org/dev/Web_services). It's compatible with Python versions 3.7+
 
 ## Moodle Web Service support
 
@@ -47,4 +47,4 @@ print(raw_site_info)
 print(site_info)
 ```
 
-In the future all [Web service functions](https://docs.moodle.org/dev/Web_service_API_functions) will covered by moodlepy
+In the future all [Web service functions](https://docs.moodle.org/dev/Web_service_API_functions) will be covered by moodlepy
