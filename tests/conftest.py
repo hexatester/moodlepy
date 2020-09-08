@@ -6,8 +6,12 @@ from moodle.core.course import Course
 
 
 @fixture
-def moodle() -> Moodle:
-    domain = 'https://school.moodledemo.net'
+def domain() -> str:
+    return 'https://school.moodledemo.net'
+
+
+@fixture
+def moodle(domain: str) -> Moodle:
     username = 'manager'
     password = 'moodle'
     return Moodle.login(domain, username, password)
