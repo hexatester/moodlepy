@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List, Optional
+from typing import List, Optional, Union
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
 from . import Event, Events, CourseEvents
@@ -17,34 +17,57 @@ class BaseCalendar(BaseMoodle):
 
     def get_action_events_by_course(self,
                                     courseid: int,
-                                    timesortfrom: Optional[datetime] = None,
-                                    timesortto: Optional[datetime] = None,
+                                    timesortfrom: Optional[Union[datetime,
+                                                                 int]] = None,
+                                    timesortto: Optional[Union[datetime,
+                                                               int]] = None,
                                     aftereventid: int = 0,
                                     limitnum: int = 20) -> CourseEvents:
         res = self.moodle.get('core_calendar_get_action_events_by_course')
         return from_dict(CourseEvents, res)
 
-    def get_action_events_by_courses(self):
-        res = self.moodle.get('core_calendar_get_action_events_by_courses')
+    def get_action_events_by_courses(self,
+                                     courseids: List[int],
+                                     timesortfrom: Optional[Union[datetime,
+                                                                  int]] = None,
+                                     timesortto: Optional[Union[datetime,
+                                                                int]] = None,
+                                     limitnum: int = 10):
+        res = self.moodle.get('core_calendar_get_action_events_by_courses',
+                              courseids=courseids,
+                              timesortfrom=timesortfrom,
+                              limitnum=limitnum)
         return res
 
-    def get_action_events_by_timesort(self):
+    def get_action_events_by_timesort(
+            self,
+            timesortfrom: Optional[Union[datetime, int]] = 0,
+            timesortto: Optional[Union[datetime, int]] = None,
+            aftereventid: int = 0,
+            limitnum: int = 20,
+            limittononsuspendedevents: Optional[int] = None,
+            userid: Optional[int] = None):
         res = self.moodle.get('core_calendar_get_action_events_by_timesort')
         return res
 
-    def get_allowed_event_types(self):
+    def get_allowed_event_types(self, courseid: int = 0):
         res = self.moodle.get('core_calendar_get_allowed_event_types')
         return res
 
-    def get_calendar_access_information(self):
+    def get_calendar_access_information(self, courseid: int = 0):
         res = self.moodle.get('core_calendar_get_calendar_access_information')
         return res
 
-    def get_calendar_day_view(self):
+    def get_calendar_day_view(self,
+                              year: int,
+                              month: int,
+                              day: int,
+                              courseid: int = 1,
+                              categoryid: Optional[int] = None):
         res = self.moodle.get('core_calendar_get_calendar_day_view')
         return res
 
-    def get_calendar_event_by_id(self):
+    def get_calendar_event_by_id(self, eventid: int):
         res = self.moodle.get('core_calendar_get_calendar_event_by_id')
         return res
 
@@ -56,7 +79,10 @@ class BaseCalendar(BaseMoodle):
         res = self.moodle.get('core_calendar_get_calendar_monthly_view')
         return res
 
-    def get_calendar_upcoming_view(self):
+    def get_calendar_upcoming_view(
+            self,
+            courseid: int,
+            categoryid: Optional[int] = None) -> CourseEvents:
         res = self.moodle.get('core_calendar_get_calendar_upcoming_view')
         return res
 
@@ -78,12 +104,12 @@ class BaseCalendar(BaseMoodle):
         return from_dict(CourseEvents.EventForm, res)
 
     def update_event_start_day(self, eventid: int,
-                               daytimestamp: datetime) -> Event:
+                               daytimestamp: Union[datetime, int]) -> Event:
         """Update the start day (but not time) for an event.
 
         Args:
             eventid (int): Id of event to be updated
-            daytimestamp (datetime): Timestamp for the new start day
+            daytimestamp (Union[datetime, int]): Timestamp for the new start day
 
         Returns:
             Event: Updated event
