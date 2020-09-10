@@ -1,6 +1,4 @@
-# from moodle.core.calendar import (AccessInformation, AllowedEventTypes, Event,
-#                                   Events, CourseEvents, ActionEventCourses,
-#                                   DayView, MonthlyView)
+from moodle.core.calendar import Events
 
 
 class TestCalendar:
@@ -41,8 +39,8 @@ class TestCalendar:
         pass
 
     def test_get_calendar_events(self, moodle):
-        # moodle.core.calendar.get_calendar_events()
-        pass
+        events = moodle.core.calendar.get_calendar_events()
+        assert isinstance(events, Events)
 
     def test_get_calendar_monthly_view(self, moodle):
         # moodle.core.calendar.get_calendar_monthly_view()

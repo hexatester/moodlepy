@@ -33,11 +33,11 @@ class Event:
     format: int
     courseid: int
     categoryid: Optional[int]
-    groupid: int
+    groupid: Optional[int]
     userid: int
     repeatid: int
     modulename: Optional[str]
-    instance: int
+    instance: Optional[int]
     eventtype: str
     timestart: int
     timeduration: int
@@ -49,6 +49,16 @@ class Event:
 
     def __str__(self) -> str:
         return self.name
+
+
+@dataclass
+class Events(ResponsesFactory[Event]):
+    events: List[Event]
+    warnings: List[Warning]
+
+    @property
+    def items(self) -> List[Event]:
+        return self.events
 
     @dataclass
     class Create:
@@ -87,16 +97,6 @@ class Event:
         """
         eventid: int
         repeat: int
-
-
-@dataclass
-class Events(ResponsesFactory[Event]):
-    events: List[Event]
-    warnings: List[Warning]
-
-    @property
-    def items(self) -> List[Event]:
-        return self.events
 
     @dataclass
     class Details:

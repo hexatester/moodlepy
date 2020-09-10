@@ -7,12 +7,12 @@ from . import (AccessInformation, AllowedEventTypes, Event, Events,
 
 
 class BaseCalendar(BaseMoodle):
-    def create_calendar_events(self, events: List[Event.Create]) -> Events:
+    def create_calendar_events(self, events: List[Events.Create]) -> Events:
         res = self.moodle.get('core_calendar_create_calendar_events',
                               events=events)
         return from_dict(Events, res)
 
-    def delete_calendar_events(self, events: List[Event.Delete]) -> None:
+    def delete_calendar_events(self, events: List[Events.Delete]) -> None:
         self.moodle.get('core_calendar_delete_calendar_events')
         return None
 
