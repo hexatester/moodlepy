@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
-from typing import Iterator, List, Optional
-from moodle import Warning
+from typing import List, Optional
+from moodle import Warning, ResponsesFactory
 
 
 @dataclass
@@ -75,7 +75,7 @@ class Block:
 
 
 @dataclass
-class Blocks:
+class Blocks(ResponsesFactory[Block]):
     """Blocks information for a course.
     params: blocks (List[Block]): List of blocks in the course.
     params: warnings (List[Warning]): warning
@@ -83,11 +83,6 @@ class Blocks:
     blocks: List[Block] = field(default_factory=list)
     warnings: List[Warning] = field(default_factory=list)
 
-    def __iter__(self) -> Iterator[Block]:
-        return iter(self.blocks)
-
-    def __len__(self) -> int:
-        return len(self.blocks)
-
-    def __getitem__(self, split: int) -> Block:
-        return self.blocks[split]
+    @property
+    def items(self) -> List[Block]:
+        return self.blocks
