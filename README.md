@@ -56,7 +56,8 @@ A = Added, W = Work In Progress
 | block                |           |       |       |        |
 | core_auth            |           |       |       |        |
 | core_backup          |           |       |       |        |
-| core_block           |           |       |       | W      |
+| core_badge           | A         | A     | A     |        |
+| core_blog            | A         | A     | A     |        |
 | core_calendar        |           |       |       | W      |
 | core_cohort          |           |       |       |        |
 | core_comment         |           |       |       | W      |
