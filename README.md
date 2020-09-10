@@ -58,7 +58,7 @@ A = Added, W = Work In Progress
 | core_backup          |           |       |       |        |
 | core_badge           | A         | A     | A     |        |
 | core_blog            | A         | A     | A     |        |
-| core_calendar        |           |       |       | W      |
+| core_calendar        | A         | A     |       | W      |
 | core_cohort          |           |       |       |        |
 | core_comment         |           |       |       | W      |
 | core_competency      |           |       |       |        |

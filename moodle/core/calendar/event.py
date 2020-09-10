@@ -73,7 +73,7 @@ class Event:
         groupid: Optional[int] = 0
         repeats: Optional[int] = 0
         eventtype: Optional[str] = 'user'
-        timestart: Optional[int] = 1599354090
+        timestart: Optional[int] = None
         timeduration: Optional[int] = 0
         visible: Optional[int] = 1
         sequence: Optional[int] = 1
@@ -97,3 +97,32 @@ class Events(ResponsesFactory[Event]):
     @property
     def items(self) -> List[Event]:
         return self.events
+
+    @dataclass
+    class Details:
+        """Event details
+        Constructor arguments:
+        params: eventids (List[int]): List of event ids
+        params: courseids (List[int]): List of course ids for which events will be returned
+        params: groupids (List[int]): List of group ids for which events should be returned
+        params: categoryids (List[int]): List of category ids for which events will be returned
+        """
+        eventids: List[int]
+        courseids: List[int]
+        groupids: List[int]
+        categoryids: List[int]
+
+    @dataclass
+    class Options:
+        """Options
+        params: userevents (int): Set to true to return current user's user events, Default for "1"
+        params: siteevents (int): Set to true to return global events, Default for "1"
+        params: timestart (int): Time from which events should be returned, Default for "0"
+        params: timeend (int): Time to which the events should be returned. We treat 0 and null as no end, Default for "0"
+        params: ignorehidden (int): Ignore hidden events or not, Default for "1"
+        """
+        userevents: Optional[int] = 1
+        siteevents: Optional[int] = 1
+        timestart: Optional[int] = 0
+        timeend: Optional[int] = 0
+        ignorehidden: Optional[int] = 1

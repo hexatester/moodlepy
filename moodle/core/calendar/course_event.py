@@ -7,9 +7,10 @@ from moodle import ResponsesFactory
 @dataclass
 class CourseEventIcon:
     """Icon
-    key: str  # key
-    component: str  # component
-    alttext: str  # alttext
+    Constructor arguments:
+    params: key (str): key
+    params: component (str): component
+    params: alttext (str): alttext
     """
     key: str
     component: str
@@ -171,7 +172,14 @@ class CourseEvent:
     params: normalisedeventtype (str): normalisedeventtype
     params: normalisedeventtypetext (str): normalisedeventtypetext
     params: url (str): url
-    params: action: CourseEventAction
+    params: action (Optional[CourseEventAction])
+    params: islastday (int): islastday
+    params: popupname (str): popupname
+    params: mindaytimestamp (Optional[int]): mindaytimestamp
+    params: mindayerror (Optional[str]): mindayerror
+    params: maxdaytimestamp (Optional[int]): maxdaytimestamp
+    params: maxdayerror (Optional[str]): maxdayerror
+    params: draggable (int): draggable
     """
     id: int
     name: str
@@ -208,7 +216,14 @@ class CourseEvent:
     normalisedeventtype: str
     normalisedeventtypetext: str
     url: str
-    action: CourseEventAction
+    action: Optional[CourseEventAction]
+    islastday: int
+    popupname: str
+    mindaytimestamp: Optional[int]
+    mindayerror: Optional[str]
+    maxdaytimestamp: Optional[int]
+    maxdayerror: Optional[str]
+    draggable: int
 
     def __str__(self) -> str:
         return self.name
@@ -219,8 +234,8 @@ class CourseEvents(ResponsesFactory[CourseEvent]):
     """List of [CourseEvent]
     """
     events: List[CourseEvent]
-    firstid: int  # firstid
-    lastid: int  # lastid
+    firstid: int
+    lastid: int
 
     @property
     def items(self) -> List[CourseEvent]:
@@ -234,3 +249,20 @@ class CourseEvents(ResponsesFactory[CourseEvent]):
         """
         event: CourseEvent
         validationerror: Optional[int] = None
+
+
+@dataclass
+class ActionEventCourses(ResponsesFactory[CourseEvents]):
+    """Calendar action events by courses
+
+    Constructor arguments:
+    params: groupedbycourse (List[CourseEvents]): Collection of course events
+
+    Returns:
+        ActionEventCourses: ActionEventCourses
+    """
+    groupedbycourse: List[CourseEvents]
+
+    @property
+    def items(self) -> List[CourseEvents]:
+        return self.groupedbycourse
