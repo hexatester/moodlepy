@@ -9,13 +9,13 @@ from .assignment import (
     AssignmentCourse,
     Assignments,
 )
+from .plugin_data import PluginData
 from .grade import (
     Grade,
     GradeAssignment,
     Grades,
 )
 from .participant import Participant
-from .plugin_data import PluginData
 from .user_flag import UserFlag
 from .view import View
 
