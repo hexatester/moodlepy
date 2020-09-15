@@ -56,7 +56,7 @@ class Moodle:
     def post(self,
              wsfunction: str,
              moodlewsrestformat='json',
-             **kwargs) -> Any:
+             **kwargs: Any) -> Any:
         params = make_params(self.token, wsfunction, moodlewsrestformat)
         res = self.session.post(self.url, data=to_dict(kwargs), params=params)
         if res.ok and moodlewsrestformat == 'json':
