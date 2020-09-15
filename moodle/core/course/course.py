@@ -1,5 +1,7 @@
+from datetime import datetime
 from dataclasses import dataclass
 from typing import List, Optional, Union
+from moodle import ResponsesFactory
 
 
 @dataclass
@@ -55,3 +57,53 @@ class Course:
         CourseFormatOption]  # additional options for particular course format]    ):Optional[customfields]  # Custom fields and associated values
     customfields: List[
         CourseCustomField]  # Custom fields and associated values
+
+    @dataclass
+    class ToCheck:
+        contextlevel: str  # The context level for the file location. Only module supported right now.
+        id: int  # Context instance id
+        since: datetime  # Check updates since this time stamp
+
+
+@dataclass
+class SearchResult(ResponsesFactory[Course]):
+    total: int  # total course count
+    courses: List[Course]  # course
+    warnings: List[Warning]  # list of warning
+
+    @property
+    def items(self) -> List[Course]:
+        return self.courses
+
+
+@dataclass
+class CourseBTC:
+    id: int  # id
+    fullname: str  # fullname
+    shortname: str  # shortname
+    idnumber: str  # idnumber
+    summary: str  # summary
+    summaryformat: int  # summary format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
+    startdate: int  # startdate
+    enddate: int  # enddate
+    visible: int  # visible
+    fullnamedisplay: str  # fullnamedisplay
+    viewurl: str  # viewurl
+    courseimage: str  # courseimage
+    progress: Optional[int]  # progress
+    hasprogress: int  # hasprogress
+    isfavourite: int  # isfavourite
+    hidden: int  # hidden
+    timeaccess: Optional[int]  # timeaccess
+    showshortname: int  # showshortname
+    coursecategory: str  # coursecategory
+
+
+@dataclass
+class CoursesBTC(ResponsesFactory[CourseBTC]):
+    courses: List[CourseBTC]
+    nextoffset: int
+
+    @property
+    def items(self) -> List[CourseBTC]:
+        return self.courses

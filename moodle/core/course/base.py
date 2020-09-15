@@ -1,7 +1,9 @@
 from typing import List, Optional
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import Course, CheckUpdate, Category
+from . import (ActivityOverview, Course, SearchResult, CoursesBTC, CheckUpdate,
+               Category, ContentOption, Section, CourseModule,
+               NavigationOptions, ViewCourse)
 
 
 class BaseCourse(BaseMoodle):
@@ -54,25 +56,58 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_edit_section")
         return res
 
-    def get_activities_overview(self):
-        res = self.moodle.post("core_course_get_activities_overview")
-        return res
+    def get_activities_overview(
+            self,
+            courseid: int,
+            tocheck: List[Course.ToCheck],
+            filter: Optional[List[str]] = None) -> ActivityOverview:
+        res = self.moodle.post(
+            "core_course_get_activities_overview",
+            courseid=courseid,
+            tocheck=tocheck,
+            filter=filter or [],
+        )
+        return from_dict(ActivityOverview, res)
 
     def get_categories(
             self,
             criteria: Optional[List[Category.Criteria]] = None
     ) -> List[Category]:
-        res = self.moodle.post("core_course_get_categories",
-                               criteria=criteria or [])
+        res = self.moodle.post(
+            "core_course_get_categories",
+            criteria=criteria or [],
+        )
         return [from_dict(Category, data) for data in res] if res else []
 
-    def get_contents(self):
-        res = self.moodle.post("core_course_get_contents")
-        return res
+    def get_contents(
+            self,
+            courseid: int,
+            options: Optional[List[ContentOption]] = None) -> List[Section]:
+        """Get course contents
 
-    def get_course_module(self):
-        res = self.moodle.post("core_course_get_course_module")
-        return res
+        Args:
+            courseid (int): course id
+            options (Optional[List[ContentOption]], optional): Options, used since Moodle 2.9. Defaults to None.
+
+        Returns:
+            List[Section]: list of section
+        """
+        res = self.moodle.post("core_course_get_contents",
+                               courseid=courseid,
+                               options=options or [])
+        return [from_dict(Section, data) for data in res] if res else []
+
+    def get_course_module(self, cmid: int) -> CourseModule:
+        """Return information about a course module
+
+        Args:
+            cmid (int): The course module id
+
+        Returns:
+            CourseModule: Course Module wrapper
+        """
+        res = self.moodle.post("core_course_get_course_module", cmid=cmid)
+        return from_dict(CourseModule, res)
 
     def get_course_module_by_instance(self):
         res = self.moodle.post("core_course_get_course_module_by_instance")
@@ -95,10 +130,45 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_courses_by_field")
         return res
 
-    def get_enrolled_courses_by_timeline_classification(self):
+    def get_enrolled_courses_by_timeline_classification(
+            self,
+            classification: str,
+            limit: int = 0,
+            offset: int = 0,
+            sort: Optional[str] = None) -> CoursesBTC:
+        """List of enrolled courses for the given timeline classification (past, inprogress, or future).
+
+        Args:
+            classification (str): future, inprogress, or past
+            limit (int, optional): Result set limit. Defaults to 0.
+            offset (int, optional): Result set offset. Defaults to 0.
+            sort (Optional[str], optional): Sort string. Defaults to None.
+
+        Returns:
+            CoursesBTC: List of enrolled courses
+        """
         res = self.moodle.post(
-            "core_course_get_enrolled_courses_by_timeline_classification")
-        return res
+            "core_course_get_enrolled_courses_by_timeline_classification",
+            classification=classification,
+            limit=limit,
+            offset=offset,
+            sort=sort,
+        )
+        return from_dict(CoursesBTC, res)
+
+    def get_recent_courses(self,
+                           userid: int = 0,
+                           limit: int = 0,
+                           offset: int = 0,
+                           sort: Optional[str] = None) -> List[Course]:
+        res = self.moodle.post(
+            "core_course_get_recent_courses",
+            userid=userid,
+            limit=limit,
+            offset=offset,
+            sort=sort,
+        )
+        return [from_dict(Course, data) for data in res] if res else []
 
     def get_enrolled_users_by_cmid(self):
         res = self.moodle.post("core_course_get_enrolled_users_by_cmid")
@@ -108,29 +178,82 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_module")
         return res
 
-    def get_recent_courses(self):
-        res = self.moodle.post("core_course_get_recent_courses")
-        return res
+    def get_updates_since(self,
+                          courseid: int,
+                          since: int,
+                          filter: Optional[List[str]] = None) -> CheckUpdate:
+        """Check if there are updates affecting the user for the given course since the given time stamp.
 
-    def get_updates_since(self):
-        res = self.moodle.post("core_course_get_updates_since")
-        return res
+        Args:
+            courseid (int): Course id to check
+            since (int): Check updates since this time stamp
+            filter (Optional[List[str]], optional): Check only for updates in these areas. Defaults to None.
+                                                    Area name: configuration, fileareas, completion, ratings, comments, gradeitems, outcomes
+
+        Returns:
+            CheckUpdate: Update course detail
+        """
+        res = self.moodle.post("core_course_get_updates_since",
+                               courseid=courseid,
+                               since=since,
+                               filter=filter)
+        return from_dict(CheckUpdate, res)
 
     def get_user_administration_options(self):
         res = self.moodle.post("core_course_get_user_administration_options")
         return res
 
-    def get_user_navigation_options(self):
-        res = self.moodle.post("core_course_get_user_navigation_options")
-        return res
+    def get_user_navigation_options(self,
+                                    courseids: List[int]) -> NavigationOptions:
+        """Return a list of navigation options in a set of courses that are avaialable or not for the current user.
+
+        Args:
+            courseids (List[int]): List of one or more course id
+
+        Returns:
+            NavigationOptions: Navigation options of courses
+        """
+        res = self.moodle.post("core_course_get_user_navigation_options",
+                               courseids=courseids)
+        return from_dict(NavigationOptions, res)
 
     def import_course(self):
         res = self.moodle.post("core_course_import_course")
         return res
 
-    def search_courses(self):
-        res = self.moodle.post("core_course_search_courses")
-        return res
+    def search_courses(self,
+                       criterianame: str,
+                       criteriavalue: str,
+                       page: int = 0,
+                       perpage: int = 0,
+                       requiredcapabilities: Optional[List[str]] = None,
+                       limittoenrolled: int = 0,
+                       onlywithcompletion: int = 0) -> SearchResult:
+        """Search courses by (name, module, block, tag)
+
+        Args:
+            criterianame (str): criteria name (search, modulelist (only admins), blocklist (only admins), tagid)
+            criteriavalue (str): criteria value
+            page (int, optional): page number (0 based). Defaults to 0.
+            perpage (int, optional): items per page. Defaults to 0.
+            requiredcapabilities (Optional[List[str]], optional): Optional list of required capabilities (used to filter the list). Defaults to None.
+            limittoenrolled (int, optional): limit to enrolled courses. Defaults to 0.
+            onlywithcompletion (int, optional): limit to courses where completion is enabled. Defaults to 0.
+
+        Returns:
+            SearchResult: List of result courses
+        """
+        res = self.moodle.post(
+            "core_course_search_courses",
+            criterianame=criterianame,
+            criteriavalue=criteriavalue,
+            page=page,
+            perpage=perpage,
+            requiredcapabilities=requiredcapabilities,
+            limittoenrolled=limittoenrolled,
+            onlywithcompletion=onlywithcompletion,
+        )
+        return from_dict(SearchResult, res)
 
     def set_favourite_courses(self):
         res = self.moodle.post("core_course_set_favourite_courses")
@@ -144,6 +267,6 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_update_courses")
         return res
 
-    def view_course(self):
+    def view_course(self, courseid: int, sectionnumber: int) -> ViewCourse:
         res = self.moodle.post("core_course_view_course")
-        return res
+        return from_dict(ViewCourse, res)
