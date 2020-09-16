@@ -122,7 +122,7 @@ class BaseCourse(BaseMoodle):
         Returns:
             List[Course]: Return course details
         """
-        options = {'id': ids} if ids else {}
+        options = {} if ids is None else {'ids': ids}
         res = self.moodle.post("core_course_get_courses", options=options)
         return [from_dict(Course, data) for data in res] if res else []
 
