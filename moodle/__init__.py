@@ -7,6 +7,7 @@ from .base.preference import (MessagePreference, NotificationPreference,
                               UserPreference)
 
 from .exception import MoodleException
+from .utils.typing import Array
 
 from .tool import Tool
 from .auth import Auth
@@ -26,6 +27,7 @@ __all__ = [
     'NotificationPreference',
     'UserPreference',
     'MoodleException',
+    'Array',
     'Auth',
     'Core',
     'Mod',
