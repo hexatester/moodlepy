@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "moodlepy"
-version = "0.8.1"
+version = "0.9.0"
 description = "Client for moodle webservice"
 authors = ["hexatester <habibrohman@protonmail.com>"]
 license = "MIT"
