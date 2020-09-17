@@ -1,5 +1,5 @@
 from typing import List, Optional
-from moodle import BaseMoodle
+from moodle import BaseMoodle, Array
 from moodle.utils.helper import from_dict
 from . import (ActivityOverview, Course, CourseByField, SearchResult,
                CoursesBTC, CheckUpdate, Category, ContentOption, Section,
@@ -10,7 +10,7 @@ class BaseCourse(BaseMoodle):
     def check_updates(self,
                       courseid: int,
                       tocheck: List[CheckUpdate.ToCheck],
-                      filter: List[str] = []) -> CheckUpdate:
+                      filter: Optional[List[str]] = None) -> CheckUpdate:
         """Check if there is updates affecting the user for the given course and contexts.
 
         Args:
@@ -122,7 +122,8 @@ class BaseCourse(BaseMoodle):
         Returns:
             List[Course]: Return course details
         """
-        options = {} if ids is None else {'ids': ids}
+        options = Array(ids if ids else [])
+        options.name = 'ids'
         res = self.moodle.post("core_course_get_courses", options=options)
         return [from_dict(Course, data) for data in res] if res else []
 
