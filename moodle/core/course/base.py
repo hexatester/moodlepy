@@ -1,9 +1,9 @@
 from typing import List, Optional
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import (ActivityOverview, Course, SearchResult, CoursesBTC, CheckUpdate,
-               Category, ContentOption, Section, CourseModule,
-               NavigationOptions, ViewCourse)
+from . import (ActivityOverview, Course, CourseByField, SearchResult,
+               CoursesBTC, CheckUpdate, Category, ContentOption, Section,
+               CourseModule, NavigationOptions, ViewCourse)
 
 
 class BaseCourse(BaseMoodle):
@@ -126,9 +126,28 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_courses", options=options)
         return [from_dict(Course, data) for data in res] if res else []
 
-    def get_courses_by_field(self):
-        res = self.moodle.post("core_course_get_courses_by_field")
-        return res
+    def get_courses_by_field(self,
+                             field: str = '',
+                             value: str = '') -> CourseByField:
+        """Get courses matching a specific field (id/s, shortname, idnumber, category)
+
+        Args:
+            field (str, optional): The field to search can be left empty for all courses or:
+                                   id: course id
+                                   ids: comma separated course ids
+                                   shortname: course short name
+                                   idnumber: course id number
+                                   category: category id the course belongs to.
+                                   Defaults to ''.
+            value (str, optional): The value to match. Defaults to ''.
+
+        Returns:
+            CourseByField: List of Course
+        """
+        res = self.moodle.post("core_course_get_courses_by_field",
+                               field=field,
+                               value=value)
+        return from_dict(CourseByField, res)
 
     def get_enrolled_courses_by_timeline_classification(
             self,
