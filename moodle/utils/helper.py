@@ -34,7 +34,12 @@ def to_dict(data: Any, name: str = '') -> Any:
                 for key, value in val.items():
                     out[f'{name}[{idx}][{key}]'] = val
             else:
-                out[f'{name}[{getattr(data, "name", "")}][{idx}]'] = val
+                out_key = name
+                # Check if data required name prefix
+                if hasattr(data, 'name'):
+                    out_key += f"[{getattr(data, 'name')}]"
+                out_key += f'[{idx}]'
+                out[out_key] = val
         return out
     if isinstance(data, dict):
         out = {}
