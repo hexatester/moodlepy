@@ -141,3 +141,17 @@ class Discussions(ResponsesFactory[Discussion]):
         """
         discussionid: int
         warnings: List[Warning]
+
+    @dataclass
+    class CanAdd:
+        """Response of can_add_discussion
+        Args:
+            status (int): True if the user can add discussions, false otherwise.
+            canpindiscussions (Optional[int]): True if the user can pin discussions, false otherwise.
+            cancreateattachment (Optional[int]): True if the user can add attachments, false otherwise.
+            warnings (List[Warning]): list of warnings
+        """
+        status: int
+        canpindiscussions: Optional[int]
+        cancreateattachment: Optional[int]
+        warnings: List[Warning]

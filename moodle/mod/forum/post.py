@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional, Union
-from moodle import Warning
+from moodle import Warning, ResponsesFactory
 
 
 @dataclass
@@ -61,6 +61,84 @@ class TagUrls:
         view (str): The URL to view the tag
     """
     view: str
+
+
+@dataclass
+class RatingScaleItem:
+    """Rating's Scale item
+    Args:
+        value (int): Scale value/option id.
+        name (str): Scale name.
+    """
+    value: int
+    name: str
+
+
+@dataclass
+class Rating:
+    """Rating
+    Args:
+        itemid (int): Item id.
+        scaleid (Optional[int]): Scale id.
+        userid (Optional[int]): User who rated id.
+        aggregate (Optional[float]): Aggregated ratings grade.
+        aggregatestr (Optional[str]): Aggregated ratings as string.
+        aggregatelabel (Optional[str]): The aggregation label.
+        count (Optional[int]): Ratings count (used when aggregating).
+        rating (Optional[int]): The rating the user gave.
+        canrate (Optional[int]): Whether the user can rate the item.
+        canviewaggregate (Optional[int]): Whether the user can view the aggregated grade.
+    """
+    itemid: int
+    scaleid: Optional[int]
+    userid: Optional[int]
+    aggregate: Optional[float]
+    aggregatestr: Optional[str]
+    aggregatelabel: Optional[str]
+    count: Optional[int]
+    rating: Optional[int]
+    canrate: Optional[int]
+    canviewaggregate: Optional[int]
+
+
+@dataclass
+class RatingScale:
+    """Rating's Scale
+    Args:
+        id (int): Scale id.
+        courseid (Optional[int]): Course id.
+        name (Optional[str]): Scale name (when a real scale is used).
+        max (int): Max value for the scale.
+        isnumeric (int): Whether is a numeric scale.
+        items (List[RatingScaleItem]): Scale items. Only returned for not numerical scales.
+    """
+    id: int
+    courseid: Optional[int]
+    name: Optional[str]
+    max: int
+    isnumeric: int
+    items: List[RatingScaleItem]
+
+
+@dataclass
+class RatingInfo:
+    """Rating Info of Post
+    Args:
+        contextid (int): Context id.
+        component (str): Context name.
+        ratingarea (str): Rating area name.
+        canviewall (Optional[int]): Whether the user can view all the individual ratings.
+        canviewany (Optional[int]): Whether the user can view aggregate of ratings of others.
+        scales (List[RatingScale]): Different scales used information
+        ratings (List[Rating]): The ratings
+    """
+    contextid: int
+    component: str
+    ratingarea: str
+    canviewall: Optional[int]
+    canviewany: Optional[int]
+    scales: List[RatingScale]
+    ratings: List[Rating]
 
 
 @dataclass
@@ -237,6 +315,7 @@ class Post:
         attachments (List[Attachment]): attachments
         tags (List[Tag]): tags
         html (Html): html source
+        ratinginfo (Optional[RatingInfo]): Rating information
     """
     id: int
     subject: str
@@ -258,6 +337,7 @@ class Post:
     attachments: List[Attachment]
     tags: List[Tag]
     html: Html
+    ratinginfo: Optional[RatingInfo]
 
 
 @dataclass
@@ -284,6 +364,21 @@ class NewPost:
     warnings: List[Warning]
     post: Post
     messages: List[Message]
+
+
+@dataclass
+class Posts(ResponsesFactory[Post]):
+    """List of Post
+    Args:
+        posts (List[Post]): list of Post
+        warnings (List[Warning]): list of Warning
+    """
+    posts: List[Post]
+    warnings: List[Warning]
+
+    @property
+    def items(self) -> List[Post]:
+        return self.posts
 
     @dataclass
     class Option:

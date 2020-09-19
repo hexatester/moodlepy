@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List, Optional, Union
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import Discussions, Forum, NewPost
+from . import Discussions, Forum, NewPost, Posts
 
 
 class BaseForum(BaseMoodle):
@@ -40,7 +40,7 @@ class BaseForum(BaseMoodle):
                             postid: int,
                             subject: str,
                             message: str,
-                            options: Optional[List[NewPost.Option]] = None,
+                            options: Optional[List[Posts.Option]] = None,
                             messageformat: int = 1) -> NewPost:
         """Create new posts into an existing discussion.
 
@@ -48,7 +48,7 @@ class BaseForum(BaseMoodle):
             postid (int): the post id we are going to reply to (can be the initial discussion post
             subject (str): new post subject
             message (str): new post message (html assumed if messageformat is not provided)
-            options (List[NewPost.Option], optional): Options. Defaults to None.
+            options (List[Posts.Option], optional): Options. Defaults to None.
             messageformat (int, optional): message format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN). Defaults to 1.
 
         Returns:
@@ -64,16 +64,28 @@ class BaseForum(BaseMoodle):
         )
         return from_dict(NewPost, res)
 
-    def can_add_discussion(self, forumid: int, groupid: Optional[int] = None):
-        res = self.moodle.post('mod_forum_can_add_discussion')
-        return res
+    def can_add_discussion(
+            self,
+            forumid: int,
+            groupid: Optional[int] = None) -> Discussions.CanAdd:
+        res = self.moodle.post(
+            'mod_forum_can_add_discussion',
+            forumid=forumid,
+            groupid=groupid,
+        )
+        return from_dict(Discussions.CanAdd, res)
 
     def get_discussion_posts(self,
                              discussionid: int,
-                             sortby: str,
-                             sortdirection: str = 'DESC'):
-        res = self.moodle.post('mod_forum_get_discussion_posts')
-        return res
+                             sortby: str = 'created',
+                             sortdirection: str = 'DESC') -> Posts:
+        res = self.moodle.post(
+            'mod_forum_get_discussion_posts',
+            discussionid=discussionid,
+            sortby=sortby,
+            sortdirection=sortdirection,
+        )
+        return from_dict(Posts, res)
 
     def get_forum_access_information(self, forumid: int):
         res = self.moodle.post('mod_forum_get_forum_access_information')
