@@ -6,26 +6,26 @@ from moodle import Warning, ResponsesFactory
 @dataclass
 class Event:
     """Event
-    Constructor arguments:
-    params: id (int): event id
-    params: name (str): event name
-    params: description (Optional[str]): Description
-    params: format (int): description format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
-    params: courseid (int): course id
-    params: categoryid (Optional[int]): Category id (only for category events).
-    params: groupid (int): group id
-    params: userid (int): user id
-    params: repeatid (int): repeat id
-    params: modulename (Optional[str]): module name
-    params: instance (int): instance id
-    params: eventtype (str): Event type
-    params: timestart (int): timestart
-    params: timeduration (int): time duration
-    params: visible (int): visible
-    params: uuid (Optional[str]): unique id of ical events
-    params: sequence (int): sequence
-    params: timemodified (int): time modified
-    params: subscriptionid (Optional[int]): Subscription id
+    Args:
+        id (int): event id
+        name (str): event name
+        description (Optional[str]): Description
+        format (int): description format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
+        courseid (int): course id
+        categoryid (Optional[int]): Category id (only for category events).
+        groupid (Optional[int]): group id
+        userid (int): user id
+        repeatid (Optional[int]): repeat id
+        modulename (Optional[str]): module name
+        instance (Optional[int]): instance id
+        eventtype (str): Event type
+        timestart (int): timestart
+        timeduration (int): time duration
+        visible (int): visible
+        uuid (Optional[str]): unique id of ical events
+        sequence (int): sequence
+        timemodified (int): time modified
+        subscriptionid (Optional[int]): Subscription id
     """
     id: int
     name: str
