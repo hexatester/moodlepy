@@ -117,3 +117,27 @@ class Discussions(ResponsesFactory[Discussion]):
     @property
     def items(self) -> List[Discussion]:
         return self.discussions
+
+    @dataclass
+    class Option:
+        """Discussion Option
+        Args:
+            name (str): The allowed keys (value format) are:
+                            discussionsubscribe (bool); subscribe to the discussion?, default to true
+                            discussionpinned    (bool); is the discussion pinned, default to false
+                            inlineattachmentsid              (int); the draft file area id for inline attachments
+                            attachmentsid       (int); the draft file area id for attachments
+            value (str): The value of the option, This param is validated in the external function.
+        """
+        name: str
+        value: str
+
+    @dataclass
+    class New:
+        """Response of add_discussion
+        Args:
+            discussionid (int): New Discussion ID
+            warnings (List[Warning]): list of warnings
+        """
+        discussionid: int
+        warnings: List[Warning]
