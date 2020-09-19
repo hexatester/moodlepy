@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List, Optional, Union
 from moodle import Warning
 
 
@@ -284,3 +284,18 @@ class NewPost:
     warnings: List[Warning]
     post: Post
     messages: List[Message]
+
+    @dataclass
+    class Option:
+        """Option for add_discussion_post
+        Args:
+            name (str): The allowed keys (value format) are:
+                            discussionsubscribe (bool); subscribe to the discussion?, default to true
+                            private             (bool); make this reply private to the author of the parent post, default to false.
+                            inlineattachmentsid (int); the draft file area id for inline attachments
+                            attachmentsid       (int); the draft file area id for attachments
+                            topreferredformat   (bool); convert the message & messageformat to FORMAT_HTML, defaults to false
+            value (str): the value of the option, this param is validated in the external function.
+        """
+        name: str
+        value: Union[bool, int]
