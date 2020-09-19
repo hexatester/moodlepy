@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List, Optional, Union
 from moodle import MoodleObject, ResponsesFactory, Warning
 
 
@@ -125,12 +125,12 @@ class Discussions(ResponsesFactory[Discussion]):
             name (str): The allowed keys (value format) are:
                             discussionsubscribe (bool); subscribe to the discussion?, default to true
                             discussionpinned    (bool); is the discussion pinned, default to false
-                            inlineattachmentsid              (int); the draft file area id for inline attachments
+                            inlineattachmentsid (int); the draft file area id for inline attachments
                             attachmentsid       (int); the draft file area id for attachments
             value (str): The value of the option, This param is validated in the external function.
         """
         name: str
-        value: str
+        value: Union[bool, int]
 
     @dataclass
     class New:
