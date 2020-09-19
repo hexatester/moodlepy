@@ -2,27 +2,67 @@ from datetime import datetime
 from typing import List, Optional, Union
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import Discussions, Forum
+from . import Discussions, Forum, NewPost
 
 
 class BaseForum(BaseMoodle):
-    def add_discussion(self,
-                       forumid: int,
-                       subject: str,
-                       message: str,
-                       groupid: int = 0,
-                       options: Optional[List[dict]] = None):
-        res = self.moodle.post('mod_forum_add_discussion')
-        return res
+    def add_discussion(
+            self,
+            forumid: int,
+            subject: str,
+            message: str,
+            groupid: int = 0,
+            options: Optional[List[Discussions.Option]] = None
+    ) -> Discussions.New:
+        """Add a new discussion into an existing forum.
+
+        Args:
+            forumid (int): Forum instance ID
+            subject (str): New Discussion subject
+            message (str): New Discussion message (only html format allowed)
+            groupid (int, optional): The group, default to 0. Defaults to 0.
+            options (List[Discussions.Option], optional): Options. Defaults to None.
+
+        Returns:
+            Discussions.New: [description]
+        """
+        res = self.moodle.post(
+            'mod_forum_add_discussion',
+            forumid=forumid,
+            subject=subject,
+            message=message,
+            groupid=groupid,
+            options=options or [],
+        )
+        return from_dict(Discussions.New, res)
 
     def add_discussion_post(self,
                             postid: int,
                             subject: str,
                             message: str,
-                            options: Optional[List[dict]] = None,
-                            messageformat: int = 1):
-        res = self.moodle.post('mod_forum_add_discussion_post')
-        return res
+                            options: Optional[List[NewPost.Option]] = None,
+                            messageformat: int = 1) -> NewPost:
+        """Create new posts into an existing discussion.
+
+        Args:
+            postid (int): the post id we are going to reply to (can be the initial discussion post
+            subject (str): new post subject
+            message (str): new post message (html assumed if messageformat is not provided)
+            options (List[NewPost.Option], optional): Options. Defaults to None.
+            messageformat (int, optional): message format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN). Defaults to 1.
+
+        Returns:
+            NewPost: [description]
+        """
+        res = self.moodle.post(
+            'mod_forum_add_discussion_post',
+            postid=postid,
+            subject=subject,
+            message=message,
+            options=options or [],
+            messageformat=messageformat,
+        )
+        return from_dict(NewPost, res)
 
     def can_add_discussion(self, forumid: int, groupid: Optional[int] = None):
         res = self.moodle.post('mod_forum_can_add_discussion')
