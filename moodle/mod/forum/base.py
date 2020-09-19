@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List, Optional, Union
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import Discussions, Forum, NewPost, Posts
+from . import AccessInformation, Discussions, Forum, NewPost, Posts
 
 
 class BaseForum(BaseMoodle):
@@ -87,9 +87,12 @@ class BaseForum(BaseMoodle):
         )
         return from_dict(Posts, res)
 
-    def get_forum_access_information(self, forumid: int):
-        res = self.moodle.post('mod_forum_get_forum_access_information')
-        return res
+    def get_forum_access_information(self, forumid: int) -> AccessInformation:
+        res = self.moodle.post(
+            'mod_forum_get_forum_access_information',
+            forumid=forumid,
+        )
+        return from_dict(AccessInformation, res)
 
     def get_forum_discussion_posts(self,
                                    discussionid: int,
