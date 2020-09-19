@@ -79,6 +79,16 @@ class BaseForum(BaseMoodle):
                              discussionid: int,
                              sortby: str = 'created',
                              sortdirection: str = 'DESC') -> Posts:
+        """Returns a list of forum posts for a discussion.
+
+        Args:
+            discussionid (int): The ID of the discussion from which to fetch posts.
+            sortby (str, optional): Sort by this element: id, created or modified. Defaults to 'created'.
+            sortdirection (str, optional): Sort direction: ASC or DESC. Defaults to 'DESC'.
+
+        Returns:
+            Posts: List of Post
+        """
         res = self.moodle.post(
             'mod_forum_get_discussion_posts',
             discussionid=discussionid,
@@ -88,6 +98,14 @@ class BaseForum(BaseMoodle):
         return from_dict(Posts, res)
 
     def get_forum_access_information(self, forumid: int) -> AccessInformation:
+        """Return capabilities information for a given forum.
+
+        Args:
+            forumid (int): Forum instance id.
+
+        Returns:
+            AccessInformation: Access Information of Forum
+        """
         res = self.moodle.post(
             'mod_forum_get_forum_access_information',
             forumid=forumid,
@@ -97,9 +115,24 @@ class BaseForum(BaseMoodle):
     def get_forum_discussion_posts(self,
                                    discussionid: int,
                                    sortby: str = 'created',
-                                   sortdirection: str = 'DESC'):
-        res = self.moodle.post('mod_forum_get_forum_discussion_posts')
-        return res
+                                   sortdirection: str = 'DESC') -> Posts:
+        """Returns a list of forum posts for a discussion.
+
+        Args:
+            discussionid (int): discussion ID
+            sortby (str, optional): sort by this element: id, created or modified. Defaults to 'created'.
+            sortdirection (str, optional): sort direction: ASC or DESC. Defaults to 'DESC'.
+
+        Returns:
+            Posts: List of Post
+        """
+        res = self.moodle.post(
+            'mod_forum_get_forum_discussion_posts',
+            discussionid=discussionid,
+            sortby=sortby,
+            sortdirection=sortdirection,
+        )
+        return from_dict(Posts, res)
 
     def get_forum_discussions(self,
                               forumid: int,
