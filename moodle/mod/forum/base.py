@@ -208,26 +208,50 @@ class BaseForum(BaseMoodle):
 
     def set_lock_state(self, forumid: int, discussionid: int,
                        targetstate: Union[datetime, int]):
-        res = self.moodle.post('mod_forum_set_lock_state')
+        res = self.moodle.post(
+            'mod_forum_set_lock_state',
+            forumid=forumid,
+            discussionid=discussionid,
+            targetstate=targetstate,
+        )
         return res
 
     def set_pin_state(self, discussionid: int, targetstate: int):
-        res = self.moodle.post('mod_forum_set_pin_state')
+        res = self.moodle.post(
+            'mod_forum_set_pin_state',
+            discussionid=discussionid,
+            targetstate=targetstate,
+        )
         return res
 
     def set_subscription_state(self, forumid: int, discussionid: int,
                                targetstate: int):
-        res = self.moodle.post('mod_forum_set_subscription_state')
+        res = self.moodle.post(
+            'mod_forum_set_subscription_state',
+            forumid=forumid,
+            discussionid=discussionid,
+            targetstate=targetstate,
+        )
         return res
 
     def toggle_favourite_state(self, discussionid: int, targetstate: int):
-        res = self.moodle.post('mod_forum_toggle_favourite_state')
+        res = self.moodle.post(
+            'mod_forum_toggle_favourite_state',
+            discussionid=discussionid,
+            targetstate=targetstate,
+        )
         return res
 
     def view_forum(self, forumid: int):
-        res = self.moodle.post('mod_forum_view_forum')
+        res = self.moodle.post(
+            'mod_forum_view_forum',
+            forumid=forumid,
+        )
         return res
 
     def view_forum_discussion(self, discussionid: int):
-        res = self.moodle.post('mod_forum_view_forum_discussion')
+        res = self.moodle.post(
+            'mod_forum_view_forum_discussion',
+            discussionid=discussionid,
+        )
         return res
