@@ -35,7 +35,7 @@ class Event:
     categoryid: Optional[int]
     groupid: Optional[int]
     userid: int
-    repeatid: int
+    repeatid: Optional[int]
     modulename: Optional[str]
     instance: Optional[int]
     eventtype: str
