@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List, Optional, Union
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import Lessons, OneLesson
+from . import Pages, Lessons, OneLesson
 
 
 class BaseLesson(BaseMoodle):
@@ -97,13 +97,22 @@ class BaseLesson(BaseMoodle):
         )
         return res
 
-    def get_pages(self, lessonid: int, password: str = ''):
+    def get_pages(self, lessonid: int, password: str = '') -> Pages:
+        """Return the list of pages in a lesson (based on the user permissions).
+
+        Args:
+            lessonid (int): lesson instance id
+            password (str, optional): optional password (the lesson may be protected). Defaults to ''.
+
+        Returns:
+            Pages: List of LessonPage
+        """
         res = self.moodle.post(
             'mod_lesson_get_pages',
             lessonid=lessonid,
             password=password,
         )
-        return res
+        return from_dict(Pages, res)
 
     def get_pages_possible_jumps(self, lessonid: int):
         res = self.moodle.post(
