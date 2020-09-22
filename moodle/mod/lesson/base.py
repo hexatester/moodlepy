@@ -1,6 +1,8 @@
 from datetime import datetime
 from typing import List, Optional, Union
 from moodle import BaseMoodle
+from moodle.utils.helper import from_dict
+from . import Lessons, OneLesson
 
 
 class BaseLesson(BaseMoodle):
@@ -38,13 +40,22 @@ class BaseLesson(BaseMoodle):
         )
         return res
 
-    def get_lesson(self, lessonid: int, password: str = ''):
+    def get_lesson(self, lessonid: int, password: str = '') -> OneLesson:
+        """Return information of a given lesson.
+
+        Args:
+            lessonid (int): lesson instance id
+            password (str, optional): lesson password. Defaults to ''.
+
+        Returns:
+            OneLesson: Object containing Lesson
+        """
         res = self.moodle.post(
             'mod_lesson_get_lesson',
             lessonid=lessonid,
             password=password,
         )
-        return res
+        return from_dict(OneLesson, res)
 
     def get_lesson_access_information(self, lessonid: int):
         res = self.moodle.post(
@@ -53,12 +64,22 @@ class BaseLesson(BaseMoodle):
         )
         return res
 
-    def get_lessons_by_courses(self, courseids: Optional[List[int]] = None):
+    def get_lessons_by_courses(self,
+                               courseids: Optional[List[int]] = None
+                               ) -> Lessons:
+        """Returns a list of lessons in a provided list of courses, if no list is provided all lessons that the user can view will be returned.
+
+        Args:
+            courseids (Optional[List[int]], optional): Array of course ids. Defaults to [].
+
+        Returns:
+            Lessons: List of Lesson
+        """
         res = self.moodle.post(
             'mod_lesson_get_lessons_by_courses',
             courseids=courseids or [],
         )
-        return res
+        return from_dict(Lessons, res)
 
     def get_page_data(self,
                       lessonid: int,
