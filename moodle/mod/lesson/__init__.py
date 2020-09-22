@@ -1,3 +1,8 @@
+from .page import (
+    Page,
+    LessonPage,
+    Pages,
+)
 from .lesson import (
     Lesson,
     OneLesson,
@@ -6,4 +11,7 @@ from .lesson import (
 
 from .base import BaseLesson
 
-__all__ = ['Lesson', 'OneLesson', 'Lessons', 'BaseLesson']
+__all__ = [
+    'Page', 'LessonPage', 'Pages', 'Lesson', 'OneLesson', 'Lessons',
+    'BaseLesson'
+]
