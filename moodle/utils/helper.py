@@ -32,7 +32,7 @@ def to_dict(data: Any, name: str = '') -> Any:
             val = to_dict(val)
             if isinstance(val, dict):
                 for key, value in val.items():
-                    out[f'{name}[{idx}][{key}]'] = val
+                    out[f'{name}[{idx}][{key}]'] = val[key]
             else:
                 out_key = name
                 # Check if data required name prefix
