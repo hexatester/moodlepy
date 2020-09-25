@@ -16,7 +16,7 @@ packages = find_packages(exclude=['tests*'])
 requirements = requirements()
 
 setup(name='moodlepy',
-      version='0.11.1',
+      version='0.11.2',
       description='Client for moodle webservice',
       author='Habib Rohman',
       author_email='habibrohman@protonmail.com',
