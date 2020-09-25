@@ -13,6 +13,8 @@ from .tool import Tool
 from .auth import Auth
 from .core import Core
 from .mod import Mod
+
+from .mdl import Mdl
 from .mdl import Moodle
 
 from .version import __version__  # NOQA
@@ -32,5 +34,6 @@ __all__ = [
     'Core',
     'Mod',
     'Tool',
+    'Mdl',
     'Moodle',
 ]

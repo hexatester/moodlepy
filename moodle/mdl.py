@@ -2,13 +2,15 @@ from __future__ import annotations
 import logging
 import requests
 from requests import Session
-from typing import Any
+from typing import Any, Type, TypeVar
 from moodle import Auth, Core, Mod, MoodleException, Tool, Warning
 from moodle.exception import InvalidCredentialException
 from moodle.utils.helper import make_params, from_dict, to_dict
 
+T = TypeVar('T', bound='Mdl')
 
-class Moodle:
+
+class Mdl:
     session: Session = Session()
     token: str = ''
     url: str = ''
@@ -17,32 +19,6 @@ class Moodle:
         self.logger = logging.getLogger(self.__class__.__name__)
         self.url = url
         self.token = token
-        self._auth = Auth(self)
-        self._core = Core(self)
-        self._mod = Mod(self)
-        self._tool = Tool(self)
-
-    def __call__(self,
-                 wsfunction: str,
-                 moodlewsrestformat='json',
-                 **kwargs) -> Any:
-        return self.post(wsfunction, moodlewsrestformat, **kwargs)
-
-    @property
-    def auth(self) -> Auth:
-        return self._auth
-
-    @property
-    def core(self) -> Core:
-        return self._core
-
-    @property
-    def mod(self) -> Mod:
-        return self._mod
-
-    @property
-    def tool(self) -> Tool:
-        return self._tool
 
     def get(self, wsfunction: str, moodlewsrestformat='json', **kwargs) -> Any:
         params = make_params(self.token, wsfunction, moodlewsrestformat)
@@ -74,13 +50,13 @@ class Moodle:
         return data
 
     @classmethod
-    def login(cls,
+    def login(cls: Type[T],
               domain: str,
               username: str,
               password: str,
               service: str = 'moodle_mobile_app',
               loginurl: str = '/login/token.php',
-              web_service_url: str = '/webservice/rest/server.php') -> Moodle:
+              web_service_url: str = '/webservice/rest/server.php') -> T:
         """Get a Moodle instance by using username & password auth
 
         Args:
@@ -122,3 +98,34 @@ class Moodle:
         url = loginurl if loginurl.startswith(domain) else domain + loginurl
         res = requests.get(url, params=params)
         return res.json() if res.ok else {}
+
+
+class Moodle(Mdl):
+    def __init__(self, url: str, token: str):
+        super(Moodle, self).__init__(url, token)
+        self._auth = Auth(self)
+        self._core = Core(self)
+        self._mod = Mod(self)
+        self._tool = Tool(self)
+
+    def __call__(self,
+                 wsfunction: str,
+                 moodlewsrestformat='json',
+                 **kwargs) -> Any:
+        return self.post(wsfunction, moodlewsrestformat, **kwargs)
+
+    @property
+    def auth(self) -> Auth:
+        return self._auth
+
+    @property
+    def core(self) -> Core:
+        return self._core
+
+    @property
+    def mod(self) -> Mod:
+        return self._mod
+
+    @property
+    def tool(self) -> Tool:
+        return self._tool
