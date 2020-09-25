@@ -112,7 +112,7 @@ A = Added, W = Work In Progress
 | mod_lti              |           |       |       |        |
 | mod_page             |           |       |       | W      |
 | mod_quiz             |           |       |       | W      |
-| mod_resource         |           |       |       |        |
+| mod_resource         | A         | A     |       |        |
 | mod_scorm            |           |       |       |        |
 | mod_survey           |           |       |       | W      |
 | mod_url              |           |       |       | W      |
