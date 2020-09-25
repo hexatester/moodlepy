@@ -41,6 +41,16 @@ site_info = moodle.core.webservice.get_site_info()  # return typed site_info
 
 print(raw_site_info)
 print(site_info)
+
+# or
+from moodle import Mdl
+from moodle.core.webservice import BaseWebservice
+
+moodle = Mdl(url, token)
+webservice = BaseWebservice(moodle)
+site_info2 = webservice.get_site_info()
+
+assert site_info == site_info2
 ```
 
 In the future all [Web service functions](https://docs.moodle.org/dev/Web_service_API_functions) will be covered by moodlepy
