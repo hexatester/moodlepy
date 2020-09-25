@@ -62,7 +62,7 @@ A = Added, W = Work In Progress
 
 | Area                 | Functions | Types | Tests | Status |
 | -------------------- | --------- | ----- | ----- | ------ |
-| auth_email           |           |       |       |        |
+| auth_email           | A         | A     |       |        |
 | block                |           |       |       |        |
 | core_auth            |           |       |       |        |
 | core_backup          |           |       |       |        |
@@ -72,6 +72,7 @@ A = Added, W = Work In Progress
 | core_cohort          |           |       |       |        |
 | core_comment         |           |       |       | W      |
 | core_competency      |           |       |       |        |
+| core_completion      | A         | A     |       |        |
 | core_course          |           |       |       | W      |
 | core_customfield     |           |       |       |        |
 | core_enrol           |           |       |       |        |
