@@ -41,7 +41,7 @@ class Resource:
         contentfiles (List[File]): Files in the content
         tobemigrated (int): Whether this resource was migrated
         legacyfiles (int): Legacy files flag
-        legacyfileslast (int): Legacy files last control flag
+        legacyfileslast (Optional[int]): Legacy files last control flag
         display (int): How to display the resource
         displayoptions (str): Display options (width, height)
         filterfiles (int): If filters should be applied to the resource content
@@ -62,7 +62,7 @@ class Resource:
     contentfiles: List[File]
     tobemigrated: int
     legacyfiles: int
-    legacyfileslast: int
+    legacyfileslast: Optional[int]
     display: int
     displayoptions: str
     filterfiles: int
