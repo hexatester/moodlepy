@@ -1,5 +1,5 @@
 from datetime import datetime
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List, Optional
 
 
@@ -83,7 +83,7 @@ class Content:
     userid: int
     author: str
     license: str
-    tags: List[Tag]
+    tags: List[Tag] = field(default_factory=list)
 
 
 @dataclass
@@ -97,7 +97,7 @@ class Completion:
     """
     state: int
     timecompleted: int
-    overrideby: int
+    overrideby: Optional[int]
     valueused: Optional[int]
 
 
@@ -146,8 +146,8 @@ class Module:
     customdata: Optional[str]
     completion: Optional[int]
     completiondata: Optional[Completion]
-    contents: List[Content]
-    contentsinfo: Optional[ContentInfo]
+    contents: List[Content] = field(default_factory=list)
+    contentsinfo: Optional[ContentInfo] = None
 
 
 @dataclass
