@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from moodle import BaseNameValue
+from typing import Union
 
 
 @dataclass
-class ContentOption(BaseNameValue):
+class ContentOption:
     """Options, used since Moodle 2.9
 
     Args:
@@ -17,6 +17,7 @@ class ContentOption(BaseNameValue):
                     cmid (int) Return only this module information (among the whole sections structure)
                     modname (string) Return only modules with this name "label, forum, etc..."
                     modid (int) Return only the module with this id (to be used with modname
-        value (str): the value of the option, this param is personaly validated in the external function.
+        value (Union[str, int, bool]): the value of the option, this param is personaly validated in the external function.
     """
-    pass
+    name: str
+    value: Union[str, int, bool]
