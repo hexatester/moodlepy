@@ -5,6 +5,7 @@ from .calendar import BaseCalendar
 from .cohort import BaseCohort
 from .comment import BaseComment
 from .competency import BaseCompetency
+from .completion import BaseCompletion
 from .course import BaseCourse
 from .message import BaseMessage
 from .notes import BaseNotes
@@ -21,6 +22,7 @@ __all__ = [
     'BaseCohort',
     'BaseComment',
     'BaseCompetency',
+    'BaseCompletion',
     'BaseCourse',
     'BaseMessage',
     'BaseNotes',

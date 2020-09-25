@@ -1,7 +1,7 @@
 from moodle import BaseMoodle
 from . import (BaseBadges, BaseBlock, BaseBlog, BaseCalendar, BaseCohort,
-               BaseComment, BaseCompetency, BaseCourse, BaseMessage, BaseNotes,
-               BaseUser, BaseWebservice)
+               BaseComment, BaseCompetency, BaseCompletion, BaseCourse,
+               BaseMessage, BaseNotes, BaseUser, BaseWebservice)
 
 
 class Core(BaseMoodle):
@@ -13,6 +13,7 @@ class Core(BaseMoodle):
         self._cohort = BaseCohort(moodle)
         self._comment = BaseComment(moodle)
         self._competency = BaseCompetency(moodle)
+        self._completion = BaseCompletion(moodle)
         self._course = BaseCourse(moodle)
         self._message = BaseMessage(moodle)
         self._notes = BaseNotes(moodle)
@@ -46,6 +47,10 @@ class Core(BaseMoodle):
     @property
     def competency(self) -> BaseCompetency:
         return self._competency
+
+    @property
+    def completion(self) -> BaseCompletion:
+        return self._completion
 
     @property
     def course(self) -> BaseCourse:
