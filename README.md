@@ -114,7 +114,7 @@ A = Added, W = Work In Progress
 | mod_choice           |           |       |       |        |
 | mod_data             |           |       |       |        |
 | mod_feedback         |           |       |       |        |
-| mod_folder           |           |       |       |        |
+| mod_folder           | A         | A     |       |        |
 | mod_forum            |           |       |       | W      |
 | mod_glossary         |           |       |       |        |
 | mod_imscp            |           |       |       |        |
