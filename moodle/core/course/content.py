@@ -57,15 +57,15 @@ class Content:
         filesize (int): filesize
         fileurl (Optional[str]): downloadable file url
         content (Optional[str]): Raw content, will be used when type is content
-        timecreated (datetime): Time created
-        timemodified (datetime): Time modified
+        timecreated (Optional[datetime]): Time created
+        timemodified (Optional[datetime]): Time modified
         sortorder (int): Content sort order
         mimetype (Optional[str]): File mime type.
         isexternalfile (Optional[int]): Whether is an external file.
         repositorytype (Optional[str]): The repository type for external files.
-        userid (int): User who added this content to moodle
-        author (str): Content owner
-        license (str): Content license
+        userid (Optional[int]): User who added this content to moodle
+        author (Optional[str]): Content owner
+        license (Optional[str]): Content license
         tags (List[Tag]): Tags
     """
     type: str
@@ -74,15 +74,15 @@ class Content:
     filesize: int
     fileurl: Optional[str]
     content: Optional[str]
-    timecreated: datetime
-    timemodified: datetime
+    timecreated: Optional[datetime]
+    timemodified: Optional[datetime]
     sortorder: int
     mimetype: Optional[str]
     isexternalfile: Optional[int]
     repositorytype: Optional[str]
-    userid: int
-    author: str
-    license: str
+    userid: Optional[int]
+    author: Optional[str]
+    license: Optional[str]
     tags: List[Tag] = field(default_factory=list)
 
 
@@ -91,14 +91,14 @@ class Completion:
     """Completion
     Args:
         state (int): Completion state value: 0 means incomplete, 1 complete, 2 complete pass, 3 complete fail
-        timecompleted (int): Timestamp for completion status.
+        timecompleted (datetime): Timestamp for completion status.
         overrideby (int): The user id who has overriden the status.
-        valueused (Optional[int]): Whether the completion status affects the availability of another activity.
+        valueused (Optional[bool]): Whether the completion status affects the availability of another activity.
     """
     state: int
-    timecompleted: int
+    timecompleted: datetime
     overrideby: Optional[int]
-    valueused: Optional[int]
+    valueused: Optional[bool]
 
 
 @dataclass
