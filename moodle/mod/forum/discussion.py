@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List, Optional, Union
 from moodle import MoodleObject, ResponsesFactory, Warning
 
@@ -47,9 +47,7 @@ class Discussion(MoodleObject):
         message (str): The post message
         messageformat (int): message format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
         messagetrust (int): Can we trust?
-        messageinlinefiles (List[File]): post message inline files
         attachment (str): Has attachments?
-        attachments (List[File]): attachments
         totalscore (int): The post message total score
         mailnow (int): Mail now?
         userfullname (str): Post author full name
@@ -64,6 +62,8 @@ class Discussion(MoodleObject):
         canreply (int): Can the user reply to the discussion
         canlock (int): Can the user lock the discussion
         canfavourite (int): Can the user star the discussion
+        messageinlinefiles (List[File]): post message inline files
+        attachments (List[File]): attachments
     """
     id: int
     name: str
@@ -82,9 +82,7 @@ class Discussion(MoodleObject):
     message: str
     messageformat: int
     messagetrust: int
-    messageinlinefiles: List[File]
     attachment: str
-    attachments: List[File]
     totalscore: int
     mailnow: int
     userfullname: str
@@ -99,6 +97,8 @@ class Discussion(MoodleObject):
     canreply: int
     canlock: int
     canfavourite: int
+    messageinlinefiles: List[File] = field(default_factory=list)
+    attachments: List[File] = field(default_factory=list)
 
 
 @dataclass
