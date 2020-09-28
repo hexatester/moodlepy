@@ -1,5 +1,5 @@
 from operator import getitem
-from typing import Generic, Iterator, List, TypeVar
+from typing import Any, Generic, Iterator, List, Optional, TypeVar
 
 T = TypeVar('T')
 
@@ -26,6 +26,17 @@ class ResponsesFactory(Generic[T]):
 
     def first(self) -> T:
         return getitem(self.items, 0)
+
+    def get(self,
+            key: Any,
+            name: str = 'id',
+            default: T = None) -> Optional[T]:
+        for item in self.items:
+            if not hasattr(item, name):
+                continue
+            if getattr(item, name) == key:
+                return item
+        return default
 
     def last(self) -> T:
         return getitem(self.items, -1)
