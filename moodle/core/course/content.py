@@ -59,7 +59,7 @@ class Content:
         content (Optional[str]): Raw content, will be used when type is content
         timecreated (Optional[datetime]): Time created
         timemodified (Optional[datetime]): Time modified
-        sortorder (int): Content sort order
+        sortorder (Optional[int]): Content sort order
         mimetype (Optional[str]): File mime type.
         isexternalfile (Optional[int]): Whether is an external file.
         repositorytype (Optional[str]): The repository type for external files.
@@ -76,7 +76,7 @@ class Content:
     content: Optional[str]
     timecreated: Optional[datetime]
     timemodified: Optional[datetime]
-    sortorder: int
+    sortorder: Optional[int]
     mimetype: Optional[str]
     isexternalfile: Optional[int]
     repositorytype: Optional[str]
