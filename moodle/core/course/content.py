@@ -53,7 +53,7 @@ class Content:
     Args:
         type (str): a file or a folder or external link
         filename (str): filename
-        filepath (str): filepath
+        filepath (Optional[str]): filepath
         filesize (int): filesize
         fileurl (Optional[str]): downloadable file url
         content (Optional[str]): Raw content, will be used when type is content
@@ -70,7 +70,7 @@ class Content:
     """
     type: str
     filename: str
-    filepath: str
+    filepath: Optional[str]
     filesize: int
     fileurl: Optional[str]
     content: Optional[str]
@@ -147,7 +147,7 @@ class Module:
     completion: Optional[int]
     completiondata: Optional[Completion]
     contents: List[Content] = field(default_factory=list)
-    contentsinfo: Optional[ContentInfo] = None
+    contentsinfo: Optional[ContentInfo] = field(default=None)
 
 
 @dataclass
@@ -174,4 +174,4 @@ class Section:
     hiddenbynumsections: Optional[int]
     uservisible: Optional[int]
     availabilityinfo: Optional[str]
-    modules: List[Module]
+    modules: List[Module] = field(default_factory=list)
