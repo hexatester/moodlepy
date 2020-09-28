@@ -47,7 +47,7 @@ class Discussion(MoodleObject):
         message (str): The post message
         messageformat (int): message format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
         messagetrust (int): Can we trust?
-        attachment (str): Has attachments?
+        attachment (bool): Has attachments?
         totalscore (int): The post message total score
         mailnow (int): Mail now?
         userfullname (str): Post author full name
@@ -82,7 +82,7 @@ class Discussion(MoodleObject):
     message: str
     messageformat: int
     messagetrust: int
-    attachment: str
+    attachment: bool
     totalscore: int
     mailnow: int
     userfullname: str
