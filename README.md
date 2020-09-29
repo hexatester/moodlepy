@@ -126,7 +126,7 @@ A = Added, W = Work In Progress
 | mod_resource         | A         | A     |       |        |
 | mod_scorm            |           |       |       |        |
 | mod_survey           |           |       |       | W      |
-| mod_url              |           |       |       | W      |
+| mod_url              | A         | A     |       |        |
 | mod_wiki             |           |       |       |        |
 | mod_workshop         |           |       |       |        |
 | report_competency    |           |       |       |        |

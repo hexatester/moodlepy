@@ -1,5 +1,12 @@
 from moodle import BaseMoodle
-from . import BaseAssign, BaseFolder, BaseForum, BaseLesson, BaseResource
+from . import (
+    BaseAssign,
+    BaseFolder,
+    BaseForum,
+    BaseLesson,
+    BaseResource,
+    BaseUrl,
+)
 
 
 class Mod(BaseMoodle):
@@ -9,6 +16,7 @@ class Mod(BaseMoodle):
         self._forum = BaseForum(moodle)
         self._lesson = BaseLesson(moodle)
         self._resource = BaseResource(moodle)
+        self._url = BaseUrl(moodle)
 
     @property
     def assign(self) -> BaseAssign:
@@ -29,3 +37,7 @@ class Mod(BaseMoodle):
     @property
     def resource(self) -> BaseResource:
         return self._resource
+
+    @property
+    def url(self) -> BaseUrl:
+        return self._url
