@@ -2,9 +2,10 @@ from __future__ import annotations
 import logging
 import requests
 from requests import Session
+from requests.exceptions import RequestException
 from typing import Any, Type, TypeVar
 from moodle import Auth, Core, Mod, MoodleException, Tool, Warning
-from moodle.exception import InvalidCredentialException
+from moodle.exception import EmptyResponseException, InvalidCredentialException, NetworkMoodleException
 from moodle.utils.helper import make_params, from_dict, to_dict
 
 T = TypeVar('T', bound='Mdl')
@@ -34,7 +35,14 @@ class Mdl:
              moodlewsrestformat='json',
              **kwargs: Any) -> Any:
         params = make_params(self.token, wsfunction, moodlewsrestformat)
-        res = self.session.post(self.url, data=to_dict(kwargs), params=params)
+        try:
+            res = self.session.post(self.url,
+                                    data=to_dict(kwargs),
+                                    params=params)
+        except RequestException as e:
+            raise NetworkMoodleException(e)
+        if not res.ok or not res.text:
+            raise EmptyResponseException()
         if res.ok and moodlewsrestformat == 'json':
             data = res.json()
             return self.process_response(data)
