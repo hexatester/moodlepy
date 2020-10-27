@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List, Optional, Union
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import Pages, Lessons, OneLesson
+from . import Pages, Lessons, OneLesson, View
 
 
 class BaseLesson(BaseMoodle):
@@ -204,10 +204,19 @@ class BaseLesson(BaseMoodle):
         )
         return res
 
-    def view_lesson(self, lessonid: int, password: str = ''):
+    def view_lesson(self, lessonid: int, password: str = '') -> View:
+        """Trigger the course module viewed event and update the module completion status.
+
+        Args:
+            lessonid (int): lesson instance id
+            password (str, optional): lesson password. Defaults to ''.
+
+        Returns:
+            View: View lesson response
+        """
         res = self.moodle.post(
             'mod_lesson_view_lesson',
             lessonid=lessonid,
             password=password,
         )
-        return res
+        return from_dict(View, res)

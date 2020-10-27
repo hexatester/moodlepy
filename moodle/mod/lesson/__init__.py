@@ -8,10 +8,11 @@ from .lesson import (
     OneLesson,
     Lessons,
 )
+from .view import View
 
 from .base import BaseLesson
 
 __all__ = [
-    'Page', 'LessonPage', 'Pages', 'Lesson', 'OneLesson', 'Lessons',
+    'Page', 'LessonPage', 'Pages', 'Lesson', 'OneLesson', 'Lessons', 'View',
     'BaseLesson'
 ]
