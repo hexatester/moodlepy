@@ -8,6 +8,8 @@ T = TypeVar('T')
 
 
 class MoodleObject(object):
+    wsfunction: str = ''
+
     def __post_init__(self):
         self._moodle: Optional[Moodle] = None
 
