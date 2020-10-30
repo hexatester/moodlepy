@@ -86,7 +86,7 @@ A = Added, W = Work In Progress
 | core_grading         |           |       |       |        |
 | core_group           |           |       |       |        |
 | core_h5p             |           |       |       |        |
-| core_message         |           |       |       | W      |
+| core_message         | A         |       |       | W      |
 | core_notes           | A         | A     |       | W      |
 | core_output          |           |       |       |        |
 | core_question        | W         |       |       | W      |
