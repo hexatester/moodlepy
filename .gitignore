@@ -137,9 +137,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Poetry Lock
-poetry.lock
-
 # IDE
 .vscode
 

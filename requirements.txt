@@ -1,6 +1,6 @@
-certifi==2020.6.20
-chardet==3.0.4
-dacite==1.5.1
+certifi==2020.12.5
+chardet==4.0.0
+dacite==1.6.0
 idna==2.10
-requests==2.24.0
-urllib3==1.25.10
+requests==2.25.1
+urllib3==1.26.2
