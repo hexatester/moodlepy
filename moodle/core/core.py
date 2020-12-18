@@ -1,11 +1,12 @@
 from moodle import BaseMoodle
-from . import (BaseBadges, BaseBlock, BaseBlog, BaseCalendar, BaseCohort,
-               BaseComment, BaseCompetency, BaseCompletion, BaseCourse,
-               BaseMessage, BaseNotes, BaseUser, BaseWebservice)
+from . import (BaseAuth, BaseBadges, BaseBlock, BaseBlog, BaseCalendar,
+               BaseCohort, BaseComment, BaseCompetency, BaseCompletion,
+               BaseCourse, BaseMessage, BaseNotes, BaseUser, BaseWebservice)
 
 
 class Core(BaseMoodle):
     def __post_init__(self, moodle) -> None:
+        self._auth = BaseAuth(moodle)
         self._badges = BaseBadges(moodle)
         self._block = BaseBlock(moodle)
         self._blog = BaseBlog(moodle)
@@ -19,6 +20,10 @@ class Core(BaseMoodle):
         self._notes = BaseNotes(moodle)
         self._user = BaseUser(moodle)
         self._webservice = BaseWebservice(moodle)
+
+    @property
+    def auth(self) -> BaseAuth:
+        return self._auth
 
     @property
     def bagdes(self) -> BaseBadges:

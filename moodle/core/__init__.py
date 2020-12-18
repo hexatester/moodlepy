@@ -1,3 +1,4 @@
+from .auth import BaseAuth
 from .badges import BaseBadges
 from .block import BaseBlock
 from .blog import BaseBlog
@@ -15,6 +16,7 @@ from .webservice import BaseWebservice
 from .core import Core
 
 __all__ = [
+    'BaseAuth',
     'BaseBadges',
     'BaseBlock',
     'BaseBlog',

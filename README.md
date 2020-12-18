@@ -64,7 +64,7 @@ A = Added, W = Work In Progress
 | -------------------- | --------- | ----- | ----- | ------ |
 | auth_email           | A         | A     |       |        |
 | block                |           |       |       |        |
-| core_auth            |           |       |       |        |
+| core_auth            | A         | A     |       |        |
 | core_backup          |           |       |       |        |
 | core_badge           | A         | A     | A     |        |
 | core_blog            | A         | A     | A     |        |
