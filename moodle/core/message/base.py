@@ -1,48 +1,102 @@
 from datetime import datetime
 from typing import List, Optional, Union
-from moodle import BaseMoodle
+
+from moodle import BaseMoodle, Warning
+from moodle.utils.helper import from_dict
+from . import ContactRequest
 
 
 class BaseMessage(BaseMoodle):
-    def block_contacts(self, userids: List[int], userid: int = 0):
+    def block_contacts(self,
+                       userids: List[int],
+                       userid: int = 0) -> List[Warning]:
+        """** DEPRECATED ** Please do not call this function any more. Block contacts
+
+        Args:
+            userids (List[int]): List of user IDs
+            userid (int, optional): The id of the user we are blocking the contacts for, 0 for the current user. Defaults to 0.
+
+        Returns:
+            List[Warning]: list of warnings
+        """
         res = self.moodle.post(
             'core_message_block_contacts',
             userids=userids,
             userid=userid,
         )
-        return res
+        return [from_dict(Warning, data) for data in res] if res else []
 
-    def block_user(self, userid: int, blockeduserid: int):
+    def block_user(self, userid: int, blockeduserid: int) -> List[Warning]:
+        """Blocks a user
+
+        Args:
+            userid (int): The id of the user who is blocking
+            blockeduserid (int): The id of the user being blocked
+
+        Returns:
+            List[Warning]: list of warnings
+        """
         res = self.moodle.post(
             'core_message_block_user',
             userid=userid,
             blockeduserid=blockeduserid,
         )
-        return res
+        return [from_dict(Warning, data) for data in res] if res else []
 
-    def confirm_contact_request(self, userid: int, requesteduserid: int):
+    def confirm_contact_request(self, userid: int,
+                                requesteduserid: int) -> List[Warning]:
+        """Confirms a contact request
+
+        Args:
+            userid (int): The id of the user making the request
+            requesteduserid (int): The id of the user being requested
+
+        Returns:
+            List[Warning]: list of warnings
+        """
         res = self.moodle.post(
             'core_message_confirm_contact_request',
             userid=userid,
             requesteduserid=requesteduserid,
         )
-        return res
+        return [from_dict(Warning, data) for data in res] if res else []
 
-    def create_contact_request(self, userid: int, requesteduserid: int):
+    def create_contact_request(self, userid: int,
+                               requesteduserid: int) -> ContactRequest:
+        """Creates a contact request
+
+        Args:
+            userid (int): The id of the user making the request
+            requesteduserid (int): The id of the user being requested
+
+        Returns:
+            ContactRequest: ContactRequest object
+        """
         res = self.moodle.post(
             'core_message_create_contact_request',
             userid=userid,
             requesteduserid=requesteduserid,
         )
-        return res
+        return from_dict(ContactRequest, res)
 
-    def create_contacts(self, userids: List[int], userid: int = 0):
+    def create_contacts(self,
+                        userids: List[int],
+                        userid: int = 0) -> List[Warning]:
+        """** DEPRECATED ** Please do not call this function any more. Add contacts to the contact list
+
+        Args:
+            userids (List[int]): List of user IDs
+            userid (int, optional): The id of the user we are creating the contacts for, 0 for the current user. Defaults to 0.
+
+        Returns:
+            List[Warning]: list of warnings
+        """
         res = self.moodle.post(
             'core_message_create_contacts',
             userids=userids,
             userid=userid,
         )
-        return res
+        return [from_dict(Warning, data) for data in res] if res else []
 
     def data_for_messagearea_contacts(self,
                                       userid: int,
