@@ -8,7 +8,7 @@ from moodle import Warning
 class GeneralSuccess:
     """GeneralSuccess
     Args:
-        success (int): True if the user was confirmed, false if he was already confirmed
+        success (int): True or False, nor 1 or 0
         warnings (List[Warning]): list of warnings
     """
     success: int
