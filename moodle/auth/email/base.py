@@ -1,6 +1,8 @@
+from typing import List, Optional
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import SignupSetting
+from moodle.utils.typing import Array
+from . import SignupSetting, SignupUserResponse, UserCustomField
 
 
 class BaseEmail(BaseMoodle):
@@ -13,9 +15,52 @@ class BaseEmail(BaseMoodle):
         data = self.moodle.get('auth_email_get_signup_setting')
         return from_dict(SignupSetting, data)
 
-    def signup_user(self):
-        # TODO auth_email_get_signup_setting
-        raise NotImplementedError(
-            'auth_email_get_signup_setting not implemented yet')
-        data = self.moodle.get('auth_email_signup_user')
-        return data
+    def signup_user(self,
+                    username: str,
+                    password: str,
+                    firstname: str,
+                    lastname: str,
+                    email: str,
+                    city: str = '',
+                    country: str = '',
+                    recaptchachallengehash: str = '',
+                    recaptcharesponse: str = '',
+                    customprofilefields: Optional[
+                        List[UserCustomField]] = None,
+                    redirect: str = '') -> SignupUserResponse:
+        """Adds a new user (pendingto be confirmed) in the site.
+
+        Args:
+            username (str): Username
+            password (str): Plain text password
+            firstname (str): The first name(s) of the user
+            lastname (str): The family name of the user
+            email (str): A valid and unique email address
+            city (str, optional): Home city of the user. Defaults to ''.
+            country (str, optional): Home country code. Defaults to ''.
+            recaptchachallengehash (str, optional): Recaptcha challenge hash. Defaults to ''.
+            recaptcharesponse (str, optional): Recaptcha response. Defaults to ''.
+            customprofilefields (Optional[ List[UserCustomField]], optional): User custom fields (also known as user profile fields). Defaults to None.
+            redirect (str, optional): Redirect the user to this site url after confirmation.. Defaults to ''.
+
+        Returns:
+            SignupUserResponse: Response
+        """
+        customprofilefields = Array(
+            customprofilefields if customprofilefields else [])
+        customprofilefields.name = 'customprofilefields'
+        data = self.moodle.get(
+            'auth_email_signup_user',
+            username=username,
+            password=password,
+            firstname=firstname,
+            lastname=lastname,
+            email=email,
+            city=city,
+            country=country,
+            recaptchachallengehash=recaptchachallengehash,
+            recaptcharesponse=recaptcharesponse,
+            customprofilefields=customprofilefields,
+            redirect=redirect,
+        )
+        return from_dict(SignupUserResponse, data)
