@@ -13,3 +13,10 @@ class GeneralSuccess:
     """
     success: int
     warnings: List[Warning]
+
+    def __bool__(self) -> bool:
+        if isinstance(self.success, int):
+            return self.success == 1
+        elif isinstance(self.success, str):
+            return self.success == '1' or self.success == 'true'
+        return bool(self.success)
