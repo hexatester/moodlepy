@@ -1,9 +1,9 @@
 from datetime import datetime
-from typing import Union
+from typing import List, Union
 
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import EditUserEnrolmentResponse
+from . import EditUserEnrolmentResponse, EnrolmentMethod
 
 
 class BaseEnrol(BaseMoodle):
@@ -36,9 +36,21 @@ class BaseEnrol(BaseMoodle):
         )
         return from_dict(EditUserEnrolmentResponse, data)
 
-    def get_course_enrolment_methods(self):
-        data = self.moodle.post('core_enrol_get_course_enrolment_methods')
-        return data
+    def get_course_enrolment_methods(self,
+                                     courseid: int) -> List[EnrolmentMethod]:
+        """Get the list of course enrolment methods
+
+        Args:
+            courseid (int): Course id
+
+        Returns:
+            List[EnrolmentMethod]: list of EnrolmentMethod
+        """
+        datas = self.moodle.post(
+            'core_enrol_get_course_enrolment_methods',
+            courseid=courseid,
+        )
+        return [from_dict(EnrolmentMethod, data) for data in datas]
 
     def get_enrolled_users(self):
         data = self.moodle.post('core_enrol_get_enrolled_users')
