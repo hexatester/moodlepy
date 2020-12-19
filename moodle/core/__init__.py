@@ -8,6 +8,7 @@ from .comment import BaseComment
 from .competency import BaseCompetency
 from .completion import BaseCompletion
 from .course import BaseCourse
+from .enrol import BaseEnrol
 from .message import BaseMessage
 from .notes import BaseNotes
 from .user import BaseUser
@@ -26,6 +27,7 @@ __all__ = [
     'BaseCompetency',
     'BaseCompletion',
     'BaseCourse',
+    'BaseEnrol',
     'BaseMessage',
     'BaseNotes',
     'BaseUser',
