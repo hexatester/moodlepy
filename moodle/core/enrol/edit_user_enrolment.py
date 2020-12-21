@@ -1,4 +1,4 @@
-from moodle import GeneralResultError
+from moodle.base.general import GeneralResultError
 
 
 class EditUserEnrolmentResponse(GeneralResultError):

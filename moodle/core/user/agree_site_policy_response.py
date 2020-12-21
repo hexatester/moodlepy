@@ -1,4 +1,4 @@
-from moodle import GeneralStatus
+from moodle.base.general import GeneralStatus
 
 
 class AgreeSitePolicyResponse(GeneralStatus):

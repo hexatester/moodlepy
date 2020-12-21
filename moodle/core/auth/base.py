@@ -1,4 +1,5 @@
-from moodle import BaseMoodle, GeneralSuccess
+from moodle import BaseMoodle
+from moodle.base.general import GeneralSuccess
 from moodle.utils.helper import from_dict
 from . import RequestPasswordResetResponse
 

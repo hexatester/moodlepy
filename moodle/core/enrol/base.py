@@ -1,7 +1,8 @@
 from datetime import datetime
 from typing import List, Optional, Union
 
-from moodle import BaseMoodle, GeneralNameValue
+from moodle import BaseMoodle
+from moodle.base.general import GeneralNameValue
 from moodle.utils.helper import from_dict
 from . import EditUserEnrolmentResponse, EnrolmentMethod
 
