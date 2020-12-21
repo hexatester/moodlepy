@@ -2,7 +2,8 @@ from .base.moodle_object import MoodleObject
 from .base.name_value import BaseNameValue
 from .base.base_moodle import BaseMoodle
 from .base.warning import Warning
-from .base.general import GeneralKeyMessage, GeneralNameValue, GeneralResultError, GeneralSuccess
+from .base.general import (GeneralKeyMessage, GeneralNameValue,
+                           GeneralResultError, GeneralStatus, GeneralSuccess)
 from .base.responses import ResponsesFactory
 from .base.preference import (MessagePreference, NotificationPreference,
                               UserPreference)
@@ -28,6 +29,7 @@ __all__ = [
     'GeneralKeyMessage',
     'GeneralNameValue',
     'GeneralResultError',
+    'GeneralStatus',
     'GeneralSuccess',
     'ResponsesFactory',
     'MessagePreference',
