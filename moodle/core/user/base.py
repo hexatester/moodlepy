@@ -79,8 +79,19 @@ class BaseUser(BaseMoodle):
         )
         return [from_dict(CreatedUserIdUsername, dat) for dat in data]
 
-    def delete_users(self):
-        data = self.moodle.post('core_user_delete_users')
+    def delete_users(self, userids: List[int]) -> None:
+        """Delete users.
+
+        Args:
+            userids (List[int]): list of user ID
+
+        Returns:
+            None: None
+        """
+        data = self.moodle.post(
+            'core_user_delete_users',
+            userids=userids,
+        )
         return data
 
     def get_course_user_profiles(self):
