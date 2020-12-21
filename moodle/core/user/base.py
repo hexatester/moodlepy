@@ -1,6 +1,7 @@
 from typing import List, Optional
 from moodle import BaseMoodle, Warning
 from moodle.utils.helper import from_dict
+from . import AgreeSitePolicyResponse
 
 
 class BaseUser(BaseMoodle):
@@ -38,10 +39,7 @@ class BaseUser(BaseMoodle):
             results.append([from_dict(Warning, da) for da in dat])
         return results
 
-    def add_user_private_files(
-        self,
-        draftid: int,
-    ):
+    def add_user_private_files(self, draftid: int):
         """Copy files from a draft area to users private files area.
 
         Args:
@@ -56,9 +54,14 @@ class BaseUser(BaseMoodle):
         )
         return data
 
-    def agree_site_policy(self):
+    def agree_site_policy(self) -> AgreeSitePolicyResponse:
+        """Agree the site policy for the current user.
+
+        Returns:
+            AgreeSitePolicyResponse: Response
+        """
         data = self.moodle.post('core_user_agree_site_policy')
-        return data
+        return from_dict(AgreeSitePolicyResponse, data)
 
     def create_users(self):
         data = self.moodle.post('core_user_create_users')
