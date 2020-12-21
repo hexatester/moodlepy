@@ -3,6 +3,7 @@ from .name_value import GeneralNameValue
 from .result_error import GeneralResultError
 from .status import GeneralStatus
 from .success import GeneralSuccess
+from .type_value import GeneralTypeValue
 
 __all__ = [
     'GeneralKeyMessage',
@@ -10,4 +11,5 @@ __all__ = [
     'GeneralResultError',
     'GeneralStatus',
     'GeneralSuccess',
+    'GeneralTypeValue',
 ]
