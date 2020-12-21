@@ -1,26 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Optional
-from moodle.base.general import GeneralTypeValue
-
-
-class UserCustomField(GeneralTypeValue):
-    """User custom fields (also known as user profil fields)
-
-    Args:
-        type (str): The name of the custom field
-        value (str): The value of the custom field
-    """
-    pass
-
-
-class UserPreference(GeneralTypeValue):
-    """User preferences
-
-    Args:
-        type (str): The name of the preference
-        value (str): The value of the preference
-    """
-    pass
+from . import UserCustomField, UserPreference
 
 
 @dataclass
@@ -100,14 +80,13 @@ class CreateUser:
     customfields: List[UserCustomField] = field(default_factory=list)
     preferences: List[UserPreference] = field(default_factory=list)
 
+    @dataclass
+    class Response:
+        """Response for CreateUser
 
-@dataclass
-class CreatedUserIdUsername:
-    """Response for CreateUser
-
-    Args:
-        id (int): user id
-        username (string): user name
-    """
-    id: int
-    username: str
+        Args:
+            id (int): user id
+            username (string): user name
+        """
+        id: int
+        username: str

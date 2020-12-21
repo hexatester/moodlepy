@@ -1,7 +1,7 @@
 from typing import List, Optional
 from moodle import BaseMoodle, Warning
 from moodle.utils.helper import from_dict
-from . import AgreeSitePolicyResponse, CreateUser, CreatedUserIdUsername
+from . import AgreeSitePolicyResponse, CreateUser
 
 
 class BaseUser(BaseMoodle):
@@ -64,20 +64,20 @@ class BaseUser(BaseMoodle):
         return from_dict(AgreeSitePolicyResponse, data)
 
     def create_users(self,
-                     users: List[CreateUser]) -> List[CreatedUserIdUsername]:
+                     users: List[CreateUser]) -> List[CreateUser.Response]:
         """Create users.
 
         Args:
             users (List[CreateUser]): list of CreateUser
 
         Returns:
-            List[CreatedUserIdUsername]: list of created user id and user name
+            List[CreateUser.Response]: list of created user id and user name
         """
         data = self.moodle.post(
             'core_user_create_users',
             users=users,
         )
-        return [from_dict(CreatedUserIdUsername, dat) for dat in data]
+        return [from_dict(CreateUser.Response, dat) for dat in data]
 
     def delete_users(self, userids: List[int]) -> None:
         """Delete users.
