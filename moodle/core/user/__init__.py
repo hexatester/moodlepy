@@ -1,4 +1,5 @@
 from .agree_site_policy_response import AgreeSitePolicyResponse
+from .criteria import Criteria
 from .user_custom_field import UserCustomField
 from .user_preference import UserPreference
 from .user import User
@@ -9,6 +10,7 @@ from .base import BaseUser
 
 __all__ = [
     'AgreeSitePolicyResponse',
+    'Criteria',
     'UserCustomField',
     'UserPreference',
     'CreateUser',
