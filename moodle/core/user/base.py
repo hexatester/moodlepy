@@ -1,7 +1,7 @@
 from typing import List, Optional
 from moodle import BaseMoodle, Warning
 from moodle.utils.helper import from_dict
-from . import AgreeSitePolicyResponse, CreateUser
+from . import AgreeSitePolicyResponse, Criteria, CreateUser, GetUsersResponse
 
 
 class BaseUser(BaseMoodle):
@@ -106,9 +106,24 @@ class BaseUser(BaseMoodle):
         data = self.moodle.post('core_user_get_user_preferences')
         return data
 
-    def get_users(self):
-        data = self.moodle.post('core_user_get_users')
-        return data
+    def get_users(self, criteria: List[Criteria]) -> GetUsersResponse:
+        """search for users matching the parameters
+
+        Args:
+            criteria (List[Criteria]): the key/value pairs to be considered in user search.
+                                        Values can not be empty. Specify different keys only once (fullname => 'user1', auth => 'manual', ...) - key occurences are forbidden.
+                                        The search is executed with AND operator on the criterias. Invalid criterias (keys) are ignored, the search is still executed on the valid criterias.
+                                        You can search without criteria, but the function is not designed for it. It could very slow or timeout.
+                                        The function is designed to search some specific users.
+
+        Returns:
+            GetUsersResponse: Response
+        """
+        data = self.moodle.post(
+            'core_user_get_users',
+            criteria=criteria,
+        )
+        return from_dict(GetUsersResponse, data)
 
     def get_users_by_field(self):
         data = self.moodle.post('core_user_get_users_by_field')
