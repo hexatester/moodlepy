@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import List, Optional, Union
 
 from moodle import BaseMoodle
+from moodle.core.user import User
 from moodle.base.general import GeneralNameValue
 from moodle.utils.helper import from_dict
 from . import EditUserEnrolmentResponse, EnrolledUser, EnrolmentMethod
@@ -85,9 +86,32 @@ class BaseEnrol(BaseMoodle):
             'core_enrol_get_enrolled_users_with_capability')
         return data
 
-    def get_potential_users(self):
-        data = self.moodle.post('core_enrol_get_potential_users')
-        return data
+    def get_potential_users(self, courseid: int, enrolid: int, search: str,
+                            searchanywhere: int, page: int,
+                            perpage: int) -> List[User]:
+        """Get the list of potential users to enrol
+
+        Args:
+            courseid (int): course id
+            enrolid (int): enrolment id
+            search (str): query
+            searchanywhere (int): find a match anywhere, or only at the beginning
+            page (int): Page number
+            perpage (int): Number per page
+
+        Returns:
+            List[User]: list of User
+        """
+        data = self.moodle.post(
+            'core_enrol_get_potential_users',
+            courseid=courseid,
+            enrolid=enrolid,
+            search=search,
+            searchanywhere=searchanywhere,
+            page=page,
+            perpage=perpage,
+        )
+        return [from_dict(User, dat) for dat in data]
 
     def get_users_courses(self):
         data = self.moodle.post('core_enrol_get_users_courses')
