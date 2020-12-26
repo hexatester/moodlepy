@@ -2,10 +2,11 @@ from datetime import datetime
 from typing import List, Optional, Union
 
 from moodle import BaseMoodle
+from moodle.core.course import CourseCapability
 from moodle.core.user import User
 from moodle.base.general import GeneralNameValue
 from moodle.utils.helper import from_dict
-from . import EditUserEnrolmentResponse, EnrolledUser, EnrolmentMethod
+from . import EditUserEnrolmentResponse, EnrolledUser, CapabilityEnrolledUser, EnrolmentMethod
 
 
 class BaseEnrol(BaseMoodle):
@@ -81,10 +82,29 @@ class BaseEnrol(BaseMoodle):
         )
         return [from_dict(EnrolledUser, dat) for dat in data]
 
-    def get_enrolled_users_with_capability(self):
+    def get_enrolled_users_with_capability(
+            self, coursecapabilities: List[CourseCapability],
+            options: List[GeneralNameValue]) -> List[CapabilityEnrolledUser]:
+        """For each course and capability specified, return a list of the users that are enrolled in the course and have that capability
+
+        Args:
+            coursecapabilities (List[CourseCapability]): course id and associated capability name
+            options (List[GeneralNameValue]): Option names:
+                                                * groupid (integer) return only users in this group id. Requires 'moodle/site:accessallgroups' .
+                                                * onlyactive (integer) only users with active enrolments. Requires 'moodle/course:enrolreview' .
+                                                * userfields ('string, string, ...') return only the values of these user fields.
+                                                * limitfrom (integer) sql limit from.
+                                                * limitnumber (integer) max number of users per course and capability.
+
+        Returns:
+            List[CapabilityEnrolledUser]: list of the users that are enrolled in the course and have that capability
+        """
         data = self.moodle.post(
-            'core_enrol_get_enrolled_users_with_capability')
-        return data
+            'core_enrol_get_enrolled_users_with_capability',
+            coursecapabilities=coursecapabilities,
+            options=options,
+        )
+        return [from_dict(CapabilityEnrolledUser, dat) for dat in data]
 
     def get_potential_users(self, courseid: int, enrolid: int, search: str,
                             searchanywhere: int, page: int,
