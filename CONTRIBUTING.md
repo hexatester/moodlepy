@@ -4,6 +4,8 @@ Every open source project lives from the generous help by contributors that sacr
 
 ## Setting things up
 
+### Setup
+
 1. Fork the moodlepy repository to your GitHub account.
 
 2. Clone your forked repository of moodlepy to your computer:
@@ -31,6 +33,10 @@ $ poetry install --no-root
 ```bash
 $ pre-commit install
 ```
+
+### IDE
+
+Recommended linter (linting) `mypy` and code formater `yapf`.
 
 ## Finding something to do
 
