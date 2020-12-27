@@ -4,7 +4,7 @@ import requests
 from requests import Session
 from requests.exceptions import RequestException
 from typing import Any, Type, TypeVar
-from moodle import Auth, Core, Mod, MoodleException, Tool, MoodleWarning
+from moodle import Auth, Core, Enrol, Mod, MoodleException, Tool, MoodleWarning
 from moodle.exception import EmptyResponseException, InvalidCredentialException, NetworkMoodleException
 from moodle.utils.helper import make_params, from_dict, to_dict
 
@@ -113,6 +113,7 @@ class Moodle(Mdl):
         super(Moodle, self).__init__(url, token)
         self._auth = Auth(self)
         self._core = Core(self)
+        self._enrol = Enrol(self)
         self._mod = Mod(self)
         self._tool = Tool(self)
 
@@ -129,6 +130,10 @@ class Moodle(Mdl):
     @property
     def core(self) -> Core:
         return self._core
+
+    @property
+    def enrol(self) -> Enrol:
+        return self._enrol
 
     @property
     def mod(self) -> Mod:

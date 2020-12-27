@@ -12,6 +12,7 @@ from .utils.typing import Array
 from .tool import Tool
 from .auth import Auth
 from .core import Core
+from .enrol import Enrol
 from .mod import Mod
 
 from .mdl import Mdl
@@ -32,6 +33,7 @@ __all__ = [
     'Array',
     'Auth',
     'Core',
+    'Enrol',
     'Mod',
     'Tool',
     'Mdl',
