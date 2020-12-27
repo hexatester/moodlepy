@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional, Union
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -361,7 +361,7 @@ class NewPost:
         messages (List[Message]): list of warning messages
     """
     postid: int
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
     post: Post
     messages: List[Message]
 
@@ -374,7 +374,7 @@ class Posts(ResponsesFactory[Post]):
         warnings (List[Warning]): list of Warning
     """
     posts: List[Post]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[Post]:

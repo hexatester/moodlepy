@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -13,7 +13,7 @@ class ParentPaths(ResponsesFactory[str]):
         warnings (List[Warning]): list of warnings
     """
     parentpaths: List[str]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[str]:

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from moodle import Warning
+from moodle import MoodleWarning
 
 
 @dataclass
@@ -12,7 +12,7 @@ class GeneralSuccess:
         warnings (List[Warning]): list of warnings
     """
     success: int
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     def __bool__(self) -> bool:
         if isinstance(self.success, int):

@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Optional
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -69,4 +69,4 @@ class Pages(ResponsesFactory[LessonPage]):
         warnings (List[Warning]): list of warnings
     """
     pages: List[LessonPage]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]

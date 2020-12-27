@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional, List
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -54,7 +54,7 @@ class Event:
 @dataclass
 class Events(ResponsesFactory[Event]):
     events: List[Event]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[Event]:

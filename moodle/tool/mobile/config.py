@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -17,7 +17,7 @@ class Setting:
 @dataclass
 class MobileConfig(ResponsesFactory[Setting]):
     settings: List[Setting]
-    warning: List[Warning]
+    warning: List[MoodleWarning]
 
     @property
     def items(self) -> List[Setting]:

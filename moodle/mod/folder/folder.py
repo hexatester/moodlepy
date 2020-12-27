@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -73,7 +73,7 @@ class Folders(ResponsesFactory[Folder]):
         warnings (List[Warning]): list of warnings
     """
     folders: List[Folder]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[Folder]:

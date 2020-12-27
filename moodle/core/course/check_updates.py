@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Iterator, List, Optional
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -35,7 +35,7 @@ class UpdateInstance:
 @dataclass
 class CheckUpdate(ResponsesFactory[UpdateInstance]):
     instances: List[UpdateInstance]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[UpdateInstance]:

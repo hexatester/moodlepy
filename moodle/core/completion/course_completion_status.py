@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List
-from moodle import Warning
+from moodle import MoodleWarning
 
 
 @dataclass
@@ -58,4 +58,4 @@ class CourseCompletionStatus:
         warnings (List[Warning]): list of warnings
     """
     completionstatus: CompletionStatus
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]

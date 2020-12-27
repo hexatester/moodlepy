@@ -4,7 +4,7 @@ import requests
 from requests import Session
 from requests.exceptions import RequestException
 from typing import Any, Type, TypeVar
-from moodle import Auth, Core, Mod, MoodleException, Tool, Warning
+from moodle import Auth, Core, Mod, MoodleException, Tool, MoodleWarning
 from moodle.exception import EmptyResponseException, InvalidCredentialException, NetworkMoodleException
 from moodle.utils.helper import make_params, from_dict, to_dict
 
@@ -51,7 +51,7 @@ class Mdl:
     def process_response(self, data: Any) -> Any:
         if type(data) == dict:
             if 'warnings' in data and data['warnings']:
-                warning = from_dict(Warning, data['warnings'])
+                warning = from_dict(MoodleWarning, data['warnings'])
                 self.logger.warning(str(warning))
             if 'exception' in data or 'errorcode' in data:
                 raise from_dict(MoodleException, data)

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional
-from moodle import ResponsesFactory, Warning
+from moodle import ResponsesFactory, MoodleWarning
 from . import AdvanceGradingData, PluginData
 
 
@@ -52,7 +52,7 @@ class Grades(ResponsesFactory[GradeAssignment]):
         warnings (List[Warning]): list of warnings
     """
     assignments: List[GradeAssignment]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[GradeAssignment]:

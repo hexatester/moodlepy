@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from moodle import Warning
+from moodle import MoodleWarning
 from typing import Optional, List
 
 
@@ -80,4 +80,4 @@ class SignupSetting:
     recaptchachallengehash: Optional[str]
     recaptchachallengeimage: Optional[str]
     recaptchachallengejs: Optional[str]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]

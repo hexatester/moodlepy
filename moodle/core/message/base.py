@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List, Optional, Union
 
-from moodle import BaseMoodle, Warning
+from moodle import BaseMoodle, MoodleWarning
 from moodle.utils.helper import from_dict
 from . import ContactRequest
 
@@ -9,7 +9,7 @@ from . import ContactRequest
 class BaseMessage(BaseMoodle):
     def block_contacts(self,
                        userids: List[int],
-                       userid: int = 0) -> List[Warning]:
+                       userid: int = 0) -> List[MoodleWarning]:
         """** DEPRECATED ** Please do not call this function any more. Block contacts
 
         Args:
@@ -24,9 +24,10 @@ class BaseMessage(BaseMoodle):
             userids=userids,
             userid=userid,
         )
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [from_dict(MoodleWarning, data) for data in res] if res else []
 
-    def block_user(self, userid: int, blockeduserid: int) -> List[Warning]:
+    def block_user(self, userid: int,
+                   blockeduserid: int) -> List[MoodleWarning]:
         """Blocks a user
 
         Args:
@@ -41,10 +42,10 @@ class BaseMessage(BaseMoodle):
             userid=userid,
             blockeduserid=blockeduserid,
         )
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [from_dict(MoodleWarning, data) for data in res] if res else []
 
     def confirm_contact_request(self, userid: int,
-                                requesteduserid: int) -> List[Warning]:
+                                requesteduserid: int) -> List[MoodleWarning]:
         """Confirms a contact request
 
         Args:
@@ -59,7 +60,7 @@ class BaseMessage(BaseMoodle):
             userid=userid,
             requesteduserid=requesteduserid,
         )
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [from_dict(MoodleWarning, data) for data in res] if res else []
 
     def create_contact_request(self, userid: int,
                                requesteduserid: int) -> ContactRequest:
@@ -81,7 +82,7 @@ class BaseMessage(BaseMoodle):
 
     def create_contacts(self,
                         userids: List[int],
-                        userid: int = 0) -> List[Warning]:
+                        userid: int = 0) -> List[MoodleWarning]:
         """** DEPRECATED ** Please do not call this function any more. Add contacts to the contact list
 
         Args:
@@ -96,7 +97,7 @@ class BaseMessage(BaseMoodle):
             userids=userids,
             userid=userid,
         )
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [from_dict(MoodleWarning, data) for data in res] if res else []
 
     def data_for_messagearea_contacts(self,
                                       userid: int,

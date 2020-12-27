@@ -3,7 +3,7 @@ from typing import Optional
 
 
 @dataclass
-class Warning:
+class MoodleWarning:
     item: Optional[str]
     itemid: Optional[int]
     warningcode: str

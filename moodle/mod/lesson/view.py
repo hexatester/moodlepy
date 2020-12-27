@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-from moodle import Warning
+from moodle import MoodleWarning
 
 
 @dataclass
@@ -11,7 +11,7 @@ class View:
         warnings (List[Warning]): list of warnings
     """
     status: int
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     def __bool__(self) -> bool:
         if type(self.status) == bool:

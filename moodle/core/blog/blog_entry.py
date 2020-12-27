@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Optional
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -140,7 +140,7 @@ class BlogEntries(ResponsesFactory[BlogEntry]):
     """
     entries: List[BlogEntry] = field(default_factory=list)
     totalentries: int = 0
-    warnings: List[Warning] = field(default_factory=list)
+    warnings: List[MoodleWarning] = field(default_factory=list)
 
     @property
     def items(self) -> List[BlogEntry]:

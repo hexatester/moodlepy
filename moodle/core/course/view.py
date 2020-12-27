@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List
-from moodle import Warning
+from moodle import MoodleWarning
 
 
 @dataclass
 class ViewCourse:
     status: int  # status: true if success
-    warnings: List[Warning]  # list of warnings
+    warnings: List[MoodleWarning]  # list of warnings

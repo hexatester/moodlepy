@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Optional
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -70,4 +70,4 @@ class Urls(ResponsesFactory[Url]):
     """List of Urls
     """
     urls: List[Url]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]

@@ -1,7 +1,7 @@
 from datetime import datetime
 from dataclasses import dataclass
 from typing import List, Optional
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -21,7 +21,7 @@ class Instance:
 @dataclass
 class ActivityOverview(ResponsesFactory[Instance]):
     instances: List[Instance]  # list of instance
-    warnings: List[Warning]  # list warning
+    warnings: List[MoodleWarning]  # list warning
 
     @property
     def items(self) -> List[Instance]:

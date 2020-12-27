@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional
-from moodle import ResponsesFactory, Warning
+from moodle import ResponsesFactory, MoodleWarning
 
 
 @dataclass
@@ -151,7 +151,7 @@ class Assignments(ResponsesFactory[AssignmentCourse]):
         warnings (List[Warning]): List of warnings
     """
     courses: List[AssignmentCourse]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[AssignmentCourse]:

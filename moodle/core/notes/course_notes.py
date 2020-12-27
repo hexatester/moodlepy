@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 from . import SiteNote, CourseNote, PersonalNote
 
 
@@ -20,7 +20,7 @@ class CourseNotes(ResponsesFactory[CourseNote]):
     personalnotes: List[PersonalNote]
     canmanagesystemnotes: Optional[int]
     canmanagecoursenote: Optional[int]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[CourseNote]:

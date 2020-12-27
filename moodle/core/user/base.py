@@ -1,5 +1,5 @@
 from typing import List, Optional
-from moodle import BaseMoodle, Warning
+from moodle import BaseMoodle, MoodleWarning
 from moodle.utils.helper import from_dict
 from . import AgreeSitePolicyResponse, Criteria, CreateUser, GetUsersResponse
 
@@ -7,7 +7,7 @@ from . import AgreeSitePolicyResponse, Criteria, CreateUser, GetUsersResponse
 class BaseUser(BaseMoodle):
     def add_user_device(self, appid: str, name: str, model: str, platform: str,
                         version: str, pushid: str,
-                        uuid: str) -> List[Optional[List[Warning]]]:
+                        uuid: str) -> List[Optional[List[MoodleWarning]]]:
         """Store mobile user devices information for PUSH Notifications.
 
         Args:
@@ -22,7 +22,7 @@ class BaseUser(BaseMoodle):
         Returns:
             List[Optional[List[Warning]]]: Response
         """
-        results: List[Optional[List[Warning]]] = list()
+        results: List[Optional[List[MoodleWarning]]] = list()
         data = self.moodle.post(
             'core_user_add_user_device',
             appid=appid,
@@ -36,7 +36,7 @@ class BaseUser(BaseMoodle):
         if not data:
             return results
         for dat in data:
-            results.append([from_dict(Warning, da) for da in dat])
+            results.append([from_dict(MoodleWarning, da) for da in dat])
         return results
 
     def add_user_private_files(self, draftid: int):

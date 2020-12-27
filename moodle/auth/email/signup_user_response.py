@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from moodle import Warning
+from moodle import MoodleWarning
 from typing import List
 
 
@@ -11,4 +11,4 @@ class SignupUserResponse:
         warnings (List[Warning]): list of warnings
     """
     success: int
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]

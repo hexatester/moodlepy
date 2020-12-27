@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Optional, Union
-from moodle import MoodleObject, ResponsesFactory, Warning
+from moodle import MoodleObject, ResponsesFactory, MoodleWarning
 
 
 @dataclass
@@ -112,7 +112,7 @@ class Discussions(ResponsesFactory[Discussion]):
         Discussions: List of Discussion
     """
     discussions: List[Discussion]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[Discussion]:
@@ -140,7 +140,7 @@ class Discussions(ResponsesFactory[Discussion]):
             warnings (List[Warning]): list of warnings
         """
         discussionid: int
-        warnings: List[Warning]
+        warnings: List[MoodleWarning]
 
     @dataclass
     class CanAdd:
@@ -154,4 +154,4 @@ class Discussions(ResponsesFactory[Discussion]):
         status: int
         canpindiscussions: Optional[int]
         cancreateattachment: Optional[int]
-        warnings: List[Warning]
+        warnings: List[MoodleWarning]

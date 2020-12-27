@@ -1,5 +1,5 @@
 from typing import List
-from moodle import BaseMoodle, Warning
+from moodle import BaseMoodle, MoodleWarning
 from moodle.utils.helper import from_dict
 from . import Note, CourseNotes, ViewNotes
 
@@ -17,7 +17,7 @@ class BaseNotes(BaseMoodle):
         res = self.moodle.post('core_notes_create_notes', notes=notes)
         return [from_dict(Note.Result, data) for data in res] if res else []
 
-    def delete_notes(self, notes: List[int]) -> List[Warning]:
+    def delete_notes(self, notes: List[int]) -> List[MoodleWarning]:
         """Delete notes
 
         Args:
@@ -27,7 +27,7 @@ class BaseNotes(BaseMoodle):
             List[Warning]: list of warnings
         """
         res = self.moodle.post('core_notes_delete_notes', notes=notes)
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [from_dict(MoodleWarning, data) for data in res] if res else []
 
     def get_course_notes(self, courseid: int, userid: int = 0) -> CourseNotes:
         """Returns all notes in specified course (or site), for the specified user.

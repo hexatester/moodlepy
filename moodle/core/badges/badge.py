@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Optional, List
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -151,7 +151,7 @@ class BadgeResponse(ResponsesFactory[Badge]):
         warnings (List[Warning]): list of warnings
     """
     badges: List[Badge]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[Badge]:

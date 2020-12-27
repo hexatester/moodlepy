@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-from moodle import ResponsesFactory, Warning
+from moodle import ResponsesFactory, MoodleWarning
 
 
 @dataclass
@@ -37,7 +37,7 @@ class NavigationOptions(ResponsesFactory[CourseNavigation]):
         warnings (List[Warning]): list of warnings
     """
     courses: List[CourseNavigation]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
 
     @property
     def items(self) -> List[CourseNavigation]:

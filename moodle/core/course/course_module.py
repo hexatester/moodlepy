@@ -1,7 +1,7 @@
 from datetime import datetime
 from dataclasses import dataclass, field
 from typing import List, Optional
-from moodle import Warning
+from moodle import MoodleWarning
 
 
 @dataclass
@@ -99,4 +99,4 @@ class Cm:
 @dataclass
 class CourseModule:
     cm: Cm
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]

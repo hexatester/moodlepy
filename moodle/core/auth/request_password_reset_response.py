@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-from moodle import Warning
+from moodle import MoodleWarning
 
 
 @dataclass
@@ -21,4 +21,4 @@ class RequestPasswordResetResponse:
     """
     status: str
     notice: str
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]

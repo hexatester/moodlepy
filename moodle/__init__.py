@@ -1,7 +1,7 @@
 from .base.moodle_object import MoodleObject
 from .base.name_value import BaseNameValue
 from .base.base_moodle import BaseMoodle
-from .base.warning import Warning
+from .base.warning import MoodleWarning
 from .base.responses import ResponsesFactory
 from .base.preference import (MessagePreference, NotificationPreference,
                               UserPreference)
@@ -23,7 +23,7 @@ __all__ = [
     'MoodleObject',
     'BaseNameValue',
     'BaseMoodle',
-    'Warning',
+    'MoodleWarning',
     'ResponsesFactory',
     'MessagePreference',
     'NotificationPreference',

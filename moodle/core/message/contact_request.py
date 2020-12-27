@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional
-from moodle import Warning
+from moodle import MoodleWarning
 
 
 @dataclass
@@ -26,4 +26,4 @@ class ContactRequest:
         warnings (List[Warning]): list of warnings
     """
     request: Optional[ContactRequestRecord]
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]

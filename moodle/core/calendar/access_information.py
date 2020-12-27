@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-from moodle import Warning
+from moodle import MoodleWarning
 
 
 @dataclass
@@ -15,4 +15,4 @@ class AccessInformation:
     canmanageentries: int
     canmanageownentries: int
     canmanagegroupentries: int
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List, Optional
-from moodle import Warning
+from moodle import MoodleWarning
 
 
 @dataclass
@@ -42,7 +42,7 @@ class AccessInformation:
         cancanoverridecutoff (Optional[int]): Whether the user has the capability mod/forum:canoverridecutoff allowed.
         cancantogglefavourite (Optional[int]): Whether the user has the capability mod/forum:cantogglefavourite allowed.
     """
-    warnings: List[Warning]
+    warnings: List[MoodleWarning]
     canaddinstance: Optional[int]
     canviewdiscussion: Optional[int]
     canviewhiddentimedposts: Optional[int]

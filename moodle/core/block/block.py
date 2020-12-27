@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List, Optional
-from moodle import Warning, ResponsesFactory
+from moodle import MoodleWarning, ResponsesFactory
 
 
 @dataclass
@@ -81,7 +81,7 @@ class Blocks(ResponsesFactory[Block]):
     params: warnings (List[Warning]): warning
     """
     blocks: List[Block] = field(default_factory=list)
-    warnings: List[Warning] = field(default_factory=list)
+    warnings: List[MoodleWarning] = field(default_factory=list)
 
     @property
     def items(self) -> List[Block]:

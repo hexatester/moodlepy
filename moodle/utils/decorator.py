@@ -24,8 +24,9 @@ def deprecated(func: Callable):
     """
     @wraps(func)
     def wrapper(self, *args, **kwargs):
-        logging.warning(
-            '** DEPRECATED ** Please do not call this function any more')
+        logging.warn(
+            f'{func.__name__} **DEPRECATED** Please do not call this function any more',
+            DeprecationWarning)
         return func(*args, **kwargs)
 
     return wrapper
