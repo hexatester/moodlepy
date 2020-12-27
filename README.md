@@ -98,9 +98,9 @@ A = Added, W = Work In Progress
 | core_update          |           |       |       |        |
 | core_user            |           |       |       | W      |
 | core_webservice      | A         | A     | A     | A      |
-| enrol_guest          |           |       |       |        |
-| enrol_manual         |           |       |       |        |
-| enrol_self           |           |       |       |        |
+| enrol_guest          | A         | A     |       |        |
+| enrol_manual         | A         | A     |       |        |
+| enrol_self           | A         | A     |       |        |
 | gradereport_overview |           |       |       |        |
 | gradereport_user     |           |       |       |        |
 | gradingform_guide    |           |       |       |        |
