@@ -29,5 +29,8 @@ class BaseManual(BaseMoodle):
         Returns:
             None: Nothing
         """
-        data = self.moodle.post('enrol_manual_unenrol_users')
+        data = self.moodle.post(
+            'enrol_manual_unenrol_users',
+            enrolments=enrolments,
+        )
         return data
