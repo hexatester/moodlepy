@@ -1,10 +1,11 @@
 from moodle import BaseMoodle
-from moodle.utils.decorator import lazy_property
+from moodle.utils.decorator import lazy
 from . import BaseEmail
 
 
 class Auth(BaseMoodle):
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def email(self) -> BaseEmail:
         return BaseEmail(self.moodle)
 

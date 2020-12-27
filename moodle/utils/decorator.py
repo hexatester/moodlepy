@@ -32,17 +32,16 @@ def deprecated(func: Callable):
     return wrapper
 
 
-def lazy_property(func):
+def lazy(func):
     '''Decorator that makes a property lazy-evaluated.
     Source : https://stevenloria.com/lazy-properties/
     '''
     attr_name = '_lazy_' + func.__name__
 
-    @property
     @wraps(func)
-    def _lazy_property(self):
+    def wrapper(self):
         if not hasattr(self, attr_name):
             setattr(self, attr_name, func(self))
         return getattr(self, attr_name)
 
-    return _lazy_property
+    return wrapper

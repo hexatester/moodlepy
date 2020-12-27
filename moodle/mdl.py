@@ -6,7 +6,7 @@ from requests.exceptions import RequestException
 from typing import Any, Type, TypeVar
 from moodle import Auth, Core, Enrol, Mod, MoodleException, Tool, MoodleWarning
 from moodle.exception import EmptyResponseException, InvalidCredentialException, NetworkMoodleException
-from moodle.utils.decorator import lazy_property
+from moodle.utils.decorator import lazy
 from moodle.utils.helper import make_params, from_dict, to_dict
 
 T = TypeVar('T', bound='Mdl')
@@ -119,22 +119,27 @@ class Moodle(Mdl):
                  **kwargs) -> Any:
         return self.post(wsfunction, moodlewsrestformat, **kwargs)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def auth(self) -> Auth:
         return Auth(self)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def core(self) -> Core:
         return Core(self)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def enrol(self) -> Enrol:
         return Enrol(self)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def mod(self) -> Mod:
         return Mod(self)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def tool(self) -> Tool:
         return Tool(self)

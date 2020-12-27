@@ -1,5 +1,5 @@
 from moodle import BaseMoodle
-from moodle.utils.decorator import lazy_property
+from moodle.utils.decorator import lazy
 from . import (
     BaseAssign,
     BaseFolder,
@@ -11,26 +11,32 @@ from . import (
 
 
 class Mod(BaseMoodle):
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def assign(self) -> BaseAssign:
         return BaseAssign(self.moodle)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def folder(self) -> BaseFolder:
         return BaseFolder(self.moodle)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def forum(self) -> BaseForum:
         return BaseForum(self.moodle)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def lesson(self) -> BaseLesson:
         return BaseLesson(self.moodle)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def resource(self) -> BaseResource:
         return BaseResource(self.moodle)
 
-    @lazy_property
+    @property  # type: ignore
+    @lazy
     def url(self) -> BaseUrl:
         return BaseUrl(self.moodle)
