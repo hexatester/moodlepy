@@ -1,4 +1,5 @@
 from moodle import BaseMoodle
+from moodle.utils.decorator import lazy_property
 from . import (BaseAuth, BaseBadges, BaseBlock, BaseBlog, BaseCalendar,
                BaseCohort, BaseComment, BaseCompetency, BaseCompletion,
                BaseCourse, BaseEnrol, BaseMessage, BaseNotes, BaseUser,
@@ -6,79 +7,62 @@ from . import (BaseAuth, BaseBadges, BaseBlock, BaseBlog, BaseCalendar,
 
 
 class Core(BaseMoodle):
-    def __post_init__(self, moodle) -> None:
-        self._auth = BaseAuth(moodle)
-        self._badges = BaseBadges(moodle)
-        self._block = BaseBlock(moodle)
-        self._blog = BaseBlog(moodle)
-        self._calendar = BaseCalendar(moodle)
-        self._cohort = BaseCohort(moodle)
-        self._comment = BaseComment(moodle)
-        self._competency = BaseCompetency(moodle)
-        self._completion = BaseCompletion(moodle)
-        self._course = BaseCourse(moodle)
-        self._enrol = BaseEnrol(moodle)
-        self._message = BaseMessage(moodle)
-        self._notes = BaseNotes(moodle)
-        self._user = BaseUser(moodle)
-        self._webservice = BaseWebservice(moodle)
-
-    @property
+    @lazy_property
     def auth(self) -> BaseAuth:
-        return self._auth
+        return BaseAuth(self.moodle)
 
-    @property
+    @lazy_property
     def bagdes(self) -> BaseBadges:
-        return self._badges
+        return BaseBadges(self.moodle)
 
-    @property
+    @lazy_property
     def block(self) -> BaseBlock:
-        return self._block
+        return BaseBlock(self.moodle)
 
-    @property
+    @lazy_property
     def blog(self) -> BaseBlog:
-        return self._blog
+        return BaseBlog(self.moodle)
 
-    @property
+    @lazy_property
     def calendar(self) -> BaseCalendar:
-        return self._calendar
+        return BaseCalendar(self.moodle)
 
-    @property
+    @lazy_property
     def cohort(self) -> BaseCohort:
-        return self._cohort
+        return BaseCohort(self.moodle)
 
-    @property
+    @lazy_property
     def comment(self) -> BaseComment:
-        return self._comment
+        return BaseComment(self.moodle)
 
-    @property
+    @lazy_property
     def competency(self) -> BaseCompetency:
-        return self._competency
+        return BaseCompetency(self.moodle)
 
-    @property
+    @lazy_property
     def completion(self) -> BaseCompletion:
-        return self._completion
+        return BaseCompletion(self.moodle)
 
-    @property
+    @lazy_property
     def course(self) -> BaseCourse:
-        return self._course
+        return BaseCourse(self.moodle)
 
-    @property
+    @lazy_property
     def enrol(self) -> BaseEnrol:
-        return self._enrol
+        return BaseEnrol(self.moodle)
 
-    @property
+    @lazy_property
     def message(self) -> BaseMessage:
-        return self._message
+        return BaseMessage(self.moodle)
 
-    @property
+    @lazy_property
     def notes(self) -> BaseNotes:
-        return self._notes
+        return BaseNotes(self.moodle)
 
-    @property
+    @lazy_property
     def user(self) -> BaseUser:
-        return self._user
+        return BaseUser(self.moodle)
 
-    @property
+    @lazy_property
     def webservice(self) -> BaseWebservice:
-        return self._webservice
+        return BaseWebservice(self.moodle)

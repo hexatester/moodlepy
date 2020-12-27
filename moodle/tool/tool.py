@@ -1,11 +1,9 @@
 from moodle import BaseMoodle
+from moodle.utils.decorator import lazy_property
 from . import BaseMobile
 
 
 class Tool(BaseMoodle):
-    def __post_init__(self, moodle) -> None:
-        self._mobile = BaseMobile(moodle)
-
-    @property
+    @lazy_property
     def mobile(self) -> BaseMobile:
-        return self._mobile
+        return BaseMobile(self.moodle)

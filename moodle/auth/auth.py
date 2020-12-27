@@ -1,14 +1,12 @@
 from moodle import BaseMoodle
+from moodle.utils.decorator import lazy_property
 from . import BaseEmail
 
 
 class Auth(BaseMoodle):
-    def __post_init__(self, moodle) -> None:
-        self._email = BaseEmail(moodle)
-
-    @property
+    @lazy_property
     def email(self) -> BaseEmail:
-        return self._email
+        return BaseEmail(self.moodle)
 
     @property
     def confirm_user(self):

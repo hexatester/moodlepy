@@ -1,21 +1,17 @@
 from moodle import BaseMoodle
+from moodle.utils.decorator import lazy_property
 from . import BaseGuest, BaseManual, BaseSelf
 
 
 class Enrol(BaseMoodle):
-    def __post_init__(self, moodle) -> None:
-        self._guest = BaseGuest(moodle)
-        self._manual = BaseManual(moodle)
-        self._self = BaseSelf(moodle)
-
-    @property
+    @lazy_property
     def guest(self) -> BaseGuest:
-        return self._guest
+        return BaseGuest(self.moodle)
 
-    @property
+    @lazy_property
     def manual(self) -> BaseManual:
-        return self._manual
+        return BaseManual(self.moodle)
 
-    @property
+    @lazy_property
     def self(self) -> BaseSelf:
-        return self._self
+        return BaseSelf(self.moodle)
