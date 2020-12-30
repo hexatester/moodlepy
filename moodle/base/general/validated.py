@@ -6,7 +6,7 @@ from moodle import MoodleWarning
 
 @dataclass
 class GeneralValidated:
-    """GeneralSuccess
+    """GeneralValidated
     Args:
         validated (int): True or False, nor 1 or 0
         warnings (List[Warning]): list of warnings
