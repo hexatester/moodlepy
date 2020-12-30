@@ -57,46 +57,45 @@ In the future all [Web service functions](https://docs.moodle.org/dev/Web_servic
 
 # Moodle Web Service support
 
-❗️ Not all types and methods are supported, since moodlepy is not yet released.
-A = Added, W = Work In Progress
+❗️ Not all types and methods are supported, since moodlepy is not yet released. (A = Added.)
 
 | Area                 | Functions | Types | Tests | Status |
 | -------------------- | --------- | ----- | ----- | ------ |
 | auth_email           | A         | A     |       |        |
-| block                |           |       |       |        |
+| block                | A         | A     |       |        |
 | core_auth            | A         | A     |       |        |
 | core_backup          |           |       |       |        |
 | core_badge           | A         | A     | A     |        |
 | core_blog            | A         | A     | A     |        |
-| core_calendar        | A         | A     |       | W      |
+| core_calendar        | A         | A     |       |        |
 | core_cohort          |           |       |       |        |
-| core_comment         |           |       |       | W      |
+| core_comment         |           |       |       |        |
 | core_competency      |           |       |       |        |
 | core_completion      | A         | A     |       |        |
-| core_course          |           |       |       | W      |
+| core_course          |           |       |       |        |
 | core_customfield     |           |       |       |        |
 | core_enrol           |           |       |       |        |
-| core_fetch           |           |       |       | W      |
-| core_files           |           |       |       | W      |
+| core_fetch           |           |       |       |        |
+| core_files           |           |       |       |        |
 | core_filters         |           |       |       |        |
-| core_form            |           |       |       | W      |
-| core_get             |           |       |       | W      |
-| core_grade           |           |       |       | W      |
+| core_form            |           |       |       |        |
+| core_get             |           |       |       |        |
+| core_grade           |           |       |       |        |
 | core_grades          |           |       |       |        |
 | core_grading         |           |       |       |        |
 | core_group           |           |       |       |        |
 | core_h5p             |           |       |       |        |
-| core_message         | A         |       |       | W      |
-| core_notes           | A         | A     |       | W      |
+| core_message         | A         |       |       |        |
+| core_notes           | A         | A     |       |        |
 | core_output          |           |       |       |        |
-| core_question        | W         |       |       | W      |
+| core_question        |           |       |       |        |
 | core_rating          |           |       |       |        |
 | core_role            |           |       |       |        |
-| core_search          |           |       |       | W      |
-| core_session         |           |       |       | W      |
+| core_search          |           |       |       |        |
+| core_session         |           |       |       |        |
 | core_tag             |           |       |       |        |
 | core_update          |           |       |       |        |
-| core_user            |           |       |       | W      |
+| core_user            |           |       |       |        |
 | core_webservice      | A         | A     | A     | A      |
 | enrol_guest          | A         | A     |       |        |
 | enrol_manual         | A         | A     |       |        |
@@ -105,27 +104,27 @@ A = Added, W = Work In Progress
 | gradereport_user     |           |       |       |        |
 | gradingform_guide    |           |       |       |        |
 | gradingform_rubric   |           |       |       |        |
-| local_mobile         |           |       |       | W      |
-| message_airnotifier  |           |       |       | W      |
-| message_popup        |           |       |       | W      |
-| mod_assign           |           |       |       | W      |
+| local_mobile         |           |       |       |        |
+| message_airnotifier  |           |       |       |        |
+| message_popup        |           |       |       |        |
+| mod_assign           |           |       |       |        |
 | mod_book             |           |       |       |        |
-| mod_chat             |           |       |       | W      |
+| mod_chat             |           |       |       |        |
 | mod_choice           |           |       |       |        |
 | mod_data             |           |       |       |        |
 | mod_feedback         |           |       |       |        |
 | mod_folder           | A         | A     |       |        |
-| mod_forum            |           |       |       | W      |
+| mod_forum            |           |       |       |        |
 | mod_glossary         |           |       |       |        |
 | mod_imscp            |           |       |       |        |
 | mod_label            |           |       |       |        |
-| mod_lesson           |           |       |       | W      |
+| mod_lesson           |           |       |       |        |
 | mod_lti              |           |       |       |        |
-| mod_page             |           |       |       | W      |
-| mod_quiz             |           |       |       | W      |
+| mod_page             |           |       |       |        |
+| mod_quiz             |           |       |       |        |
 | mod_resource         | A         | A     |       |        |
 | mod_scorm            |           |       |       |        |
-| mod_survey           |           |       |       | W      |
+| mod_survey           |           |       |       |        |
 | mod_url              | A         | A     |       |        |
 | mod_wiki             |           |       |       |        |
 | mod_workshop         |           |       |       |        |
@@ -133,7 +132,7 @@ A = Added, W = Work In Progress
 | report_insights      |           |       |       |        |
 | tool_analytics       |           |       |       |        |
 | tool_lp              |           |       |       |        |
-| tool_mobile          | A         | A     |       | W      |
+| tool_mobile          | A         | A     |       |        |
 | tool_templatelibrary |           |       |       |        |
 | tool_usertours       |           |       |       |        |
 | tool_xmldb           |           |       |       |        |
