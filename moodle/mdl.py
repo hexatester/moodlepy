@@ -6,6 +6,7 @@ from requests.exceptions import RequestException
 from typing import Any, Type, TypeVar
 
 from moodle import Auth
+from moodle import Block
 from moodle import Core
 from moodle import Enrol
 from moodle import Mod
@@ -131,6 +132,11 @@ class Moodle(Mdl):
     @lazy
     def auth(self) -> Auth:
         return Auth(self)
+
+    @property  # type: ignore
+    @lazy
+    def block(self) -> Block:
+        return Block(self)
 
     @property  # type: ignore
     @lazy

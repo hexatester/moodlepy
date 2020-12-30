@@ -11,6 +11,7 @@ from .utils.typing import Array
 
 from .tool import Tool
 from .auth import Auth
+from .block import Block
 from .core import Core
 from .enrol import Enrol
 from .mod import Mod
@@ -33,6 +34,7 @@ __all__ = [
     'Array',
     'Auth',
     'Core',
+    'Block',
     'Enrol',
     'Mod',
     'Tool',
