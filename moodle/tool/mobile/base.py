@@ -1,4 +1,5 @@
 from typing import List, Optional
+
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
 from . import (
@@ -10,6 +11,7 @@ from . import (
     MobilePublicConfig,
     TokenPrivateToken,
 )
+from .validated_key import ValidatedKey
 
 
 class BaseMobile(BaseMoodle):
@@ -112,3 +114,10 @@ class BaseMobile(BaseMoodle):
             userid=userid,
         )
         return from_dict(TokenPrivateToken, data)
+
+    def validate_subscription_key(self, key: str) -> ValidatedKey:
+        data = self.moodle.post(
+            'tool_mobile_validate_subscription_key',
+            key=key,
+        )
+        return from_dict(ValidatedKey, data)
