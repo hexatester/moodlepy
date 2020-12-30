@@ -5,6 +5,7 @@ from .result_error import GeneralResultError
 from .status import GeneralStatus
 from .success import GeneralSuccess
 from .type_value import GeneralTypeValue
+from .validated import GeneralValidated
 
 __all__ = [
     'GeneralKeyMessage',
@@ -14,4 +15,5 @@ __all__ = [
     'GeneralStatus',
     'GeneralSuccess',
     'GeneralTypeValue',
+    'GeneralValidated',
 ]
