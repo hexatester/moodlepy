@@ -4,6 +4,7 @@ from .function import FunctionsResponses
 from .key import Key
 from .plugin import MobilePlugin
 from .public_config import MobilePublicConfig
+from .token_privatetoken import TokenPrivateToken
 
 from .base import BaseMobile
 
@@ -18,5 +19,6 @@ __all__ = [
     'Key',
     'MobilePlugin',
     'MobilePublicConfig',
+    'TokenPrivateToken',
     'BaseMobile',
 ]

@@ -1,7 +1,15 @@
 from typing import List, Optional
 from moodle import BaseMoodle
 from moodle.utils.helper import from_dict
-from . import Content, FunctionsResponses, Key, MobileConfig, MobilePlugin, MobilePublicConfig
+from . import (
+    Content,
+    FunctionsResponses,
+    Key,
+    MobileConfig,
+    MobilePlugin,
+    MobilePublicConfig,
+    TokenPrivateToken,
+)
 
 
 class BaseMobile(BaseMoodle):
@@ -86,3 +94,21 @@ class BaseMobile(BaseMoodle):
         """
         data = self.moodle.get('tool_mobile_get_public_config')
         return from_dict(MobilePublicConfig, data)
+
+    def get_tokens_for_qr_login(self, qrloginkey: str,
+                                userid: int) -> TokenPrivateToken:
+        """Returns a WebService token (and private token) for QR login.
+
+        Args:
+            qrloginkey (str): The user key for validating the request.
+            userid (int): The user the key belongs to.
+
+        Returns:
+            TokenPrivateToken: WebService token (and private token)
+        """
+        data = self.moodle.post(
+            'tool_mobile_get_tokens_for_qr_login',
+            qrloginkey=qrloginkey,
+            userid=userid,
+        )
+        return from_dict(TokenPrivateToken, data)
