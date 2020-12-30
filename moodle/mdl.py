@@ -4,7 +4,15 @@ import requests
 from requests import Session
 from requests.exceptions import RequestException
 from typing import Any, Type, TypeVar
-from moodle import Auth, Core, Enrol, Mod, MoodleException, Tool, MoodleWarning
+
+from moodle import Auth
+from moodle import Core
+from moodle import Enrol
+from moodle import Mod
+from moodle import MoodleException
+from moodle import Tool
+from moodle import MoodleWarning
+
 from moodle.exception import EmptyResponseException, InvalidCredentialException, NetworkMoodleException
 from moodle.utils.decorator import lazy
 from moodle.utils.helper import make_params, from_dict, to_dict
