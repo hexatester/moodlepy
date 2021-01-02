@@ -127,7 +127,7 @@ In the future all [Web service functions](https://docs.moodle.org/dev/Web_servic
 | mod_survey           |           |       |       |        |
 | mod_url              | A         | A     |       |        |
 | mod_wiki             |           |       |       |        |
-| mod_workshop         |           |       |       |        |
+| mod_workshop         | A         |       |       |        |
 | report_competency    |           |       |       |        |
 | report_insights      |           |       |       |        |
 | tool_analytics       |           |       |       |        |
