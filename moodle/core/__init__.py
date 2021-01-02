@@ -8,6 +8,7 @@ from .comment import BaseComment
 from .competency import BaseCompetency
 from .completion import BaseCompletion
 from .course import BaseCourse
+from .customfield import BaseCustomfield
 from .enrol import BaseEnrol
 from .message import BaseMessage
 from .notes import BaseNotes
@@ -27,6 +28,7 @@ __all__ = [
     'BaseCompetency',
     'BaseCompletion',
     'BaseCourse',
+    'BaseCustomfield',
     'BaseEnrol',
     'BaseMessage',
     'BaseNotes',

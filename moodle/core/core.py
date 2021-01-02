@@ -1,9 +1,23 @@
 from moodle import BaseMoodle
 from moodle.utils.decorator import lazy
-from . import (BaseAuth, BaseBadges, BaseBlock, BaseBlog, BaseCalendar,
-               BaseCohort, BaseComment, BaseCompetency, BaseCompletion,
-               BaseCourse, BaseEnrol, BaseMessage, BaseNotes, BaseUser,
-               BaseWebservice)
+from . import (
+    BaseAuth,
+    BaseBadges,
+    BaseBlock,
+    BaseBlog,
+    BaseCalendar,
+    BaseCohort,
+    BaseComment,
+    BaseCompetency,
+    BaseCompletion,
+    BaseCourse,
+    BaseCustomfield,
+    BaseEnrol,
+    BaseMessage,
+    BaseNotes,
+    BaseUser,
+    BaseWebservice,
+)
 
 
 class Core(BaseMoodle):
@@ -56,6 +70,11 @@ class Core(BaseMoodle):
     @lazy
     def course(self) -> BaseCourse:
         return BaseCourse(self.moodle)
+
+    @property  # type: ignore
+    @lazy
+    def customfield(self) -> BaseCustomfield:
+        return BaseCustomfield(self.moodle)
 
     @property  # type: ignore
     @lazy

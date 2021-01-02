@@ -73,7 +73,7 @@ In the future all [Web service functions](https://docs.moodle.org/dev/Web_servic
 | core_competency      |           |       |       |        |
 | core_completion      | A         | A     |       |        |
 | core_course          |           |       |       |        |
-| core_customfield     |           |       |       |        |
+| core_customfield     | A         | A     |       |        |
 | core_enrol           |           |       |       |        |
 | core_fetch           |           |       |       |        |
 | core_files           |           |       |       |        |
