@@ -1,4 +1,5 @@
 from .assign import BaseAssign
+from .chat import BaseChat
 from .data import BaseData
 from .folder import BaseFolder
 from .forum import BaseForum
@@ -11,6 +12,7 @@ from .mod import Mod
 
 __all__ = [
     'BaseAssign',
+    'BaseChat',
     'BaseData',
     'BaseFolder',
     'BaseForum',
