@@ -111,7 +111,7 @@ In the future all [Web service functions](https://docs.moodle.org/dev/Web_servic
 | mod_book             |           |       |       |        |
 | mod_chat             |           |       |       |        |
 | mod_choice           |           |       |       |        |
-| mod_data             |           |       |       |        |
+| mod_data             | A         |       |       |        |
 | mod_feedback         |           |       |       |        |
 | mod_folder           | A         | A     |       |        |
 | mod_forum            |           |       |       |        |

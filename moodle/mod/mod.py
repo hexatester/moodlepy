@@ -1,7 +1,15 @@
 from moodle import BaseMoodle
 from moodle.utils.decorator import lazy
-from . import (BaseAssign, BaseFolder, BaseForum, BaseLesson, BaseResource,
-               BaseUrl, BaseWorkshop)
+from . import (
+    BaseAssign,
+    BaseData,
+    BaseFolder,
+    BaseForum,
+    BaseLesson,
+    BaseResource,
+    BaseUrl,
+    BaseWorkshop,
+)
 
 
 class Mod(BaseMoodle):
@@ -9,6 +17,11 @@ class Mod(BaseMoodle):
     @lazy
     def assign(self) -> BaseAssign:
         return BaseAssign(self.moodle)
+
+    @property  # type: ignore
+    @lazy
+    def data(self) -> BaseData:
+        return BaseData(self.moodle)
 
     @property  # type: ignore
     @lazy
