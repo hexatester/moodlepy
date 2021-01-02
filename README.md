@@ -120,7 +120,7 @@ In the future all [Web service functions](https://docs.moodle.org/dev/Web_servic
 | mod_label            |           |       |       |        |
 | mod_lesson           |           |       |       |        |
 | mod_lti              |           |       |       |        |
-| mod_page             |           |       |       |        |
+| mod_page             | A         | A     |       |        |
 | mod_quiz             |           |       |       |        |
 | mod_resource         | A         | A     |       |        |
 | mod_scorm            |           |       |       |        |

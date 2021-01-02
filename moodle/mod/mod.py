@@ -7,6 +7,7 @@ from . import (
     BaseFolder,
     BaseForum,
     BaseLesson,
+    BasePage,
     BaseResource,
     BaseUrl,
     BaseWorkshop,
@@ -43,6 +44,11 @@ class Mod(BaseMoodle):
     @lazy
     def lesson(self) -> BaseLesson:
         return BaseLesson(self.moodle)
+
+    @property  # type: ignore
+    @lazy
+    def page(self) -> BasePage:
+        return BasePage(self.moodle)
 
     @property  # type: ignore
     @lazy
