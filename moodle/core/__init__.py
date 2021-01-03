@@ -1,4 +1,5 @@
 from .auth import BaseAuth
+from .backup import BaseBackup
 from .badges import BaseBadges
 from .block import BaseBlock
 from .blog import BaseBlog
@@ -19,6 +20,7 @@ from .core import Core
 
 __all__ = [
     'BaseAuth',
+    'BaseBackup',
     'BaseBadges',
     'BaseBlock',
     'BaseBlog',

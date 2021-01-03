@@ -2,6 +2,7 @@ from moodle import BaseMoodle
 from moodle.utils.decorator import lazy
 from . import (
     BaseAuth,
+    BaseBackup,
     BaseBadges,
     BaseBlock,
     BaseBlog,
@@ -25,6 +26,11 @@ class Core(BaseMoodle):
     @lazy
     def auth(self) -> BaseAuth:
         return BaseAuth(self.moodle)
+
+    @property  # type: ignore
+    @lazy
+    def backup(self) -> BaseBackup:
+        return BaseBackup(self.moodle)
 
     @property  # type: ignore
     @lazy

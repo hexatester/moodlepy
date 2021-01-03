@@ -64,7 +64,7 @@ In the future all [Web service functions](https://docs.moodle.org/dev/Web_servic
 | auth_email           | A         | A     |       |        |
 | block                | A         | A     |       |        |
 | core_auth            | A         | A     |       |        |
-| core_backup          |           |       |       |        |
+| core_backup          | A         | A     |       |        |
 | core_badge           | A         | A     | A     |        |
 | core_blog            | A         | A     | A     |        |
 | core_calendar        | A         | A     |       |        |
