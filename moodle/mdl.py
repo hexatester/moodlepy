@@ -5,17 +5,10 @@ from requests import Session
 from requests.exceptions import RequestException
 from typing import Any, Type, TypeVar
 
-from moodle import Auth
-from moodle import Block
-from moodle import Core
-from moodle import Enrol
-from moodle import Mod
 from moodle import MoodleException
-from moodle import Tool
 from moodle import MoodleWarning
 
 from moodle.exception import EmptyResponseException, InvalidCredentialException, NetworkMoodleException
-from moodle.utils.decorator import lazy
 from moodle.utils.helper import make_params, from_dict, to_dict
 
 T = TypeVar('T', bound='Mdl')
@@ -116,44 +109,3 @@ class Mdl:
         url = loginurl if loginurl.startswith(domain) else domain + loginurl
         res = requests.get(url, params=params)
         return res.json() if res.ok else {}
-
-
-class Moodle(Mdl):
-    def __init__(self, url: str, token: str):
-        super(Moodle, self).__init__(url, token)
-
-    def __call__(self,
-                 wsfunction: str,
-                 moodlewsrestformat='json',
-                 **kwargs) -> Any:
-        return self.post(wsfunction, moodlewsrestformat, **kwargs)
-
-    @property  # type: ignore
-    @lazy
-    def auth(self) -> Auth:
-        return Auth(self)
-
-    @property  # type: ignore
-    @lazy
-    def block(self) -> Block:
-        return Block(self)
-
-    @property  # type: ignore
-    @lazy
-    def core(self) -> Core:
-        return Core(self)
-
-    @property  # type: ignore
-    @lazy
-    def enrol(self) -> Enrol:
-        return Enrol(self)
-
-    @property  # type: ignore
-    @lazy
-    def mod(self) -> Mod:
-        return Mod(self)
-
-    @property  # type: ignore
-    @lazy
-    def tool(self) -> Tool:
-        return Tool(self)

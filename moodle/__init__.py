@@ -3,8 +3,11 @@ from .base.name_value import BaseNameValue
 from .base.base_moodle import BaseMoodle
 from .base.warning import MoodleWarning
 from .base.responses import ResponsesFactory
-from .base.preference import (MessagePreference, NotificationPreference,
-                              UserPreference)
+from .base.preference import (
+    MessagePreference,
+    NotificationPreference,
+    UserPreference,
+)
 
 from .exception import MoodleException
 from .utils.typing import Array
@@ -17,7 +20,7 @@ from .enrol import Enrol
 from .mod import Mod
 
 from .mdl import Mdl
-from .mdl import Moodle
+from .moodle import Moodle
 
 from .version import __version__  # NOQA
 
