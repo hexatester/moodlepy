@@ -1,7 +1,14 @@
 from typing import List, Optional
 from moodle import BaseMoodle, MoodleWarning
 from moodle.utils.helper import from_dict
-from . import AgreeSitePolicyResponse, Criteria, CreateUser, GetUsersResponse
+from . import (
+    AgreeSitePolicyResponse,
+    Criteria,
+    CreateUser,
+    GetUsersResponse,
+    UserList,
+    UserProfile,
+)
 
 
 class BaseUser(BaseMoodle):
@@ -94,9 +101,21 @@ class BaseUser(BaseMoodle):
         )
         return data
 
-    def get_course_user_profiles(self):
-        data = self.moodle.post('core_user_get_course_user_profiles')
-        return data
+    def get_course_user_profiles(
+            self, userlist: List[UserList]) -> List[UserProfile]:
+        """Get course user profiles (each of the profils matching a course id and a user id),.
+
+        Args:
+            userlist (List[UserList]): list of UserList or dict containing userid and courseid
+
+        Returns:
+            List[UserProfile]: list of UserProfile
+        """
+        data = self.moodle.post(
+            'core_user_get_course_user_profiles',
+            userlist=userlist,
+        )
+        return [from_dict(UserProfile, dat) for dat in data]
 
     def get_private_files_info(self):
         data = self.moodle.post('core_user_get_private_files_info')
