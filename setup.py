@@ -17,7 +17,7 @@ requirements = requirements()
 
 setup(name='moodlepy',
       version='0.19.0',
-      description='Client for moodle webservice',
+      description='Python wrapper for moodle web service.',
       author='Habib Rohman',
       author_email='habibrohman@protonmail.com',
       url='https://github.com/hexatester/moodlepy',

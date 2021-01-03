@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/hexatester/moodlepy/branch/master/graph/badge.svg?token=EecpLLbyns)](https://codecov.io/gh/hexatester/moodlepy)
 [![LICENSE](https://img.shields.io/github/license/hexatester/moodlepy)](https://github.com/hexatester/moodlepy/blob/master/LICENSE)
 
-Python client for moodle webservice
+Python wrapper for moodle web service.
 
 ## Introduction
 
