@@ -1,3 +1,4 @@
+from .version import __version__  # NOQA
 from .base.moodle_object import MoodleObject
 from .base.name_value import BaseNameValue
 from .base.base_moodle import BaseMoodle
@@ -21,8 +22,6 @@ from .mod import Mod
 
 from .mdl import Mdl
 from .moodle import Moodle
-
-from .version import __version__  # NOQA
 
 __all__ = [
     'MoodleObject',
