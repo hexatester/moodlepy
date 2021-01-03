@@ -3,8 +3,9 @@ import logging
 import requests
 from requests import Session
 from requests.exceptions import RequestException
-from typing import Any, Type, TypeVar
+from typing import Any, Dict, Type, TypeVar
 
+from moodle import __version__
 from moodle import MoodleException
 from moodle import MoodleWarning
 
@@ -18,11 +19,15 @@ class Mdl:
     session: Session = Session()
     token: str = ''
     url: str = ''
+    __headers__: Dict[str, str] = {'User-Agent': f"moodlepy-{__version__}"}
 
-    def __init__(self, url: str, token: str):
+    def __init__(self, url: str, token: str, user_agent: str = None):
         self.logger = logging.getLogger(self.__class__.__name__)
         self.url = url
         self.token = token
+        if user_agent:
+            self.__headers__['User-Agent'] = user_agent
+        self.session.headers.update(self.__headers__)
 
     def get(self, wsfunction: str, moodlewsrestformat='json', **kwargs) -> Any:
         params = make_params(self.token, wsfunction, moodlewsrestformat)
