@@ -12,7 +12,7 @@ def requirements():
 
     with open('requirements.txt') as requirements:
         for install in requirements:
-            requirements_list.append(install.strip())
+            requirements_list.append(install.split(';')[0].strip())
 
     return requirements_list
 
