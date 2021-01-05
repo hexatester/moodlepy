@@ -1,7 +1,7 @@
 # moodlepy
 
 [![PyPi Package Version](https://img.shields.io/pypi/v/moodlepy)](https://pypi.org/project/moodlepy/)
-[![Supported Python versions](https://img.shields.io/pypi/pyversions/moodlepy](https://pypi.org/project/moodlepy/)
+[![Supported Python versions](https://img.shields.io/pypi/pyversions/moodlepy)](https://pypi.org/project/moodlepy/)
 [![LICENSE](https://img.shields.io/github/license/hexatester/moodlepy)](https://github.com/hexatester/moodlepy/blob/master/LICENSE)
 [![Tests](https://github.com/hexatester/moodlepy/workflows/Tests/badge.svg)](https://github.com/hexatester/moodlepy/actions?query=workflow%3ATests)
 [![codecov](https://codecov.io/gh/hexatester/moodlepy/branch/master/graph/badge.svg)](https://codecov.io/gh/hexatester/moodlepy)
