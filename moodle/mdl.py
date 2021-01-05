@@ -72,7 +72,7 @@ class Mdl:
               password: str,
               service: str = 'moodle_mobile_app',
               loginurl: str = '/login/token.php',
-              web_service_url: str = '/webservice/rest/server.php') -> T:
+              web_service_url: str = '/webservice/rest/server.php'):
         """Get a Moodle instance by using username & password auth
 
         Args:
