@@ -10,6 +10,10 @@ T = TypeVar('T')
 class MoodleObject(object):
     wsfunction: str = ''
 
+    def __init__(self, *args, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
     def __post_init__(self):
         self._moodle: Optional[Moodle] = None
 
