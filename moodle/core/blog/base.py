@@ -1,6 +1,5 @@
 from typing import List, Optional
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import BlogEntries, ViewEntry
 
 Filter = BlogEntries.Filter
@@ -25,7 +24,7 @@ class BaseBlog(BaseMoodle):
                                filters=filters or [],
                                page=page,
                                perpage=perpage)
-        return from_dict(BlogEntries, res)
+        return BlogEntries(**res)  # type: ignore
 
     def view_entries(self,
                      filters: Optional[List[Filter]] = None) -> ViewEntry:
@@ -38,4 +37,4 @@ class BaseBlog(BaseMoodle):
             ViewEntry: the blog_entries_viewed response.
         """
         res = self.moodle.post('core_blog_view_entries', filters=filters)
-        return from_dict(ViewEntry, res)
+        return ViewEntry(**res)  # type: ignore

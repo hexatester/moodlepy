@@ -1,6 +1,8 @@
-from dataclasses import dataclass, field
+from attr import attrib
 from typing import List, Optional
+
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -122,9 +124,9 @@ class BlogEntry:
     lastmodified: int
     created: int
     usermodified: Optional[int]
-    summaryfiles: List[BlogSummaryFiles] = field(default_factory=list)
-    attachmentfiles: List[BlogAttachmentFile] = field(default_factory=list)
-    tags: List[BlogTag] = field(default_factory=list)
+    summaryfiles: List[BlogSummaryFiles] = fields(BlogSummaryFiles)
+    attachmentfiles: List[BlogAttachmentFile] = fields(BlogAttachmentFile)
+    tags: List[BlogTag] = fields(BlogTag)
 
 
 @dataclass
@@ -138,9 +140,9 @@ class BlogEntries(ResponsesFactory[BlogEntry]):
     Returns:
         BlogEntries: Returns blog entries.
     """
-    entries: List[BlogEntry] = field(default_factory=list)
-    totalentries: int = 0
-    warnings: List[MoodleWarning] = field(default_factory=list)
+    entries: List[BlogEntry] = fields(BlogEntry)
+    totalentries: int = attrib(default=0)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[BlogEntry]:

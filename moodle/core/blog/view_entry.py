@@ -1,6 +1,7 @@
-from dataclasses import dataclass, field
 from typing import List
+
 from moodle import MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -11,4 +12,4 @@ class ViewEntry:
     params: warnings (List[Warning]): list of warnings
     """
     status: bool
-    warnings: List[MoodleWarning] = field(default_factory=list)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
