@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from moodle.attr import dataclass
 from typing import List, Optional
 from moodle import MoodleObject
 

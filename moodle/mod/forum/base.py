@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List, Optional, Union
+
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import AccessInformation, Discussions, Forum, NewPost, Posts
 
 
@@ -34,7 +34,7 @@ class BaseForum(BaseMoodle):
             groupid=groupid,
             options=options or [],
         )
-        return from_dict(Discussions.New, res)
+        return Discussions.New(**res)  # type: ignore
 
     def add_discussion_post(self,
                             postid: int,
@@ -62,7 +62,7 @@ class BaseForum(BaseMoodle):
             options=options or [],
             messageformat=messageformat,
         )
-        return from_dict(NewPost, res)
+        return NewPost(**res)  # type: ignore
 
     def can_add_discussion(
             self,
@@ -73,7 +73,7 @@ class BaseForum(BaseMoodle):
             forumid=forumid,
             groupid=groupid,
         )
-        return from_dict(Discussions.CanAdd, res)
+        return Discussions.CanAdd(**res)  # type: ignore
 
     def get_discussion_posts(self,
                              discussionid: int,
@@ -95,7 +95,7 @@ class BaseForum(BaseMoodle):
             sortby=sortby,
             sortdirection=sortdirection,
         )
-        return from_dict(Posts, res)
+        return Posts(**res)  # type: ignore
 
     def get_forum_access_information(self, forumid: int) -> AccessInformation:
         """Return capabilities information for a given forum.
@@ -110,7 +110,7 @@ class BaseForum(BaseMoodle):
             'mod_forum_get_forum_access_information',
             forumid=forumid,
         )
-        return from_dict(AccessInformation, res)
+        return AccessInformation(**res)  # type: ignore
 
     def get_forum_discussion_posts(self,
                                    discussionid: int,
@@ -132,7 +132,7 @@ class BaseForum(BaseMoodle):
             sortby=sortby,
             sortdirection=sortdirection,
         )
-        return from_dict(Posts, res)
+        return Posts(**res)  # type: ignore
 
     def get_forum_discussions(self,
                               forumid: int,
@@ -160,7 +160,7 @@ class BaseForum(BaseMoodle):
             perpage=perpage,
             groupid=groupid,
         )
-        return from_dict(Discussions, res)
+        return Discussions(**res)  # type: ignore
 
     def get_forum_discussions_paginated(self,
                                         forumid: int,
@@ -188,7 +188,7 @@ class BaseForum(BaseMoodle):
             page=page,
             perpage=perpage,
         )
-        return from_dict(Discussions, res)
+        return Discussions(**res)  # type: ignore
 
     def get_forums_by_courses(self,
                               courseids: Optional[List[int]] = None
