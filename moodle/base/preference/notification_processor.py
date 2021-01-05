@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from moodle.attr import dataclass
 from .notification_info import NotificationInfo
 
 
