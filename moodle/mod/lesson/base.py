@@ -55,7 +55,7 @@ class BaseLesson(BaseMoodle):
             lessonid=lessonid,
             password=password,
         )
-        return OneLesson(**res)  # type: ignore
+        return self._tr(OneLesson, **res)
 
     def get_lesson_access_information(self, lessonid: int):
         res = self.moodle.post(
@@ -79,7 +79,7 @@ class BaseLesson(BaseMoodle):
             'mod_lesson_get_lessons_by_courses',
             courseids=courseids or [],
         )
-        return Lessons(**res)  # type: ignore
+        return self._tr(Lessons, **res)
 
     def get_page_data(self,
                       lessonid: int,
@@ -112,7 +112,7 @@ class BaseLesson(BaseMoodle):
             lessonid=lessonid,
             password=password,
         )
-        return Pages(**res)  # type: ignore
+        return self._tr(Pages, **res)
 
     def get_pages_possible_jumps(self, lessonid: int):
         res = self.moodle.post(
@@ -219,4 +219,4 @@ class BaseLesson(BaseMoodle):
             lessonid=lessonid,
             password=password,
         )
-        return View(**res)  # type: ignore
+        return self._tr(View, **res)

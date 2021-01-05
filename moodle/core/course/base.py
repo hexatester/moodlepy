@@ -32,7 +32,7 @@ class BaseCourse(BaseMoodle):
             CheckUpdate: Update
         """
         res = self.moodle.post("core_course_check_updates")
-        return CheckUpdate(**res)  # type: ignore
+        return self._tr(CheckUpdate, **res)
 
     def create_categories(self):
         res = self.moodle.post("core_course_create_categories")
@@ -77,7 +77,7 @@ class BaseCourse(BaseMoodle):
             tocheck=tocheck,
             filter=filter or [],
         )
-        return ActivityOverview(**res)  # type: ignore
+        return self._tr(ActivityOverview, **res)
 
     def get_categories(
             self,
@@ -120,7 +120,7 @@ class BaseCourse(BaseMoodle):
             CourseModule: Course Module wrapper
         """
         res = self.moodle.post("core_course_get_course_module", cmid=cmid)
-        return CourseModule(**res)  # type: ignore
+        return self._tr(CourseModule, **res)
 
     def get_course_module_by_instance(self):
         res = self.moodle.post("core_course_get_course_module_by_instance")
@@ -161,7 +161,7 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_courses_by_field",
                                field=field,
                                value=value)
-        return CourseByField(**res)  # type: ignore
+        return self._tr(CourseByField, **res)
 
     def get_enrolled_courses_by_timeline_classification(
             self,
@@ -187,7 +187,7 @@ class BaseCourse(BaseMoodle):
             offset=offset,
             sort=sort,
         )
-        return CoursesBTC(**res)  # type: ignore
+        return self._tr(CoursesBTC, **res)
 
     def get_recent_courses(self,
                            userid: int = 0,
@@ -230,7 +230,7 @@ class BaseCourse(BaseMoodle):
                                courseid=courseid,
                                since=since,
                                filter=filter)
-        return CheckUpdate(**res)  # type: ignore
+        return self._tr(CheckUpdate, **res)
 
     def get_user_administration_options(self):
         res = self.moodle.post("core_course_get_user_administration_options")
@@ -248,7 +248,7 @@ class BaseCourse(BaseMoodle):
         """
         res = self.moodle.post("core_course_get_user_navigation_options",
                                courseids=courseids)
-        return NavigationOptions(**res)  # type: ignore
+        return self._tr(NavigationOptions, **res)
 
     def import_course(self):
         res = self.moodle.post("core_course_import_course")
@@ -286,7 +286,7 @@ class BaseCourse(BaseMoodle):
             limittoenrolled=limittoenrolled,
             onlywithcompletion=onlywithcompletion,
         )
-        return SearchResult(**res)  # type: ignore
+        return self._tr(SearchResult, **res)
 
     def set_favourite_courses(self):
         res = self.moodle.post("core_course_set_favourite_courses")
@@ -302,4 +302,4 @@ class BaseCourse(BaseMoodle):
 
     def view_course(self, courseid: int, sectionnumber: int) -> ViewCourse:
         res = self.moodle.post("core_course_view_course")
-        return ViewCourse(**res)  # type: ignore
+        return self._tr(ViewCourse, **res)

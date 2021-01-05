@@ -68,7 +68,7 @@ class BaseUser(BaseMoodle):
             AgreeSitePolicyResponse: Response
         """
         data = self.moodle.post('core_user_agree_site_policy')
-        return AgreeSitePolicyResponse(**data)  # type: ignore
+        return self._tr(AgreeSitePolicyResponse, **data)
 
     def create_users(self,
                      users: List[CreateUser]) -> List[CreateUser.Response]:
@@ -142,7 +142,7 @@ class BaseUser(BaseMoodle):
             'core_user_get_users',
             criteria=criteria,
         )
-        return GetUsersResponse(**data)  # type: ignore
+        return self._tr(GetUsersResponse, **data)
 
     def get_users_by_field(self):
         data = self.moodle.post('core_user_get_users_by_field')

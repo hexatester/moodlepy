@@ -24,7 +24,7 @@ class BaseBlog(BaseMoodle):
                                filters=filters or [],
                                page=page,
                                perpage=perpage)
-        return BlogEntries(**res)  # type: ignore
+        return self._tr(BlogEntries, **res)
 
     def view_entries(self,
                      filters: Optional[List[Filter]] = None) -> ViewEntry:
@@ -37,4 +37,4 @@ class BaseBlog(BaseMoodle):
             ViewEntry: the blog_entries_viewed response.
         """
         res = self.moodle.post('core_blog_view_entries', filters=filters)
-        return ViewEntry(**res)  # type: ignore
+        return self._tr(ViewEntry, **res)

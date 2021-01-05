@@ -24,7 +24,7 @@ class BaseSelf(BaseMoodle):
             password=password,
             instanceid=instanceid,
         )
-        return EnrolUserResponse(**data)  # type: ignore
+        return self._tr(EnrolUserResponse, **data)
 
     def get_instance_info(self, instanceid: int) -> InstanceInfo:
         """self enrolment instance information.
@@ -39,4 +39,4 @@ class BaseSelf(BaseMoodle):
             'enrol_self_get_instance_info',
             instanceid=instanceid,
         )
-        return InstanceInfo(**data)  # type: ignore
+        return self._tr(InstanceInfo, **data)

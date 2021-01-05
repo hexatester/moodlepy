@@ -19,7 +19,7 @@ class BaseBlock(BaseMoodle):
         res = self.moodle.post('core_block_get_course_blocks',
                                courseid=courseid,
                                returncontents=returncontents)
-        return Blocks(**res)  # type: ignore
+        return self._tr(Blocks, **res)
 
     def get_dashboard_blocks(self,
                              userid: int = 0,
@@ -36,4 +36,4 @@ class BaseBlock(BaseMoodle):
         res = self.moodle.post('core_block_get_dashboard_blocks',
                                userid=userid,
                                returncontents=1 if returncontents else 0)
-        return Blocks(**res)  # type: ignore
+        return self._tr(Blocks, **res)

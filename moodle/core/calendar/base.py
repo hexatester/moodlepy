@@ -18,7 +18,7 @@ class BaseCalendar(BaseMoodle):
     def create_calendar_events(self, events: List[Events.Create]) -> Events:
         res = self.moodle.get('core_calendar_create_calendar_events',
                               events=events)
-        return Events(**res)  # type: ignore
+        return self._tr(Events, **res)
 
     def delete_calendar_events(self, events: List[Events.Delete]) -> None:
         self.moodle.get('core_calendar_delete_calendar_events')
@@ -38,7 +38,7 @@ class BaseCalendar(BaseMoodle):
                               timesortto=timesortto,
                               aftereventid=aftereventid,
                               limitnum=limitnum)
-        return CourseEvents(**res)  # type: ignore
+        return self._tr(CourseEvents, **res)
 
     def get_action_events_by_courses(self,
                                      courseids: List[int],
@@ -51,7 +51,7 @@ class BaseCalendar(BaseMoodle):
                               courseids=courseids,
                               timesortfrom=timesortfrom,
                               limitnum=limitnum)
-        return ActionEventCourses(**res)  # type: ignore
+        return self._tr(ActionEventCourses, **res)
 
     def get_action_events_by_timesort(
             self,
@@ -70,19 +70,19 @@ class BaseCalendar(BaseMoodle):
             limittononsuspendedevents=limittononsuspendedevents,
             userid=userid,
         )
-        return CourseEvents(**res)  # type: ignore
+        return self._tr(CourseEvents, **res)
 
     def get_allowed_event_types(self, courseid: int = 0) -> AllowedEventTypes:
         res = self.moodle.get('core_calendar_get_allowed_event_types',
                               courseid=courseid)
-        return AllowedEventTypes(**res)  # type: ignore
+        return self._tr(AllowedEventTypes, **res)
 
     def get_calendar_access_information(self,
                                         courseid: int = 0
                                         ) -> AccessInformation:
         res = self.moodle.get('core_calendar_get_calendar_access_information',
                               courseid=courseid)
-        return AccessInformation(**res)  # type: ignore
+        return self._tr(AccessInformation, **res)
 
     def get_calendar_day_view(self,
                               year: int,
@@ -98,12 +98,12 @@ class BaseCalendar(BaseMoodle):
             courseid=courseid,
             categoryid=categoryid,
         )
-        return DayView(**res)  # type: ignore
+        return self._tr(DayView, **res)
 
     def get_calendar_event_by_id(self, eventid: int) -> CourseEvents:
         res = self.moodle.get('core_calendar_get_calendar_event_by_id',
                               eventid=eventid)
-        return CourseEvents(**res)  # type: ignore
+        return self._tr(CourseEvents, **res)
 
     def get_calendar_events(
             self,
@@ -112,7 +112,7 @@ class BaseCalendar(BaseMoodle):
         res = self.moodle.get('core_calendar_get_calendar_events',
                               events=events if events else {},
                               options=options if options else {})
-        return Events(**res)  # type: ignore
+        return self._tr(Events, **res)
 
     def get_calendar_monthly_view(self,
                                   year: int,
@@ -122,14 +122,14 @@ class BaseCalendar(BaseMoodle):
                                   includenavigation: int = 1,
                                   mini: Optional[int] = None) -> MonthlyView:
         res = self.moodle.get('core_calendar_get_calendar_monthly_view')
-        return MonthlyView(**res)  # type: ignore
+        return self._tr(MonthlyView, **res)
 
     def get_calendar_upcoming_view(
             self,
             courseid: int,
             categoryid: Optional[int] = None) -> CourseEvents:
         res = self.moodle.get('core_calendar_get_calendar_upcoming_view')
-        return CourseEvents(**res)  # type: ignore
+        return self._tr(CourseEvents, **res)
 
     def get_timestamps(self):
         res = self.moodle.get('core_calendar_get_timestamps')
@@ -146,7 +146,7 @@ class BaseCalendar(BaseMoodle):
             CourseEvents.EventForm: Event form
         """
         res = self.moodle.get('core_calendar_submit_create_update_form')
-        return CourseEvents.EventForm(**res)  # type: ignore
+        return self._tr(CourseEvents.EventForm, **res)
 
     def update_event_start_day(self, eventid: int,
                                daytimestamp: Union[datetime, int]) -> Event:

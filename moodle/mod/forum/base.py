@@ -34,7 +34,7 @@ class BaseForum(BaseMoodle):
             groupid=groupid,
             options=options or [],
         )
-        return Discussions.New(**res)  # type: ignore
+        return self._tr(Discussions.New, **res)
 
     def add_discussion_post(self,
                             postid: int,
@@ -62,7 +62,7 @@ class BaseForum(BaseMoodle):
             options=options or [],
             messageformat=messageformat,
         )
-        return NewPost(**res)  # type: ignore
+        return self._tr(NewPost, **res)
 
     def can_add_discussion(
             self,
@@ -73,7 +73,7 @@ class BaseForum(BaseMoodle):
             forumid=forumid,
             groupid=groupid,
         )
-        return Discussions.CanAdd(**res)  # type: ignore
+        return self._tr(Discussions.CanAdd, **res)
 
     def get_discussion_posts(self,
                              discussionid: int,
@@ -95,7 +95,7 @@ class BaseForum(BaseMoodle):
             sortby=sortby,
             sortdirection=sortdirection,
         )
-        return Posts(**res)  # type: ignore
+        return self._tr(Posts, **res)
 
     def get_forum_access_information(self, forumid: int) -> AccessInformation:
         """Return capabilities information for a given forum.
@@ -110,7 +110,7 @@ class BaseForum(BaseMoodle):
             'mod_forum_get_forum_access_information',
             forumid=forumid,
         )
-        return AccessInformation(**res)  # type: ignore
+        return self._tr(AccessInformation, **res)
 
     def get_forum_discussion_posts(self,
                                    discussionid: int,
@@ -132,7 +132,7 @@ class BaseForum(BaseMoodle):
             sortby=sortby,
             sortdirection=sortdirection,
         )
-        return Posts(**res)  # type: ignore
+        return self._tr(Posts, **res)
 
     def get_forum_discussions(self,
                               forumid: int,
@@ -160,7 +160,7 @@ class BaseForum(BaseMoodle):
             perpage=perpage,
             groupid=groupid,
         )
-        return Discussions(**res)  # type: ignore
+        return self._tr(Discussions, **res)
 
     def get_forum_discussions_paginated(self,
                                         forumid: int,
@@ -188,7 +188,7 @@ class BaseForum(BaseMoodle):
             page=page,
             perpage=perpage,
         )
-        return Discussions(**res)  # type: ignore
+        return self._tr(Discussions, **res)
 
     def get_forums_by_courses(self,
                               courseids: Optional[List[int]] = None

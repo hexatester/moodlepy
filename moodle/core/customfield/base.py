@@ -84,4 +84,4 @@ class BaseCustomfield(BaseMoodle):
             area=area,
             itemid=itemid,
         )
-        return ReloadTemplate(**data)  # type: ignore
+        return self._tr(ReloadTemplate, **data)

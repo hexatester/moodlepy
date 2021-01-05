@@ -35,7 +35,7 @@ class BaseAssign(BaseMoodle):
             capabilities=capabilities,
             includenotenrolledcourses=includenotenrolledcourses,
         )
-        return Assignments(**res)  # type: ignore
+        return self._tr(Assignments, **res)
 
     def get_grades(self,
                    assignmentids: List[int],
@@ -54,7 +54,7 @@ class BaseAssign(BaseMoodle):
             assignmentids=assignmentids,
             since=since,
         )
-        return Grades(**res)  # type: ignore
+        return self._tr(Grades, **res)
 
     def list_participants(
             self,
@@ -92,10 +92,7 @@ class BaseAssign(BaseMoodle):
             includeenrolments=includeenrolments,
             tablesort=tablesort,
         )
-        return [
-            Participant(**data)  # type: ignore
-            for data in res
-        ] if res else []
+        return [self._tr(Participant, **data) for data in res] if res else []
 
     def lock_submissions(self, assignmentid: int,
                          userids: List[int]) -> List[Warning]:
@@ -174,10 +171,8 @@ class BaseAssign(BaseMoodle):
         res = self.moodle.post('mod_assign_set_user_flags',
                                assignmentid=assignmentid,
                                userflags=userflags)
-        return [
-            UserFlag.Result(**data)  # type: ignore
-            for data in res
-        ] if res else []
+        return [self._tr(UserFlag.Result, **data)
+                for data in res] if res else []
 
     def submit_for_grading(self, assignmentid: int,
                            acceptsubmissionstatement: int) -> List[Warning]:
@@ -218,15 +213,15 @@ class BaseAssign(BaseMoodle):
 
     def view_assign(self, assignid: int) -> View:
         res = self.moodle.post('mod_assign_view_assign', assignid=assignid)
-        return View(**res)  # type: ignore
+        return self._tr(View, **res)
 
     def view_grading_table(self, assignid: int) -> View:
         res = self.moodle.post('mod_assign_view_grading_table')
-        return View(**res)  # type: ignore
+        return self._tr(View, **res)
 
     def view_submission_status(self, assignid: int) -> View:
         res = self.moodle.post('mod_assign_view_submission_status')
-        return View(**res)  # type: ignore
+        return self._tr(View, **res)
 
     def get_submissions(self):
         # TODO mod_assign_get_submissions

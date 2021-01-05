@@ -36,7 +36,7 @@ class BaseEnrol(BaseMoodle):
             timestart=timestart,
             timeend=timeend,
         )
-        return EditUserEnrolmentResponse(**data)  # type: ignore
+        return self._tr(EditUserEnrolmentResponse, **data)
 
     def get_course_enrolment_methods(self,
                                      courseid: int) -> List[EnrolmentMethod]:

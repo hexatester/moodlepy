@@ -18,7 +18,7 @@ class BaseUrl(BaseMoodle):
             'mod_url_get_urls_by_courses',
             courseids=courseids,
         )
-        return Urls(**res)  # type: ignore
+        return self._tr(Urls, **res)
 
     def view_url(self, urlid: int) -> View:
         """Trigger the course module viewed event and update the module completion status.
@@ -30,4 +30,4 @@ class BaseUrl(BaseMoodle):
             View: Response
         """
         res = self.moodle.post('mod_url_view_url', urlid=urlid)
-        return View(**res)  # type: ignore
+        return self._tr(View, **res)

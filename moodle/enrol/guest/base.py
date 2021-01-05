@@ -8,4 +8,4 @@ class BaseGuest(BaseMoodle):
             'enrol_guest_get_instance_info',
             instanceid=instanceid,
         )
-        return InstanceInfoResponse(**data)  # type: ignore
+        return self._tr(InstanceInfoResponse, **data)

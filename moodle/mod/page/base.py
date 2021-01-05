@@ -19,7 +19,7 @@ class BasePage(BaseMoodle):
             'mod_page_get_pages_by_courses',
             courseids=courseids,
         )
-        return PagesResponse(**data)  # type: ignore
+        return self._tr(PagesResponse, **data)
 
     def view_page(self, pageid: int) -> GeneralStatus:
         """Simulate the view.php web interface page: trigger events, completion, etc...
@@ -34,4 +34,4 @@ class BasePage(BaseMoodle):
             'mod_page_view_page',
             pageid=pageid,
         )
-        return GeneralStatus(**data)  # type: ignore
+        return self._tr(GeneralStatus, **data)

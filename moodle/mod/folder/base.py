@@ -16,7 +16,7 @@ class BaseFolder(BaseMoodle):
             Folders: List of Folder
         """
         res = self.moodle.post('mod_folder_get_folders_by_courses')
-        return Folders(**res)  # type: ignore
+        return self._tr(Folders, **res)
 
     def view_folder(self, folderid: int) -> View:
         """Simulate the view.php web interface folder: trigger events, completion, etc...
@@ -28,4 +28,4 @@ class BaseFolder(BaseMoodle):
             View: Response
         """
         res = self.moodle.post('mod_folder_view_folder')
-        return View(**res)  # type: ignore
+        return self._tr(View, **res)

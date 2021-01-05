@@ -16,7 +16,7 @@ class BaseResource(BaseMoodle):
         """
         res = self.moodle.post('mod_resource_get_resources_by_courses',
                                courseids=courseids)
-        return Resources(**res)  # type: ignore
+        return self._tr(Resources, **res)
 
     def view_resource(self, resourceid: int) -> View:
         """Simulate the view.php web interface resource: trigger events, completion, etc...
@@ -29,4 +29,4 @@ class BaseResource(BaseMoodle):
         """
         res = self.moodle.post('mod_resource_view_resource',
                                resourceid=resourceid)
-        return View(**res)  # type: ignore
+        return self._tr(View, **res)

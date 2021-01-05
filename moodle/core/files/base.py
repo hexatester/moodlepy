@@ -18,7 +18,7 @@ class BaseFiles(BaseMoodle):
             ParentPaths: Path(s) to parent directory of the deleted file(s)
         """
         data = self.moodle.post('core_files_delete_draft_files')
-        return ParentPaths(**data)  # type: ignore
+        return self._tr(ParentPaths, **data)
 
     def get_files(self,
                   contextid: int,

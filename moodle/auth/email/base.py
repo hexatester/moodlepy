@@ -12,7 +12,7 @@ class BaseEmail(BaseMoodle):
             SignupSetting: Signup required settings and profile fields
         """
         data = self.moodle.get('auth_email_get_signup_setting')
-        return SignupSetting(**data)  # type: ignore
+        return self._tr(SignupSetting, **data)
 
     def signup_user(self,
                     username: str,
@@ -62,4 +62,4 @@ class BaseEmail(BaseMoodle):
             customprofilefields=customprofilefields,
             redirect=redirect,
         )
-        return SignupUserResponse(**data)  # type: ignore
+        return self._tr(SignupUserResponse, **data)

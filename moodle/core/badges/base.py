@@ -33,4 +33,4 @@ class BaseBadges(BaseMoodle):
             search=search,
             onlypublic=onlypublic,
         )
-        return BadgeResponse(**res)  # type: ignore
+        return self._tr(BadgeResponse, **res)

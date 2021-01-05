@@ -26,7 +26,7 @@ class BaseBackup(BaseMoodle):
             filename=filename,
             contextid=contextid,
         )
-        return TableRowData(**data)  # type: ignore
+        return self._tr(TableRowData, **data)
 
     def get_async_backup_links_restore(self, backupid: str,
                                        contextid: int) -> str:
