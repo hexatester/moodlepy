@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List, Optional, Union
+
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import (
     Assignments,
     Grades,
@@ -35,7 +35,7 @@ class BaseAssign(BaseMoodle):
             capabilities=capabilities,
             includenotenrolledcourses=includenotenrolledcourses,
         )
-        return from_dict(Assignments, res)
+        return Assignments(**res)  # type: ignore
 
     def get_grades(self,
                    assignmentids: List[int],
@@ -54,7 +54,7 @@ class BaseAssign(BaseMoodle):
             assignmentids=assignmentids,
             since=since,
         )
-        return from_dict(Grades, res)
+        return Grades(**res)  # type: ignore
 
     def list_participants(
             self,
@@ -92,7 +92,10 @@ class BaseAssign(BaseMoodle):
             includeenrolments=includeenrolments,
             tablesort=tablesort,
         )
-        return [from_dict(Participant, data) for data in res] if res else []
+        return [
+            Participant(**data)  # type: ignore
+            for data in res
+        ] if res else []
 
     def lock_submissions(self, assignmentid: int,
                          userids: List[int]) -> List[Warning]:
@@ -101,14 +104,14 @@ class BaseAssign(BaseMoodle):
             assignmentid=assignmentid,
             userids=userids,
         )
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [Warning(**data) for data in res] if res else []  # type: ignore
 
     def reveal_identities(self, assignmentid: int) -> List[Warning]:
         res = self.moodle.post(
             'mod_assign_reveal_identities',
             assignmentid=assignmentid,
         )
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [Warning(**data) for data in res] if res else []  # type: ignore
 
     def revert_submissions_to_draft(self, assignmentid: int,
                                     userids: List[int]) -> List[Warning]:
@@ -117,7 +120,7 @@ class BaseAssign(BaseMoodle):
             assignmentid=assignmentid,
             userids=userids,
         )
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [Warning(**data) for data in res] if res else []  # type: ignore
 
     def save_grade(
             self,
@@ -155,7 +158,7 @@ class BaseAssign(BaseMoodle):
         res = self.moodle.post('mod_assign_save_submission',
                                assignmentid=assignmentid,
                                plugindata=plugindata)
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [Warning(**data) for data in res] if res else []  # type: ignore
 
     def save_user_extensions(
             self, assignmentid: int, userids: List[int],
@@ -164,15 +167,17 @@ class BaseAssign(BaseMoodle):
                                assignmentid=assignmentid,
                                userids=userids,
                                dates=dates)
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [Warning(**data) for data in res] if res else []  # type: ignore
 
     def set_user_flags(self, assignmentid: int,
                        userflags: List[UserFlag]) -> List[UserFlag.Result]:
         res = self.moodle.post('mod_assign_set_user_flags',
                                assignmentid=assignmentid,
                                userflags=userflags)
-        return [from_dict(UserFlag.Result, data)
-                for data in res] if res else []
+        return [
+            UserFlag.Result(**data)  # type: ignore
+            for data in res
+        ] if res else []
 
     def submit_for_grading(self, assignmentid: int,
                            acceptsubmissionstatement: int) -> List[Warning]:
@@ -189,7 +194,7 @@ class BaseAssign(BaseMoodle):
             'mod_assign_submit_for_grading',
             assignmentid=assignmentid,
             acceptsubmissionstatement=acceptsubmissionstatement)
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [Warning(**data) for data in res] if res else []  # type: ignore
 
     def submit_grading_form(self, assignmentid: int, userid: int,
                             jsonformdata: str) -> List[Warning]:
@@ -204,24 +209,24 @@ class BaseAssign(BaseMoodle):
             List[Warning]: list of warnings
         """
         res = self.moodle.post('mod_assign_submit_grading_form')
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [Warning(**data) for data in res] if res else []  # type: ignore
 
     def unlock_submissions(self, assignmentid: int,
                            userids: int) -> List[Warning]:
         res = self.moodle.post('mod_assign_unlock_submissions')
-        return [from_dict(Warning, data) for data in res] if res else []
+        return [Warning(**data) for data in res] if res else []  # type: ignore
 
     def view_assign(self, assignid: int) -> View:
         res = self.moodle.post('mod_assign_view_assign', assignid=assignid)
-        return from_dict(View, res)
+        return View(**res)  # type: ignore
 
     def view_grading_table(self, assignid: int) -> View:
         res = self.moodle.post('mod_assign_view_grading_table')
-        return from_dict(View, res)
+        return View(**res)  # type: ignore
 
     def view_submission_status(self, assignid: int) -> View:
         res = self.moodle.post('mod_assign_view_submission_status')
-        return from_dict(View, res)
+        return View(**res)  # type: ignore
 
     def get_submissions(self):
         # TODO mod_assign_get_submissions
