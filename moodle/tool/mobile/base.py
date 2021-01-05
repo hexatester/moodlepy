@@ -1,7 +1,6 @@
 from typing import List, Optional
 
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import (
     Content,
     FunctionsResponses,
@@ -27,7 +26,7 @@ class BaseMobile(BaseMoodle):
             FunctionsResponses: Functions Response
         """
         res = self.moodle.post('tool_mobile_call_external_functions')
-        return from_dict(FunctionsResponses, res)
+        return FunctionsResponses(**res)  # type: ignore
 
     def get_autologin_key(self, privatetoken: str) -> Key:
         """Creates an auto-login key for the current user.
@@ -42,7 +41,7 @@ class BaseMobile(BaseMoodle):
         """
         res = self.moodle.post('tool_mobile_get_autologin_key',
                                privatetoken=privatetoken)
-        return from_dict(Key, res)
+        return Key(**res)  # type: ignore
 
     def get_config(self, section: Optional[str] = None) -> MobileConfig:
         """Returns a list of the site configurations, filtering by section.
@@ -54,7 +53,7 @@ class BaseMobile(BaseMoodle):
             MobileConfig: Returns a list of the site configurations, filtering by section.
         """
         res = self.moodle.get('tool_mobile_get_config', section=section or '')
-        return from_dict(MobileConfig, res)
+        return MobileConfig(**res)  # type: ignore
 
     def get_content(self,
                     component: str,
@@ -76,7 +75,7 @@ class BaseMobile(BaseMoodle):
             method=method,
             args=args,
         )
-        return from_dict(Content, res)
+        return Content(**res)  # type: ignore
 
     def get_plugins_supporting_mobile(self) -> List[MobilePlugin]:
         """Get a list of Moodle plugins supporting the mobile app.
@@ -85,8 +84,13 @@ class BaseMobile(BaseMoodle):
             List[MobilePlugin]: Returns a list of Moodle plugins supporting the mobile app.
         """
         res = self.moodle.get('tool_mobile_get_plugins_supporting_mobile')
-        return [from_dict(MobilePlugin, data)
-                for data in res['plugins']] if 'plugins' in res else []
+        results: List[MobilePlugin] = list()
+        if not res:
+            return results
+        plugins = res['plugins']
+        for plugin in plugins:
+            results.append(MobilePlugin(**plugin))  # type: ignore
+        return results
 
     def get_public_config(self) -> MobilePublicConfig:
         """Get a list of the site public settings, those not requiring authentication.
@@ -95,7 +99,7 @@ class BaseMobile(BaseMoodle):
             MobilePublicConfig: Returns a list of the site public settings, those not requiring authentication.
         """
         data = self.moodle.get('tool_mobile_get_public_config')
-        return from_dict(MobilePublicConfig, data)
+        return MobilePublicConfig(**data)  # type: ignore
 
     def get_tokens_for_qr_login(self, qrloginkey: str,
                                 userid: int) -> TokenPrivateToken:
@@ -113,11 +117,11 @@ class BaseMobile(BaseMoodle):
             qrloginkey=qrloginkey,
             userid=userid,
         )
-        return from_dict(TokenPrivateToken, data)
+        return TokenPrivateToken(**data)  # type: ignore
 
     def validate_subscription_key(self, key: str) -> ValidatedKey:
         data = self.moodle.post(
             'tool_mobile_validate_subscription_key',
             key=key,
         )
-        return from_dict(ValidatedKey, data)
+        return ValidatedKey(**data)  # type: ignore

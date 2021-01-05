@@ -1,6 +1,7 @@
-from dataclasses import dataclass, field
 from typing import List, Optional
+
 from moodle import ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -18,7 +19,7 @@ class Response:
 
 @dataclass
 class FunctionsResponses(ResponsesFactory[Response]):
-    responses: List[Response] = field(default_factory=list)
+    responses: List[Response] = fields(Response)
 
     @property
     def items(self) -> List[Response]:

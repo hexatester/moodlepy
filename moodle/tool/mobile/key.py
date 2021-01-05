@@ -1,6 +1,7 @@
-from dataclasses import dataclass, field
 from typing import List
+
 from moodle import MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -12,7 +13,7 @@ class Key:
     """
     key: str
     autologinurl: str
-    warnings: List[MoodleWarning] = field(default_factory=list)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     def __str__(self) -> str:
         return self.key

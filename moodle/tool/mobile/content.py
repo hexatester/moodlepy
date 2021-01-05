@@ -1,6 +1,8 @@
-from dataclasses import dataclass, field
+from attr import attrib
 from typing import List, Optional
+
 from moodle import BaseNameValue
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -10,8 +12,8 @@ class Restrict:
     params: users (List[int]): List of allowed users.
     params: courses (List[int]): List of allowed courses.
     """
-    users: List[int] = field(default_factory=list)
-    courses: List[int] = field(default_factory=list)
+    users: List[int] = attrib(factory=list)
+    courses: List[int] = attrib(factory=list)
 
 
 @dataclass
@@ -68,11 +70,11 @@ class Content:
     params: files (List[File]): Files in the content.
     params: restrict (List[Restrict]): Restrict this content to certain users or courses.
     """
-    templates: List[Template]
     javascript: str
-    otherdata: List[OtherData]
-    files: List[File]
-    restrict: List[Restrict]
+    templates: List[Template] = fields(Template)
+    otherdata: List[OtherData] = fields(OtherData)
+    files: List[File] = fields(File)
+    restrict: List[Restrict] = fields(Restrict)
 
     @dataclass
     class Args(BaseNameValue):
