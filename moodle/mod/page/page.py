@@ -1,8 +1,7 @@
 from typing import List, Optional
 
-from dataclasses import dataclass, field
-
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -85,8 +84,8 @@ class PagesResponse(ResponsesFactory[Page]):
         pages (List[Page]): list of Page
         warnings (List[MoodleWarning]): list of MoodleWarning
     """
-    pages: List[Page] = field(default_factory=list)
-    warnings: List[MoodleWarning] = field(default_factory=list)
+    pages: List[Page] = fields(Page)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[Page]:

@@ -2,7 +2,6 @@ from typing import List
 
 from moodle import BaseMoodle
 from moodle.base.general import GeneralStatus
-from moodle.utils.helper import from_dict
 from .page import PagesResponse
 
 
@@ -20,7 +19,7 @@ class BasePage(BaseMoodle):
             'mod_page_get_pages_by_courses',
             courseids=courseids,
         )
-        return from_dict(PagesResponse, data)
+        return PagesResponse(**data)  # type: ignore
 
     def view_page(self, pageid: int) -> GeneralStatus:
         """Simulate the view.php web interface page: trigger events, completion, etc...
@@ -35,4 +34,4 @@ class BasePage(BaseMoodle):
             'mod_page_view_page',
             pageid=pageid,
         )
-        return from_dict(GeneralStatus, data)
+        return GeneralStatus(**data)  # type: ignore
