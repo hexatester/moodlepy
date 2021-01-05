@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List, Optional, Union
+
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import Pages, Lessons, OneLesson, View
 
 
@@ -55,7 +55,7 @@ class BaseLesson(BaseMoodle):
             lessonid=lessonid,
             password=password,
         )
-        return from_dict(OneLesson, res)
+        return OneLesson(**res)  # type: ignore
 
     def get_lesson_access_information(self, lessonid: int):
         res = self.moodle.post(
@@ -79,7 +79,7 @@ class BaseLesson(BaseMoodle):
             'mod_lesson_get_lessons_by_courses',
             courseids=courseids or [],
         )
-        return from_dict(Lessons, res)
+        return Lessons(**res)  # type: ignore
 
     def get_page_data(self,
                       lessonid: int,
@@ -112,7 +112,7 @@ class BaseLesson(BaseMoodle):
             lessonid=lessonid,
             password=password,
         )
-        return from_dict(Pages, res)
+        return Pages(**res)  # type: ignore
 
     def get_pages_possible_jumps(self, lessonid: int):
         res = self.moodle.post(
@@ -219,4 +219,4 @@ class BaseLesson(BaseMoodle):
             lessonid=lessonid,
             password=password,
         )
-        return from_dict(View, res)
+        return View(**res)  # type: ignore

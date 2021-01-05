@@ -1,6 +1,8 @@
-from dataclasses import dataclass, field
+from attr import attrib
 from typing import List, Optional
+
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -57,8 +59,8 @@ class LessonPage:
     page: Page
     filescount: int
     filessizetotal: int
-    answerids: List[int] = field(default_factory=list)
-    jumps: List[int] = field(default_factory=list)
+    answerids: List[int] = attrib(factory=list)
+    jumps: List[int] = attrib(factory=list)
 
 
 @dataclass
@@ -68,5 +70,5 @@ class Pages(ResponsesFactory[LessonPage]):
         pages (List[LessonPage]): LessonPage fields
         warnings (List[Warning]): list of warnings
     """
-    pages: List[LessonPage]
-    warnings: List[MoodleWarning]
+    pages: List[LessonPage] = fields(LessonPage)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
