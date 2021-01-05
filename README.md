@@ -5,6 +5,7 @@
 [![Tests](https://github.com/hexatester/moodlepy/workflows/Tests/badge.svg)](https://github.com/hexatester/moodlepy/actions?query=workflow%3ATests)
 [![codecov](https://codecov.io/gh/hexatester/moodlepy/branch/master/graph/badge.svg?token=EecpLLbyns)](https://codecov.io/gh/hexatester/moodlepy)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![Mypy](https://img.shields.io/badge/Mypy-enabled-brightgreen)](https://github.com/python/mypy)
 
 Python wrapper for moodle web service.
 
