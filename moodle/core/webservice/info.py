@@ -1,5 +1,5 @@
-from dataclasses import dataclass
-from typing import List
+from moodle.attr import dataclass, fields
+from typing import List, Optional
 from .advanced_feature import AdvancedFeatures
 from .function import Function
 
@@ -15,18 +15,20 @@ class SiteInfo:
     userid: int
     siteurl: str
     userpictureurl: str
-    functions: List[Function]
     downloadfiles: int
     uploadfiles: int
     release: str
     version: str
     mobilecssurl: str
-    advancedfeatures: List[AdvancedFeatures]
     usercanmanageownfiles: bool
     userquota: int
     usermaxuploadfilesize: int
     userhomepage: int
+    userprivateaccesskey: Optional[str]
     siteid: int
     sitecalendartype: str
     usercalendartype: str
+    userissiteadmin: Optional[bool]
     theme: str
+    functions: List[Function] = fields(Function)
+    advancedfeatures: List[AdvancedFeatures] = fields(AdvancedFeatures)
