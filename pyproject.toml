@@ -5,10 +5,23 @@ description = "Python wrapper for moodle web service."
 authors = ["hexatester <habibrohman@protonmail.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/hexatester/moodlepy"
+homepage = "https://hexatester.github.io/moodlepy/"
 repository = "https://github.com/hexatester/moodlepy"
 packages = [
     { include = "moodle" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Education :: LMS",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
 ]
 include = [
     "LICENSE",
