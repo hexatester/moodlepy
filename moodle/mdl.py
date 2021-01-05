@@ -10,7 +10,7 @@ from moodle import MoodleException
 from moodle import MoodleWarning
 
 from moodle.exception import EmptyResponseException, InvalidCredentialException, NetworkMoodleException
-from moodle.utils.helper import make_params, from_dict, to_dict
+from moodle.utils.helper import make_params, to_dict
 
 T = TypeVar('T', bound='Mdl')
 
@@ -44,9 +44,11 @@ class Mdl:
              **kwargs: Any) -> Any:
         params = make_params(self.token, wsfunction, moodlewsrestformat)
         try:
-            res = self.session.post(self.url,
-                                    data=to_dict(kwargs),
-                                    params=params)
+            res = self.session.post(
+                self.url,
+                data=to_dict(kwargs),
+                params=params,
+            )
         except RequestException as e:
             raise NetworkMoodleException(e)
         if not res.ok or not res.text:
@@ -59,10 +61,10 @@ class Mdl:
     def process_response(self, data: Any) -> Any:
         if type(data) == dict:
             if 'warnings' in data and data['warnings']:
-                warning = from_dict(MoodleWarning, data['warnings'])
+                warning = MoodleWarning(**data['warnings'])  # type: ignore
                 self.logger.warning(str(warning))
             if 'exception' in data or 'errorcode' in data:
-                raise from_dict(MoodleException, data)
+                raise MoodleException(**data)  # type: ignore
         return data
 
     @classmethod

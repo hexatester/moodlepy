@@ -1,10 +1,9 @@
-from dacite import from_dict as dacite_from_dict
-from dacite.data import Data
+from attr import has
 from dataclasses import is_dataclass, asdict
 from datetime import datetime
-from typing import Type, TypeVar, Any
+from typing import TypeVar, Any
 
-from moodle.config import DACITE_CONFIG
+from moodle.attr import asdict as asdict_attr
 
 T = TypeVar("T")
 
@@ -17,10 +16,6 @@ def make_params(wstoken: str,
         'wsfunction': wsfunction,
         'moodlewsrestformat': moodlewsrestformat
     }
-
-
-def from_dict(data_class: Type[T], data: Data) -> T:
-    return dacite_from_dict(data_class, data, config=DACITE_CONFIG)
 
 
 def to_dict(data: Any, name: str = '') -> Any:
@@ -49,6 +44,8 @@ def to_dict(data: Any, name: str = '') -> Any:
             else:
                 out[key] = value
         return out
+    if has(data):
+        return asdict_attr(data)
     if is_dataclass(data):
         return asdict(data)
     if isinstance(data, datetime):
