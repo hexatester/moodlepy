@@ -1,5 +1,4 @@
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import ActivityCompletionStatus, CourseCompletionStatus, StatusCompletion
 
 
@@ -20,7 +19,7 @@ class BaseCompletion(BaseMoodle):
             courseid=courseid,
             userid=userid,
         )
-        return from_dict(ActivityCompletionStatus, res)
+        return ActivityCompletionStatus(**res)  # type: ignore
 
     def get_course_completion_status(self, courseid: int,
                                      userid: int) -> CourseCompletionStatus:
@@ -38,7 +37,7 @@ class BaseCompletion(BaseMoodle):
             courseid=courseid,
             userid=userid,
         )
-        return from_dict(CourseCompletionStatus, res)
+        return CourseCompletionStatus(**res)  # type: ignore
 
     def mark_course_self_completed(self, courseid: int) -> StatusCompletion:
         """Update the course completion status for the current user (if course self-completion is enabled).
@@ -51,7 +50,7 @@ class BaseCompletion(BaseMoodle):
         """
         res = self.moodle.post('core_completion_mark_course_self_completed',
                                courseid=courseid)
-        return from_dict(StatusCompletion, res)
+        return StatusCompletion(**res)  # type: ignore
 
     def update_activity_completion_status_manually(
             self, cmid: int, completed: int) -> StatusCompletion:
@@ -69,4 +68,4 @@ class BaseCompletion(BaseMoodle):
             cmid=cmid,
             completed=completed,
         )
-        return from_dict(StatusCompletion, res)
+        return StatusCompletion(**res)  # type: ignore
