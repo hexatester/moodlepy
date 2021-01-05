@@ -1,6 +1,7 @@
-from dataclasses import dataclass, field
 from typing import List, Optional
+
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -40,7 +41,7 @@ class BlockContent:
     content: str
     contentformat: int
     footer: Optional[str]
-    files: List[BlockFile] = field(default_factory=list)
+    files: List[BlockFile] = fields(BlockFile)
 
     def __str__(self) -> str:
         return self.title
@@ -80,8 +81,8 @@ class Blocks(ResponsesFactory[Block]):
     params: blocks (List[Block]): List of blocks in the course.
     params: warnings (List[Warning]): warning
     """
-    blocks: List[Block] = field(default_factory=list)
-    warnings: List[MoodleWarning] = field(default_factory=list)
+    blocks: List[Block] = fields(Block)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[Block]:
