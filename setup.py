@@ -41,7 +41,7 @@ with codecs.open('README.md', 'r', 'utf-8') as fd:
             'License :: OSI Approved :: MIT License',
             'Operating System :: OS Independent',
             'Topic :: Software Development :: Libraries :: Python Modules',
-            'Topic :: Education :: LMS',
+            'Topic :: Education',
             'Programming Language :: Python',
             'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7',
