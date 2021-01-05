@@ -29,7 +29,7 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.6"
 requests = "^2.24.0"
 attrs = "^20.3.0"
 
