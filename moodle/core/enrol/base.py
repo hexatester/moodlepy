@@ -5,7 +5,6 @@ from moodle import BaseMoodle
 from moodle.core.course import CourseCapability
 from moodle.core.user import User
 from moodle.base.general import GeneralNameValue
-from moodle.utils.helper import from_dict
 from . import EditUserEnrolmentResponse, EnrolledUser, CapabilityEnrolledUser, EnrolmentMethod
 
 
@@ -37,7 +36,7 @@ class BaseEnrol(BaseMoodle):
             timestart=timestart,
             timeend=timeend,
         )
-        return from_dict(EditUserEnrolmentResponse, data)
+        return EditUserEnrolmentResponse(**data)  # type: ignore
 
     def get_course_enrolment_methods(self,
                                      courseid: int) -> List[EnrolmentMethod]:
@@ -53,7 +52,7 @@ class BaseEnrol(BaseMoodle):
             'core_enrol_get_course_enrolment_methods',
             courseid=courseid,
         )
-        return [from_dict(EnrolmentMethod, data) for data in datas]
+        return [EnrolmentMethod(**data) for data in datas]  # type: ignore
 
     def get_enrolled_users(
             self, courseid: int,
@@ -80,7 +79,7 @@ class BaseEnrol(BaseMoodle):
             courseid=courseid,
             options=options,
         )
-        return [from_dict(EnrolledUser, dat) for dat in data]
+        return [EnrolledUser(**dat) for dat in data]  # type: ignore
 
     def get_enrolled_users_with_capability(
             self, coursecapabilities: List[CourseCapability],
@@ -104,7 +103,7 @@ class BaseEnrol(BaseMoodle):
             coursecapabilities=coursecapabilities,
             options=options,
         )
-        return [from_dict(CapabilityEnrolledUser, dat) for dat in data]
+        return [CapabilityEnrolledUser(**dat) for dat in data]  # type: ignore
 
     def get_potential_users(self, courseid: int, enrolid: int, search: str,
                             searchanywhere: int, page: int,
@@ -131,7 +130,7 @@ class BaseEnrol(BaseMoodle):
             page=page,
             perpage=perpage,
         )
-        return [from_dict(User, dat) for dat in data]
+        return [User(**dat) for dat in data]  # type: ignore
 
     def get_users_courses(self):
         data = self.moodle.post('core_enrol_get_users_courses')

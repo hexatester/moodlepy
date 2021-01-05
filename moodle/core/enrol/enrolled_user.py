@@ -1,6 +1,6 @@
-from dataclasses import dataclass, field
 from typing import List
 
+from moodle.attr import dataclass, fields
 from moodle.core.user import User
 
 
@@ -93,6 +93,6 @@ class EnrolledUser(User):
         roles (List[Role]): user roles
         enrolledcourses (List[EnrolledCourse]): Courses where the user is enrolled - limited by which courses the user is able to see
     """
-    groups: List[Group] = field(default_factory=list)
-    roles: List[Role] = field(default_factory=list)
-    enrolledcourses: List[EnrolledCourse] = field(default_factory=list)
+    groups: List[Group] = fields(Group)
+    roles: List[Role] = fields(Role)
+    enrolledcourses: List[EnrolledCourse] = fields(EnrolledCourse)
