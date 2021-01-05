@@ -1,6 +1,5 @@
 from typing import Optional
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import BadgeResponse
 
 
@@ -34,4 +33,4 @@ class BaseBadges(BaseMoodle):
             search=search,
             onlypublic=onlypublic,
         )
-        return from_dict(BadgeResponse, res)
+        return BadgeResponse(**res)  # type: ignore

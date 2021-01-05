@@ -1,5 +1,6 @@
-from dataclasses import dataclass
 from typing import Optional, List
+
+from moodle.attr import dataclass, fields
 from moodle import MoodleWarning, ResponsesFactory
 
 
@@ -139,8 +140,8 @@ class Badge:
     imagecaption: Optional[str]
     badgeurl: str
     endorsement: Optional[BagdeEndorsement]
-    alignment: List[BagdeAlignment]
-    relatedbadges: List[RelatedBadge]
+    alignment: List[BagdeAlignment] = fields(BagdeAlignment)
+    relatedbadges: List[RelatedBadge] = fields(RelatedBadge)
 
 
 @dataclass
@@ -150,8 +151,8 @@ class BadgeResponse(ResponsesFactory[Badge]):
         badges (List[Badge]): list of Badge
         warnings (List[Warning]): list of warnings
     """
-    badges: List[Badge]
-    warnings: List[MoodleWarning]
+    badges: List[Badge] = fields(Badge)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[Badge]:
