@@ -2,7 +2,6 @@ from datetime import datetime
 from typing import List, Optional, Union
 
 from moodle import BaseMoodle, MoodleWarning
-from moodle.utils.helper import from_dict
 from . import ContactRequest
 
 
@@ -24,7 +23,10 @@ class BaseMessage(BaseMoodle):
             userids=userids,
             userid=userid,
         )
-        return [from_dict(MoodleWarning, data) for data in res] if res else []
+        return [
+            MoodleWarning(**data)  # type: ignore
+            for data in res
+        ] if res else []
 
     def block_user(self, userid: int,
                    blockeduserid: int) -> List[MoodleWarning]:
@@ -42,7 +44,10 @@ class BaseMessage(BaseMoodle):
             userid=userid,
             blockeduserid=blockeduserid,
         )
-        return [from_dict(MoodleWarning, data) for data in res] if res else []
+        return [
+            MoodleWarning(**data)  # type: ignore
+            for data in res
+        ] if res else []
 
     def confirm_contact_request(self, userid: int,
                                 requesteduserid: int) -> List[MoodleWarning]:
@@ -60,7 +65,10 @@ class BaseMessage(BaseMoodle):
             userid=userid,
             requesteduserid=requesteduserid,
         )
-        return [from_dict(MoodleWarning, data) for data in res] if res else []
+        return [
+            MoodleWarning(**data)  # type: ignore
+            for data in res
+        ] if res else []
 
     def create_contact_request(self, userid: int,
                                requesteduserid: int) -> ContactRequest:
@@ -78,7 +86,7 @@ class BaseMessage(BaseMoodle):
             userid=userid,
             requesteduserid=requesteduserid,
         )
-        return from_dict(ContactRequest, res)
+        return ContactRequest(**res)  # type: ignore
 
     def create_contacts(self,
                         userids: List[int],
@@ -97,7 +105,10 @@ class BaseMessage(BaseMoodle):
             userids=userids,
             userid=userid,
         )
-        return [from_dict(MoodleWarning, data) for data in res] if res else []
+        return [
+            MoodleWarning(**data)  # type: ignore
+            for data in res
+        ] if res else []
 
     def data_for_messagearea_contacts(self,
                                       userid: int,
