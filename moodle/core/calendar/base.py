@@ -1,16 +1,24 @@
 from datetime import datetime
 from typing import List, Optional, Union
+
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
-from . import (AccessInformation, AllowedEventTypes, Event, Events,
-               CourseEvents, ActionEventCourses, DayView, MonthlyView)
+from . import (
+    AccessInformation,
+    AllowedEventTypes,
+    Event,
+    Events,
+    CourseEvents,
+    ActionEventCourses,
+    DayView,
+    MonthlyView,
+)
 
 
 class BaseCalendar(BaseMoodle):
     def create_calendar_events(self, events: List[Events.Create]) -> Events:
         res = self.moodle.get('core_calendar_create_calendar_events',
                               events=events)
-        return from_dict(Events, res)
+        return Events(**res)  # type: ignore
 
     def delete_calendar_events(self, events: List[Events.Delete]) -> None:
         self.moodle.get('core_calendar_delete_calendar_events')
@@ -30,7 +38,7 @@ class BaseCalendar(BaseMoodle):
                               timesortto=timesortto,
                               aftereventid=aftereventid,
                               limitnum=limitnum)
-        return from_dict(CourseEvents, res)
+        return CourseEvents(**res)  # type: ignore
 
     def get_action_events_by_courses(self,
                                      courseids: List[int],
@@ -43,7 +51,7 @@ class BaseCalendar(BaseMoodle):
                               courseids=courseids,
                               timesortfrom=timesortfrom,
                               limitnum=limitnum)
-        return from_dict(ActionEventCourses, res)
+        return ActionEventCourses(**res)  # type: ignore
 
     def get_action_events_by_timesort(
             self,
@@ -62,19 +70,19 @@ class BaseCalendar(BaseMoodle):
             limittononsuspendedevents=limittononsuspendedevents,
             userid=userid,
         )
-        return from_dict(CourseEvents, res)
+        return CourseEvents(**res)  # type: ignore
 
     def get_allowed_event_types(self, courseid: int = 0) -> AllowedEventTypes:
         res = self.moodle.get('core_calendar_get_allowed_event_types',
                               courseid=courseid)
-        return from_dict(AllowedEventTypes, res)
+        return AllowedEventTypes(**res)  # type: ignore
 
     def get_calendar_access_information(self,
                                         courseid: int = 0
                                         ) -> AccessInformation:
         res = self.moodle.get('core_calendar_get_calendar_access_information',
                               courseid=courseid)
-        return from_dict(AccessInformation, res)
+        return AccessInformation(**res)  # type: ignore
 
     def get_calendar_day_view(self,
                               year: int,
@@ -90,12 +98,12 @@ class BaseCalendar(BaseMoodle):
             courseid=courseid,
             categoryid=categoryid,
         )
-        return from_dict(DayView, res)
+        return DayView(**res)  # type: ignore
 
     def get_calendar_event_by_id(self, eventid: int) -> CourseEvents:
         res = self.moodle.get('core_calendar_get_calendar_event_by_id',
                               eventid=eventid)
-        return from_dict(CourseEvents, res)
+        return CourseEvents(**res)  # type: ignore
 
     def get_calendar_events(
             self,
@@ -104,7 +112,7 @@ class BaseCalendar(BaseMoodle):
         res = self.moodle.get('core_calendar_get_calendar_events',
                               events=events if events else {},
                               options=options if options else {})
-        return from_dict(Events, res)
+        return Events(**res)  # type: ignore
 
     def get_calendar_monthly_view(self,
                                   year: int,
@@ -114,14 +122,14 @@ class BaseCalendar(BaseMoodle):
                                   includenavigation: int = 1,
                                   mini: Optional[int] = None) -> MonthlyView:
         res = self.moodle.get('core_calendar_get_calendar_monthly_view')
-        return from_dict(MonthlyView, res)
+        return MonthlyView(**res)  # type: ignore
 
     def get_calendar_upcoming_view(
             self,
             courseid: int,
             categoryid: Optional[int] = None) -> CourseEvents:
         res = self.moodle.get('core_calendar_get_calendar_upcoming_view')
-        return from_dict(CourseEvents, res)
+        return CourseEvents(**res)  # type: ignore
 
     def get_timestamps(self):
         res = self.moodle.get('core_calendar_get_timestamps')
@@ -138,7 +146,7 @@ class BaseCalendar(BaseMoodle):
             CourseEvents.EventForm: Event form
         """
         res = self.moodle.get('core_calendar_submit_create_update_form')
-        return from_dict(CourseEvents.EventForm, res)
+        return CourseEvents.EventForm(**res)  # type: ignore
 
     def update_event_start_day(self, eventid: int,
                                daytimestamp: Union[datetime, int]) -> Event:
@@ -154,4 +162,4 @@ class BaseCalendar(BaseMoodle):
         res = self.moodle.get('core_calendar_update_event_start_day',
                               eventid=eventid,
                               daytimestamp=daytimestamp)
-        return from_dict(Event, res['event'])
+        return Event(**res['event'])  # type: ignore

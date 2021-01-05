@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from moodle.attr import dataclass
 from typing import List, Optional
 from . import DateView, Period, CourseEvent
 
