@@ -1,5 +1,4 @@
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import ReloadTemplate
 
 
@@ -85,4 +84,4 @@ class BaseCustomfield(BaseMoodle):
             area=area,
             itemid=itemid,
         )
-        return from_dict(ReloadTemplate, data)
+        return ReloadTemplate(**data)  # type: ignore
