@@ -1,9 +1,10 @@
 # moodlepy
 
-[![moodlepy - PyPi](https://img.shields.io/pypi/v/moodlepy)](https://pypi.org/project/moodlepy/)
+[![PyPi Package Version](https://img.shields.io/pypi/v/moodlepy)](https://pypi.org/project/moodlepy/)
+[![Supported Python versions](https://img.shields.io/pypi/pyversions/moodlepy](https://pypi.org/project/moodlepy/)
 [![LICENSE](https://img.shields.io/github/license/hexatester/moodlepy)](https://github.com/hexatester/moodlepy/blob/master/LICENSE)
 [![Tests](https://github.com/hexatester/moodlepy/workflows/Tests/badge.svg)](https://github.com/hexatester/moodlepy/actions?query=workflow%3ATests)
-[![codecov](https://codecov.io/gh/hexatester/moodlepy/branch/master/graph/badge.svg?token=EecpLLbyns)](https://codecov.io/gh/hexatester/moodlepy)
+[![codecov](https://codecov.io/gh/hexatester/moodlepy/branch/master/graph/badge.svg)](https://codecov.io/gh/hexatester/moodlepy)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Mypy](https://img.shields.io/badge/Mypy-enabled-brightgreen)](https://github.com/python/mypy)
 
@@ -11,7 +12,7 @@ Python wrapper for moodle web service.
 
 ## Introduction
 
-This library provide a pure Python interface for [Moodle Web Service](https://docs.moodle.org/dev/Web_services). It's compatible with Python versions 3.7+
+This library provide a pure Python interface for [Moodle Web Service](https://docs.moodle.org/dev/Web_services). It's compatible with Python versions 3.6+
 
 ## Installing
 
