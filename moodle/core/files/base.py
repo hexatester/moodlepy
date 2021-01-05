@@ -1,7 +1,6 @@
 from typing import List
 
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from .filepath_filename import FilepathFilename
 from .parent_paths import ParentPaths
 
@@ -19,7 +18,7 @@ class BaseFiles(BaseMoodle):
             ParentPaths: Path(s) to parent directory of the deleted file(s)
         """
         data = self.moodle.post('core_files_delete_draft_files')
-        return from_dict(ParentPaths, data)
+        return ParentPaths(**data)  # type: ignore
 
     def get_files(self,
                   contextid: int,
