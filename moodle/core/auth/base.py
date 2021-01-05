@@ -1,6 +1,5 @@
 from moodle import BaseMoodle
 from moodle.base.general import GeneralSuccess
-from moodle.utils.helper import from_dict
 from . import RequestPasswordResetResponse
 
 
@@ -20,7 +19,7 @@ class BaseAuth(BaseMoodle):
             username=username,
             secret=secret,
         )
-        return from_dict(GeneralSuccess, data)
+        return GeneralSuccess(**data)  # type: ignore
 
     def is_age_digital_consent_verification_enabled(self) -> GeneralSuccess:
         """Checks if age digital consent verification is enabled.
@@ -30,7 +29,7 @@ class BaseAuth(BaseMoodle):
         """
         data = self.moodle.post(
             'core_auth_is_age_digital_consent_verification_enabled')
-        return from_dict(GeneralSuccess, data)
+        return GeneralSuccess(**data)  # type: ignore
 
     def is_minor(self, age: int, country: str) -> GeneralSuccess:
         """Requests a check if a user is a digital minor.
@@ -47,7 +46,7 @@ class BaseAuth(BaseMoodle):
             age=age,
             country=country,
         )
-        return from_dict(GeneralSuccess, data)
+        return GeneralSuccess(**data)  # type: ignore
 
     def request_password_reset(
             self,
@@ -67,7 +66,7 @@ class BaseAuth(BaseMoodle):
             username=username,
             email=email,
         )
-        return from_dict(RequestPasswordResetResponse, data)
+        return RequestPasswordResetResponse(**data)  # type: ignore
 
     def resend_confirmation_email(self,
                                   username: str,
@@ -79,4 +78,4 @@ class BaseAuth(BaseMoodle):
             password=password,
             redirect=redirect,
         )
-        return from_dict(GeneralSuccess, data)
+        return GeneralSuccess(**data)  # type: ignore
