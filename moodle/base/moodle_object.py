@@ -1,4 +1,3 @@
-from __future__ import annotations
 from typing import Optional, Type, TypeVar, TYPE_CHECKING
 if TYPE_CHECKING:
     from moodle import Moodle
@@ -14,14 +13,14 @@ class MoodleObject(object):
             setattr(self, key, value)
 
     def __post_init__(self):
-        self._moodle: Optional[Moodle] = None
+        self._moodle: Optional['Moodle'] = None
 
     @property
-    def moodle(self) -> Optional[Moodle]:
+    def moodle(self) -> Optional['Moodle']:
         return self._moodle
 
     @classmethod
-    def from_data(cls: Type[T], data: dict, moodle: Moodle) -> T:
+    def from_data(cls: Type[T], data: dict, moodle: 'Moodle') -> T:
         self = cls(**data)  # type: ignore
         setattr(self, '_moodle', moodle)
         return self

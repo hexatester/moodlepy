@@ -1,4 +1,3 @@
-from __future__ import annotations
 from moodle.attr import dataclass
 from typing import Optional, List
 from moodle import ResponsesFactory

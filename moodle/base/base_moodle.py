@@ -1,4 +1,3 @@
-from __future__ import annotations
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from moodle import Moodle
@@ -13,7 +12,7 @@ class BaseMoodle(object):
         pass
 
     @property
-    def moodle(self) -> Moodle:
+    def moodle(self) -> 'Moodle':
         return self._moodle
 
     @staticmethod

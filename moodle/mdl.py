@@ -1,9 +1,8 @@
-from __future__ import annotations
 import logging
 import requests
 from requests import Session
 from requests.exceptions import RequestException
-from typing import Any, Dict, Type, TypeVar
+from typing import Any, Dict
 
 from moodle import __version__
 from moodle import MoodleException
@@ -11,8 +10,6 @@ from moodle import MoodleWarning
 
 from moodle.exception import EmptyResponseException, InvalidCredentialException, NetworkMoodleException
 from moodle.utils.helper import make_params, to_dict
-
-T = TypeVar('T', bound='Mdl')
 
 
 class Mdl:
@@ -68,7 +65,7 @@ class Mdl:
         return data
 
     @classmethod
-    def login(cls: Type[T],
+    def login(cls,
               domain: str,
               username: str,
               password: str,

@@ -1,4 +1,3 @@
-from __future__ import annotations
 from moodle import BaseMoodle
 from . import SiteInfo
 
