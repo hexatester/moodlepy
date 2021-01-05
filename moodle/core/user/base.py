@@ -1,6 +1,6 @@
 from typing import List, Optional
+
 from moodle import BaseMoodle, MoodleWarning
-from moodle.utils.helper import from_dict
 from . import (
     AgreeSitePolicyResponse,
     Criteria,
@@ -43,7 +43,7 @@ class BaseUser(BaseMoodle):
         if not data:
             return results
         for dat in data:
-            results.append([from_dict(MoodleWarning, da) for da in dat])
+            results.append([MoodleWarning(**da) for da in dat])  # type: ignore
         return results
 
     def add_user_private_files(self, draftid: int):
@@ -68,7 +68,7 @@ class BaseUser(BaseMoodle):
             AgreeSitePolicyResponse: Response
         """
         data = self.moodle.post('core_user_agree_site_policy')
-        return from_dict(AgreeSitePolicyResponse, data)
+        return AgreeSitePolicyResponse(**data)  # type: ignore
 
     def create_users(self,
                      users: List[CreateUser]) -> List[CreateUser.Response]:
@@ -84,7 +84,7 @@ class BaseUser(BaseMoodle):
             'core_user_create_users',
             users=users,
         )
-        return [from_dict(CreateUser.Response, dat) for dat in data]
+        return [CreateUser.Response(**dat) for dat in data]  # type: ignore
 
     def delete_users(self, userids: List[int]) -> None:
         """Delete users.
@@ -115,7 +115,7 @@ class BaseUser(BaseMoodle):
             'core_user_get_course_user_profiles',
             userlist=userlist,
         )
-        return [from_dict(UserProfile, dat) for dat in data]
+        return [UserProfile(**dat) for dat in data]  # type: ignore
 
     def get_private_files_info(self):
         data = self.moodle.post('core_user_get_private_files_info')
@@ -142,7 +142,7 @@ class BaseUser(BaseMoodle):
             'core_user_get_users',
             criteria=criteria,
         )
-        return from_dict(GetUsersResponse, data)
+        return GetUsersResponse(**data)  # type: ignore
 
     def get_users_by_field(self):
         data = self.moodle.post('core_user_get_users_by_field')

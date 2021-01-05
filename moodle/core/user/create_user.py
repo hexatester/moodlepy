@@ -1,5 +1,6 @@
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from moodle.attr import dataclass, fields
 from . import UserCustomField, UserPreference
 
 
@@ -75,10 +76,10 @@ class CreateUser:
     address: Optional[str]
     theme: Optional[str]
     mailformat: Optional[int]
-    lang: str = field(default='en')
-    calendartype: str = field(default='gregorian')
-    customfields: List[UserCustomField] = field(default_factory=list)
-    preferences: List[UserPreference] = field(default_factory=list)
+    lang: str = 'en'
+    calendartype: str = 'gregorian'
+    customfields: List[UserCustomField] = fields(UserCustomField)
+    preferences: List[UserPreference] = fields(UserPreference)
 
     @dataclass
     class Response:

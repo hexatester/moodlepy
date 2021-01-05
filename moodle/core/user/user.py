@@ -1,6 +1,6 @@
-from dataclasses import dataclass, field
 from typing import List, Optional
 
+from moodle.attr import dataclass, fields
 from . import UserCustomField, UserPreference
 
 
@@ -82,5 +82,5 @@ class User:
     country: Optional[str]
     profileimageurlsmall: str
     profileimageurl: str
-    customfields: List[UserCustomField] = field(default_factory=list)
-    preferences: List[UserPreference] = field(default_factory=list)
+    customfields: List[UserCustomField] = fields(UserCustomField)
+    preferences: List[UserPreference] = fields(UserPreference)
