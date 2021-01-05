@@ -1,5 +1,4 @@
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import InstanceInfo
 from .enrol_user_response import EnrolUserResponse
 
@@ -25,7 +24,7 @@ class BaseSelf(BaseMoodle):
             password=password,
             instanceid=instanceid,
         )
-        return from_dict(EnrolUserResponse, data)
+        return EnrolUserResponse(**data)  # type: ignore
 
     def get_instance_info(self, instanceid: int) -> InstanceInfo:
         """self enrolment instance information.
@@ -40,4 +39,4 @@ class BaseSelf(BaseMoodle):
             'enrol_self_get_instance_info',
             instanceid=instanceid,
         )
-        return from_dict(InstanceInfo, data)
+        return InstanceInfo(**data)  # type: ignore
