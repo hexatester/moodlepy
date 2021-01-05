@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from moodle.attr import dataclass
 from moodle import MoodleWarning
 from typing import List
 

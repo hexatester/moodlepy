@@ -1,6 +1,5 @@
 from typing import List, Optional
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from moodle.utils.typing import Array
 from . import SignupSetting, SignupUserResponse, UserCustomField
 
@@ -13,7 +12,7 @@ class BaseEmail(BaseMoodle):
             SignupSetting: Signup required settings and profile fields
         """
         data = self.moodle.get('auth_email_get_signup_setting')
-        return from_dict(SignupSetting, data)
+        return SignupSetting(**data)  # type: ignore
 
     def signup_user(self,
                     username: str,
@@ -63,4 +62,4 @@ class BaseEmail(BaseMoodle):
             customprofilefields=customprofilefields,
             redirect=redirect,
         )
-        return from_dict(SignupUserResponse, data)
+        return SignupUserResponse(**data)  # type: ignore
