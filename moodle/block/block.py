@@ -1,7 +1,6 @@
 from typing import List
 
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import RecentlyAccessedItem, StarredCourse
 
 
@@ -21,7 +20,7 @@ class Block(BaseMoodle):
             'block_recentlyaccesseditems_get_recent_items',
             limit=limit,
         )
-        return [from_dict(RecentlyAccessedItem, dat) for dat in data]
+        return [RecentlyAccessedItem(**dat) for dat in data]  # type: ignore
 
     def starredcourses_get_starred_courses(self,
                                            limit: int = 0,
@@ -41,4 +40,4 @@ class Block(BaseMoodle):
             limit=limit,
             offset=offset,
         )
-        return [from_dict(StarredCourse, dat) for dat in data]
+        return [StarredCourse(**dat) for dat in data]  # type: ignore
