@@ -1,12 +1,14 @@
 from datetime import datetime
-from dataclasses import dataclass, field
 from typing import List, Optional
+
 from moodle import MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
 class Outcome:
     """Outcome information
+
     Args:
         id (str): Outcome id
         name (str): Outcome full name
@@ -20,6 +22,7 @@ class Outcome:
 @dataclass
 class AdvancedGrading:
     """Advanced Grading
+
     Args:
         area (str):Gradable area name
         method (str):Grading method
@@ -31,6 +34,7 @@ class AdvancedGrading:
 @dataclass
 class Cm:
     """Course Module
+
     Args:
         id (int): The course module id
         course (int): The course id
@@ -89,8 +93,8 @@ class Cm:
     scale: Optional[str]
     gradepass: Optional[str]
     gradecat: Optional[int]
-    advancedgrading: List[AdvancedGrading] = field(default_factory=list)
-    outcomes: List[Outcome] = field(default_factory=list)
+    advancedgrading: List[AdvancedGrading] = fields(AdvancedGrading)
+    outcomes: List[Outcome] = fields(Outcome)
 
     def __str__(self) -> str:
         return self.name

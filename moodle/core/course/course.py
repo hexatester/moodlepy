@@ -1,7 +1,8 @@
 from datetime import datetime
-from dataclasses import dataclass, field
 from typing import List, Optional, Union
+
 from moodle import ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -52,7 +53,6 @@ class Course:
         maxbytes (Optional[int]): largest size of file that can be uploaded into the course
         showreports (Optional[int]): are activity report shown (yes = 1, no =0)
         visible (Optional[int]): 1: available to student, 0:not available
-        hiddensections (Optional[int]): (deprecated, use courseformatoptions) How the hidden sections in the course are displayed to students
         groupmode (Optional[int]): no group, separate, visible
         groupmodeforce (Optional[int]): 1: yes, 0: no
         defaultgroupingid (Optional[int]): default grouping id
@@ -62,6 +62,7 @@ class Course:
         completionnotify (Optional[int]): 1: yes 0: no
         lang (Optional[str]): forced course language
         forcetheme (Optional[str]): name of the force theme
+        hiddensections (Optional[int]): (deprecated, use courseformatoptions) How the hidden sections in the course are displayed to students
         courseformatoptions (List[CourseFormatOption]): additional options for particular course format
         customfields (List[CourseCustomField]): Custom fields and associated values
     """
@@ -83,7 +84,6 @@ class Course:
     maxbytes: Optional[int]
     showreports: Optional[int]
     visible: Optional[int]
-    hiddensections: Optional[int]
     groupmode: Optional[int]
     groupmodeforce: Optional[int]
     defaultgroupingid: Optional[int]
@@ -93,8 +93,9 @@ class Course:
     completionnotify: Optional[int]
     lang: Optional[str]
     forcetheme: Optional[str]
-    courseformatoptions: List[CourseFormatOption]
-    customfields: List[CourseCustomField] = field(default_factory=list)
+    hiddensections: Optional[int] = None
+    courseformatoptions: List[CourseFormatOption] = fields(CourseFormatOption)
+    customfields: List[CourseCustomField] = fields(CourseCustomField)
 
     @dataclass
     class ToCheck:

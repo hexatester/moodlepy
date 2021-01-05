@@ -1,6 +1,7 @@
 from datetime import datetime
-from dataclasses import dataclass, field
 from typing import List, Optional
+
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -83,7 +84,7 @@ class Content:
     userid: Optional[int]
     author: Optional[str]
     license: Optional[str]
-    tags: List[Tag] = field(default_factory=list)
+    tags: List[Tag] = fields(Tag)
 
 
 @dataclass
@@ -146,8 +147,8 @@ class Module:
     customdata: Optional[str]
     completion: Optional[int]
     completiondata: Optional[Completion]
-    contents: List[Content] = field(default_factory=list)
-    contentsinfo: Optional[ContentInfo] = field(default=None)
+    contents: List[Content] = fields(Content)
+    contentsinfo: Optional[ContentInfo] = fields(ContentInfo)
 
 
 @dataclass
@@ -174,4 +175,4 @@ class Section:
     hiddenbynumsections: Optional[int]
     uservisible: Optional[int]
     availabilityinfo: Optional[str]
-    modules: List[Module] = field(default_factory=list)
+    modules: List[Module] = fields(Module)

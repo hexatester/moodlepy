@@ -1,9 +1,19 @@
 from typing import List, Optional
 from moodle import BaseMoodle, Array
-from moodle.utils.helper import from_dict
-from . import (ActivityOverview, Course, CourseByField, SearchResult,
-               CoursesBTC, CheckUpdate, Category, ContentOption, Section,
-               CourseModule, NavigationOptions, ViewCourse)
+from . import (
+    ActivityOverview,
+    Course,
+    CourseByField,
+    SearchResult,
+    CoursesBTC,
+    CheckUpdate,
+    Category,
+    ContentOption,
+    Section,
+    CourseModule,
+    NavigationOptions,
+    ViewCourse,
+)
 
 
 class BaseCourse(BaseMoodle):
@@ -22,7 +32,7 @@ class BaseCourse(BaseMoodle):
             CheckUpdate: Update
         """
         res = self.moodle.post("core_course_check_updates")
-        return from_dict(CheckUpdate, res)
+        return CheckUpdate(**res)  # type: ignore
 
     def create_categories(self):
         res = self.moodle.post("core_course_create_categories")
@@ -67,7 +77,7 @@ class BaseCourse(BaseMoodle):
             tocheck=tocheck,
             filter=filter or [],
         )
-        return from_dict(ActivityOverview, res)
+        return ActivityOverview(**res)  # type: ignore
 
     def get_categories(
             self,
@@ -77,7 +87,10 @@ class BaseCourse(BaseMoodle):
             "core_course_get_categories",
             criteria=criteria or [],
         )
-        return [from_dict(Category, data) for data in res] if res else []
+        results = list()
+        for data in res:
+            results.append(Category(**data))  # type: ignore
+        return results
 
     def get_contents(
             self,
@@ -95,7 +108,7 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_contents",
                                courseid=courseid,
                                options=options or [])
-        return [from_dict(Section, data) for data in res] if res else []
+        return [Section(**data) for data in res] if res else []  # type: ignore
 
     def get_course_module(self, cmid: int) -> CourseModule:
         """Return information about a course module
@@ -107,7 +120,7 @@ class BaseCourse(BaseMoodle):
             CourseModule: Course Module wrapper
         """
         res = self.moodle.post("core_course_get_course_module", cmid=cmid)
-        return from_dict(CourseModule, res)
+        return CourseModule(**res)  # type: ignore
 
     def get_course_module_by_instance(self):
         res = self.moodle.post("core_course_get_course_module_by_instance")
@@ -125,7 +138,7 @@ class BaseCourse(BaseMoodle):
         options = Array(ids if ids else [])
         options.name = 'ids'
         res = self.moodle.post("core_course_get_courses", options=options)
-        return [from_dict(Course, data) for data in res] if res else []
+        return [Course(**data) for data in res] if res else []  # type: ignore
 
     def get_courses_by_field(self,
                              field: str = '',
@@ -148,7 +161,7 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_courses_by_field",
                                field=field,
                                value=value)
-        return from_dict(CourseByField, res)
+        return CourseByField(**res)  # type: ignore
 
     def get_enrolled_courses_by_timeline_classification(
             self,
@@ -174,7 +187,7 @@ class BaseCourse(BaseMoodle):
             offset=offset,
             sort=sort,
         )
-        return from_dict(CoursesBTC, res)
+        return CoursesBTC(**res)  # type: ignore
 
     def get_recent_courses(self,
                            userid: int = 0,
@@ -188,7 +201,7 @@ class BaseCourse(BaseMoodle):
             offset=offset,
             sort=sort,
         )
-        return [from_dict(Course, data) for data in res] if res else []
+        return [Course(**data) for data in res] if res else []  # type: ignore
 
     def get_enrolled_users_by_cmid(self):
         res = self.moodle.post("core_course_get_enrolled_users_by_cmid")
@@ -217,7 +230,7 @@ class BaseCourse(BaseMoodle):
                                courseid=courseid,
                                since=since,
                                filter=filter)
-        return from_dict(CheckUpdate, res)
+        return CheckUpdate(**res)  # type: ignore
 
     def get_user_administration_options(self):
         res = self.moodle.post("core_course_get_user_administration_options")
@@ -235,7 +248,7 @@ class BaseCourse(BaseMoodle):
         """
         res = self.moodle.post("core_course_get_user_navigation_options",
                                courseids=courseids)
-        return from_dict(NavigationOptions, res)
+        return NavigationOptions(**res)  # type: ignore
 
     def import_course(self):
         res = self.moodle.post("core_course_import_course")
@@ -273,7 +286,7 @@ class BaseCourse(BaseMoodle):
             limittoenrolled=limittoenrolled,
             onlywithcompletion=onlywithcompletion,
         )
-        return from_dict(SearchResult, res)
+        return SearchResult(**res)  # type: ignore
 
     def set_favourite_courses(self):
         res = self.moodle.post("core_course_set_favourite_courses")
@@ -289,4 +302,4 @@ class BaseCourse(BaseMoodle):
 
     def view_course(self, courseid: int, sectionnumber: int) -> ViewCourse:
         res = self.moodle.post("core_course_view_course")
-        return from_dict(ViewCourse, res)
+        return ViewCourse(**res)  # type: ignore
