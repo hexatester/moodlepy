@@ -1,6 +1,7 @@
-from dataclasses import dataclass, field
 from typing import List, Optional
+
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -62,12 +63,12 @@ class Url:
     visible: int
     groupmode: int
     groupingid: int
-    introfiles: List[File] = field(default_factory=list)
+    introfiles: List[File] = fields(File)
 
 
 @dataclass
 class Urls(ResponsesFactory[Url]):
     """List of Urls
     """
-    urls: List[Url]
-    warnings: List[MoodleWarning]
+    urls: List[Url] = fields(Url)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
