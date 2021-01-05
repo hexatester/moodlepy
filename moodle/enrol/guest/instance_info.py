@@ -1,7 +1,7 @@
-from dataclasses import dataclass, field
 from typing import List
 
 from moodle import MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -33,4 +33,4 @@ class InstanceInfoResponse:
         warnings (List[MoodleWarning]): list of warnings
     """
     instanceinfo: InstanceInfo
-    warnings: List[MoodleWarning] = field(default_factory=list)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)

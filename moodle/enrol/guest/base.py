@@ -1,5 +1,4 @@
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import InstanceInfoResponse
 
 
@@ -9,4 +8,4 @@ class BaseGuest(BaseMoodle):
             'enrol_guest_get_instance_info',
             instanceid=instanceid,
         )
-        return from_dict(InstanceInfoResponse, data)
+        return InstanceInfoResponse(**data)  # type: ignore
