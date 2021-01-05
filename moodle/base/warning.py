@@ -1,5 +1,6 @@
-from dataclasses import dataclass
 from typing import Optional
+
+from moodle.attr import dataclass
 
 
 @dataclass
