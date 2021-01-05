@@ -1,7 +1,6 @@
 from typing import Any, List
 
 from moodle import BaseMoodle
-from moodle.utils.helper import from_dict
 from . import (
     BackupCompletionStatus,
     CopyData,
@@ -27,7 +26,7 @@ class BaseBackup(BaseMoodle):
             filename=filename,
             contextid=contextid,
         )
-        return from_dict(TableRowData, data)
+        return TableRowData(**data)  # type: ignore
 
     def get_async_backup_links_restore(self, backupid: str,
                                        contextid: int) -> str:
@@ -64,7 +63,7 @@ class BaseBackup(BaseMoodle):
             backupids=backupids,
             contextid=contextid,
         )
-        return [from_dict(BackupCompletionStatus, dat) for dat in data]
+        return [BackupCompletionStatus(**dat) for dat in data]  # type: ignore
 
     def get_copy_progress(self,
                           copies: List[CopyData]) -> List[CopyDataResponse]:
@@ -80,7 +79,7 @@ class BaseBackup(BaseMoodle):
             'core_backup_get_copy_progress',
             copies=copies,
         )
-        return [from_dict(CopyDataResponse, dat) for dat in data]
+        return [CopyDataResponse(**dat) for dat in data]  # type: ignore
 
     def submit_copy_form(self, jsonformdata: str) -> Any:
         """Handles ajax submission of course copy form.
