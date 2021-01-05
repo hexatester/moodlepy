@@ -1,20 +1,38 @@
 name: Tests
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: 7 3 * * *
+  push:
+    branches:
+      - master
 
 jobs:
-  ubuntu:
-    runs-on: ubuntu-latest
+  pytest:
+    name: pytest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+        os: [ubuntu-latest, windows-latest]
+      fail-fast: False
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Python 3.7
+      - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: 3.7
+          python-version: ${{ matrix.python-version }}
       - name: Cache pip
         uses: actions/cache@v2
         with:
-          path: ~/.cache/pip
+          path: |
+            if [ "$RUNNER_OS" == "Linux" ]; then
+              ~/.cache/pip
+            elif [ "$RUNNER_OS" == "Windows" ]; then
+              ~\AppData\Local\pip\Cache
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
@@ -29,4 +47,6 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true
+          env_vars: OS, PYTHON
+          name: ${{ matrix.os }}-${{ matrix.python-version }}
           verbose: true
