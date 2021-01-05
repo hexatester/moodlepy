@@ -1,5 +1,4 @@
 from attr import has
-from dataclasses import is_dataclass, asdict
 from datetime import datetime
 from typing import TypeVar, Any
 
@@ -46,8 +45,6 @@ def to_dict(data: Any, name: str = '') -> Any:
         return out
     if has(data):
         return asdict_attr(data)
-    if is_dataclass(data):
-        return asdict(data)
     if isinstance(data, datetime):
         return datetime.timestamp(data)
     return data

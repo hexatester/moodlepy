@@ -1,8 +1,6 @@
 from attr import attrs, attrib, has, Attribute
 from attr import asdict as asdict_attr
 from datetime import datetime
-from dataclasses import is_dataclass
-from dataclasses import asdict as asdict_dc
 from functools import partial
 from typing import Any, Callable, List, Optional
 
@@ -59,8 +57,6 @@ def serialize(inst=None,
         return asdict_attr(value, value_serializer=serialize)  # type: ignore
     elif isinstance(value, datetime):
         return datetime.timestamp(value)
-    elif is_dataclass(value):
-        return asdict_dc(value)
     return value
 
 
