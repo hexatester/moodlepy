@@ -15,3 +15,7 @@ class BaseMoodle(object):
     @property
     def moodle(self) -> Moodle:
         return self._moodle
+
+    @staticmethod
+    def _tr(kls, *args, **kwargs):
+        return kls(*args, **kwargs)
