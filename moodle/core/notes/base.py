@@ -1,6 +1,6 @@
 from typing import List
+
 from moodle import BaseMoodle, MoodleWarning
-from moodle.utils.helper import from_dict
 from . import Note, CourseNotes, ViewNotes
 
 
@@ -15,7 +15,10 @@ class BaseNotes(BaseMoodle):
             List[Note.Result]: Create note result
         """
         res = self.moodle.post('core_notes_create_notes', notes=notes)
-        return [from_dict(Note.Result, data) for data in res] if res else []
+        return [
+            Note.Result(**data)  # type: ignore
+            for data in res
+        ] if res else []
 
     def delete_notes(self, notes: List[int]) -> List[MoodleWarning]:
         """Delete notes
@@ -27,7 +30,10 @@ class BaseNotes(BaseMoodle):
             List[Warning]: list of warnings
         """
         res = self.moodle.post('core_notes_delete_notes', notes=notes)
-        return [from_dict(MoodleWarning, data) for data in res] if res else []
+        return [
+            MoodleWarning(**data)  # type: ignore
+            for data in res
+        ] if res else []
 
     def get_course_notes(self, courseid: int, userid: int = 0) -> CourseNotes:
         """Returns all notes in specified course (or site), for the specified user.
@@ -42,7 +48,7 @@ class BaseNotes(BaseMoodle):
         res = self.moodle.post('core_notes_get_course_notes',
                                courseid=courseid,
                                userid=userid)
-        return from_dict(CourseNotes, res)
+        return CourseNotes(**res)  # type: ignore
 
     def view_notes(self, courseid: int, userid: int = 0) -> ViewNotes:
         """Simulates the web interface view of notes/index.php: trigger events.
@@ -57,4 +63,4 @@ class BaseNotes(BaseMoodle):
         res = self.moodle.post('core_notes_view_notes',
                                courseid=courseid,
                                userid=userid)
-        return from_dict(ViewNotes, res)
+        return ViewNotes(**res)  # type: ignore
