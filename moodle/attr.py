@@ -4,11 +4,19 @@ from datetime import datetime
 from dataclasses import is_dataclass
 from dataclasses import asdict as asdict_dc
 from functools import partial
-from typing import Any, Callable, List
+from typing import Any, Callable, List, Optional
 
 from moodle.base.moodle_object import MoodleObject  # NOQA
 
 COMMON: List = [str, int, datetime]
+
+
+def fromtimestamp(d: str):
+    if not isinstance(d, str):
+        return d
+    elif not d.isdigit():
+        return d
+    return datetime.fromtimestamp(float(d))
 
 
 def hooq(cls: type, fields: List[Attribute]) -> List[Attribute]:
@@ -56,9 +64,39 @@ def serialize(inst=None,
     return value
 
 
-asdict: Callable = partial(asdict_attr, value_serializer=serialize)
-dataclass: Callable = partial(attrs, auto_attribs=True)
-sdataclass: Callable = partial(attrs, auto_attribs=True, slots=True)
+def auto_convert(cls, fields):
+    results = []
+    for field in fields:
+        if field.converter is not None:
+            results.append(field)
+            continue
+        if field.type in {datetime, 'datetime'}:
+            converter = fromtimestamp
+        elif field.type == Optional[field.type]:
+
+            def converter(d=None):
+                return d
+        else:
+            converter = None
+        results.append(field.evolve(converter=converter))
+    return results
+
+
+asdict: Callable = partial(
+    asdict_attr,
+    value_serializer=serialize,
+)
+dataclass: Callable = partial(
+    attrs,
+    auto_attribs=True,
+    field_transformer=auto_convert,
+)
+sdataclass: Callable = partial(
+    attrs,
+    auto_attribs=True,
+    field_transformer=auto_convert,
+    slots=True,
+)
 
 
 def fields(converter: Callable):
@@ -70,4 +108,4 @@ def fields(converter: Callable):
             results.append(converter(**result))
         return results
 
-    return attrib(converter=conv)
+    return attrib(converter=conv, factory=list)
