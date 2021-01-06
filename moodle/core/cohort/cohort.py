@@ -1,6 +1,7 @@
-from typing import Optional
+from typing import List, Optional
 
-from moodle.attr import dataclass
+from moodle import ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -23,3 +24,14 @@ class Cohort:
     descriptionformat: int
     visible: int
     theme: Optional[str]
+
+
+@dataclass
+class Cohorts(ResponsesFactory[Cohort]):
+    """List of Cohort
+    """
+    cohorts: List[Cohort] = fields(Cohort)
+
+    @property
+    def items(self) -> List[Cohort]:
+        return self.cohorts

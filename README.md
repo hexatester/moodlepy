@@ -73,7 +73,7 @@ In the near future all of [Web service functions](https://docs.moodle.org/dev/We
 | core_badge           | A         | A     | A     |        |
 | core_blog            | A         | A     | A     |        |
 | core_calendar        | A         | A     |       |        |
-| core_cohort          |           |       |       |        |
+| core_cohort          | A         | A     |       |        |
 | core_comment         |           |       |       |        |
 | core_competency      |           |       |       |        |
 | core_completion      | A         | A     |       |        |
