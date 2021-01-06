@@ -56,7 +56,9 @@ site_info2 = webservice.get_site_info()
 assert site_info == site_info2
 ```
 
-In the future all [Web service functions](https://docs.moodle.org/dev/Web_service_API_functions) will be covered by moodlepy
+❗️ If the function area does not have a type in the [support table](#moodle-web-service-support), the return value is in accordance with the [Moodle web service documentation](https://sandbox.moodledemo.net/admin/webservice/documentation.php), wich mostly dict.
+
+In the near future all of [Web service functions](https://docs.moodle.org/dev/Web_service_API_functions) will be covered by moodlepy.
 
 # Moodle Web Service support
 
