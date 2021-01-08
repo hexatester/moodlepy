@@ -78,6 +78,7 @@ class BaseGrades(BaseMoodle):
             parentcategoryid=parentcategoryid,
             parentcategoryidnumber=parentcategoryidnumber,
         )
+        # TODO : Refactor options of core_grades_create_gradecategory
         data = self.moodle.post(
             'core_grades_create_gradecategory',
             courseid=courseid,
@@ -135,7 +136,7 @@ class BaseGrades(BaseMoodle):
             itemname=itemname,
             gradeduserid=gradeduserid,
         )
-        # TODO : Add type for data!
+        # TODO : Add type for core_grades_grader_gradingpanel_point_fetch!
         return data
 
     def grader_gradingpanel_point_store(
@@ -169,7 +170,7 @@ class BaseGrades(BaseMoodle):
             notifyuser=notifyuser or '',
             formdata=formdata,
         )
-        # TODO : Add type for data!
+        # TODO : Add type for core_grades_grader_gradingpanel_point_store!
         return data
 
     def grader_gradingpanel_scale_fetch(
@@ -197,7 +198,7 @@ class BaseGrades(BaseMoodle):
             itemname=itemname,
             gradeduserid=gradeduserid,
         )
-        # TODO : Add type for data!
+        # TODO : Add type for core_grades_grader_gradingpanel_scale_fetch!
         return data
 
     def grader_gradingpanel_scale_store(
@@ -231,7 +232,7 @@ class BaseGrades(BaseMoodle):
             notifyuser=notifyuser or '',
             formdata=formdata,
         )
-        # TODO : Add type for data!
+        # TODO : Add type for core_grades_grader_gradingpanel_scale_store!
         return data
 
     def update_grades(
@@ -288,6 +289,7 @@ class BaseGrades(BaseMoodle):
             deleted=deleted,
             hidden=hidden,
         )
+        # TODO : Refactor itemdetails of core_grades_create_gradecategory
         data = self.moodle.post(
             'core_grades_update_grades',
             source=source,
