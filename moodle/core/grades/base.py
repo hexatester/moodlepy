@@ -126,6 +126,68 @@ class BaseGrades(BaseMoodle):
         data = self.moodle.post('core_grades_grader_gradingpanel_scale_store')
         return data
 
-    def update_grades(self):
-        data = self.moodle.post('core_grades_update_grades')
+    def update_grades(
+        self,
+        source: str,
+        courseid: int,
+        component: str,
+        activityid: int,
+        itemnumber: int,
+        grades: List[dict],
+        itemname: Optional[str] = None,
+        idnumber: Optional[int] = None,
+        gradetype: Optional[int] = None,
+        grademax: Optional[float] = None,
+        grademin: Optional[float] = None,
+        scaleid: Optional[int] = None,
+        multfactor: Optional[float] = None,
+        plusfactor: Optional[float] = None,
+        deleted: Optional[int] = None,
+        hidden: Optional[int] = None,
+    ) -> int:
+        """Update a grade item and associated student grades.
+
+        Args:
+            source (str): The source of the grade update
+            courseid (int): id of course
+            component (str): A component, for example mod_forum or mod_quiz
+            activityid (int): The activity ID
+            itemnumber (int): grade item ID number for modules that have multiple grades. Typically this is 0.
+            grades (List[dict]): Any student grades to alter. list of {studentid:int, grade:float, str_feedback: Optional[str]}
+            itemname (Optional[str], optional): The grade item name. Defaults to None.
+            idnumber (Optional[int], optional): Arbitrary ID provided by the module responsible for the grade item. Defaults to None.
+            gradetype (Optional[int], optional): The type of grade (0 = none, 1 = value, 2 = scale, 3 = text). Defaults to None.
+            grademax (Optional[float], optional): Maximum grade allowed. Defaults to None.
+            grademin (Optional[float], optional): Minimum grade allowed. Defaults to None.
+            scaleid (Optional[int], optional): The ID of the custom scale being is used. Defaults to None.
+            multfactor (Optional[float], optional): Multiply all grades by this number. Defaults to None.
+            plusfactor (Optional[float], optional): Add this to all grades. Defaults to None.
+            deleted (Optional[int], optional): True if the grade item should be deleted. Defaults to None.
+            hidden (Optional[int], optional): True if the grade item is hidden. Defaults to None.
+
+        Returns:
+            int: A value like 0 => OK, 1 => FAILED as defined in lib/grade/constants.php
+        """
+        itemdetails = dict(
+            itemname=itemname,
+            idnumber=idnumber,
+            gradetype=gradetype,
+            grademax=grademax,
+            grademin=grademin,
+            scaleid=scaleid,
+            multfactor=multfactor,
+            plusfactor=plusfactor,
+            deleted=deleted,
+            hidden=hidden,
+        )
+        data = self.moodle.post(
+            'core_grades_update_grades',
+            source=source,
+            courseid=courseid,
+            component=component,
+            activityid=activityid,
+            itemnumber=itemnumber,
+            grades=grades,
+            itemdetails=itemdetails,
+        )
         return data
