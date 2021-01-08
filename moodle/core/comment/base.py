@@ -1,15 +1,36 @@
-from moodle import BaseMoodle
-from . import Comments
+from typing import List
+
+from moodle import BaseMoodle, MoodleWarning
+from . import Comment, Comments
 
 
 class BaseComment(BaseMoodle):
-    def add_comments(self):
-        data = self.moodle.get('core_comment_add_comments')
-        return data
+    def add_comments(self, comments: List[Comments.Create]) -> List[Comment]:
+        """Adds a comment or comments.
 
-    def delete_comments(self):
-        data = self.moodle.get('core_comment_delete_comments')
-        return data
+        Args:
+            comments (List[Comments.Create]): list of Comments.Create
+
+        Returns:
+            List[Comment]: list of Comment
+        """
+        data = self.moodle.get('core_comment_add_comments', comments=comments)
+        return self._trs(Comment, data)
+
+    def delete_comments(self, comments: List[int]) -> List[MoodleWarning]:
+        """Deletes a comment or comments.
+
+        Args:
+            comments (List[int]): list id of the comment
+
+        Returns:
+            List[MoodleWarning]: list of warnings
+        """
+        data = self.moodle.get(
+            'core_comment_delete_comments',
+            comments=comments,
+        )
+        return self._trs(MoodleWarning, data)
 
     def get_comments(self,
                      contextlevel: str,
