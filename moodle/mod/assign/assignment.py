@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
 from typing import List, Optional
+
 from moodle import ResponsesFactory, MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -118,8 +119,8 @@ class Assignment:
     configs: Config
     intro: Optional[str]
     introformat: Optional[int]
-    introfiles: List[File]
-    introattachments: List[File]
+    introfiles: List[File] = fields(File)
+    introattachments: List[File] = fields(File)
 
 
 @dataclass
@@ -136,7 +137,7 @@ class AssignmentCourse(ResponsesFactory[Assignment]):
     fullname: str
     shortname: str
     timemodified: int
-    assignments: List[Assignment]
+    assignments: List[Assignment] = fields(Assignment)
 
     @property
     def items(self) -> List[Assignment]:
@@ -150,8 +151,8 @@ class Assignments(ResponsesFactory[AssignmentCourse]):
         courses (List[AssignmentCourse]): List of course with assigments
         warnings (List[Warning]): List of warnings
     """
-    courses: List[AssignmentCourse]
-    warnings: List[MoodleWarning]
+    courses: List[AssignmentCourse] = fields(AssignmentCourse)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[AssignmentCourse]:

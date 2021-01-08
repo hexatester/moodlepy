@@ -59,4 +59,4 @@ class CourseCompletionStatus:
         warnings (List[Warning]): list of warnings
     """
     completionstatus: CompletionStatus
-    warnings: List[MoodleWarning]
+    warnings: List[MoodleWarning] = fields(MoodleWarning)

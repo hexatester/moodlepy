@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import List, Optional
 
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field, fields
 
 
 @dataclass
@@ -17,8 +17,8 @@ class ContentInfo:
     filescount: int
     filessize: int
     lastmodified: datetime
-    mimetypes: List[str]
-    repositorytype: Optional[str]
+    mimetypes: List[str] = field(factory=list)
+    repositorytype: Optional[str] = None
 
 
 @dataclass

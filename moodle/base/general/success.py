@@ -1,7 +1,7 @@
-from moodle.attr import dataclass
 from typing import List
 
 from moodle import MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -12,7 +12,7 @@ class GeneralSuccess:
         warnings (List[Warning]): list of warnings
     """
     success: int
-    warnings: List[MoodleWarning]
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     def __bool__(self) -> bool:
         if isinstance(self.success, int):

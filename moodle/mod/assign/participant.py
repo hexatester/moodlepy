@@ -1,10 +1,12 @@
-from moodle.attr import dataclass
 from typing import List, Optional
+
+from moodle.attr import dataclass, fields
 
 
 @dataclass
 class CustomField:
     """Custom Field
+
     Args:
         type (str): The type of the custom field - text field, checkbox...
         value (str): The value of the custom field
@@ -20,6 +22,7 @@ class CustomField:
 @dataclass
 class Preference:
     """Preference
+
     Args:
         name (str): The name of the preferences
         value (str): The value of the preference
@@ -31,6 +34,7 @@ class Preference:
 @dataclass
 class Group:
     """Group
+
     Args:
         id (int): group id
         name (str): group name
@@ -44,6 +48,7 @@ class Group:
 @dataclass
 class Role:
     """Role
+
     Args:
         roleid (int): role id
         name (str): role name
@@ -58,7 +63,8 @@ class Role:
 
 @dataclass
 class EnrolledCourse:
-    """Enrolled Cours
+    """Enrolled Course
+
     Args:
         id (int): Id of the course
         fullname (str): Fullname of the course
@@ -72,6 +78,7 @@ class EnrolledCourse:
 @dataclass
 class Participant:
     """Participant
+
     Args:
         id (int): ID of the user
         username (Optional[str]): The username
@@ -141,14 +148,14 @@ class Participant:
     country: Optional[str]
     profileimageurlsmall: Optional[str]
     profileimageurl: Optional[str]
-    customfields: List[CustomField]
-    preferences: List[Preference]
     recordid: int
-    groups: List[Group]
-    roles: List[Role]
-    enrolledcourses: List[EnrolledCourse]
     submitted: int
     requiregrading: int
     grantedextension: int
     groupid: Optional[int]
     groupname: Optional[str]
+    customfields: List[CustomField] = fields(CustomField)
+    preferences: List[Preference] = fields(Preference)
+    groups: List[Group] = fields(Group)
+    roles: List[Role] = fields(Role)
+    enrolledcourses: List[EnrolledCourse] = fields(EnrolledCourse)

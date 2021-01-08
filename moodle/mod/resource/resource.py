@@ -1,7 +1,8 @@
 from datetime import datetime
-from moodle.attr import dataclass
 from typing import List, Optional
+
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -58,8 +59,6 @@ class Resource:
     name: str
     intro: str
     introformat: int
-    introfiles: List[File]
-    contentfiles: List[File]
     tobemigrated: int
     legacyfiles: int
     legacyfileslast: Optional[int]
@@ -72,6 +71,8 @@ class Resource:
     visible: int
     groupmode: int
     groupingid: int
+    introfiles: List[File] = fields(File)
+    contentfiles: List[File] = fields(File)
 
 
 @dataclass
@@ -81,8 +82,8 @@ class Resources(ResponsesFactory[Resource]):
         resources (List[Resource]): List of Resource
         warnings (List[Warning]): List of Warning
     """
-    resources: List[Resource]
-    warnings: List[MoodleWarning]
+    resources: List[Resource] = fields(Resource)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[Resource]:

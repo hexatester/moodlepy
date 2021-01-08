@@ -1,7 +1,7 @@
-from moodle.attr import dataclass
 from typing import List
 
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, field, fields
 
 
 @dataclass
@@ -12,8 +12,8 @@ class ParentPaths(ResponsesFactory[str]):
         parentpaths (List[str]): Path to parent directory of the deleted files.
         warnings (List[Warning]): list of warnings
     """
-    parentpaths: List[str]
-    warnings: List[MoodleWarning]
+    parentpaths: List[str] = field(factory=list)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[str]:

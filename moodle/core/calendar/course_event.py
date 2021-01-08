@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
 from typing import Optional, List
+
 from moodle import ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -232,9 +233,9 @@ class CourseEvent:
 class CourseEvents(ResponsesFactory[CourseEvent]):
     """List of [CourseEvent]
     """
-    events: List[CourseEvent]
     firstid: int
     lastid: int
+    events: List[CourseEvent] = fields(CourseEvent)
 
     @property
     def items(self) -> List[CourseEvent]:
@@ -260,7 +261,7 @@ class ActionEventCourses(ResponsesFactory[CourseEvents]):
     Returns:
         ActionEventCourses: ActionEventCourses
     """
-    groupedbycourse: List[CourseEvents]
+    groupedbycourse: List[CourseEvents] = fields(CourseEvents)
 
     @property
     def items(self) -> List[CourseEvents]:

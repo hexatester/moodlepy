@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
 from typing import Optional, List
+
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, field, fields
 
 
 @dataclass
@@ -53,8 +54,8 @@ class Event:
 
 @dataclass
 class Events(ResponsesFactory[Event]):
-    events: List[Event]
-    warnings: List[MoodleWarning]
+    events: List[Event] = fields(Event)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[Event]:
@@ -107,10 +108,10 @@ class Events(ResponsesFactory[Event]):
         params: groupids (List[int]): List of group ids for which events should be returned
         params: categoryids (List[int]): List of category ids for which events will be returned
         """
-        eventids: List[int]
-        courseids: List[int]
-        groupids: List[int]
-        categoryids: List[int]
+        eventids: List[int] = field(factory=list)
+        courseids: List[int] = field(factory=list)
+        groupids: List[int] = field(factory=list)
+        categoryids: List[int] = field(factory=list)
 
     @dataclass
     class Options:

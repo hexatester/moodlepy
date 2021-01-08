@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
 from typing import List
+
 from moodle import ResponsesFactory, MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -22,7 +23,7 @@ class CourseNavigation(ResponsesFactory[NavigationOption]):
         options (List[NavigationOption]): list of NavigationOption
     """
     id: int
-    options: List[NavigationOption]
+    options: List[NavigationOption] = fields(NavigationOption)
 
     @property
     def items(self) -> List[NavigationOption]:
@@ -36,8 +37,8 @@ class NavigationOptions(ResponsesFactory[CourseNavigation]):
         courses (List[CourseNavigation]): List of courses
         warnings (List[Warning]): list of warnings
     """
-    courses: List[CourseNavigation]
-    warnings: List[MoodleWarning]
+    courses: List[CourseNavigation] = fields(CourseNavigation)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[CourseNavigation]:

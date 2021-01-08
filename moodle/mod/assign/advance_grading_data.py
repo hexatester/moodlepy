@@ -1,5 +1,6 @@
-from moodle.attr import dataclass
 from typing import List, Optional
+
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -31,7 +32,7 @@ class Criterion:
         fillings (List[Filling]): filling
     """
     criterionid: int
-    fillings: List[Filling]
+    fillings: List[Filling] = fields(Filling)
 
 
 @dataclass
@@ -40,7 +41,7 @@ class Rubric:
     Args:
         criteria (List[Criterion]): list of criterion
     """
-    criteria: List[Criterion]
+    criteria: List[Criterion] = fields(Criterion)
 
 
 @dataclass

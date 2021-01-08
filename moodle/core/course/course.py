@@ -117,8 +117,8 @@ class CourseByField(ResponsesFactory):
         courses (List[Course]): Course
         warnings (List[Warning]): list of warnings
     """
-    courses: List[Course]
-    warnings: List[Warning]
+    courses: List[Course] = fields(Course)
+    warnings: List[Warning] = fields(Warning)
 
     @property
     def items(self) -> List[Course]:
@@ -134,8 +134,8 @@ class SearchResult(ResponsesFactory[Course]):
         warnings (List[Warning]): list of warning
     """
     total: int
-    courses: List[Course]
-    warnings: List[Warning]
+    courses: List[Course] = fields(Course)
+    warnings: List[Warning] = fields(Warning)
 
     @property
     def items(self) -> List[Course]:
@@ -189,8 +189,8 @@ class CourseBTC:
 
 @dataclass
 class CoursesBTC(ResponsesFactory[CourseBTC]):
-    courses: List[CourseBTC]
     nextoffset: int
+    courses: List[CourseBTC] = fields(CourseBTC)
 
     @property
     def items(self) -> List[CourseBTC]:

@@ -1,4 +1,4 @@
-from moodle.attr import dataclass
+from moodle.attr import dataclass, fields
 from typing import List
 from moodle import MoodleWarning, ResponsesFactory
 
@@ -16,8 +16,8 @@ class Setting:
 
 @dataclass
 class MobileConfig(ResponsesFactory[Setting]):
-    settings: List[Setting]
-    warning: List[MoodleWarning]
+    settings: List[Setting] = fields(Setting)
+    warning: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[Setting]:
