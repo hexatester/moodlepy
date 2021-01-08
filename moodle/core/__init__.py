@@ -11,6 +11,7 @@ from .completion import BaseCompletion
 from .course import BaseCourse
 from .customfield import BaseCustomfield
 from .enrol import BaseEnrol
+from .grades import BaseGrades
 from .message import BaseMessage
 from .notes import BaseNotes
 from .user import BaseUser
@@ -32,6 +33,7 @@ __all__ = [
     'BaseCourse',
     'BaseCustomfield',
     'BaseEnrol',
+    'BaseGrades',
     'BaseMessage',
     'BaseNotes',
     'BaseUser',
