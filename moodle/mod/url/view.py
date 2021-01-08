@@ -1,4 +1,4 @@
-from moodle.attr import dataclass
+from moodle.attr import dataclass, fields
 from typing import List
 from moodle import MoodleWarning
 
@@ -11,7 +11,7 @@ class View:
         warnings (List[Warning]): list of warnings
     """
     status: int
-    warnings: List[MoodleWarning]
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     def __bool__(self) -> bool:
         if type(self.status) == bool:

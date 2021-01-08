@@ -60,10 +60,8 @@ class Page:
     name: str
     intro: str
     introformat: int
-    introfiles: List[File]
     content: str
     contentformat: int
-    contentfiles: List[File]
     legacyfiles: int
     legacyfileslast: int
     display: int
@@ -74,6 +72,8 @@ class Page:
     visible: int
     groupmode: int
     groupingid: int
+    introfiles: List[File] = fields(File)
+    contentfiles: List[File] = fields(File)
 
 
 @dataclass

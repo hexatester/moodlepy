@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
 from typing import List, Optional, Union
+
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -117,7 +118,7 @@ class RatingScale:
     name: Optional[str]
     max: int
     isnumeric: int
-    items: List[RatingScaleItem]
+    items: List[RatingScaleItem] = fields(RatingScaleItem)
 
 
 @dataclass
@@ -137,8 +138,8 @@ class RatingInfo:
     ratingarea: str
     canviewall: Optional[int]
     canviewany: Optional[int]
-    scales: List[RatingScale]
-    ratings: List[Rating]
+    scales: List[RatingScale] = fields(RatingScale)
+    ratings: List[Rating] = fields(Rating)
 
 
 @dataclass
@@ -287,8 +288,8 @@ class Author:
     """
     id: Optional[int]
     fullname: Optional[str]
-    groups: List[Group]
     urls: AuthorUrls
+    groups: List[Group] = fields(Group)
 
 
 @dataclass
@@ -334,10 +335,10 @@ class Post:
     wordcount: Optional[int]
     capabilities: Capability
     urls: PostUrls
-    attachments: List[Attachment]
-    tags: List[Tag]
     html: Html
     ratinginfo: Optional[RatingInfo]
+    attachments: List[Attachment] = fields(Attachment)
+    tags: List[Tag] = fields(Tag)
 
 
 @dataclass
@@ -361,9 +362,9 @@ class NewPost:
         messages (List[Message]): list of warning messages
     """
     postid: int
-    warnings: List[MoodleWarning]
     post: Post
-    messages: List[Message]
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    messages: List[Message] = fields(Message)
 
 
 @dataclass
@@ -373,8 +374,8 @@ class Posts(ResponsesFactory[Post]):
         posts (List[Post]): list of Post
         warnings (List[Warning]): list of Warning
     """
-    posts: List[Post]
-    warnings: List[MoodleWarning]
+    posts: List[Post] = fields(Post)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[Post]:

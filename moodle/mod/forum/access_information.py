@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
 from typing import List, Optional
+
 from moodle import MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -42,37 +43,37 @@ class AccessInformation:
         cancanoverridecutoff (Optional[int]): Whether the user has the capability mod/forum:canoverridecutoff allowed.
         cancantogglefavourite (Optional[int]): Whether the user has the capability mod/forum:cantogglefavourite allowed.
     """
-    warnings: List[MoodleWarning]
-    canaddinstance: Optional[int]
-    canviewdiscussion: Optional[int]
-    canviewhiddentimedposts: Optional[int]
-    canstartdiscussion: Optional[int]
-    canreplypost: Optional[int]
-    canaddnews: Optional[int]
-    canreplynews: Optional[int]
-    canviewrating: Optional[int]
-    canviewanyrating: Optional[int]
-    canviewallratings: Optional[int]
-    canrate: Optional[int]
-    canpostprivatereply: Optional[int]
-    canreadprivatereplies: Optional[int]
-    cancreateattachment: Optional[int]
-    candeleteownpost: Optional[int]
-    candeleteanypost: Optional[int]
-    cansplitdiscussions: Optional[int]
-    canmovediscussions: Optional[int]
-    canpindiscussions: Optional[int]
-    caneditanypost: Optional[int]
-    canviewqandawithoutposting: Optional[int]
-    canviewsubscribers: Optional[int]
-    canmanagesubscriptions: Optional[int]
-    canpostwithoutthrottling: Optional[int]
-    canexportdiscussion: Optional[int]
-    canexportpost: Optional[int]
-    canexportownpost: Optional[int]
-    canaddquestion: Optional[int]
-    canallowforcesubscribe: Optional[int]
-    cancanposttomygroups: Optional[int]
-    cancanoverridediscussionlock: Optional[int]
-    cancanoverridecutoff: Optional[int]
-    cancantogglefavourite: Optional[int]
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    canaddinstance: Optional[int] = None
+    canviewdiscussion: Optional[int] = None
+    canviewhiddentimedposts: Optional[int] = None
+    canstartdiscussion: Optional[int] = None
+    canreplypost: Optional[int] = None
+    canaddnews: Optional[int] = None
+    canreplynews: Optional[int] = None
+    canviewrating: Optional[int] = None
+    canviewanyrating: Optional[int] = None
+    canviewallratings: Optional[int] = None
+    canrate: Optional[int] = None
+    canpostprivatereply: Optional[int] = None
+    canreadprivatereplies: Optional[int] = None
+    cancreateattachment: Optional[int] = None
+    candeleteownpost: Optional[int] = None
+    candeleteanypost: Optional[int] = None
+    cansplitdiscussions: Optional[int] = None
+    canmovediscussions: Optional[int] = None
+    canpindiscussions: Optional[int] = None
+    caneditanypost: Optional[int] = None
+    canviewqandawithoutposting: Optional[int] = None
+    canviewsubscribers: Optional[int] = None
+    canmanagesubscriptions: Optional[int] = None
+    canpostwithoutthrottling: Optional[int] = None
+    canexportdiscussion: Optional[int] = None
+    canexportpost: Optional[int] = None
+    canexportownpost: Optional[int] = None
+    canaddquestion: Optional[int] = None
+    canallowforcesubscribe: Optional[int] = None
+    cancanposttomygroups: Optional[int] = None
+    cancanoverridediscussionlock: Optional[int] = None
+    cancanoverridecutoff: Optional[int] = None
+    cancantogglefavourite: Optional[int] = None

@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
 from typing import List, Optional
+
 from moodle import ResponsesFactory, MoodleWarning
+from moodle.attr import dataclass, fields
 from . import AdvanceGradingData, PluginData
 
 
@@ -37,7 +38,7 @@ class GradeAssignment(ResponsesFactory[Grade]):
         grades (List[Grade]): grade information
     """
     assignmentid: int
-    grades: List[Grade]
+    grades: List[Grade] = fields(Grade)
 
     @property
     def items(self) -> List[Grade]:
@@ -51,8 +52,8 @@ class Grades(ResponsesFactory[GradeAssignment]):
         assignments (List[GradeAssignment]): list of assignment grade information
         warnings (List[Warning]): list of warnings
     """
-    assignments: List[GradeAssignment]
-    warnings: List[MoodleWarning]
+    assignments: List[GradeAssignment] = fields(GradeAssignment)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[GradeAssignment]:
