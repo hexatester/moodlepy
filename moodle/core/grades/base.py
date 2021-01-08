@@ -110,8 +110,32 @@ class BaseGrades(BaseMoodle):
         )
         return self._tr(Grades, data)
 
-    def grader_gradingpanel_point_fetch(self):
-        data = self.moodle.post('core_grades_grader_gradingpanel_point_fetch')
+    def grader_gradingpanel_point_fetch(
+        self,
+        component: str,
+        contextid: int,
+        itemname: str,
+        gradeduserid: int,
+    ) -> dict:
+        """Fetch the data required to display the grader grading panel for simple grading, creating the grade item if required
+
+        Args:
+            component (str): The name of the component
+            contextid (int): The ID of the context being graded
+            itemname (str): The grade item itemname being graded
+            gradeduserid (int): The ID of the user show
+
+        Returns:
+            dict: gradingpanel
+        """
+        data = self.moodle.post(
+            'core_grades_grader_gradingpanel_point_fetch',
+            component=component,
+            contextid=contextid,
+            itemname=itemname,
+            gradeduserid=gradeduserid,
+        )
+        # TODO : Add type for data!
         return data
 
     def grader_gradingpanel_point_store(self):
