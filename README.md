@@ -74,7 +74,7 @@ In the near future all of [Web service functions](https://docs.moodle.org/dev/We
 | core_blog            | A         | A     | A     |        |
 | core_calendar        | A         | A     |       |        |
 | core_cohort          | A         | A     |       |        |
-| core_comment         |           |       |       |        |
+| core_comment         | A         | A     |       |        |
 | core_competency      |           |       |       |        |
 | core_completion      | A         | A     |       |        |
 | core_course          |           |       |       |        |
@@ -85,8 +85,7 @@ In the near future all of [Web service functions](https://docs.moodle.org/dev/We
 | core_filters         |           |       |       |        |
 | core_form            |           |       |       |        |
 | core_get             |           |       |       |        |
-| core_grade           |           |       |       |        |
-| core_grades          |           |       |       |        |
+| core_grades          | A         |       |       |        |
 | core_grading         |           |       |       |        |
 | core_group           |           |       |       |        |
 | core_h5p             |           |       |       |        |

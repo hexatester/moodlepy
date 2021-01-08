@@ -14,6 +14,7 @@ from . import (
     BaseCourse,
     BaseCustomfield,
     BaseEnrol,
+    BaseGrades,
     BaseMessage,
     BaseNotes,
     BaseUser,
@@ -86,6 +87,11 @@ class Core(BaseMoodle):
     @lazy
     def enrol(self) -> BaseEnrol:
         return BaseEnrol(self.moodle)
+
+    @property  # type: ignore
+    @lazy
+    def grades(self) -> BaseGrades:
+        return BaseGrades(self.moodle)
 
     @property  # type: ignore
     @lazy
