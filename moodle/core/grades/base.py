@@ -138,8 +138,38 @@ class BaseGrades(BaseMoodle):
         # TODO : Add type for data!
         return data
 
-    def grader_gradingpanel_point_store(self):
-        data = self.moodle.post('core_grades_grader_gradingpanel_point_store')
+    def grader_gradingpanel_point_store(
+        self,
+        component: str,
+        contextid: int,
+        itemname: str,
+        gradeduserid: int,
+        formdata: str,
+        notifyuser: int = None,
+    ) -> dict:
+        """Store the data required to display the grader grading panel for simple grading
+
+        Args:
+            component (str): The name of the component
+            contextid (int): The ID of the context being graded
+            itemname (str): The grade item itemname being graded
+            gradeduserid (int): The ID of the user show
+            formdata (str): The serialised form data representing the grade
+            notifyuser (int, optional): Wheteher to notify the user or not. Defaults to None.
+
+        Returns:
+            dict: gradingpanel
+        """
+        data = self.moodle.post(
+            'core_grades_grader_gradingpanel_point_store',
+            component=component,
+            contextid=contextid,
+            itemname=itemname,
+            gradeduserid=gradeduserid,
+            notifyuser=notifyuser or '',
+            formdata=formdata,
+        )
+        # TODO : Add type for data!
         return data
 
     def grader_gradingpanel_scale_fetch(self):
