@@ -1,6 +1,7 @@
-from typing import Optional
+from typing import List, Optional
 
 from moodle import BaseMoodle
+from . import Grades
 
 
 class BaseGrades(BaseMoodle):
@@ -85,9 +86,29 @@ class BaseGrades(BaseMoodle):
         )
         return dict(data).get('categoryid')
 
-    def get_grades(self):
-        data = self.moodle.post('core_grades_get_grades')
-        return data
+    def get_grades(self,
+                   courseid: int,
+                   component: int = None,
+                   activityid: int = None,
+                   userids: List[int] = None) -> Grades:
+        """**DEPRECATED** Please do not call this function any more. Returns student course total grade and grades for activities. This function does not return category or manual items. This function is suitable for managers or teachers not students.
+
+        Args:
+            courseid (int): id of course
+            component (int, optional): A component, for example mod_forum or mod_quiz. Defaults to None.
+            activityid (int, optional): The activity ID. Defaults to None.
+            userids (List[int], optional): An array of user IDs, leave empty to just retrieve grade item information. Defaults to None.
+
+        Returns:
+            Grades: Student course total grade and grades for activities.
+        """
+        data = self.moodle.post(
+            'core_grades_get_grades',
+            component=component or '',
+            activityid=activityid,
+            userids=userids or list(),
+        )
+        return self._tr(Grades, data)
 
     def grader_gradingpanel_point_fetch(self):
         data = self.moodle.post('core_grades_grader_gradingpanel_point_fetch')
