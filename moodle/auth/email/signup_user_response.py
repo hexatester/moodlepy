@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
-from moodle import MoodleWarning
 from typing import List
+
+from moodle import MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -11,4 +12,4 @@ class SignupUserResponse:
         warnings (List[Warning]): list of warnings
     """
     success: int
-    warnings: List[MoodleWarning]
+    warnings: List[MoodleWarning] = fields(MoodleWarning)

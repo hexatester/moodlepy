@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
-from moodle import MoodleWarning
 from typing import Optional, List
+
+from moodle import MoodleWarning
+from moodle.attr import dataclass, field, fields
 
 
 @dataclass
@@ -69,15 +70,15 @@ class SignupSetting:
         recaptchachallengejs (Optional[str]): Recaptcha challenge js url
         warnings (List[Warning]): list of warnings
     """
-    namefields: List[str]
-    passwordpolicy: Optional[str]
-    sitepolicy: Optional[str]
-    sitepolicyhandler: Optional[str]
-    defaultcity: Optional[str]
-    country: Optional[str]
-    profilefields: List[ProfileField]
-    recaptchapublickey: Optional[str]
-    recaptchachallengehash: Optional[str]
-    recaptchachallengeimage: Optional[str]
-    recaptchachallengejs: Optional[str]
-    warnings: List[MoodleWarning]
+    namefields: List[str] = field(factory=list)
+    passwordpolicy: Optional[str] = None
+    sitepolicy: Optional[str] = None
+    sitepolicyhandler: Optional[str] = None
+    defaultcity: Optional[str] = None
+    country: Optional[str] = None
+    profilefields: List[ProfileField] = fields(ProfileField)
+    recaptchapublickey: Optional[str] = None
+    recaptchachallengehash: Optional[str] = None
+    recaptchachallengeimage: Optional[str] = None
+    recaptchachallengejs: Optional[str] = None
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
