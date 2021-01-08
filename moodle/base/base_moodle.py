@@ -1,6 +1,8 @@
-from typing import TYPE_CHECKING
+from typing import Any, Iterable, List, Type, TypeVar, TYPE_CHECKING
 if TYPE_CHECKING:
     from moodle import Moodle
+
+T = TypeVar('T')
 
 
 class BaseMoodle(object):
@@ -16,5 +18,9 @@ class BaseMoodle(object):
         return self._moodle
 
     @staticmethod
-    def _tr(kls, *args, **kwargs):
-        return kls(*args, **kwargs)
+    def _tr(kls: Type[T], *args, **kwargs) -> T:
+        return kls(*args, **kwargs)  # type: ignore
+
+    @staticmethod
+    def _trs(kls: Type[T], datas: Iterable[Any]) -> List[T]:
+        return [kls(**data) for data in datas] if datas else []  # type: ignore
