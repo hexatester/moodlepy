@@ -93,6 +93,7 @@ sdataclass: Callable = partial(
     field_transformer=auto_convert,
     slots=True,
 )
+field = attrib
 
 
 def fields(converter: Callable):
