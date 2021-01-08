@@ -54,3 +54,22 @@ class Comments(ResponsesFactory[Comment]):
     @property
     def items(self) -> List[Comment]:
         return self.comments
+
+    @dataclass
+    class Create:
+        """Adds a comment or comments.
+
+        Args:
+            contextlevel (str): contextlevel system, course, user...
+            instanceid (int): the id of item associated with the contextlevel
+            component (str): component
+            content (str): component
+            itemid (int): associated id
+            area (str, optional): string comment area. Default to ""
+        """
+        contextlevel: str
+        instanceid: int
+        component: str
+        content: str
+        itemid: int
+        area: str = ""
