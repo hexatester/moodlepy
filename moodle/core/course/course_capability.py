@@ -1,5 +1,6 @@
-from moodle.attr import dataclass
 from typing import List
+
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -11,4 +12,4 @@ class CourseCapability:
         capabilities (List[str]): Capability name, such as mod/forum:viewdiscussion
     """
     courseid: int
-    capabilities: List[str]
+    capabilities: List[str] = field(factory=list)

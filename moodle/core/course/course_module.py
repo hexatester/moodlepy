@@ -103,4 +103,4 @@ class Cm:
 @dataclass
 class CourseModule:
     cm: Cm
-    warnings: List[MoodleWarning]
+    warnings: List[MoodleWarning] = fields(MoodleWarning)

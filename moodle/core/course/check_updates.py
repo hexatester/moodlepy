@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
 from typing import Iterator, List, Optional
+
 from moodle import MoodleWarning, ResponsesFactory
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -20,7 +21,7 @@ class CourseUpdate:
 class UpdateInstance:
     contextlevel: str  # The context level
     id: int  # Instance id
-    updates: List[CourseUpdate]
+    updates: List[CourseUpdate] = fields(CourseUpdate)
 
     def __len__(self) -> int:
         return len(self.updates)
@@ -34,8 +35,8 @@ class UpdateInstance:
 
 @dataclass
 class CheckUpdate(ResponsesFactory[UpdateInstance]):
-    instances: List[UpdateInstance]
-    warnings: List[MoodleWarning]
+    instances: List[UpdateInstance] = fields(UpdateInstance)
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
 
     @property
     def items(self) -> List[UpdateInstance]:

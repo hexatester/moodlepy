@@ -1,6 +1,7 @@
-from moodle.attr import dataclass
 from typing import List
+
 from moodle import MoodleWarning
+from moodle.attr import dataclass, fields
 
 
 @dataclass
@@ -21,4 +22,4 @@ class RequestPasswordResetResponse:
     """
     status: str
     notice: str
-    warnings: List[MoodleWarning]
+    warnings: List[MoodleWarning] = fields(MoodleWarning)
