@@ -1,5 +1,6 @@
 from typing import List, Optional
 from moodle import BaseMoodle, Array
+from moodle.base.general import GeneralIdName
 from . import (
     ActivityOverview,
     Course,
@@ -34,9 +35,21 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_check_updates")
         return self._tr(CheckUpdate, **res)
 
-    def create_categories(self):
-        res = self.moodle.post("core_course_create_categories")
-        return res
+    def create_categories(
+            self, categories: List[Category.Create]) -> List[GeneralIdName]:
+        """Create course categories
+
+        Args:
+            categories (List[Category.Create]): list of Category.Create object
+
+        Returns:
+            List[GeneralIdName]: list of object containing new category id and new category name
+        """
+        res = self.moodle.post(
+            "core_course_create_categories",
+            categories=categories,
+        )
+        return self._trs(GeneralIdName, **res)
 
     def create_courses(self):
         res = self.moodle.post("core_course_create_courses")
