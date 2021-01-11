@@ -1,3 +1,4 @@
+from .id_name import GeneralIdName
 from .key_message import GeneralKeyMessage
 from .key_value import GeneralKeyValue
 from .name_value import GeneralNameValue
@@ -8,6 +9,7 @@ from .type_value import GeneralTypeValue
 from .validated import GeneralValidated
 
 __all__ = [
+    'GeneralIdName',
     'GeneralKeyMessage',
     'GeneralKeyValue',
     'GeneralNameValue',
