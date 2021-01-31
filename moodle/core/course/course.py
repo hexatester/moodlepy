@@ -15,6 +15,9 @@ class CourseFormatOption:
     name: str
     value: Union[str, int]
 
+    def __str__(self):
+        return self.name
+
 
 @dataclass
 class CourseCustomField:
@@ -29,6 +32,9 @@ class CourseCustomField:
     shortname: str
     type: str
     value: Optional[str]
+
+    def __str__(self):
+        return self.name
 
 
 @dataclass
@@ -124,6 +130,12 @@ class CourseByField(ResponsesFactory):
     def items(self) -> List[Course]:
         return self.courses
 
+    def __str__(self):
+        return str(self.courses)
+
+    def __repr__(self):
+        return repr(self.courses)
+
 
 @dataclass
 class SearchResult(ResponsesFactory[Course]):
@@ -140,6 +152,12 @@ class SearchResult(ResponsesFactory[Course]):
     @property
     def items(self) -> List[Course]:
         return self.courses
+
+    def __str__(self):
+        return str(self.courses)
+
+    def __repr__(self):
+        return repr(self.courses)
 
 
 @dataclass
@@ -186,6 +204,9 @@ class CourseBTC:
     showshortname: int
     coursecategory: str
 
+    def __str__(self):
+        return self.fullname
+
 
 @dataclass
 class CoursesBTC(ResponsesFactory[CourseBTC]):
@@ -195,3 +216,6 @@ class CoursesBTC(ResponsesFactory[CourseBTC]):
     @property
     def items(self) -> List[CourseBTC]:
         return self.courses
+
+    def __repr__(self):
+        return repr(self.courses)
