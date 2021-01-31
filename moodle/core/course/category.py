@@ -66,15 +66,15 @@ class Category:
 
     @dataclass
     class Create:
-        """
+        """Create Category
 
         Args:
-        name (str): new category name
-        parent (int): the parent category id inside which the new category will be created - set to 0 for a root category. Default to "0"
-        idnumber (Optional[str]): the new category idnumber
-        description (Optional[str]): the new category description
-        descriptionformat (int): description format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN). Default to "1"
-        theme (Optional[str]): the new category theme. This option must be enabled on moodle
+            name (str): new category name
+            parent (int): the parent category id inside which the new category will be created - set to 0 for a root category. Default to "0"
+            idnumber (Optional[str]): the new category idnumber
+            description (Optional[str]): the new category description
+            descriptionformat (int): description format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN). Default to "1"
+            theme (Optional[str]): the new category theme. This option must be enabled on moodle
         """
         name: str
         parent: int
