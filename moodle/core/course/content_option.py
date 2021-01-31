@@ -21,3 +21,6 @@ class ContentOption:
     """
     name: str
     value: Union[str, int, bool]
+
+    def __str__(self):
+        return self.name

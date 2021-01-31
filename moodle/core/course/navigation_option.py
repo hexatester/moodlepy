@@ -14,6 +14,9 @@ class NavigationOption:
     name: str
     available: int
 
+    def __str__(self):
+        return self.name
+
 
 @dataclass
 class CourseNavigation(ResponsesFactory[NavigationOption]):
@@ -43,3 +46,9 @@ class NavigationOptions(ResponsesFactory[CourseNavigation]):
     @property
     def items(self) -> List[CourseNavigation]:
         return self.courses
+
+    def __repr__(self):
+        return repr(self.courses)
+
+    def __str__(self):
+        return str(self.courses)

@@ -47,6 +47,9 @@ class Tag:
     ordering: int
     flag: int
 
+    def __str__(self):
+        return self.name
+
 
 @dataclass
 class Content:
@@ -85,6 +88,9 @@ class Content:
     author: Optional[str]
     license: Optional[str]
     tags: List[Tag] = fields(Tag)
+
+    def __str__(self):
+        return self.filename
 
 
 @dataclass
@@ -150,6 +156,9 @@ class Module:
     contents: List[Content] = fields(Content)
     contentsinfo: Optional[ContentInfo] = fields(ContentInfo)
 
+    def __str__(self):
+        return self.name
+
 
 @dataclass
 class Section:
@@ -176,3 +185,6 @@ class Section:
     uservisible: Optional[int]
     availabilityinfo: Optional[str]
     modules: List[Module] = fields(Module)
+
+    def __str__(self):
+        return self.name

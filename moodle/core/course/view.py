@@ -7,3 +7,6 @@ from moodle import MoodleWarning
 class ViewCourse:
     status: int  # status: true if success
     warnings: List[MoodleWarning]  # list of warnings
+
+    def __repr__(self):
+        return repr(self.status)

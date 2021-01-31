@@ -18,6 +18,9 @@ class Outcome:
     name: str
     scale: str
 
+    def __str__(self):
+        return self.name
+
 
 @dataclass
 class AdvancedGrading:
