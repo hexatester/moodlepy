@@ -1,6 +1,7 @@
 from typing import List, Optional
 from moodle import BaseMoodle, Array
 from moodle.base.general import GeneralIdName
+from moodle.base.warning import MoodleWarnings
 from . import (
     ActivityOverview,
     Course,
@@ -59,9 +60,20 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_delete_categories")
         return res
 
-    def delete_courses(self):
-        res = self.moodle.post("core_course_delete_courses")
-        return res
+    def delete_courses(self, courseids: List[int]) -> MoodleWarnings:
+        """Deletes all specified courses
+
+        Args:
+            courseids (List[int]): list of course ID
+
+        Returns:
+            MoodleWarnings: list of MoodleWarning
+        """
+        res = self.moodle.post(
+            "core_course_delete_courses",
+            courseids=courseids,
+        )
+        return self._tr(MoodleWarnings, **res)
 
     def delete_modules(self):
         res = self.moodle.post("core_course_delete_modules")
