@@ -82,3 +82,16 @@ class Category:
         description: Optional[str] = None
         descriptionformat: int = 1
         theme: Optional[str] = None
+
+    @dataclass
+    class Delete:
+        """Delete
+
+        Args:
+            id (int): category id to delete
+            newparent (Optional[int]): the parent category to move the contents to, if specified
+            recursive (int): 1: recursively delete all contents inside this category, 0 (default): move contents to newparent or current parent category (except if parent is root). Default to "0"
+        """
+        id: int
+        newparent: Optional[int]
+        recursive: int
