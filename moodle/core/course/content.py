@@ -174,5 +174,5 @@ class Section:
     section: Optional[int]
     hiddenbynumsections: Optional[int]
     uservisible: Optional[int]
-    availabilityinfo: Optional[str]
+    availabilityinfo: Optional[str] = None
     modules: List[Module] = field(factory=list)
