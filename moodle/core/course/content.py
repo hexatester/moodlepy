@@ -74,16 +74,16 @@ class Content:
     filepath: Optional[str]
     filesize: int
     fileurl: Optional[str]
-    content: Optional[str]
     timecreated: Optional[datetime]
     timemodified: Optional[datetime]
     sortorder: Optional[int]
-    mimetype: Optional[str]
-    isexternalfile: Optional[int]
-    repositorytype: Optional[str]
     userid: Optional[int]
     author: Optional[str]
     license: Optional[str]
+    mimetype: Optional[str] = None
+    isexternalfile: Optional[int] = None
+    content: Optional[str] = None
+    repositorytype: Optional[str] = None
     tags: List[Tag] = field(factory=list)
 
 
@@ -129,23 +129,23 @@ class Module:
         contentsinfo (Optional[ContentInfo]): Contents summary information.
     """
     id: int
-    url: Optional[str]
     name: str
     instance: Optional[int]
-    description: Optional[str]
     visible: Optional[int]
     uservisible: Optional[int]
     visibleoncoursepage: Optional[int]
     modicon: str
     modname: str
     modplural: str
-    availability: Optional[str]
     indent: int
     onclick: Optional[str]
     afterlink: Optional[str]
     customdata: Optional[str]
     completion: Optional[int]
-    completiondata: Optional[Completion]
+    url: Optional[str] = None
+    description: Optional[str] = None
+    availability: Optional[str] = None
+    completiondata: Optional[Completion] = None
     availabilityinfo: Optional[str] = None
     contents: List[Content] = field(factory=list)
     contentsinfo: Optional[ContentInfo] = None
