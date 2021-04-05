@@ -1,4 +1,4 @@
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 from typing import List, Optional
 from .advanced_feature import AdvancedFeatures
 from .function import Function
@@ -30,5 +30,5 @@ class SiteInfo:
     usercalendartype: str
     userissiteadmin: Optional[bool]
     theme: str
-    functions: List[Function] = fields(Function)
-    advancedfeatures: List[AdvancedFeatures] = fields(AdvancedFeatures)
+    functions: List[Function] = field(factory=list)
+    advancedfeatures: List[AdvancedFeatures] = field(factory=list)

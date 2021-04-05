@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -72,8 +72,8 @@ class Page:
     visible: int
     groupmode: int
     groupingid: int
-    introfiles: List[File] = fields(File)
-    contentfiles: List[File] = fields(File)
+    introfiles: List[File] = field(factory=list)
+    contentfiles: List[File] = field(factory=list)
 
 
 @dataclass
@@ -84,8 +84,8 @@ class PagesResponse(ResponsesFactory[Page]):
         pages (List[Page]): list of Page
         warnings (List[MoodleWarning]): list of MoodleWarning
     """
-    pages: List[Page] = fields(Page)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    pages: List[Page] = field(factory=list)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[Page]:

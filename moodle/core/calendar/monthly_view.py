@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from moodle.attr import dataclass, field, fields
+from moodle.attr import dataclass, field
 from . import DateView, Period, CourseEvent
 
 
@@ -48,7 +48,7 @@ class Day:
     popovertitle: str
     viewdaylink: Optional[str]
     viewdaylinktitle: Optional[str]
-    events: List[CourseEvent] = fields(CourseEvent)
+    events: List[CourseEvent] = field(factory=list)
     calendareventtypes: List[str] = field(factory=list)
 
 
@@ -61,7 +61,7 @@ class Week:
     """
     prepadding: List[int] = field(factory=list)
     postpadding: List[int] = field(factory=list)
-    days: List[Day] = fields(Day)
+    days: List[Day] = field(factory=list)
 
 
 @dataclass

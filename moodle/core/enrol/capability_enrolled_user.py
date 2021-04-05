@@ -1,6 +1,6 @@
 from typing import List
 
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 from . import EnrolledUser
 
 
@@ -15,4 +15,4 @@ class CapabilityEnrolledUser:
     """
     courseid: int
     capability: str
-    users: List[EnrolledUser] = fields(EnrolledUser)
+    users: List[EnrolledUser] = field(factory=list)

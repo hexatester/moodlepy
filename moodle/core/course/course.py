@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List, Optional, Union
 
 from moodle import ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -94,8 +94,8 @@ class Course:
     lang: Optional[str]
     forcetheme: Optional[str]
     hiddensections: Optional[int] = None
-    courseformatoptions: List[CourseFormatOption] = fields(CourseFormatOption)
-    customfields: List[CourseCustomField] = fields(CourseCustomField)
+    courseformatoptions: List[CourseFormatOption] = field(factory=list)
+    customfields: List[CourseCustomField] = field(factory=list)
 
     @dataclass
     class ToCheck:
@@ -117,8 +117,8 @@ class CourseByField(ResponsesFactory):
         courses (List[Course]): Course
         warnings (List[Warning]): list of warnings
     """
-    courses: List[Course] = fields(Course)
-    warnings: List[Warning] = fields(Warning)
+    courses: List[Course] = field(factory=list)
+    warnings: List[Warning] = field(factory=list)
 
     @property
     def items(self) -> List[Course]:
@@ -134,8 +134,8 @@ class SearchResult(ResponsesFactory[Course]):
         warnings (List[Warning]): list of warning
     """
     total: int
-    courses: List[Course] = fields(Course)
-    warnings: List[Warning] = fields(Warning)
+    courses: List[Course] = field(factory=list)
+    warnings: List[Warning] = field(factory=list)
 
     @property
     def items(self) -> List[Course]:
@@ -190,7 +190,7 @@ class CourseBTC:
 @dataclass
 class CoursesBTC(ResponsesFactory[CourseBTC]):
     nextoffset: int
-    courses: List[CourseBTC] = fields(CourseBTC)
+    courses: List[CourseBTC] = field(factory=list)
 
     @property
     def items(self) -> List[CourseBTC]:

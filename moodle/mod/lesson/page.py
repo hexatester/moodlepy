@@ -2,7 +2,7 @@ from attr import attrib
 from typing import List, Optional
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -70,5 +70,5 @@ class Pages(ResponsesFactory[LessonPage]):
         pages (List[LessonPage]): LessonPage fields
         warnings (List[Warning]): list of warnings
     """
-    pages: List[LessonPage] = fields(LessonPage)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    pages: List[LessonPage] = field(factory=list)
+    warnings: List[MoodleWarning] = field(factory=list)

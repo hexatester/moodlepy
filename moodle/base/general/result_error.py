@@ -1,4 +1,4 @@
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 from typing import List
 from . import GeneralKeyMessage
 
@@ -11,7 +11,7 @@ class GeneralResultError:
         errors (List[GeneralKeyMessage]): List of validation errors
     """
     result: int
-    errors: List[GeneralKeyMessage] = fields(GeneralKeyMessage)
+    errors: List[GeneralKeyMessage] = field(factory=list)
 
     def __bool__(self) -> bool:
         if isinstance(self.result, int):

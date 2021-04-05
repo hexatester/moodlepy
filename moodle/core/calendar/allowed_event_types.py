@@ -1,7 +1,7 @@
 from typing import List
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, field, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -13,4 +13,4 @@ class AllowedEventTypes(ResponsesFactory[str]):
         warnings (List[Warning]): list of MoodleWarning
     """
     allowedeventtypes: List[str] = field(factory=list)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)

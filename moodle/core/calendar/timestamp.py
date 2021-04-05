@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -20,7 +20,7 @@ class Timestamp:
 class Timestamps(ResponsesFactory[Timestamp]):
     """list of Timestamp
     """
-    timestamps: List[Timestamp] = fields(Timestamp)
+    timestamps: List[Timestamp] = field(factory=list)
 
     @property
     def items(self) -> List[Timestamp]:

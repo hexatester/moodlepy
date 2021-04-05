@@ -2,7 +2,7 @@ from attr import attrib
 from typing import List, Optional
 
 from moodle import BaseNameValue
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -71,10 +71,10 @@ class Content:
     params: restrict (List[Restrict]): Restrict this content to certain users or courses.
     """
     javascript: str
-    templates: List[Template] = fields(Template)
-    otherdata: List[OtherData] = fields(OtherData)
-    files: List[File] = fields(File)
-    restrict: List[Restrict] = fields(Restrict)
+    templates: List[Template] = field(factory=list)
+    otherdata: List[OtherData] = field(factory=list)
+    files: List[File] = field(factory=list)
+    restrict: List[Restrict] = field(factory=list)
 
     @dataclass
     class Args(BaseNameValue):

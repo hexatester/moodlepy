@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 from . import SiteNote, CourseNote, PersonalNote
 
 
@@ -16,12 +16,12 @@ class CourseNotes(ResponsesFactory[CourseNote]):
     params: canmanagecoursenotes (Optional[int]): Whether the user can manage notes at the given course.
     params: warnings (List[Warning]): list of warnings
     """
-    sitenotes: List[SiteNote] = fields(SiteNote)
-    coursenotes: List[CourseNote] = fields(CourseNote)
-    personalnotes: List[PersonalNote] = fields(PersonalNote)
+    sitenotes: List[SiteNote] = field(factory=list)
+    coursenotes: List[CourseNote] = field(factory=list)
+    personalnotes: List[PersonalNote] = field(factory=list)
     canmanagesystemnotes: Optional[int] = None
     canmanagecoursenotes: Optional[int] = None
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[CourseNote]:

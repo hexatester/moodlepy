@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 from . import UserCustomField, UserPreference
 
 
@@ -78,8 +78,8 @@ class CreateUser:
     mailformat: Optional[int]
     lang: str = 'en'
     calendartype: str = 'gregorian'
-    customfields: List[UserCustomField] = fields(UserCustomField)
-    preferences: List[UserPreference] = fields(UserPreference)
+    customfields: List[UserCustomField] = field(factory=list)
+    preferences: List[UserPreference] = field(factory=list)
 
     @dataclass
     class Response:

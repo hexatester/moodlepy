@@ -1,7 +1,7 @@
 from typing import List
 
 from moodle import MoodleWarning
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -15,4 +15,4 @@ class TokenPrivateToken:
     """
     token: str
     privatetoken: str
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)

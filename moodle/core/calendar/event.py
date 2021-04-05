@@ -1,7 +1,7 @@
 from typing import Optional, List
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, field, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -54,8 +54,8 @@ class Event:
 
 @dataclass
 class Events(ResponsesFactory[Event]):
-    events: List[Event] = fields(Event)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    events: List[Event] = field(factory=list)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[Event]:

@@ -2,7 +2,7 @@ from attr import attrib
 from typing import List, Optional
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -124,9 +124,9 @@ class BlogEntry:
     lastmodified: int
     created: int
     usermodified: Optional[int]
-    summaryfiles: List[BlogSummaryFiles] = fields(BlogSummaryFiles)
-    attachmentfiles: List[BlogAttachmentFile] = fields(BlogAttachmentFile)
-    tags: List[BlogTag] = fields(BlogTag)
+    summaryfiles: List[BlogSummaryFiles] = field(factory=list)
+    attachmentfiles: List[BlogAttachmentFile] = field(factory=list)
+    tags: List[BlogTag] = field(factory=list)
 
 
 @dataclass
@@ -140,9 +140,9 @@ class BlogEntries(ResponsesFactory[BlogEntry]):
     Returns:
         BlogEntries: Returns blog entries.
     """
-    entries: List[BlogEntry] = fields(BlogEntry)
+    entries: List[BlogEntry] = field(factory=list)
     totalentries: int = attrib(default=0)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[BlogEntry]:

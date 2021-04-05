@@ -1,7 +1,7 @@
 from typing import List, Optional, Union
 
 from moodle import MoodleObject, ResponsesFactory, MoodleWarning
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -98,8 +98,8 @@ class Discussion(MoodleObject):
     canreply: int
     canlock: int
     canfavourite: int
-    messageinlinefiles: List[File] = fields(File)
-    attachments: List[File] = fields(File)
+    messageinlinefiles: List[File] = field(factory=list)
+    attachments: List[File] = field(factory=list)
 
 
 @dataclass
@@ -112,8 +112,8 @@ class Discussions(ResponsesFactory[Discussion]):
     Returns:
         Discussions: List of Discussion
     """
-    discussions: List[Discussion] = fields(Discussion)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    discussions: List[Discussion] = field(factory=list)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[Discussion]:
@@ -141,7 +141,7 @@ class Discussions(ResponsesFactory[Discussion]):
             warnings (List[Warning]): list of warnings
         """
         discussionid: int
-        warnings: List[MoodleWarning] = fields(MoodleWarning)
+        warnings: List[MoodleWarning] = field(factory=list)
 
     @dataclass
     class CanAdd:
@@ -155,4 +155,4 @@ class Discussions(ResponsesFactory[Discussion]):
         status: int
         canpindiscussions: Optional[int]
         cancreateattachment: Optional[int]
-        warnings: List[MoodleWarning] = fields(MoodleWarning)
+        warnings: List[MoodleWarning] = field(factory=list)

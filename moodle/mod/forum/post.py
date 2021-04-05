@@ -1,7 +1,7 @@
 from typing import List, Optional, Union
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -118,7 +118,7 @@ class RatingScale:
     name: Optional[str]
     max: int
     isnumeric: int
-    items: List[RatingScaleItem] = fields(RatingScaleItem)
+    items: List[RatingScaleItem] = field(factory=list)
 
 
 @dataclass
@@ -138,8 +138,8 @@ class RatingInfo:
     ratingarea: str
     canviewall: Optional[int]
     canviewany: Optional[int]
-    scales: List[RatingScale] = fields(RatingScale)
-    ratings: List[Rating] = fields(Rating)
+    scales: List[RatingScale] = field(factory=list)
+    ratings: List[Rating] = field(factory=list)
 
 
 @dataclass
@@ -289,7 +289,7 @@ class Author:
     id: Optional[int]
     fullname: Optional[str]
     urls: AuthorUrls
-    groups: List[Group] = fields(Group)
+    groups: List[Group] = field(factory=list)
 
 
 @dataclass
@@ -337,8 +337,8 @@ class Post:
     urls: PostUrls
     html: Html
     ratinginfo: Optional[RatingInfo]
-    attachments: List[Attachment] = fields(Attachment)
-    tags: List[Tag] = fields(Tag)
+    attachments: List[Attachment] = field(factory=list)
+    tags: List[Tag] = field(factory=list)
 
 
 @dataclass
@@ -363,8 +363,8 @@ class NewPost:
     """
     postid: int
     post: Post
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
-    messages: List[Message] = fields(Message)
+    warnings: List[MoodleWarning] = field(factory=list)
+    messages: List[Message] = field(factory=list)
 
 
 @dataclass
@@ -374,8 +374,8 @@ class Posts(ResponsesFactory[Post]):
         posts (List[Post]): list of Post
         warnings (List[Warning]): list of Warning
     """
-    posts: List[Post] = fields(Post)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    posts: List[Post] = field(factory=list)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[Post]:

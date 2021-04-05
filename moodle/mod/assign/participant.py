@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -154,8 +154,8 @@ class Participant:
     grantedextension: int
     groupid: Optional[int]
     groupname: Optional[str]
-    customfields: List[CustomField] = fields(CustomField)
-    preferences: List[Preference] = fields(Preference)
-    groups: List[Group] = fields(Group)
-    roles: List[Role] = fields(Role)
-    enrolledcourses: List[EnrolledCourse] = fields(EnrolledCourse)
+    customfields: List[CustomField] = field(factory=list)
+    preferences: List[Preference] = field(factory=list)
+    groups: List[Group] = field(factory=list)
+    roles: List[Role] = field(factory=list)
+    enrolledcourses: List[EnrolledCourse] = field(factory=list)

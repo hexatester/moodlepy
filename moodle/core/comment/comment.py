@@ -1,7 +1,7 @@
 from typing import Optional, List
 
 from moodle import ResponsesFactory, MoodleWarning
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -45,11 +45,11 @@ class Comments(ResponsesFactory[Comment]):
         canpost (Optional[int]): Whether the user can post in this comment area.
         warnings (List[MoodleWarning]): list of MoodleWarnings
     """
-    comments: List[Comment] = fields(Comment)
+    comments: List[Comment] = field(factory=list)
     count: Optional[int] = None
     perpage: Optional[int] = None
     canpost: Optional[int] = None
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[Comment]:

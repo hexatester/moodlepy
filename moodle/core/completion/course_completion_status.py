@@ -1,7 +1,7 @@
 from typing import List
 
 from moodle import MoodleWarning
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -48,7 +48,7 @@ class CompletionStatus:
     """
     completed: int
     aggregation: int
-    completions: List[CourseCompletion] = fields(CourseCompletion)
+    completions: List[CourseCompletion] = field(factory=list)
 
 
 @dataclass
@@ -59,4 +59,4 @@ class CourseCompletionStatus:
         warnings (List[Warning]): list of warnings
     """
     completionstatus: CompletionStatus
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)

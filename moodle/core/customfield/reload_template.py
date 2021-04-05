@@ -1,6 +1,6 @@
 from typing import List
 
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -34,7 +34,7 @@ class Category:
     id: int
     nameeditable: str
     addfieldmenu: str
-    fields: List[Field] = fields(Field)
+    fields: List[Field] = field(factory=list)
 
 
 @dataclass
@@ -52,4 +52,4 @@ class ReloadTemplate:
     area: str
     itemid: int
     usescategories: int
-    categories: List[Category] = fields(Category)
+    categories: List[Category] = field(factory=list)

@@ -1,7 +1,7 @@
 from typing import Optional, List
 
 from moodle import MoodleWarning
-from moodle.attr import dataclass, field, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -76,9 +76,9 @@ class SignupSetting:
     sitepolicyhandler: Optional[str] = None
     defaultcity: Optional[str] = None
     country: Optional[str] = None
-    profilefields: List[ProfileField] = fields(ProfileField)
+    profilefields: List[ProfileField] = field(factory=list)
     recaptchapublickey: Optional[str] = None
     recaptchachallengehash: Optional[str] = None
     recaptchachallengeimage: Optional[str] = None
     recaptchachallengejs: Optional[str] = None
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)

@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -34,8 +34,8 @@ class ActivityCompletionStatus(ResponsesFactory[ActivityCompletion]):
         statuses (List[Activity]): List of activities completion status
         warnings (List[Warning]): list of warnings
     """
-    statuses: List[ActivityCompletion] = fields(ActivityCompletion)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    statuses: List[ActivityCompletion] = field(factory=list)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[ActivityCompletion]:

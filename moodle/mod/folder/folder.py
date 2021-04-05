@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -63,7 +63,7 @@ class Folder:
     visible: int
     groupmode: int
     groupingid: int
-    introfiles: List[File] = fields(File)
+    introfiles: List[File] = field(factory=list)
 
 
 @dataclass
@@ -73,8 +73,8 @@ class Folders(ResponsesFactory[Folder]):
         folders (List[Folder]): list of folders
         warnings (List[Warning]): list of warnings
     """
-    folders: List[Folder] = fields(Folder)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    folders: List[Folder] = field(factory=list)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[Folder]:

@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import MoodleObject
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -94,7 +94,7 @@ class Forum(MoodleObject):
     lockdiscussionafter: Optional[int]
     istracked: Optional[int]
     unreadpostscount: Optional[int]
-    introfiles: List[ForumFile] = fields(ForumFile)
+    introfiles: List[ForumFile] = field(factory=list)
 
     def __str__(self) -> str:
         return self.name

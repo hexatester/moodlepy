@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import MoodleWarning
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -43,7 +43,7 @@ class AccessInformation:
         cancanoverridecutoff (Optional[int]): Whether the user has the capability mod/forum:canoverridecutoff allowed.
         cancantogglefavourite (Optional[int]): Whether the user has the capability mod/forum:cantogglefavourite allowed.
     """
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)
     canaddinstance: Optional[int] = None
     canviewdiscussion: Optional[int] = None
     canviewhiddentimedposts: Optional[int] = None

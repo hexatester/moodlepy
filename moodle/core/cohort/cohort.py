@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -30,7 +30,7 @@ class Cohort:
 class Cohorts(ResponsesFactory[Cohort]):
     """List of Cohort
     """
-    cohorts: List[Cohort] = fields(Cohort)
+    cohorts: List[Cohort] = field(factory=list)
 
     @property
     def items(self) -> List[Cohort]:

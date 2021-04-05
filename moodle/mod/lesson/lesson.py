@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import MoodleWarning, ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -120,20 +120,20 @@ class Lesson:
     completionendreached: Optional[int]
     completiontimespent: Optional[int]
     allowofflineattempts: int
-    introfiles: List[File] = fields(File)
-    mediafiles: List[File] = fields(File)
+    introfiles: List[File] = field(factory=list)
+    mediafiles: List[File] = field(factory=list)
 
 
 @dataclass
 class OneLesson:
     lesson: Lesson
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)
 
 
 @dataclass
 class Lessons(ResponsesFactory[Lesson]):
-    lessons: List[Lesson] = fields(Lesson)
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    lessons: List[Lesson] = field(factory=list)
+    warnings: List[MoodleWarning] = field(factory=list)
 
     @property
     def items(self) -> List[Lesson]:

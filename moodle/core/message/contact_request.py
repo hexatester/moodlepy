@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from moodle import MoodleWarning
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -27,4 +27,4 @@ class ContactRequest:
         warnings (List[Warning]): list of warnings
     """
     request: Optional[ContactRequestRecord]
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)

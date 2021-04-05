@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List, Optional
 
 from moodle import MoodleWarning
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -93,8 +93,8 @@ class Cm:
     scale: Optional[str]
     gradepass: Optional[str]
     gradecat: Optional[int]
-    advancedgrading: List[AdvancedGrading] = fields(AdvancedGrading)
-    outcomes: List[Outcome] = fields(Outcome)
+    advancedgrading: List[AdvancedGrading] = field(factory=list)
+    outcomes: List[Outcome] = field(factory=list)
 
     def __str__(self) -> str:
         return self.name
@@ -103,4 +103,4 @@ class Cm:
 @dataclass
 class CourseModule:
     cm: Cm
-    warnings: List[MoodleWarning] = fields(MoodleWarning)
+    warnings: List[MoodleWarning] = field(factory=list)

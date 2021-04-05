@@ -1,6 +1,6 @@
 from typing import List
 
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 
 
 @dataclass
@@ -62,7 +62,7 @@ class GradeItem:
     gradepass: float
     locked: int
     hidden: int
-    grades: List[Grade] = fields(Grade)
+    grades: List[Grade] = field(factory=list)
 
 
 @dataclass
@@ -84,7 +84,7 @@ class OutCome:
     name: str
     locked: int
     hidden: int
-    grades: List[Grade] = fields(Grade)
+    grades: List[Grade] = field(factory=list)
 
 
 @dataclass
@@ -95,5 +95,5 @@ class Grades:
         items (List[GradeItem]): An array of items associated with the grade items
         outcomes (List[OutCome]): An array of outcomes associated with the grade items
     """
-    items: List[GradeItem] = fields(GradeItem)
-    outcomes: List[OutCome] = fields(OutCome)
+    items: List[GradeItem] = field(factory=list)
+    outcomes: List[OutCome] = field(factory=list)

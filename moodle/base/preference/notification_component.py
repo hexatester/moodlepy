@@ -1,6 +1,6 @@
 from typing import List
 
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 from .notification_processor import NotificationProcessor
 
 
@@ -8,4 +8,4 @@ from .notification_processor import NotificationProcessor
 class NotificationComponent:
     displayname: str
     preferencekey: str
-    processors: List[NotificationProcessor] = fields(NotificationProcessor)
+    processors: List[NotificationProcessor] = field(factory=list)

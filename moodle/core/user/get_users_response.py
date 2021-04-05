@@ -1,14 +1,14 @@
 from typing import List
 
 from moodle import ResponsesFactory
-from moodle.attr import dataclass, fields
+from moodle.attr import dataclass, field
 from . import User
 
 
 @dataclass
 class GetUsersResponse(ResponsesFactory[User]):
-    users: List[User] = fields(User)
-    warnings: List[Warning] = fields(Warning)
+    users: List[User] = field(factory=list)
+    warnings: List[Warning] = field(factory=list)
 
     @property
     def items(self) -> List[User]:
