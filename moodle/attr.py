@@ -52,5 +52,6 @@ asdict: Callable = partial(
 dataclass: Callable = partial(
     attrs,
     auto_attribs=True,
+    slots=True,
 )
 field = attrib
