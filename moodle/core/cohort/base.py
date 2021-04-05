@@ -29,7 +29,7 @@ class BaseCohort(BaseMoodle):
         )
         warnings = dict(data).get('warnings', list())
         warnings = warnings if warnings else list()
-        return [self._tr(MoodleWarning, **dat) for dat in data]
+        return self._trs(MoodleWarning, data)
 
     def create_cohorts(self, cohorts: List[CreateCohort]) -> List[Cohort]:
         """Creates new cohorts.
@@ -41,7 +41,7 @@ class BaseCohort(BaseMoodle):
             List[Cohort]: list of Cohort
         """
         data = self.moodle.get('core_cohort_create_cohorts', cohorts=cohorts)
-        return [self._tr(Cohort, **dat) for dat in data]
+        return self._trs(Cohort, data)
 
     def delete_cohort_members(self, members: List[DeleteCohort]) -> None:
         """Deletes cohort members.
@@ -72,11 +72,11 @@ class BaseCohort(BaseMoodle):
             'core_cohort_get_cohort_members',
             cohortids=cohortids,
         )
-        return [self._tr(CohortMembers, **dat) for dat in data]
+        return self._trs(CohortMembers, data)
 
     def get_cohorts(self, cohortids: List[int]) -> List[Cohort]:
         data = self.moodle.get('core_cohort_get_cohorts', cohortids=cohortids)
-        return [self._tr(Cohort, **dat) for dat in data]
+        return self._trs(Cohort, data)
 
     def search_cohorts(
         self,

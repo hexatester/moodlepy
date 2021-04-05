@@ -63,7 +63,7 @@ class BaseBackup(BaseMoodle):
             backupids=backupids,
             contextid=contextid,
         )
-        return [BackupCompletionStatus(**dat) for dat in data]  # type: ignore
+        return self._trs(BackupCompletionStatus, data)
 
     def get_copy_progress(self,
                           copies: List[CopyData]) -> List[CopyDataResponse]:
@@ -79,7 +79,7 @@ class BaseBackup(BaseMoodle):
             'core_backup_get_copy_progress',
             copies=copies,
         )
-        return [CopyDataResponse(**dat) for dat in data]  # type: ignore
+        return self._trs(CopyDataResponse, data)
 
     def submit_copy_form(self, jsonformdata: str) -> Any:
         """Handles ajax submission of course copy form.

@@ -15,7 +15,7 @@ class BaseNotes(BaseMoodle):
             List[Note.Result]: Create note result
         """
         res = self.moodle.post('core_notes_create_notes', notes=notes)
-        return [self._tr(Note.Result, **data) for data in res] if res else []
+        return self._trs(Note.Result, res)
 
     def delete_notes(self, notes: List[int]) -> List[MoodleWarning]:
         """Delete notes
@@ -27,7 +27,7 @@ class BaseNotes(BaseMoodle):
             List[Warning]: list of warnings
         """
         res = self.moodle.post('core_notes_delete_notes', notes=notes)
-        return [self._tr(MoodleWarning, **data) for data in res] if res else []
+        return self._trs(MoodleWarning, res)
 
     def get_course_notes(self, courseid: int, userid: int = 0) -> CourseNotes:
         """Returns all notes in specified course (or site), for the specified user.

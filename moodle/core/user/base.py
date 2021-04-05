@@ -84,7 +84,7 @@ class BaseUser(BaseMoodle):
             'core_user_create_users',
             users=users,
         )
-        return [CreateUser.Response(**dat) for dat in data]  # type: ignore
+        return self._trs(CreateUser.Response, data)
 
     def delete_users(self, userids: List[int]) -> None:
         """Delete users.
@@ -115,7 +115,7 @@ class BaseUser(BaseMoodle):
             'core_user_get_course_user_profiles',
             userlist=userlist,
         )
-        return [UserProfile(**dat) for dat in data]  # type: ignore
+        return self._trs(UserProfile, data)
 
     def get_private_files_info(self):
         data = self.moodle.post('core_user_get_private_files_info')

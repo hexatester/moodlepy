@@ -52,7 +52,7 @@ class BaseEnrol(BaseMoodle):
             'core_enrol_get_course_enrolment_methods',
             courseid=courseid,
         )
-        return [EnrolmentMethod(**data) for data in datas]  # type: ignore
+        return self._trs(EnrolmentMethod, datas)
 
     def get_enrolled_users(
             self, courseid: int,
@@ -79,7 +79,7 @@ class BaseEnrol(BaseMoodle):
             courseid=courseid,
             options=options,
         )
-        return [EnrolledUser(**dat) for dat in data]  # type: ignore
+        return self._trs(EnrolledUser, data)
 
     def get_enrolled_users_with_capability(
             self, coursecapabilities: List[CourseCapability],
@@ -103,7 +103,7 @@ class BaseEnrol(BaseMoodle):
             coursecapabilities=coursecapabilities,
             options=options,
         )
-        return [CapabilityEnrolledUser(**dat) for dat in data]  # type: ignore
+        return self._trs(CapabilityEnrolledUser, data)
 
     def get_potential_users(self, courseid: int, enrolid: int, search: str,
                             searchanywhere: int, page: int,
@@ -130,7 +130,7 @@ class BaseEnrol(BaseMoodle):
             page=page,
             perpage=perpage,
         )
-        return [User(**dat) for dat in data]  # type: ignore
+        return self._trs(User, data)
 
     def get_users_courses(self):
         data = self.moodle.post('core_enrol_get_users_courses')

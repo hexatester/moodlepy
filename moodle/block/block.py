@@ -20,7 +20,7 @@ class Block(BaseMoodle):
             'block_recentlyaccesseditems_get_recent_items',
             limit=limit,
         )
-        return [RecentlyAccessedItem(**dat) for dat in data]  # type: ignore
+        return self._trs(RecentlyAccessedItem, data)
 
     def starredcourses_get_starred_courses(self,
                                            limit: int = 0,
@@ -40,4 +40,4 @@ class Block(BaseMoodle):
             limit=limit,
             offset=offset,
         )
-        return [StarredCourse(**dat) for dat in data]  # type: ignore
+        return self._trs(StarredCourse, data)

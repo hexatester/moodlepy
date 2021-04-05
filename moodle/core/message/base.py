@@ -23,7 +23,7 @@ class BaseMessage(BaseMoodle):
             userids=userids,
             userid=userid,
         )
-        return [self._tr(MoodleWarning, **data) for data in res] if res else []
+        return self._trs(MoodleWarning, res)
 
     def block_user(self, userid: int,
                    blockeduserid: int) -> List[MoodleWarning]:
@@ -41,7 +41,7 @@ class BaseMessage(BaseMoodle):
             userid=userid,
             blockeduserid=blockeduserid,
         )
-        return [self._tr(MoodleWarning, **data) for data in res] if res else []
+        return self._trs(MoodleWarning, res)
 
     def confirm_contact_request(self, userid: int,
                                 requesteduserid: int) -> List[MoodleWarning]:
@@ -59,7 +59,7 @@ class BaseMessage(BaseMoodle):
             userid=userid,
             requesteduserid=requesteduserid,
         )
-        return [self._tr(MoodleWarning, **data) for data in res] if res else []
+        return self._trs(MoodleWarning, res)
 
     def create_contact_request(self, userid: int,
                                requesteduserid: int) -> ContactRequest:
@@ -96,7 +96,7 @@ class BaseMessage(BaseMoodle):
             userids=userids,
             userid=userid,
         )
-        return [self._tr(MoodleWarning, **data) for data in res] if res else []
+        return self._trs(MoodleWarning, res)
 
     def data_for_messagearea_contacts(self,
                                       userid: int,
