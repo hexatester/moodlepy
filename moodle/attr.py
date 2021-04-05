@@ -94,15 +94,3 @@ sdataclass: Callable = partial(
     slots=True,
 )
 field = attrib
-
-
-def fields(converter: Callable):
-    def conv(d: List[dict]):
-        results: List = list()
-        if not isinstance(d, list):
-            return results
-        for result in results:
-            results.append(converter(**result))
-        return results
-
-    return attrib(converter=conv, factory=list)
