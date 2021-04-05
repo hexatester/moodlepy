@@ -1,5 +1,9 @@
 import logging
 import requests
+try:
+    import ujson as json
+except ImportError:
+    import json  # type: ignore[no-redef]
 from requests import Session
 from requests.exceptions import RequestException
 from typing import Any, Dict
@@ -31,7 +35,7 @@ class Mdl:
         params.update(to_dict(kwargs))
         res = self.session.get(self.url, params=params)
         if res.ok and moodlewsrestformat == 'json':
-            data = res.json()
+            data = json.loads(res.text)
             return self.process_response(data)
         return res.text
 
@@ -51,7 +55,7 @@ class Mdl:
         if not res.ok or not res.text:
             raise EmptyResponseException()
         if res.ok and moodlewsrestformat == 'json':
-            data = res.json()
+            data = json.loads(res.text)
             return self.process_response(data)
         return res.text
 
@@ -112,4 +116,4 @@ class Mdl:
         }
         url = loginurl if loginurl.startswith(domain) else domain + loginurl
         res = requests.get(url, params=params)
-        return res.json() if res.ok else {}
+        return json.loads(res.text) if res.ok else {}
