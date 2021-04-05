@@ -21,7 +21,7 @@ class TestNotes:
         for course in courses:
             view_notes = moodle.core.notes.view_notes(course.id, user_id)
             assert isinstance(view_notes, ViewNotes)
-            assert type(view_notes.status) == bool
+            assert isinstance(view_notes.status, int)
 
     def test_delete_notes(self, moodle):
         pass
