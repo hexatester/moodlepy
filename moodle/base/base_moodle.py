@@ -24,5 +24,5 @@ class BaseMoodle(object):
 
     @staticmethod
     def _trs(kls: Type[T], datas: Iterable[Any]) -> List[T]:
-        return [cattr.structure(datas, kls)
+        return [cattr.structure(data, kls)
                 for data in datas] if datas else []  # type: ignore
