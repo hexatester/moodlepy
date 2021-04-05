@@ -35,7 +35,7 @@ class Event:
     courseid: int
     categoryid: Optional[int]
     groupid: Optional[int]
-    userid: int
+    userid: Optional[int]
     repeatid: Optional[int]
     modulename: Optional[str]
     instance: Optional[int]
@@ -43,10 +43,10 @@ class Event:
     timestart: int
     timeduration: int
     visible: int
-    uuid: Optional[str]
     sequence: int
     timemodified: int
     subscriptionid: Optional[int]
+    uuid: Optional[str] = None
 
     def __str__(self) -> str:
         return self.name
