@@ -32,6 +32,10 @@ include = [
 python = "^3.6.1"
 requests = "^2.24.0"
 attrs = "^20.3.0"
+ujson = {version = "^4.0.2", optional = true}
+
+[tool.poetry.extras]
+ujson = ["ujson"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
