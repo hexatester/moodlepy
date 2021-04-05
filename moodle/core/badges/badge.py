@@ -139,7 +139,7 @@ class Badge:
     imageauthorurl: Optional[str]
     imagecaption: Optional[str]
     badgeurl: str
-    endorsement: Optional[BagdeEndorsement]
+    endorsement: Optional[BagdeEndorsement] = None
     alignment: List[BagdeAlignment] = fields(BagdeAlignment)
     relatedbadges: List[RelatedBadge] = fields(RelatedBadge)
 
