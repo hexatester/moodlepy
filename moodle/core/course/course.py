@@ -178,13 +178,13 @@ class CourseBTC:
     fullnamedisplay: str
     viewurl: str
     courseimage: str
-    progress: Optional[int]
     hasprogress: int
     isfavourite: int
     hidden: int
-    timeaccess: Optional[int]
     showshortname: int
     coursecategory: str
+    progress: Optional[int] = None
+    timeaccess: Optional[int] = None
 
 
 @dataclass
