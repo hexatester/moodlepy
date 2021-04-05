@@ -48,3 +48,11 @@ def to_dict(data: Any, name: str = '') -> Any:
     if isinstance(data, datetime):
         return datetime.timestamp(data)
     return data
+
+
+def fromtimestamp(d: str):
+    if not isinstance(d, str):
+        return d
+    elif not d.isdigit():
+        return d
+    return datetime.fromtimestamp(float(d))
