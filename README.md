@@ -12,7 +12,9 @@ Python wrapper for moodle web service.
 
 ## Introduction
 
-This library provide a pure Python interface for [Moodle Web Service](https://docs.moodle.org/dev/Web_services). It's compatible with Python versions 3.6+
+This library provide a pure Python interface for [Moodle Web Service](https://docs.moodle.org/dev/Web_services). It's compatible with Python versions 3.7+
+
+> Install moodlepy==0.22.2 for python 3.6 support.
 
 ## Installing
 
