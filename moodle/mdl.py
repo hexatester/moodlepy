@@ -1,9 +1,11 @@
+import cattr
 import logging
 import requests
 try:
     import ujson as json
 except ImportError:
     import json  # type: ignore[no-redef]
+from datetime import datetime
 from requests import Session
 from requests.exceptions import RequestException
 from typing import Any, Dict
@@ -13,7 +15,7 @@ from moodle import MoodleException
 from moodle import MoodleWarning
 
 from moodle.exception import EmptyResponseException, InvalidCredentialException, NetworkMoodleException
-from moodle.utils.helper import make_params, to_dict
+from moodle.utils.helper import make_params, to_dict, fromtimestamp
 
 
 class Mdl:
@@ -29,6 +31,7 @@ class Mdl:
         if user_agent:
             self.__headers__['User-Agent'] = user_agent
         self.session.headers.update(self.__headers__)
+        cattr.register_structure_hook(datetime, lambda d, t: fromtimestamp(d))
 
     def get(self, wsfunction: str, moodlewsrestformat='json', **kwargs) -> Any:
         params = make_params(self.token, wsfunction, moodlewsrestformat)

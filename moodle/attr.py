@@ -85,7 +85,7 @@ asdict: Callable = partial(
 dataclass: Callable = partial(
     attrs,
     auto_attribs=True,
-    field_transformer=auto_convert,
+    # field_transformer=auto_convert,
 )
 sdataclass: Callable = partial(
     attrs,
