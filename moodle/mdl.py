@@ -8,7 +8,7 @@ except ImportError:
 from datetime import datetime
 from requests import Session
 from requests.exceptions import RequestException
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 from moodle import __version__
 from moodle import MoodleException
@@ -32,6 +32,7 @@ class Mdl:
             self.__headers__['User-Agent'] = user_agent
         self.session.headers.update(self.__headers__)
         cattr.register_structure_hook(datetime, lambda d, t: fromtimestamp(d))
+        cattr.register_structure_hook(Union[str, int], lambda d, t: d)
 
     def get(self, wsfunction: str, moodlewsrestformat='json', **kwargs) -> Any:
         params = make_params(self.token, wsfunction, moodlewsrestformat)
