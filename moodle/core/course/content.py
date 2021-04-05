@@ -135,7 +135,6 @@ class Module:
     description: Optional[str]
     visible: Optional[int]
     uservisible: Optional[int]
-    availabilityinfo: Optional[str]
     visibleoncoursepage: Optional[int]
     modicon: str
     modname: str
@@ -147,6 +146,7 @@ class Module:
     customdata: Optional[str]
     completion: Optional[int]
     completiondata: Optional[Completion]
+    availabilityinfo: Optional[str] = None
     contents: List[Content] = field(factory=list)
     contentsinfo: Optional[ContentInfo] = None
 
