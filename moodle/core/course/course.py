@@ -56,8 +56,8 @@ class Course:
         groupmode (Optional[int]): no group, separate, visible
         groupmodeforce (Optional[int]): 1: yes, 0: no
         defaultgroupingid (Optional[int]): default grouping id
-        timecreated (Optional[int]): timestamp when the course have been created
-        timemodified (Optional[int]): timestamp when the course have been modified
+        timecreated (Optional[datetime]): timestamp when the course have been created
+        timemodified (Optional[datetime]): timestamp when the course have been modified
         enablecompletion (Optional[int]): Enabled, control via completion and activity settings. Disbaled, not shown in activity settings.
         completionnotify (Optional[int]): 1: yes 0: no
         lang (Optional[str]): forced course language
@@ -69,10 +69,8 @@ class Course:
     id: int
     shortname: str
     categoryid: int
-    categorysortorder: Optional[int]
     fullname: str
     displayname: str
-    idnumber: Optional[str]
     summary: str
     summaryformat: int
     format: str
@@ -80,19 +78,21 @@ class Course:
     newsitems: Optional[int]
     startdate: int
     enddate: int
-    numsections: Optional[int]
     maxbytes: Optional[int]
     showreports: Optional[int]
     visible: Optional[int]
     groupmode: Optional[int]
     groupmodeforce: Optional[int]
     defaultgroupingid: Optional[int]
-    timecreated: Optional[int]
-    timemodified: Optional[int]
     enablecompletion: Optional[int]
     completionnotify: Optional[int]
     lang: Optional[str]
-    forcetheme: Optional[str]
+    categorysortorder: Optional[int] = None
+    idnumber: Optional[str] = None
+    numsections: Optional[int] = None
+    timecreated: Optional[datetime] = None
+    timemodified: Optional[datetime] = None
+    forcetheme: Optional[str] = None
     hiddensections: Optional[int] = None
     courseformatoptions: List[CourseFormatOption] = field(factory=list)
     customfields: List[CourseCustomField] = field(factory=list)
