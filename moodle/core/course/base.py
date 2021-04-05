@@ -108,7 +108,7 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_contents",
                                courseid=courseid,
                                options=options or [])
-        return [Section(**data) for data in res] if res else []  # type: ignore
+        return self._trs(Section, res)
 
     def get_course_module(self, cmid: int) -> CourseModule:
         """Return information about a course module
@@ -138,7 +138,7 @@ class BaseCourse(BaseMoodle):
         options = Array(ids if ids else [])
         options.name = 'ids'
         res = self.moodle.post("core_course_get_courses", options=options)
-        return [Course(**data) for data in res] if res else []  # type: ignore
+        return self._trs(Course, res)
 
     def get_courses_by_field(self,
                              field: str = '',
@@ -201,7 +201,7 @@ class BaseCourse(BaseMoodle):
             offset=offset,
             sort=sort,
         )
-        return [Course(**data) for data in res] if res else []  # type: ignore
+        return self._trs(Course, res)
 
     def get_enrolled_users_by_cmid(self):
         res = self.moodle.post("core_course_get_enrolled_users_by_cmid")
