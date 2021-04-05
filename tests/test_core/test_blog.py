@@ -1,58 +1,16 @@
 from moodle import Moodle
-from moodle.core.blog import BlogEntries, ViewEntry
-from typing import Any, List
+from moodle.core.blog import BlogEntry, BlogEntries, ViewEntry
 
 
 class TestBlogEntry:
-    id = 5
-    module = 'blog'
-    userid = 100
-    courseid = 0
-    groupid = 0
-    moduleid = 0
-    coursemoduleid = 0
-    subject = 'My homework blog'
-    summary = '<p>I just found this blog and I thought I would start it to keep a record of my homework. I will try to remember to do it? (I wonder if this will be seen by everybody?)</p>'  # NOQA
-    summaryformat = 1
-    content = None
-    uniquehash = ''
-    rating = 0
-    format = 1
-    attachment = ''
-    publishstate = 'site'
-    lastmodified = 1411642656
-    created = 1411642655
-    usermodified = None
-    summaryfiles: List[Any] = []
-    attachmentfiles: List[Any] = []
-    tags: List[Any] = []
-
     def test_get_entries(self, moodle: Moodle):
         entries = moodle.core.blog.get_entries()
-        assert isinstance(entries, BlogEntries)
+        assert isinstance(
+            entries,
+            BlogEntries,
+        )
         for entry in entries:
-            assert entry.id == self.id
-            assert entry.module == self.module
-            assert entry.userid == self.userid
-            assert entry.courseid == self.courseid
-            assert entry.groupid == self.groupid
-            assert entry.moduleid == self.moduleid
-            assert entry.coursemoduleid == self.coursemoduleid
-            assert entry.subject == self.subject
-            assert entry.summary == self.summary
-            assert entry.summaryformat == self.summaryformat
-            assert entry.content == self.content
-            assert entry.uniquehash == self.uniquehash
-            assert entry.rating == self.rating
-            assert entry.format == self.format
-            assert entry.attachment == self.attachment
-            assert entry.publishstate == self.publishstate
-            assert entry.lastmodified == self.lastmodified
-            assert entry.created == self.created
-            assert entry.usermodified == self.usermodified
-            assert entry.summaryfiles == self.summaryfiles
-            assert entry.attachmentfiles == self.attachmentfiles
-            assert entry.tags == self.tags
+            assert isinstance(entry, BlogEntry)
 
     def test_view_entries(self, moodle: Moodle):
         res = moodle.core.blog.view_entries()
