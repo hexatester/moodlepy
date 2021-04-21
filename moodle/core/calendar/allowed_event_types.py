@@ -12,5 +12,6 @@ class AllowedEventTypes(ResponsesFactory[str]):
         allowedeventtypes (List[str]): list of allowed event type
         warnings (List[Warning]): list of MoodleWarning
     """
+
     allowedeventtypes: List[str] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)

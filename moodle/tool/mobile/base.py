@@ -15,8 +15,8 @@ from .validated_key import ValidatedKey
 
 class BaseMobile(BaseMoodle):
     def call_external_functions(
-            self,
-            requests: List[FunctionsResponses.Request]) -> FunctionsResponses:
+        self, requests: List[FunctionsResponses.Request]
+    ) -> FunctionsResponses:
         """Call multiple external functions and return all responses.
 
         Args:
@@ -25,7 +25,7 @@ class BaseMobile(BaseMoodle):
         Returns:
             FunctionsResponses: Functions Response
         """
-        res = self.moodle.post('tool_mobile_call_external_functions')
+        res = self.moodle.post("tool_mobile_call_external_functions")
         return self._tr(FunctionsResponses, **res)
 
     def get_autologin_key(self, privatetoken: str) -> Key:
@@ -39,8 +39,9 @@ class BaseMobile(BaseMoodle):
         Returns:
             Key: Key object containing auto-login
         """
-        res = self.moodle.post('tool_mobile_get_autologin_key',
-                               privatetoken=privatetoken)
+        res = self.moodle.post(
+            "tool_mobile_get_autologin_key", privatetoken=privatetoken
+        )
         return self._tr(Key, **res)
 
     def get_config(self, section: Optional[str] = None) -> MobileConfig:
@@ -52,13 +53,12 @@ class BaseMobile(BaseMoodle):
         Returns:
             MobileConfig: Returns a list of the site configurations, filtering by section.
         """
-        res = self.moodle.get('tool_mobile_get_config', section=section or '')
+        res = self.moodle.get("tool_mobile_get_config", section=section or "")
         return self._tr(MobileConfig, **res)
 
-    def get_content(self,
-                    component: str,
-                    method: str,
-                    args: Optional[Content.Args] = None) -> Content:
+    def get_content(
+        self, component: str, method: str, args: Optional[Content.Args] = None
+    ) -> Content:
         """Get a piece of content to be displayed in the Mobile app.
 
         Args:
@@ -70,7 +70,7 @@ class BaseMobile(BaseMoodle):
             Content: Returns a piece of content to be displayed in the Mobile app.
         """
         res = self.moodle.post(
-            'tool_mobile_get_content',
+            "tool_mobile_get_content",
             component=component,
             method=method,
             args=args,
@@ -83,11 +83,11 @@ class BaseMobile(BaseMoodle):
         Returns:
             List[MobilePlugin]: Returns a list of Moodle plugins supporting the mobile app.
         """
-        res = self.moodle.get('tool_mobile_get_plugins_supporting_mobile')
+        res = self.moodle.get("tool_mobile_get_plugins_supporting_mobile")
         results: List[MobilePlugin] = list()
         if not res:
             return results
-        plugins = res['plugins']
+        plugins = res["plugins"]
         for plugin in plugins:
             results.append(MobilePlugin(**plugin))  # type: ignore
         return results
@@ -98,11 +98,12 @@ class BaseMobile(BaseMoodle):
         Returns:
             MobilePublicConfig: Returns a list of the site public settings, those not requiring authentication.
         """
-        data = self.moodle.get('tool_mobile_get_public_config')
+        data = self.moodle.get("tool_mobile_get_public_config")
         return self._tr(MobilePublicConfig, **data)
 
-    def get_tokens_for_qr_login(self, qrloginkey: str,
-                                userid: int) -> TokenPrivateToken:
+    def get_tokens_for_qr_login(
+        self, qrloginkey: str, userid: int
+    ) -> TokenPrivateToken:
         """Returns a WebService token (and private token) for QR login.
 
         Args:
@@ -113,7 +114,7 @@ class BaseMobile(BaseMoodle):
             TokenPrivateToken: WebService token (and private token)
         """
         data = self.moodle.post(
-            'tool_mobile_get_tokens_for_qr_login',
+            "tool_mobile_get_tokens_for_qr_login",
             qrloginkey=qrloginkey,
             userid=userid,
         )
@@ -121,7 +122,7 @@ class BaseMobile(BaseMoodle):
 
     def validate_subscription_key(self, key: str) -> ValidatedKey:
         data = self.moodle.post(
-            'tool_mobile_validate_subscription_key',
+            "tool_mobile_validate_subscription_key",
             key=key,
         )
         return self._tr(ValidatedKey, **data)

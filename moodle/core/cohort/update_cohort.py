@@ -18,6 +18,7 @@ class UpdateCohort:
         visible (Optional[int]): cohort visible
         theme (Optional[str]): the cohort theme. The allowcohortthemes setting must be enabled on Moodle
     """
+
     id: str
     categorytype: CategoryType
     name: str

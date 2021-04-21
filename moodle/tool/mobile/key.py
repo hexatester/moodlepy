@@ -11,6 +11,7 @@ class Key:
     params: autologinurl (str): Auto-login URL.
     params: warnings (List[Warning]): list of warnings
     """
+
     key: str
     autologinurl: str
     warnings: List[MoodleWarning] = field(factory=list)

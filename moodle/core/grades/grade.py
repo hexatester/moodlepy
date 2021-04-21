@@ -22,6 +22,7 @@ class Grade:
         str_long_grade (str): A nicely formatted string representation of the grade
         str_feedback (str): A formatted string representation of the feedback from the grader
     """
+
     userid: int
     grade: float
     locked: int
@@ -53,6 +54,7 @@ class GradeItem:
         hidden (int): 0 means not hidden, > 1 is a date to hide until
         grades (List[Grade]): list of Grade
     """
+
     activityid: str
     itemnumber: int
     scaleid: int
@@ -78,6 +80,7 @@ class OutCome:
         hidden (int): 0 means not hidden, > 1 is a date to hide until
         grades (List[Grade]): list of Grade
     """
+
     activityid: str
     itemnumber: int
     scaleid: int
@@ -95,5 +98,6 @@ class Grades:
         items (List[GradeItem]): An array of items associated with the grade items
         outcomes (List[OutCome]): An array of outcomes associated with the grade items
     """
+
     items: List[GradeItem] = field(factory=list)
     outcomes: List[OutCome] = field(factory=list)

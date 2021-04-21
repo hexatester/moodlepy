@@ -11,5 +11,6 @@ class View:
         status (int): status: true if success
         warnings (List[Warning]): list of warnings
     """
+
     status: int
     warnings: List[MoodleWarning] = field(factory=list)

@@ -8,4 +8,5 @@ class EnrolUserResponse(GeneralStatus):
         status (int): status: true if the user is enrolled, false otherwise
         warnings (List[MoodleWarning]): list of warnings
     """
+
     pass

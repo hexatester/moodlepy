@@ -13,6 +13,7 @@ class Note:
     params: format (int): Default untuk "1" text format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
     params: clientnoteid (Optional[str]): your own client id for the note. If this id is provided, the fail message id will be returned to you
     """
+
     userid: int
     publishstate: str
     courseid: int
@@ -28,6 +29,7 @@ class Note:
         params: noteid (int): ID of the created note when successful, -1 when failed
         params: errormessage (Optional[str]): error message - if failed
         """
+
         clientnoteid: Optional[str]
         noteid: int
         errormessage: Optional[str]

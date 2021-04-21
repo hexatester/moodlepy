@@ -10,6 +10,7 @@ class UserRole:
         shortname (str): role shortname
         sortorder (int): role sortorder
     """
+
     roleid: int
     name: str
     shortname: str

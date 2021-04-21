@@ -11,5 +11,6 @@ class ViewNotes:
     params: status (int): status: true if success
     params: warnings (List[Warning]): status: list of warnings
     """
+
     status: int
     warnings: List[MoodleWarning] = field(factory=list)

@@ -9,5 +9,6 @@ class GeneralKeyMessage:
         key (str): ...
         message (str): ...
     """
+
     key: str
     message: str

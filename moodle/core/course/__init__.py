@@ -20,8 +20,24 @@ from .view import ViewCourse
 from .base import BaseCourse
 
 __all__ = [
-    'ActivityOverview', 'CheckUpdate', 'ContentOption', 'CourseCapability',
-    'Course', 'CourseByField', 'SearchResult', 'CourseBTC', 'CoursesBTC',
-    'Category', 'ContentInfo', 'Tag', 'Content', 'Completion', 'Module',
-    'Section', 'CourseModule', 'NavigationOptions', 'ViewCourse', 'BaseCourse'
+    "ActivityOverview",
+    "CheckUpdate",
+    "ContentOption",
+    "CourseCapability",
+    "Course",
+    "CourseByField",
+    "SearchResult",
+    "CourseBTC",
+    "CoursesBTC",
+    "Category",
+    "ContentInfo",
+    "Tag",
+    "Content",
+    "Completion",
+    "Module",
+    "Section",
+    "CourseModule",
+    "NavigationOptions",
+    "ViewCourse",
+    "BaseCourse",
 ]

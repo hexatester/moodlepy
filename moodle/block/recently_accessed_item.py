@@ -18,6 +18,7 @@ class RecentlyAccessedItem:
         courseviewurl (str): courseviewurl
         icon (str): icon
     """
+
     id: int
     courseid: int
     cmid: int

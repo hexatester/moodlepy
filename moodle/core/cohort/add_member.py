@@ -10,5 +10,6 @@ class AddCohortMember:
         cohorttype (CohortType): Cohort type
         usertype (UserType): Cohort Usertype
     """
+
     cohorttype: CohortType
     usertype: UserType

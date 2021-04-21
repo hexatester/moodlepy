@@ -17,6 +17,7 @@ class BagdeEndorsement:
         claimcomment (str): Claim comment
         dateissued (int): Date issued
     """
+
     id: int
     badgeid: int
     issuername: str
@@ -39,6 +40,7 @@ class BagdeAlignment:
         targetFramework (Optional[str]): Target framework
         targetCode (Optional[str]): Target code
     """
+
     id: Optional[int]
     badgeid: Optional[int]
     targetName: Optional[str]
@@ -58,6 +60,7 @@ class RelatedBadge:
         language (Optional[str]): Language
         type (Optional[int]): Type
     """
+
     id: int
     name: str
     version: Optional[str]
@@ -106,6 +109,7 @@ class Badge:
         alignment (List[BagdeAlignment]): Badge alignments
         relatedbadges (List[RelatedBadge]): Related badges
     """
+
     id: Optional[int]
     name: str
     description: str
@@ -151,6 +155,7 @@ class BadgeResponse(ResponsesFactory[Badge]):
         badges (List[Badge]): list of Badge
         warnings (List[Warning]): list of warnings
     """
+
     badges: List[Badge] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 

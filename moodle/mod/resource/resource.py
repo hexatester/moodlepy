@@ -18,6 +18,7 @@ class File:
         isexternalfile (Optional[int]): Whether is an external file.
         repositorytype (Optional[str]): The repository type for external files.
     """
+
     filename: Optional[str]
     filepath: Optional[str]
     filesize: Optional[int]
@@ -53,6 +54,7 @@ class Resource:
         groupmode (int): Group mode
         groupingid (int): Grouping id
     """
+
     id: int
     coursemodule: int
     course: int
@@ -82,6 +84,7 @@ class Resources(ResponsesFactory[Resource]):
         resources (List[Resource]): List of Resource
         warnings (List[Warning]): List of Warning
     """
+
     resources: List[Resource] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 

@@ -12,6 +12,7 @@ class Restrict:
     params: users (List[int]): List of allowed users.
     params: courses (List[int]): List of allowed courses.
     """
+
     users: List[int] = attrib(factory=list)
     courses: List[int] = attrib(factory=list)
 
@@ -29,6 +30,7 @@ class File:
     params: isexternalfile (Optional[int]): Whether is an external file.
     params: repositorytype (Optional[str]): The repository type for external files.
     """
+
     filename: Optional[str]
     filepath: Optional[str]
     filesize: Optional[int]
@@ -46,6 +48,7 @@ class OtherData(BaseNameValue):
     params: name (str): Field name.
     params: value (str): Field value.
     """
+
     pass
 
 
@@ -56,6 +59,7 @@ class Template:
     params: id (str): ID of the template.
     params: html (str): HTML code.
     """
+
     id: str
     html: str
 
@@ -70,6 +74,7 @@ class Content:
     params: files (List[File]): Files in the content.
     params: restrict (List[Restrict]): Restrict this content to certain users or courses.
     """
+
     javascript: str
     templates: List[Template] = field(factory=list)
     otherdata: List[OtherData] = field(factory=list)
@@ -83,4 +88,5 @@ class Content:
         params: name (str): Param name.
         params: value (str): Param value.
         """
+
         pass

@@ -17,6 +17,7 @@ class Cohort:
         visible (int): cohort visible
         theme (Optional[str]): cohort theme
     """
+
     id: int
     name: str
     idnumber: str
@@ -28,8 +29,8 @@ class Cohort:
 
 @dataclass
 class Cohorts(ResponsesFactory[Cohort]):
-    """List of Cohort
-    """
+    """List of Cohort"""
+
     cohorts: List[Cohort] = field(factory=list)
 
     @property

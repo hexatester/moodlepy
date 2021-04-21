@@ -27,6 +27,7 @@ class Page:
         typeid (int): The unique identifier for the page type
         typestring (str): The string that describes this page type
     """
+
     id: int
     lessonid: int
     prevpageid: int
@@ -56,6 +57,7 @@ class LessonPage:
         answerids (List[int]): List of answers ids (empty for content pages in  Moodle 1.9)
         jumps (List[int]): List of possible page jumps
     """
+
     page: Page
     filescount: int
     filessizetotal: int
@@ -70,5 +72,6 @@ class Pages(ResponsesFactory[LessonPage]):
         pages (List[LessonPage]): LessonPage fields
         warnings (List[Warning]): list of warnings
     """
+
     pages: List[LessonPage] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)

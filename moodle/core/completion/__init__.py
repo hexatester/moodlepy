@@ -13,7 +13,12 @@ from .status_completed import StatusCompletion
 from .base import BaseCompletion
 
 __all__ = [
-    'ActivityCompletion', 'ActivityCompletionStatus', 'CourseCompletionDetail',
-    'CourseCompletion', 'CompletionStatus', 'CourseCompletionStatus',
-    'StatusCompletion', 'BaseCompletion'
+    "ActivityCompletion",
+    "ActivityCompletionStatus",
+    "CourseCompletionDetail",
+    "CourseCompletion",
+    "CompletionStatus",
+    "CourseCompletionStatus",
+    "StatusCompletion",
+    "BaseCompletion",
 ]

@@ -50,6 +50,7 @@ class CheckUpdate(ResponsesFactory[UpdateInstance]):
         params: id (int): Context instance id
         params: since (int): Check updates since this time stamp
         """
+
         contextlevel: str
         id: int
         since: int

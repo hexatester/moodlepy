@@ -9,5 +9,6 @@ class GeneralTypeValue:
         type (str): ...
         value (str): ...
     """
+
     type: str
     value: str

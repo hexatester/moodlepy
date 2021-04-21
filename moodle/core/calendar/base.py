@@ -27,7 +27,7 @@ class BaseCalendar(BaseMoodle):
             Events: list of Event
         """
         res = self.moodle.post(
-            'core_calendar_create_calendar_events',
+            "core_calendar_create_calendar_events",
             events=events,
         )
         return self._tr(Events, **res)
@@ -38,14 +38,16 @@ class BaseCalendar(BaseMoodle):
         Args:
             events (List[Events.Delete]): list of Events.Delete or list of {eventid:int, repeat:int}
         """
-        self.moodle.post('core_calendar_delete_calendar_events', events=events)
+        self.moodle.post("core_calendar_delete_calendar_events", events=events)
 
-    def get_action_events_by_course(self,
-                                    courseid: int,
-                                    timesortfrom: Union[datetime, int] = None,
-                                    timesortto: Union[datetime, int] = None,
-                                    aftereventid: int = 0,
-                                    limitnum: int = 20) -> CourseEvents:
+    def get_action_events_by_course(
+        self,
+        courseid: int,
+        timesortfrom: Union[datetime, int] = None,
+        timesortto: Union[datetime, int] = None,
+        aftereventid: int = 0,
+        limitnum: int = 20,
+    ) -> CourseEvents:
         """Get calendar action events by course
 
         Args:
@@ -59,7 +61,7 @@ class BaseCalendar(BaseMoodle):
             CourseEvents: list of CourseEvent
         """
         res = self.moodle.post(
-            'core_calendar_get_action_events_by_course',
+            "core_calendar_get_action_events_by_course",
             courseid=courseid,
             timesortfrom=timesortfrom,
             timesortto=timesortto,
@@ -68,11 +70,13 @@ class BaseCalendar(BaseMoodle):
         )
         return self._tr(CourseEvents, **res)
 
-    def get_action_events_by_courses(self,
-                                     courseids: List[int],
-                                     timesortfrom: Union[datetime, int] = None,
-                                     timesortto: Union[datetime, int] = None,
-                                     limitnum: int = 10) -> ActionEventCourses:
+    def get_action_events_by_courses(
+        self,
+        courseids: List[int],
+        timesortfrom: Union[datetime, int] = None,
+        timesortto: Union[datetime, int] = None,
+        limitnum: int = 10,
+    ) -> ActionEventCourses:
         """Get calendar action events by courses
 
         Args:
@@ -85,20 +89,22 @@ class BaseCalendar(BaseMoodle):
             ActionEventCourses: list of CourseEvents
         """
         res = self.moodle.post(
-            'core_calendar_get_action_events_by_courses',
+            "core_calendar_get_action_events_by_courses",
             courseids=courseids,
             timesortfrom=timesortfrom,
             limitnum=limitnum,
         )
         return self._tr(ActionEventCourses, **res)
 
-    def get_action_events_by_timesort(self,
-                                      timesortfrom: Union[datetime, int] = 0,
-                                      timesortto: Union[datetime, int] = None,
-                                      aftereventid: int = 0,
-                                      limitnum: int = 20,
-                                      limittononsuspendedevents: int = None,
-                                      userid: int = None) -> CourseEvents:
+    def get_action_events_by_timesort(
+        self,
+        timesortfrom: Union[datetime, int] = 0,
+        timesortto: Union[datetime, int] = None,
+        aftereventid: int = 0,
+        limitnum: int = 20,
+        limittononsuspendedevents: int = None,
+        userid: int = None,
+    ) -> CourseEvents:
         """Get calendar action events by tiemsort
 
         Args:
@@ -113,7 +119,7 @@ class BaseCalendar(BaseMoodle):
             CourseEvents: list of CourseEvent
         """
         res = self.moodle.post(
-            'core_calendar_get_action_events_by_timesort',
+            "core_calendar_get_action_events_by_timesort",
             timesortfrom=timesortfrom,
             timesortto=timesortto,
             aftereventid=aftereventid,
@@ -133,14 +139,12 @@ class BaseCalendar(BaseMoodle):
             AllowedEventTypes: list of allowed event types to be created in the given course.
         """
         res = self.moodle.post(
-            'core_calendar_get_allowed_event_types',
+            "core_calendar_get_allowed_event_types",
             courseid=courseid,
         )
         return self._tr(AllowedEventTypes, **res)
 
-    def get_calendar_access_information(self,
-                                        courseid: int = 0
-                                        ) -> AccessInformation:
+    def get_calendar_access_information(self, courseid: int = 0) -> AccessInformation:
         """Convenience function to retrieve some permissions/access information for the given course calendar.
 
         Args:
@@ -150,17 +154,19 @@ class BaseCalendar(BaseMoodle):
             AccessInformation: Permissions/access information for the given course calendar
         """
         res = self.moodle.post(
-            'core_calendar_get_calendar_access_information',
+            "core_calendar_get_calendar_access_information",
             courseid=courseid,
         )
         return self._tr(AccessInformation, **res)
 
-    def get_calendar_day_view(self,
-                              year: int,
-                              month: int,
-                              day: int,
-                              courseid: int = 1,
-                              categoryid: Optional[int] = None) -> DayView:
+    def get_calendar_day_view(
+        self,
+        year: int,
+        month: int,
+        day: int,
+        courseid: int = 1,
+        categoryid: Optional[int] = None,
+    ) -> DayView:
         """Fetch the day view data for a calendar
 
         Args:
@@ -174,7 +180,7 @@ class BaseCalendar(BaseMoodle):
             DayView: Response list of Event
         """
         res = self.moodle.post(
-            'core_calendar_get_calendar_day_view',
+            "core_calendar_get_calendar_day_view",
             year=year,
             month=month,
             day=day,
@@ -193,14 +199,14 @@ class BaseCalendar(BaseMoodle):
             CourseEvents: list of Event
         """
         res = self.moodle.post(
-            'core_calendar_get_calendar_event_by_id',
+            "core_calendar_get_calendar_event_by_id",
             eventid=eventid,
         )
         return self._tr(CourseEvents, **res)
 
-    def get_calendar_events(self,
-                            events: Events.Details = None,
-                            options: Events.Options = None) -> Events:
+    def get_calendar_events(
+        self, events: Events.Details = None, options: Events.Options = None
+    ) -> Events:
         """Get calendar events
 
         Args:
@@ -211,7 +217,7 @@ class BaseCalendar(BaseMoodle):
             Events: list of Event
         """
         res = self.moodle.post(
-            'core_calendar_get_calendar_events',
+            "core_calendar_get_calendar_events",
             events=events if events else {},
             options=options if options else {},
         )
@@ -223,17 +229,19 @@ class BaseCalendar(BaseMoodle):
         Returns:
             CalendarExportToken: The calendar permanent access token for calendar export.
         """
-        res = self.moodle.post('core_calendar_get_calendar_export_token')
+        res = self.moodle.post("core_calendar_get_calendar_export_token")
         return self._tr(CalendarExportToken, **res)
 
-    def get_calendar_monthly_view(self,
-                                  year: int,
-                                  month: int,
-                                  courseid: int = 1,
-                                  categoryid: int = None,
-                                  includenavigation: int = 1,
-                                  mini: int = None,
-                                  day: int = 1) -> MonthlyView:
+    def get_calendar_monthly_view(
+        self,
+        year: int,
+        month: int,
+        courseid: int = 1,
+        categoryid: int = None,
+        includenavigation: int = 1,
+        mini: int = None,
+        day: int = 1,
+    ) -> MonthlyView:
         """Fetch the monthly view data for a calendar
 
         Args:
@@ -249,7 +257,7 @@ class BaseCalendar(BaseMoodle):
             MonthlyView: [description]
         """
         res = self.moodle.post(
-            'core_calendar_get_calendar_monthly_view',
+            "core_calendar_get_calendar_monthly_view",
             year=year,
             month=month,
             courseid=courseid,
@@ -260,9 +268,9 @@ class BaseCalendar(BaseMoodle):
         )
         return self._tr(MonthlyView, **res)
 
-    def get_calendar_upcoming_view(self,
-                                   courseid: int = 1,
-                                   categoryid: int = None) -> CourseEvents:
+    def get_calendar_upcoming_view(
+        self, courseid: int = 1, categoryid: int = None
+    ) -> CourseEvents:
         """Fetch the upcoming view data for a calendar
 
         Args:
@@ -273,7 +281,7 @@ class BaseCalendar(BaseMoodle):
             CourseEvents: [description]
         """
         res = self.moodle.post(
-            'core_calendar_get_calendar_upcoming_view',
+            "core_calendar_get_calendar_upcoming_view",
             courseid=courseid,
             categoryid=categoryid,
         )
@@ -288,11 +296,10 @@ class BaseCalendar(BaseMoodle):
         Returns:
             Timestamps: list of Timestamp
         """
-        res = self.moodle.post('core_calendar_get_timestamps', data=data)
+        res = self.moodle.post("core_calendar_get_timestamps", data=data)
         return self._tr(Timestamps, **res)
 
-    def submit_create_update_form(self,
-                                  formdata: str) -> CourseEvents.EventForm:
+    def submit_create_update_form(self, formdata: str) -> CourseEvents.EventForm:
         """Submit form data for event form
 
         Args:
@@ -302,13 +309,14 @@ class BaseCalendar(BaseMoodle):
             CourseEvents.EventForm: Event form
         """
         res = self.moodle.post(
-            'core_calendar_submit_create_update_form',
+            "core_calendar_submit_create_update_form",
             formdata=formdata,
         )
         return self._tr(CourseEvents.EventForm, **res)
 
-    def update_event_start_day(self, eventid: int,
-                               daytimestamp: Union[datetime, int]) -> Event:
+    def update_event_start_day(
+        self, eventid: int, daytimestamp: Union[datetime, int]
+    ) -> Event:
         """Update the start day (but not time) for an event.
 
         Args:
@@ -319,8 +327,8 @@ class BaseCalendar(BaseMoodle):
             Event: Updated event
         """
         res = self.moodle.post(
-            'core_calendar_update_event_start_day',
+            "core_calendar_update_event_start_day",
             eventid=eventid,
             daytimestamp=daytimestamp,
         )
-        return Event(**res['event'])  # type: ignore
+        return Event(**res["event"])  # type: ignore

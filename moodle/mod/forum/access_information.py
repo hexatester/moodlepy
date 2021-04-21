@@ -43,6 +43,7 @@ class AccessInformation:
         cancanoverridecutoff (Optional[int]): Whether the user has the capability mod/forum:canoverridecutoff allowed.
         cancantogglefavourite (Optional[int]): Whether the user has the capability mod/forum:cantogglefavourite allowed.
     """
+
     warnings: List[MoodleWarning] = field(factory=list)
     canaddinstance: Optional[int] = None
     canviewdiscussion: Optional[int] = None

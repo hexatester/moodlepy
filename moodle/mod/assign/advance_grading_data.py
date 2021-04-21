@@ -15,6 +15,7 @@ class Filling:
         enrichedbenchmarkstudent (Optional[float]): enrichedbenchmarkstudent
         enrichedbenchmarkstudents (Optional[float]): enrichedbenchmarkstudents
     """
+
     criterionid: int
     levelid: Optional[int]
     remark: Optional[str]
@@ -31,6 +32,7 @@ class Criterion:
         criterionid (int): criterion id
         fillings (List[Filling]): filling
     """
+
     criterionid: int
     fillings: List[Filling] = field(factory=list)
 
@@ -41,6 +43,7 @@ class Rubric:
     Args:
         criteria (List[Criterion]): list of criterion
     """
+
     criteria: List[Criterion] = field(factory=list)
 
 
@@ -52,6 +55,7 @@ class AdvanceGradingData:
         guide (Optional[Rubric]): list of Rubric
         rubric (Optional[Rubric]): list of Rubric
     """
+
     erubric: Optional[Rubric]
     guide: Optional[Rubric]
     rubric: Optional[Rubric]

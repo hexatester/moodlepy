@@ -30,6 +30,7 @@ class ProfileField:
         param4 (Optional[str]): Profield field settings
         param5 (Optional[str]): Profield field settings
     """
+
     id: Optional[int]
     shortname: Optional[str]
     name: Optional[str]
@@ -70,6 +71,7 @@ class SignupSetting:
         recaptchachallengejs (Optional[str]): Recaptcha challenge js url
         warnings (List[Warning]): list of warnings
     """
+
     namefields: List[str] = field(factory=list)
     passwordpolicy: Optional[str] = None
     sitepolicy: Optional[str] = None

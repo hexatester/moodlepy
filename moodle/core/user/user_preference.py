@@ -8,4 +8,5 @@ class UserPreference(GeneralTypeValue):
         type (str): The name of the preference
         value (str): The value of the preference
     """
+
     pass

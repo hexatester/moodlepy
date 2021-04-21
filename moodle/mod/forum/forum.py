@@ -17,6 +17,7 @@ class ForumFile:
     params: isexternalfile (Optional[int]): Whether is an external file.
     params: repositorytype (Optional[str]): The repository type for external files.
     """
+
     filename: Optional[str]
     filepath: Optional[str]
     filesize: Optional[int]
@@ -63,6 +64,7 @@ class Forum(MoodleObject):
     params: istracked (Optional[int]): If the user is tracking the forum
     params: unreadpostscount (Optional[int]): The number of unread posts for tracked forums
     """
+
     id: int
     course: int
     type: str

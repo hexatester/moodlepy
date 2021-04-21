@@ -5,17 +5,23 @@ from moodle import BaseMoodle
 from moodle.core.course import CourseCapability
 from moodle.core.user import User
 from moodle.base.general import GeneralNameValue
-from . import EditUserEnrolmentResponse, EnrolledUser, CapabilityEnrolledUser, EnrolmentMethod
+from . import (
+    EditUserEnrolmentResponse,
+    EnrolledUser,
+    CapabilityEnrolledUser,
+    EnrolmentMethod,
+)
 
 
 class BaseEnrol(BaseMoodle):
     def edit_user_enrolment(
-            self,
-            courseid: int,
-            ueid: int,
-            status: int,
-            timestart: Union[int, datetime] = 0,
-            timeend: Union[int, datetime] = 0) -> EditUserEnrolmentResponse:
+        self,
+        courseid: int,
+        ueid: int,
+        status: int,
+        timestart: Union[int, datetime] = 0,
+        timeend: Union[int, datetime] = 0,
+    ) -> EditUserEnrolmentResponse:
         """**DEPRECATED** Please do not call this function any more. External function that updates a given user enrolment
 
         Args:
@@ -29,7 +35,7 @@ class BaseEnrol(BaseMoodle):
             EditUserEnrolmentResponse: Response
         """
         data = self.moodle.post(
-            'core_enrol_edit_user_enrolment',
+            "core_enrol_edit_user_enrolment",
             courseid=courseid,
             ueid=ueid,
             status=status,
@@ -38,8 +44,7 @@ class BaseEnrol(BaseMoodle):
         )
         return self._tr(EditUserEnrolmentResponse, **data)
 
-    def get_course_enrolment_methods(self,
-                                     courseid: int) -> List[EnrolmentMethod]:
+    def get_course_enrolment_methods(self, courseid: int) -> List[EnrolmentMethod]:
         """Get the list of course enrolment methods
 
         Args:
@@ -49,14 +54,14 @@ class BaseEnrol(BaseMoodle):
             List[EnrolmentMethod]: list of EnrolmentMethod
         """
         datas = self.moodle.post(
-            'core_enrol_get_course_enrolment_methods',
+            "core_enrol_get_course_enrolment_methods",
             courseid=courseid,
         )
         return self._trs(EnrolmentMethod, datas)
 
     def get_enrolled_users(
-            self, courseid: int,
-            options: Optional[List[GeneralNameValue]]) -> List[EnrolledUser]:
+        self, courseid: int, options: Optional[List[GeneralNameValue]]
+    ) -> List[EnrolledUser]:
         """Get enrolled users by course id.
 
         Args:
@@ -75,15 +80,17 @@ class BaseEnrol(BaseMoodle):
             List[EnrolledUser]: list of EnrolledUser
         """
         data = self.moodle.post(
-            'core_enrol_get_enrolled_users',
+            "core_enrol_get_enrolled_users",
             courseid=courseid,
             options=options,
         )
         return self._trs(EnrolledUser, data)
 
     def get_enrolled_users_with_capability(
-            self, coursecapabilities: List[CourseCapability],
-            options: List[GeneralNameValue]) -> List[CapabilityEnrolledUser]:
+        self,
+        coursecapabilities: List[CourseCapability],
+        options: List[GeneralNameValue],
+    ) -> List[CapabilityEnrolledUser]:
         """For each course and capability specified, return a list of the users that are enrolled in the course and have that capability
 
         Args:
@@ -99,15 +106,21 @@ class BaseEnrol(BaseMoodle):
             List[CapabilityEnrolledUser]: list of the users that are enrolled in the course and have that capability
         """
         data = self.moodle.post(
-            'core_enrol_get_enrolled_users_with_capability',
+            "core_enrol_get_enrolled_users_with_capability",
             coursecapabilities=coursecapabilities,
             options=options,
         )
         return self._trs(CapabilityEnrolledUser, data)
 
-    def get_potential_users(self, courseid: int, enrolid: int, search: str,
-                            searchanywhere: int, page: int,
-                            perpage: int) -> List[User]:
+    def get_potential_users(
+        self,
+        courseid: int,
+        enrolid: int,
+        search: str,
+        searchanywhere: int,
+        page: int,
+        perpage: int,
+    ) -> List[User]:
         """Get the list of potential users to enrol
 
         Args:
@@ -122,7 +135,7 @@ class BaseEnrol(BaseMoodle):
             List[User]: list of User
         """
         data = self.moodle.post(
-            'core_enrol_get_potential_users',
+            "core_enrol_get_potential_users",
             courseid=courseid,
             enrolid=enrolid,
             search=search,
@@ -133,17 +146,17 @@ class BaseEnrol(BaseMoodle):
         return self._trs(User, data)
 
     def get_users_courses(self):
-        data = self.moodle.post('core_enrol_get_users_courses')
+        data = self.moodle.post("core_enrol_get_users_courses")
         return data
 
     def search_users(self):
-        data = self.moodle.post('core_enrol_search_users')
+        data = self.moodle.post("core_enrol_search_users")
         return data
 
     def submit_user_enrolment_form(self):
-        data = self.moodle.post('core_enrol_submit_user_enrolment_form')
+        data = self.moodle.post("core_enrol_submit_user_enrolment_form")
         return data
 
     def unenrol_user_enrolment(self):
-        data = self.moodle.post('core_enrol_unenrol_user_enrolment')
+        data = self.moodle.post("core_enrol_unenrol_user_enrolment")
         return data

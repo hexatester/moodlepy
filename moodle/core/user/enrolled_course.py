@@ -8,6 +8,7 @@ class EnrolledCourse:
     fullname (str): Fullname of the course
     shortname (str): Shortname of the course
     """
+
     id: int
     fullname: str
     shortname: str

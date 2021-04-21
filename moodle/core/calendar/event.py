@@ -28,6 +28,7 @@ class Event:
         timemodified (int): time modified
         subscriptionid (Optional[int]): Subscription id
     """
+
     id: int
     name: str
     description: Optional[str]
@@ -77,13 +78,14 @@ class Events(ResponsesFactory[Event]):
         params: visible (Optional[int]): Default for "1" visible
         params: sequence (Optional[int]): Default for "1" sequence
         """
+
         name: str
         description: Optional[str] = None
         format: Optional[int] = 1
         courseid: Optional[int] = 0
         groupid: Optional[int] = 0
         repeats: Optional[int] = 0
-        eventtype: Optional[str] = 'user'
+        eventtype: Optional[str] = "user"
         timestart: Optional[int] = None
         timeduration: Optional[int] = 0
         visible: Optional[int] = 1
@@ -96,6 +98,7 @@ class Events(ResponsesFactory[Event]):
         params: eventid (int): Event ID
         params: repeat (int): Delete comeplete series if repeated event
         """
+
         eventid: int
         repeat: int
 
@@ -108,6 +111,7 @@ class Events(ResponsesFactory[Event]):
         params: groupids (List[int]): List of group ids for which events should be returned
         params: categoryids (List[int]): List of category ids for which events will be returned
         """
+
         eventids: List[int] = field(factory=list)
         courseids: List[int] = field(factory=list)
         groupids: List[int] = field(factory=list)
@@ -122,6 +126,7 @@ class Events(ResponsesFactory[Event]):
         params: timeend (int): Time to which the events should be returned. We treat 0 and null as no end, Default for "0"
         params: ignorehidden (int): Ignore hidden events or not, Default for "1"
         """
+
         userevents: Optional[int] = 1
         siteevents: Optional[int] = 1
         timestart: Optional[int] = 0

@@ -16,7 +16,7 @@ class BasePage(BaseMoodle):
             PagesResponse: Response
         """
         data = self.moodle.post(
-            'mod_page_get_pages_by_courses',
+            "mod_page_get_pages_by_courses",
             courseids=courseids,
         )
         return self._tr(PagesResponse, **data)
@@ -31,7 +31,7 @@ class BasePage(BaseMoodle):
             GeneralStatus: Response
         """
         data = self.moodle.post(
-            'mod_page_view_page',
+            "mod_page_view_page",
             pageid=pageid,
         )
         return self._tr(GeneralStatus, **data)

@@ -47,6 +47,7 @@ class User:
         customfields (List[UserCustomField]): User custom fields (also known as user profile fields)
         preferences (List[UserPreference]): Users preferences
     """
+
     id: int
     username: Optional[str]
     firstname: Optional[str]

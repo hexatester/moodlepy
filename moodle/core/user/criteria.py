@@ -21,4 +21,5 @@ class Criteria(GeneralKeyValue):
                             "auth" (string) matching user auth plugin
         value (int, str): the value to search
     """
+
     pass

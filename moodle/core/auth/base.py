@@ -15,7 +15,7 @@ class BaseAuth(BaseMoodle):
             GeneralSuccess: True if the user was confirmed, false if he was already confirmed
         """
         data = self.moodle.post(
-            'core_auth_confirm_user',
+            "core_auth_confirm_user",
             username=username,
             secret=secret,
         )
@@ -27,8 +27,7 @@ class BaseAuth(BaseMoodle):
         Returns:
             GeneralSuccess: True if digital consent verification is enabled, false otherwise.
         """
-        data = self.moodle.post(
-            'core_auth_is_age_digital_consent_verification_enabled')
+        data = self.moodle.post("core_auth_is_age_digital_consent_verification_enabled")
         return self._tr(GeneralSuccess, **data)
 
     def is_minor(self, age: int, country: str) -> GeneralSuccess:
@@ -42,16 +41,15 @@ class BaseAuth(BaseMoodle):
             GeneralSuccess: True if the user is considered to be a digital minor, false if not
         """
         data = self.moodle.post(
-            'core_auth_is_minor',
+            "core_auth_is_minor",
             age=age,
             country=country,
         )
         return self._tr(GeneralSuccess, **data)
 
     def request_password_reset(
-            self,
-            username: str = '',
-            email: str = '') -> RequestPasswordResetResponse:
+        self, username: str = "", email: str = ""
+    ) -> RequestPasswordResetResponse:
         """Requests a password reset.
 
         Args:
@@ -62,18 +60,17 @@ class BaseAuth(BaseMoodle):
             RequestPasswordResetResponse: Response
         """
         data = self.moodle.post(
-            'core_auth_request_password_reset',
+            "core_auth_request_password_reset",
             username=username,
             email=email,
         )
         return self._tr(RequestPasswordResetResponse, **data)
 
-    def resend_confirmation_email(self,
-                                  username: str,
-                                  password: str,
-                                  redirect: str = '') -> GeneralSuccess:
+    def resend_confirmation_email(
+        self, username: str, password: str, redirect: str = ""
+    ) -> GeneralSuccess:
         data = self.moodle.post(
-            'core_auth_resend_confirmation_email',
+            "core_auth_resend_confirmation_email",
             username=username,
             password=password,
             redirect=redirect,

@@ -13,8 +13,7 @@ from . import (
 
 
 class BaseCohort(BaseMoodle):
-    def add_cohort_members(
-            self, members: List[AddCohortMember]) -> List[MoodleWarning]:
+    def add_cohort_members(self, members: List[AddCohortMember]) -> List[MoodleWarning]:
         """Adds cohort members.
 
         Args:
@@ -24,10 +23,10 @@ class BaseCohort(BaseMoodle):
             List[MoodleWarning]: list of MoodleWarning, if any
         """
         data = self.moodle.get(
-            'core_cohort_add_cohort_members',
+            "core_cohort_add_cohort_members",
             members=members,
         )
-        warnings = dict(data).get('warnings', list())
+        warnings = dict(data).get("warnings", list())
         warnings = warnings if warnings else list()
         return self._trs(MoodleWarning, data)
 
@@ -40,7 +39,7 @@ class BaseCohort(BaseMoodle):
         Returns:
             List[Cohort]: list of Cohort
         """
-        data = self.moodle.get('core_cohort_create_cohorts', cohorts=cohorts)
+        data = self.moodle.get("core_cohort_create_cohorts", cohorts=cohorts)
         return self._trs(Cohort, data)
 
     def delete_cohort_members(self, members: List[DeleteCohort]) -> None:
@@ -49,7 +48,7 @@ class BaseCohort(BaseMoodle):
         Args:
             members (List[DeleteCohort]): list of DeleteCohort or {cohortid:int, userid:int}
         """
-        self.moodle.get('core_cohort_delete_cohort_members', members=members)
+        self.moodle.get("core_cohort_delete_cohort_members", members=members)
 
     def delete_cohorts(self, cohortids: List[int]) -> None:
         """Deletes all specified cohorts.
@@ -57,7 +56,7 @@ class BaseCohort(BaseMoodle):
         Args:
             cohortids (List[int]): list of cohort ID
         """
-        self.moodle.get('core_cohort_delete_cohorts', cohortids=cohortids)
+        self.moodle.get("core_cohort_delete_cohorts", cohortids=cohortids)
 
     def get_cohort_members(self, cohortids: List[int]) -> List[CohortMembers]:
         """Returns cohort members.
@@ -69,13 +68,13 @@ class BaseCohort(BaseMoodle):
             List[CohortMembers]: list of CohortMembers
         """
         data = self.moodle.get(
-            'core_cohort_get_cohort_members',
+            "core_cohort_get_cohort_members",
             cohortids=cohortids,
         )
         return self._trs(CohortMembers, data)
 
     def get_cohorts(self, cohortids: List[int]) -> List[Cohort]:
-        data = self.moodle.get('core_cohort_get_cohorts', cohortids=cohortids)
+        data = self.moodle.get("core_cohort_get_cohorts", cohortids=cohortids)
         return self._trs(Cohort, data)
 
     def search_cohorts(
@@ -108,7 +107,7 @@ class BaseCohort(BaseMoodle):
             "instanceid": instanceid,
         }
         data = self.moodle.get(
-            'core_cohort_search_cohorts',
+            "core_cohort_search_cohorts",
             query=query,
             context=context,
             includes=includes,
@@ -123,4 +122,4 @@ class BaseCohort(BaseMoodle):
         Args:
             cohorts (List[UpdateCohort]): list of UpdateCohort
         """
-        self.moodle.get('core_cohort_update_cohorts', cohorts=cohorts)
+        self.moodle.get("core_cohort_update_cohorts", cohorts=cohorts)

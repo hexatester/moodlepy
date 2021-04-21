@@ -11,6 +11,7 @@ class AuthorUrls:
         profile (Optional[str]): The URL for the use profile page
         profileimage (Optional[str]): The URL for the use profile image
     """
+
     profile: Optional[str]
     profileimage: Optional[str]
 
@@ -21,6 +22,7 @@ class GroupUrls:
     Args:
         image (Optional[str]): image
     """
+
     image: Optional[str]
 
 
@@ -32,6 +34,7 @@ class Group:
         name (str): name
         urls (GroupUrls): urls
     """
+
     id: int
     name: str
     urls: GroupUrls
@@ -43,6 +46,7 @@ class PlagiarismHtml:
     Args:
         plagiarism (Optional[str]): The HTML source for the Plagiarism Response
     """
+
     plagiarism: Optional[str]
 
 
@@ -52,6 +56,7 @@ class AttachmentUrls:
     Args:
         export (Optional[str]): The URL used to export the attachment
     """
+
     export: Optional[str]
 
 
@@ -61,6 +66,7 @@ class TagUrls:
     Args:
         view (str): The URL to view the tag
     """
+
     view: str
 
 
@@ -71,6 +77,7 @@ class RatingScaleItem:
         value (int): Scale value/option id.
         name (str): Scale name.
     """
+
     value: int
     name: str
 
@@ -90,6 +97,7 @@ class Rating:
         canrate (Optional[int]): Whether the user can rate the item.
         canviewaggregate (Optional[int]): Whether the user can view the aggregated grade.
     """
+
     itemid: int
     scaleid: Optional[int]
     userid: Optional[int]
@@ -113,6 +121,7 @@ class RatingScale:
         isnumeric (int): Whether is a numeric scale.
         items (List[RatingScaleItem]): Scale items. Only returned for not numerical scales.
     """
+
     id: int
     courseid: Optional[int]
     name: Optional[str]
@@ -133,6 +142,7 @@ class RatingInfo:
         scales (List[RatingScale]): Different scales used information
         ratings (List[Rating]): The ratings
     """
+
     contextid: int
     component: str
     ratingarea: str
@@ -150,6 +160,7 @@ class Html:
         taglist (Optional[str]): The HTML source to view the list of tags
         authorsubheading (Optional[str]): The HTML source to view the author details
     """
+
     rating: Optional[str]
     taglist: Optional[str]
     authorsubheading: Optional[str]
@@ -166,6 +177,7 @@ class Tag:
         flag (int): Wehther this tag is flagged
         urls (TagUrls): The URL to view the tag
     """
+
     id: int
     tagid: int
     isstandard: int
@@ -200,6 +212,7 @@ class Attachment:
         urls (AttachmentUrls): export url
         html (PlagiarismHtml): The HTML source for the Plagiarism Response
     """
+
     contextid: int
     component: str
     filearea: str
@@ -239,6 +252,7 @@ class PostUrls:
         markasunread (Optional[str]): The URL used to mark the post as unread
         discuss (Optional[str]): discuss
     """
+
     view: Optional[str]
     viewisolated: Optional[str]
     viewparent: Optional[str]
@@ -266,6 +280,7 @@ class Capability:
         controlreadstatus (int): Whether the user can control the read status of the post
         canreplyprivately (int): Whether the user can post a private reply
     """
+
     view: int
     edit: int
     delete: int
@@ -286,6 +301,7 @@ class Author:
         groups (List[Group]): groups
         urls (AuthorUrls): images
     """
+
     id: Optional[int]
     fullname: Optional[str]
     urls: AuthorUrls
@@ -318,6 +334,7 @@ class Post:
         html (Html): html source
         ratinginfo (Optional[RatingInfo]): Rating information
     """
+
     id: int
     subject: str
     replysubject: str
@@ -348,6 +365,7 @@ class Message:
         type (str): The classification to be used in the client side
         message (str): untranslated english message to explain the warning
     """
+
     type: str
     message: str
 
@@ -361,6 +379,7 @@ class NewPost:
         post (Post): post object
         messages (List[Message]): list of warning messages
     """
+
     postid: int
     post: Post
     warnings: List[MoodleWarning] = field(factory=list)
@@ -374,6 +393,7 @@ class Posts(ResponsesFactory[Post]):
         posts (List[Post]): list of Post
         warnings (List[Warning]): list of Warning
     """
+
     posts: List[Post] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 
@@ -393,5 +413,6 @@ class Posts(ResponsesFactory[Post]):
                             topreferredformat   (bool); convert the message & messageformat to FORMAT_HTML, defaults to false
             value (str): the value of the option, this param is validated in the external function.
         """
+
         name: str
         value: Union[bool, int]

@@ -17,10 +17,12 @@ from . import (
 
 
 class BaseCourse(BaseMoodle):
-    def check_updates(self,
-                      courseid: int,
-                      tocheck: List[CheckUpdate.ToCheck],
-                      filter: Optional[List[str]] = None) -> CheckUpdate:
+    def check_updates(
+        self,
+        courseid: int,
+        tocheck: List[CheckUpdate.ToCheck],
+        filter: Optional[List[str]] = None,
+    ) -> CheckUpdate:
         """Check if there is updates affecting the user for the given course and contexts.
 
         Args:
@@ -67,10 +69,11 @@ class BaseCourse(BaseMoodle):
         return res
 
     def get_activities_overview(
-            self,
-            courseid: int,
-            tocheck: List[Course.ToCheck],
-            filter: Optional[List[str]] = None) -> ActivityOverview:
+        self,
+        courseid: int,
+        tocheck: List[Course.ToCheck],
+        filter: Optional[List[str]] = None,
+    ) -> ActivityOverview:
         res = self.moodle.post(
             "core_course_get_activities_overview",
             courseid=courseid,
@@ -80,8 +83,7 @@ class BaseCourse(BaseMoodle):
         return self._tr(ActivityOverview, **res)
 
     def get_categories(
-            self,
-            criteria: Optional[List[Category.Criteria]] = None
+        self, criteria: Optional[List[Category.Criteria]] = None
     ) -> List[Category]:
         res = self.moodle.post(
             "core_course_get_categories",
@@ -93,9 +95,8 @@ class BaseCourse(BaseMoodle):
         return results
 
     def get_contents(
-            self,
-            courseid: int,
-            options: Optional[List[ContentOption]] = None) -> List[Section]:
+        self, courseid: int, options: Optional[List[ContentOption]] = None
+    ) -> List[Section]:
         """Get course contents
 
         Args:
@@ -105,9 +106,9 @@ class BaseCourse(BaseMoodle):
         Returns:
             List[Section]: list of section
         """
-        res = self.moodle.post("core_course_get_contents",
-                               courseid=courseid,
-                               options=options or [])
+        res = self.moodle.post(
+            "core_course_get_contents", courseid=courseid, options=options or []
+        )
         return self._trs(Section, res)
 
     def get_course_module(self, cmid: int) -> CourseModule:
@@ -136,13 +137,11 @@ class BaseCourse(BaseMoodle):
             List[Course]: Return course details
         """
         options = Array(ids if ids else [])
-        options.name = 'ids'
+        options.name = "ids"
         res = self.moodle.post("core_course_get_courses", options=options)
         return self._trs(Course, res)
 
-    def get_courses_by_field(self,
-                             field: str = '',
-                             value: str = '') -> CourseByField:
+    def get_courses_by_field(self, field: str = "", value: str = "") -> CourseByField:
         """Get courses matching a specific field (id/s, shortname, idnumber, category)
 
         Args:
@@ -158,17 +157,18 @@ class BaseCourse(BaseMoodle):
         Returns:
             CourseByField: List of Course
         """
-        res = self.moodle.post("core_course_get_courses_by_field",
-                               field=field,
-                               value=value)
+        res = self.moodle.post(
+            "core_course_get_courses_by_field", field=field, value=value
+        )
         return self._tr(CourseByField, **res)
 
     def get_enrolled_courses_by_timeline_classification(
-            self,
-            classification: str,
-            limit: int = 0,
-            offset: int = 0,
-            sort: Optional[str] = None) -> CoursesBTC:
+        self,
+        classification: str,
+        limit: int = 0,
+        offset: int = 0,
+        sort: Optional[str] = None,
+    ) -> CoursesBTC:
         """List of enrolled courses for the given timeline classification (past, inprogress, or future).
 
         Args:
@@ -189,11 +189,13 @@ class BaseCourse(BaseMoodle):
         )
         return self._tr(CoursesBTC, **res)
 
-    def get_recent_courses(self,
-                           userid: int = 0,
-                           limit: int = 0,
-                           offset: int = 0,
-                           sort: Optional[str] = None) -> List[Course]:
+    def get_recent_courses(
+        self,
+        userid: int = 0,
+        limit: int = 0,
+        offset: int = 0,
+        sort: Optional[str] = None,
+    ) -> List[Course]:
         res = self.moodle.post(
             "core_course_get_recent_courses",
             userid=userid,
@@ -211,10 +213,9 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_module")
         return res
 
-    def get_updates_since(self,
-                          courseid: int,
-                          since: int,
-                          filter: Optional[List[str]] = None) -> CheckUpdate:
+    def get_updates_since(
+        self, courseid: int, since: int, filter: Optional[List[str]] = None
+    ) -> CheckUpdate:
         """Check if there are updates affecting the user for the given course since the given time stamp.
 
         Args:
@@ -226,18 +227,19 @@ class BaseCourse(BaseMoodle):
         Returns:
             CheckUpdate: Update course detail
         """
-        res = self.moodle.post("core_course_get_updates_since",
-                               courseid=courseid,
-                               since=since,
-                               filter=filter)
+        res = self.moodle.post(
+            "core_course_get_updates_since",
+            courseid=courseid,
+            since=since,
+            filter=filter,
+        )
         return self._tr(CheckUpdate, **res)
 
     def get_user_administration_options(self):
         res = self.moodle.post("core_course_get_user_administration_options")
         return res
 
-    def get_user_navigation_options(self,
-                                    courseids: List[int]) -> NavigationOptions:
+    def get_user_navigation_options(self, courseids: List[int]) -> NavigationOptions:
         """Return a list of navigation options in a set of courses that are avaialable or not for the current user.
 
         Args:
@@ -246,22 +248,25 @@ class BaseCourse(BaseMoodle):
         Returns:
             NavigationOptions: Navigation options of courses
         """
-        res = self.moodle.post("core_course_get_user_navigation_options",
-                               courseids=courseids)
+        res = self.moodle.post(
+            "core_course_get_user_navigation_options", courseids=courseids
+        )
         return self._tr(NavigationOptions, **res)
 
     def import_course(self):
         res = self.moodle.post("core_course_import_course")
         return res
 
-    def search_courses(self,
-                       criterianame: str,
-                       criteriavalue: str,
-                       page: int = 0,
-                       perpage: int = 0,
-                       requiredcapabilities: Optional[List[str]] = None,
-                       limittoenrolled: int = 0,
-                       onlywithcompletion: int = 0) -> SearchResult:
+    def search_courses(
+        self,
+        criterianame: str,
+        criteriavalue: str,
+        page: int = 0,
+        perpage: int = 0,
+        requiredcapabilities: Optional[List[str]] = None,
+        limittoenrolled: int = 0,
+        onlywithcompletion: int = 0,
+    ) -> SearchResult:
         """Search courses by (name, module, block, tag)
 
         Args:

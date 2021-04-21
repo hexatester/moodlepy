@@ -13,6 +13,7 @@ class InstanceInfo:
         status (str): Status of enrolment plugin
         passwordrequired (str): Password required for enrolment
     """
+
     id: int
     courseid: int
     type: str

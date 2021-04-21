@@ -16,10 +16,7 @@ class Moodle(Mdl):
     def __init__(self, url: str, token: str):
         super(Moodle, self).__init__(url, token)
 
-    def __call__(self,
-                 wsfunction: str,
-                 moodlewsrestformat='json',
-                 **kwargs) -> Any:
+    def __call__(self, wsfunction: str, moodlewsrestformat="json", **kwargs) -> Any:
         return self.post(wsfunction, moodlewsrestformat, **kwargs)
 
     @property  # type: ignore

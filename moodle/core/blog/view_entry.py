@@ -11,5 +11,6 @@ class ViewEntry:
     params: status (bool): status: true if success
     params: warnings (List[Warning]): list of warnings
     """
+
     status: bool
     warnings: List[MoodleWarning] = field(factory=list)

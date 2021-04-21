@@ -6,10 +6,9 @@ Filter = BlogEntries.Filter
 
 
 class BaseBlog(BaseMoodle):
-    def get_entries(self,
-                    filters: Optional[List[Filter]] = None,
-                    page: int = 0,
-                    perpage: int = 10) -> BlogEntries:
+    def get_entries(
+        self, filters: Optional[List[Filter]] = None, page: int = 0, perpage: int = 10
+    ) -> BlogEntries:
         """Get blog entries.
 
         Args:
@@ -20,14 +19,12 @@ class BaseBlog(BaseMoodle):
         Returns:
             BlogEntries: Returns blog entries.
         """
-        res = self.moodle.post('core_blog_get_entries',
-                               filters=filters or [],
-                               page=page,
-                               perpage=perpage)
+        res = self.moodle.post(
+            "core_blog_get_entries", filters=filters or [], page=page, perpage=perpage
+        )
         return self._tr(BlogEntries, **res)
 
-    def view_entries(self,
-                     filters: Optional[List[Filter]] = None) -> ViewEntry:
+    def view_entries(self, filters: Optional[List[Filter]] = None) -> ViewEntry:
         """Trigger the blog_entries_viewed event.
 
         Args:
@@ -36,5 +33,5 @@ class BaseBlog(BaseMoodle):
         Returns:
             ViewEntry: the blog_entries_viewed response.
         """
-        res = self.moodle.post('core_blog_view_entries', filters=filters)
+        res = self.moodle.post("core_blog_view_entries", filters=filters)
         return self._tr(ViewEntry, **res)

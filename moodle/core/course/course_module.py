@@ -14,6 +14,7 @@ class Outcome:
         name (str): Outcome full name
         scale (str): Scale items
     """
+
     id: str
     name: str
     scale: str
@@ -27,6 +28,7 @@ class AdvancedGrading:
         area (str):Gradable area name
         method (str):Grading method
     """
+
     area: str
     method: str
 
@@ -66,6 +68,7 @@ class Cm:
         advancedgrading (List[AdvancedGrading]): Advanced grading settings
         outcomes (List[Outcome]): Outcomes information
     """
+
     id: int
     course: int
     module: int

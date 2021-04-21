@@ -13,6 +13,7 @@ class AccessInformation:
     params: canmanagegroupentries (int): Whether the user can manage group entries.
     params: warnings (List[Warning]): list of warnings
     """
+
     canmanageentries: int
     canmanageownentries: int
     canmanagegroupentries: int

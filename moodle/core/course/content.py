@@ -14,6 +14,7 @@ class ContentInfo:
         mimetypes (List[str]): Files mime types.
         repositorytype (Optional[str]): The repository type for the main file.
     """
+
     filescount: int
     filessize: int
     lastmodified: datetime
@@ -36,6 +37,7 @@ class Tag:
         ordering (int): Tag ordering.
         flag (int): Whether the tag is flagged as inappropriate.
     """
+
     id: int
     name: str
     rawname: str
@@ -69,6 +71,7 @@ class Content:
         license (Optional[str]): Content license
         tags (List[Tag]): Tags
     """
+
     type: str
     filename: str
     filepath: Optional[str]
@@ -96,6 +99,7 @@ class Completion:
         overrideby (int): The user id who has overriden the status.
         valueused (Optional[bool]): Whether the completion status affects the availability of another activity.
     """
+
     state: int
     timecompleted: datetime
     overrideby: Optional[int]
@@ -128,6 +132,7 @@ class Module:
         contents (List[Content]): list of Content
         contentsinfo (Optional[ContentInfo]): Contents summary information.
     """
+
     id: int
     name: str
     instance: Optional[int]
@@ -166,6 +171,7 @@ class Section:
         availabilityinfo: (Optional[str]): Availability information.
         modules: (List[Module]): list of module
     """
+
     id: int
     name: str
     visible: Optional[int]

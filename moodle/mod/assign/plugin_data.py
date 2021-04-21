@@ -9,6 +9,7 @@ class EditorStructure:
         text (str): The text for this feedback.
         format (int): The format for this feedback
     """
+
     text: str
     format: int
 
@@ -20,5 +21,6 @@ class PluginData:
         assignfeedbackcomments_editor (Optional[EditorStructure]): Editor structure
         files_filemanager (Optional[int]): The id of a draft area containing files for this feedback.
     """
+
     assignfeedbackcomments_editor: Optional[EditorStructure]
     files_filemanager: Optional[int]

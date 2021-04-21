@@ -14,8 +14,9 @@ class BaseResource(BaseMoodle):
         Returns:
             Resources: List of Resource
         """
-        res = self.moodle.post('mod_resource_get_resources_by_courses',
-                               courseids=courseids)
+        res = self.moodle.post(
+            "mod_resource_get_resources_by_courses", courseids=courseids
+        )
         return self._tr(Resources, **res)
 
     def view_resource(self, resourceid: int) -> View:
@@ -27,6 +28,5 @@ class BaseResource(BaseMoodle):
         Returns:
             View: View Resource response
         """
-        res = self.moodle.post('mod_resource_view_resource',
-                               resourceid=resourceid)
+        res = self.moodle.post("mod_resource_view_resource", resourceid=resourceid)
         return self._tr(View, **res)

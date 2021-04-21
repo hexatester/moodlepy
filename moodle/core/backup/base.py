@@ -10,8 +10,9 @@ from .table_row_data import TableRowData
 
 
 class BaseBackup(BaseMoodle):
-    def get_async_backup_links_backup(self, filename: str,
-                                      contextid: int) -> TableRowData:
+    def get_async_backup_links_backup(
+        self, filename: str, contextid: int
+    ) -> TableRowData:
         """Gets the data to use when updating the status table row in the UI for when an async backup completes.
 
         Args:
@@ -22,14 +23,13 @@ class BaseBackup(BaseMoodle):
             TableRowData: Table row data.
         """
         data = self.moodle.post(
-            'core_backup_get_async_backup_links_backup',
+            "core_backup_get_async_backup_links_backup",
             filename=filename,
             contextid=contextid,
         )
         return self._tr(TableRowData, **data)
 
-    def get_async_backup_links_restore(self, backupid: str,
-                                       contextid: int) -> str:
+    def get_async_backup_links_restore(self, backupid: str, contextid: int) -> str:
         """Gets the data to use when updating the status table row in the UI for when an async restore completes.
 
         Args:
@@ -40,15 +40,15 @@ class BaseBackup(BaseMoodle):
             str: Restore url
         """
         data = self.moodle.post(
-            'core_backup_get_async_backup_links_restore',
+            "core_backup_get_async_backup_links_restore",
             backupid=backupid,
             contextid=contextid,
         )
-        return dict(data).get('restoreurl', '')
+        return dict(data).get("restoreurl", "")
 
     def get_async_backup_progress(
-            self, backupids: List[str],
-            contextid: int) -> List[BackupCompletionStatus]:
+        self, backupids: List[str], contextid: int
+    ) -> List[BackupCompletionStatus]:
         """Get the progress of an Asyncronhous backup.
 
         Args:
@@ -59,14 +59,13 @@ class BaseBackup(BaseMoodle):
             List[BackupCompletionStatus]: Backup data
         """
         data = self.moodle.post(
-            'core_backup_get_async_backup_progress',
+            "core_backup_get_async_backup_progress",
             backupids=backupids,
             contextid=contextid,
         )
         return self._trs(BackupCompletionStatus, data)
 
-    def get_copy_progress(self,
-                          copies: List[CopyData]) -> List[CopyDataResponse]:
+    def get_copy_progress(self, copies: List[CopyData]) -> List[CopyDataResponse]:
         """Gets the progress of course copy operations.
 
         Args:
@@ -76,7 +75,7 @@ class BaseBackup(BaseMoodle):
             List[CopyDataResponse]: Copy data completion statuses
         """
         data = self.moodle.post(
-            'core_backup_get_copy_progress',
+            "core_backup_get_copy_progress",
             copies=copies,
         )
         return self._trs(CopyDataResponse, data)
@@ -91,7 +90,7 @@ class BaseBackup(BaseMoodle):
             Any: JSON response.
         """
         data = self.moodle.post(
-            'core_backup_submit_copy_form',
+            "core_backup_submit_copy_form",
             jsonformdata=jsonformdata,
         )
         return data

@@ -15,7 +15,7 @@ class BaseManual(BaseMoodle):
             None: Nothing
         """
         data = self.moodle.post(
-            'enrol_manual_enrol_users',
+            "enrol_manual_enrol_users",
             enrolments=enrolments,
         )
         return data
@@ -30,7 +30,7 @@ class BaseManual(BaseMoodle):
             None: Nothing
         """
         data = self.moodle.post(
-            'enrol_manual_unenrol_users',
+            "enrol_manual_unenrol_users",
             enrolments=enrolments,
         )
         return data

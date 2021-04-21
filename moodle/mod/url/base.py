@@ -15,7 +15,7 @@ class BaseUrl(BaseMoodle):
             Urls: List of Url
         """
         res = self.moodle.post(
-            'mod_url_get_urls_by_courses',
+            "mod_url_get_urls_by_courses",
             courseids=courseids,
         )
         return self._tr(Urls, **res)
@@ -29,5 +29,5 @@ class BaseUrl(BaseMoodle):
         Returns:
             View: Response
         """
-        res = self.moodle.post('mod_url_view_url', urlid=urlid)
+        res = self.moodle.post("mod_url_view_url", urlid=urlid)
         return self._tr(View, **res)

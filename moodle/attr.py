@@ -7,27 +7,26 @@ from typing import Any, Callable, List
 COMMON: List = [str, int, datetime]
 
 
-def serialize(inst=None,
-              field: Attribute = None,
-              value: Any = None,
-              name: str = None) -> Any:
+def serialize(
+    inst=None, field: Attribute = None, value: Any = None, name: str = None
+) -> Any:
     if not value:
         return value
     if not name:
-        name = getattr(field, 'name', '')
+        name = getattr(field, "name", "")
     if isinstance(value, list):
         out = {}
         for idx, val in enumerate(value):
             val = serialize(value=val)
             if isinstance(val, dict):
                 for key, value in val.items():
-                    out[f'{name}[{idx}][{key}]'] = val[key]
+                    out[f"{name}[{idx}][{key}]"] = val[key]
             else:
-                out_key = name or ''
+                out_key = name or ""
                 # Check if data required name prefix
-                if hasattr(value, 'name'):
+                if hasattr(value, "name"):
                     out_key += f"[{getattr(value, 'name')}]"
-                out_key += f'[{idx}]'
+                out_key += f"[{idx}]"
                 out[out_key] = val
         return out
     elif isinstance(value, dict):

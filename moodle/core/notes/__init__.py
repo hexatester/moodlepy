@@ -8,11 +8,11 @@ from .view_notes import ViewNotes
 from .base import BaseNotes
 
 __all__ = [
-    'Note',
-    'SiteNote',
-    'CourseNote',
-    'PersonalNote',
-    'CourseNotes',
-    'ViewNotes',
-    'BaseNotes',
+    "Note",
+    "SiteNote",
+    "CourseNote",
+    "PersonalNote",
+    "CourseNotes",
+    "ViewNotes",
+    "BaseNotes",
 ]

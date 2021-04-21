@@ -14,7 +14,7 @@ class BaseNotes(BaseMoodle):
         Returns:
             List[Note.Result]: Create note result
         """
-        res = self.moodle.post('core_notes_create_notes', notes=notes)
+        res = self.moodle.post("core_notes_create_notes", notes=notes)
         return self._trs(Note.Result, res)
 
     def delete_notes(self, notes: List[int]) -> List[MoodleWarning]:
@@ -26,7 +26,7 @@ class BaseNotes(BaseMoodle):
         Returns:
             List[Warning]: list of warnings
         """
-        res = self.moodle.post('core_notes_delete_notes', notes=notes)
+        res = self.moodle.post("core_notes_delete_notes", notes=notes)
         return self._trs(MoodleWarning, res)
 
     def get_course_notes(self, courseid: int, userid: int = 0) -> CourseNotes:
@@ -39,9 +39,9 @@ class BaseNotes(BaseMoodle):
         Returns:
             CourseNotes: Course note object
         """
-        res = self.moodle.post('core_notes_get_course_notes',
-                               courseid=courseid,
-                               userid=userid)
+        res = self.moodle.post(
+            "core_notes_get_course_notes", courseid=courseid, userid=userid
+        )
         return self._tr(CourseNotes, **res)
 
     def view_notes(self, courseid: int, userid: int = 0) -> ViewNotes:
@@ -54,7 +54,7 @@ class BaseNotes(BaseMoodle):
         Returns:
             ViewNotes: view notes response
         """
-        res = self.moodle.post('core_notes_view_notes',
-                               courseid=courseid,
-                               userid=userid)
+        res = self.moodle.post(
+            "core_notes_view_notes", courseid=courseid, userid=userid
+        )
         return self._tr(ViewNotes, **res)

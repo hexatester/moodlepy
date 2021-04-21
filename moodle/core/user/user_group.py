@@ -11,6 +11,7 @@ class UserGroup:
         description (str): group description
         descriptionformat (int): description format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
     """
+
     id: int
     name: str
     description: str

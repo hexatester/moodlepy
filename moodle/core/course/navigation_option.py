@@ -11,6 +11,7 @@ class NavigationOption:
         name (str): Option name
         available (int): Whether the option is available or not
     """
+
     name: str
     available: int
 
@@ -22,6 +23,7 @@ class CourseNavigation(ResponsesFactory[NavigationOption]):
         id (int): Course id
         options (List[NavigationOption]): list of NavigationOption
     """
+
     id: int
     options: List[NavigationOption] = field(factory=list)
 
@@ -37,6 +39,7 @@ class NavigationOptions(ResponsesFactory[CourseNavigation]):
         courses (List[CourseNavigation]): List of courses
         warnings (List[Warning]): list of warnings
     """
+
     courses: List[CourseNavigation] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 

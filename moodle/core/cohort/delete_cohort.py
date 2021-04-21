@@ -9,5 +9,6 @@ class DeleteCohort:
         cohortid (int): cohort record id
         userid (int): user id
     """
+
     cohortid: int
     userid: int

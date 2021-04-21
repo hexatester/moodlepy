@@ -17,6 +17,7 @@ class File:
         isexternalfile (Optional[int]): Whether is an external file.
         repositorytype (Optional[str]): The repository type for external files.
     """
+
     filename: Optional[str]
     filepath: Optional[str]
     filesize: Optional[int]
@@ -66,6 +67,7 @@ class Discussion(MoodleObject):
         messageinlinefiles (List[File]): post message inline files
         attachments (List[File]): attachments
     """
+
     id: int
     name: str
     groupid: int
@@ -112,6 +114,7 @@ class Discussions(ResponsesFactory[Discussion]):
     Returns:
         Discussions: List of Discussion
     """
+
     discussions: List[Discussion] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 
@@ -130,6 +133,7 @@ class Discussions(ResponsesFactory[Discussion]):
                             attachmentsid       (int); the draft file area id for attachments
             value (str): The value of the option, This param is validated in the external function.
         """
+
         name: str
         value: Union[bool, int]
 
@@ -140,6 +144,7 @@ class Discussions(ResponsesFactory[Discussion]):
             discussionid (int): New Discussion ID
             warnings (List[Warning]): list of warnings
         """
+
         discussionid: int
         warnings: List[MoodleWarning] = field(factory=list)
 
@@ -152,6 +157,7 @@ class Discussions(ResponsesFactory[Discussion]):
             cancreateattachment (Optional[int]): True if the user can add attachments, false otherwise.
             warnings (List[Warning]): list of warnings
         """
+
         status: int
         canpindiscussions: Optional[int]
         cancreateattachment: Optional[int]

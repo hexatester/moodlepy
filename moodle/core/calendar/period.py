@@ -17,6 +17,7 @@ class Period:
     params: month (str): month
     params: timestamp (int): timestamp
     """
+
     seconds: int
     minutes: int
     hours: int

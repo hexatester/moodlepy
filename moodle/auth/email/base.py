@@ -11,22 +11,23 @@ class BaseEmail(BaseMoodle):
         Returns:
             SignupSetting: Signup required settings and profile fields
         """
-        data = self.moodle.get('auth_email_get_signup_setting')
+        data = self.moodle.get("auth_email_get_signup_setting")
         return self._tr(SignupSetting, **data)
 
-    def signup_user(self,
-                    username: str,
-                    password: str,
-                    firstname: str,
-                    lastname: str,
-                    email: str,
-                    city: str = '',
-                    country: str = '',
-                    recaptchachallengehash: str = '',
-                    recaptcharesponse: str = '',
-                    customprofilefields: Optional[
-                        List[UserCustomField]] = None,
-                    redirect: str = '') -> SignupUserResponse:
+    def signup_user(
+        self,
+        username: str,
+        password: str,
+        firstname: str,
+        lastname: str,
+        email: str,
+        city: str = "",
+        country: str = "",
+        recaptchachallengehash: str = "",
+        recaptcharesponse: str = "",
+        customprofilefields: Optional[List[UserCustomField]] = None,
+        redirect: str = "",
+    ) -> SignupUserResponse:
         """Adds a new user (pendingto be confirmed) in the site.
 
         Args:
@@ -45,11 +46,10 @@ class BaseEmail(BaseMoodle):
         Returns:
             SignupUserResponse: Response
         """
-        customprofilefields = Array(
-            customprofilefields if customprofilefields else [])
-        customprofilefields.name = 'customprofilefields'
+        customprofilefields = Array(customprofilefields if customprofilefields else [])
+        customprofilefields.name = "customprofilefields"
         data = self.moodle.get(
-            'auth_email_signup_user',
+            "auth_email_signup_user",
             username=username,
             password=password,
             firstname=firstname,

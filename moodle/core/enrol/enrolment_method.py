@@ -14,6 +14,7 @@ class EnrolmentMethod:
         status (str): status of enrolment plugin
         wsfunction (Optional[str]): webservice function to get more information
     """
+
     id: int
     courseid: int
     type: str

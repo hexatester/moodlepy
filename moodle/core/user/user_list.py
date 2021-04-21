@@ -9,5 +9,6 @@ class UserList:
         userid (int): userid
         courseid (int): courseid
     """
+
     userid: int
     courseid: int

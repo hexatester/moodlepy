@@ -10,6 +10,7 @@ class CopyData:
         restoreid (str): Restore id
         operation (str): Operation type
     """
+
     backupid: str
     restoreid: str
     operation: str
@@ -25,6 +26,7 @@ class CopyDataResponse:
         backupid (str): Copy id
         operation (str): Operation type
     """
+
     status: int
     progress: float
     backupid: str

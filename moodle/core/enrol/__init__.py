@@ -6,9 +6,9 @@ from .enrolment_method import EnrolmentMethod
 from .base import BaseEnrol
 
 __all__ = [
-    'EditUserEnrolmentResponse',
-    'EnrolledUser',
-    'CapabilityEnrolledUser',
-    'EnrolmentMethod',
-    'BaseEnrol',
+    "EditUserEnrolmentResponse",
+    "EnrolledUser",
+    "CapabilityEnrolledUser",
+    "EnrolmentMethod",
+    "BaseEnrol",
 ]

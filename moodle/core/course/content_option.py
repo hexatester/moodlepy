@@ -19,5 +19,6 @@ class ContentOption:
                     modid (int) Return only the module with this id (to be used with modname
         value (Union[str, int, bool]): the value of the option, this param is personaly validated in the external function.
     """
+
     name: str
     value: Union[str, int, bool]

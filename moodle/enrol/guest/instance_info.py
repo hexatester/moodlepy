@@ -16,6 +16,7 @@ class InstanceInfo:
         status (int): Is the enrolment enabled?
         passwordrequired (int): Is a password required?
     """
+
     id: int
     courseid: int
     type: str
@@ -32,5 +33,6 @@ class InstanceInfoResponse:
         instanceinfo (InstanceInfo): Course enrolment instance
         warnings (List[MoodleWarning]): list of warnings
     """
+
     instanceinfo: InstanceInfo
     warnings: List[MoodleWarning] = field(factory=list)

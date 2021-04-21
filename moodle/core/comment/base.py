@@ -14,7 +14,7 @@ class BaseComment(BaseMoodle):
         Returns:
             List[Comment]: list of Comment
         """
-        data = self.moodle.get('core_comment_add_comments', comments=comments)
+        data = self.moodle.get("core_comment_add_comments", comments=comments)
         return self._trs(Comment, data)
 
     def delete_comments(self, comments: List[int]) -> List[MoodleWarning]:
@@ -27,19 +27,21 @@ class BaseComment(BaseMoodle):
             List[MoodleWarning]: list of warnings
         """
         data = self.moodle.get(
-            'core_comment_delete_comments',
+            "core_comment_delete_comments",
             comments=comments,
         )
         return self._trs(MoodleWarning, data)
 
-    def get_comments(self,
-                     contextlevel: str,
-                     instanceid: int,
-                     component: int,
-                     itemid: int,
-                     area: str = "",
-                     page: int = 0,
-                     sortdirection: str = "DESC") -> Comments:
+    def get_comments(
+        self,
+        contextlevel: str,
+        instanceid: int,
+        component: int,
+        itemid: int,
+        area: str = "",
+        page: int = 0,
+        sortdirection: str = "DESC",
+    ) -> Comments:
         """Returns comments.
 
         Args:
@@ -55,7 +57,7 @@ class BaseComment(BaseMoodle):
             Comments: Response
         """
         data = self.moodle.get(
-            'core_comment_get_comments',
+            "core_comment_get_comments",
             contextlevel=contextlevel,
             instanceid=instanceid,
             component=component,

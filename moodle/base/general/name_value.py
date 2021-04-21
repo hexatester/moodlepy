@@ -8,6 +8,7 @@ class GeneralNameValue:
         name (str): Name
         value (str): Value
     """
+
     name: str
     value: str
 

@@ -4,10 +4,9 @@ from .enrol_user_response import EnrolUserResponse
 
 
 class BaseSelf(BaseMoodle):
-    def enrol_user(self,
-                   courseid: int,
-                   password: str,
-                   instanceid: int = 0) -> EnrolUserResponse:
+    def enrol_user(
+        self, courseid: int, password: str, instanceid: int = 0
+    ) -> EnrolUserResponse:
         """Self enrol the current user in the given course.
 
         Args:
@@ -19,7 +18,7 @@ class BaseSelf(BaseMoodle):
             EnrolUserResponse: Response
         """
         data = self.moodle.post(
-            'enrol_self_enrol_user',
+            "enrol_self_enrol_user",
             courseid=courseid,
             password=password,
             instanceid=instanceid,
@@ -36,7 +35,7 @@ class BaseSelf(BaseMoodle):
             InstanceInfo: Instance info
         """
         data = self.moodle.post(
-            'enrol_self_get_instance_info',
+            "enrol_self_get_instance_info",
             instanceid=instanceid,
         )
         return self._tr(InstanceInfo, **data)

@@ -20,6 +20,7 @@ class RequestPasswordResetResponse:
         notice (str): Important information for the user about the process.
         warnings (List[Warning]): list of warnings
     """
+
     status: str
     notice: str
     warnings: List[MoodleWarning] = field(factory=list)

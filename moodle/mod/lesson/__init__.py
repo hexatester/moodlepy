@@ -13,6 +13,12 @@ from .view import View
 from .base import BaseLesson
 
 __all__ = [
-    'Page', 'LessonPage', 'Pages', 'Lesson', 'OneLesson', 'Lessons', 'View',
-    'BaseLesson'
+    "Page",
+    "LessonPage",
+    "Pages",
+    "Lesson",
+    "OneLesson",
+    "Lessons",
+    "View",
+    "BaseLesson",
 ]

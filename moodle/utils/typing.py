@@ -1,2 +1,2 @@
 class Array(list):
-    name: str = ''
+    name: str = ""

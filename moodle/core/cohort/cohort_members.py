@@ -12,6 +12,7 @@ class CohortMembers(ResponsesFactory[int]):
         cohortid (int): cohort record id
         userids (List[int]): list of user id
     """
+
     cohortid: int
     userids: List[int] = field(factory=list)
 

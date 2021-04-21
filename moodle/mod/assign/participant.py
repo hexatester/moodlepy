@@ -13,6 +13,7 @@ class CustomField:
         name (str): The name of the custom field
         shortname (str): The shortname of the custom field - to be able to build the field class in the code
     """
+
     type: str
     value: str
     name: str
@@ -27,6 +28,7 @@ class Preference:
         name (str): The name of the preferences
         value (str): The value of the preference
     """
+
     name: str
     value: str
 
@@ -40,6 +42,7 @@ class Group:
         name (str): group name
         description (str): group description
     """
+
     id: int
     name: str
     description: str
@@ -55,6 +58,7 @@ class Role:
         shortname (str): role shortname
         sortorder (int): role sortorder
     """
+
     roleid: int
     name: str
     shortname: str
@@ -70,6 +74,7 @@ class EnrolledCourse:
         fullname (str): Fullname of the course
         shortname (str): Shortname of the course
     """
+
     id: int
     fullname: str
     shortname: str
@@ -120,6 +125,7 @@ class Participant:
         groupid (Optional[int]): for group assignments this is the group id
         groupname (Optional[str]): for group assignments this is the group name
     """
+
     id: int
     username: Optional[str]
     firstname: Optional[str]

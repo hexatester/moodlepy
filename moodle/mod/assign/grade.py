@@ -19,6 +19,7 @@ class Grade:
         grade (str): grade
         gradefordisplay (Optional[str]): grade rendered into a format suitable for display
     """
+
     id: int
     assignment: Optional[int]
     userid: int
@@ -37,6 +38,7 @@ class GradeAssignment(ResponsesFactory[Grade]):
         assignmentid (int): assignment id
         grades (List[Grade]): grade information
     """
+
     assignmentid: int
     grades: List[Grade] = field(factory=list)
 
@@ -52,6 +54,7 @@ class Grades(ResponsesFactory[GradeAssignment]):
         assignments (List[GradeAssignment]): list of assignment grade information
         warnings (List[Warning]): list of warnings
     """
+
     assignments: List[GradeAssignment] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 
@@ -71,6 +74,7 @@ class Grades(ResponsesFactory[GradeAssignment]):
             plugindata (Optional[PluginData]): default {}
             advancedgradingdata (Optional[AdvanceGradingData]): default {}
         """
+
         userid: int
         grade: float
         attemptnumber: int

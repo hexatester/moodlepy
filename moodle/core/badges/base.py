@@ -4,13 +4,15 @@ from . import BadgeResponse
 
 
 class BaseBadges(BaseMoodle):
-    def get_user_badges(self,
-                        userid: Optional[int] = 0,
-                        courseid: Optional[int] = 0,
-                        page: Optional[int] = 0,
-                        perpage: Optional[int] = 0,
-                        search: Optional[str] = None,
-                        onlypublic: Optional[int] = None) -> BadgeResponse:
+    def get_user_badges(
+        self,
+        userid: Optional[int] = 0,
+        courseid: Optional[int] = 0,
+        page: Optional[int] = 0,
+        perpage: Optional[int] = 0,
+        search: Optional[str] = None,
+        onlypublic: Optional[int] = None,
+    ) -> BadgeResponse:
         """Get list of badges awarded to a user.
 
         Args:
@@ -25,7 +27,7 @@ class BaseBadges(BaseMoodle):
             BadgeResponse: Returns the list of badges awarded to a user
         """
         res = self.moodle.post(
-            'core_badges_get_user_badges',
+            "core_badges_get_user_badges",
             userid=userid,
             courseid=courseid,
             page=page,

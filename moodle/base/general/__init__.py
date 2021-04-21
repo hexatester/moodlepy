@@ -8,12 +8,12 @@ from .type_value import GeneralTypeValue
 from .validated import GeneralValidated
 
 __all__ = [
-    'GeneralKeyMessage',
-    'GeneralKeyValue',
-    'GeneralNameValue',
-    'GeneralResultError',
-    'GeneralStatus',
-    'GeneralSuccess',
-    'GeneralTypeValue',
-    'GeneralValidated',
+    "GeneralKeyMessage",
+    "GeneralKeyValue",
+    "GeneralNameValue",
+    "GeneralResultError",
+    "GeneralStatus",
+    "GeneralSuccess",
+    "GeneralTypeValue",
+    "GeneralValidated",
 ]

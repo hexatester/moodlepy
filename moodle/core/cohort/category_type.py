@@ -10,4 +10,5 @@ class CategoryType(GeneralTypeValue):
                         or system (value ignored)
         value (str): the value of the categorytype
     """
+
     pass

@@ -11,5 +11,6 @@ class SignupUserResponse:
         success (int): True if the user was created false otherwise
         warnings (List[Warning]): list of warnings
     """
+
     success: int
     warnings: List[MoodleWarning] = field(factory=list)

@@ -12,6 +12,7 @@ class Response:
     params: data (str): JSON-encoded response data
     params: exception (str): JSON-encoed exception info
     """
+
     error: int
     data: str
     exception: str
@@ -36,6 +37,7 @@ class FunctionsResponses(ResponsesFactory[Response]):
         params: settingfileurl (int): Default for "1" //Rewrite plugin file URLs
         params: settinglang (str): Default for "" //Session language
         """
+
         function: str
         arguments: str = "{}"
         settingraw: Optional[int] = None

@@ -16,6 +16,7 @@ class CourseNotes(ResponsesFactory[CourseNote]):
     params: canmanagecoursenotes (Optional[int]): Whether the user can manage notes at the given course.
     params: warnings (List[Warning]): list of warnings
     """
+
     sitenotes: List[SiteNote] = field(factory=list)
     coursenotes: List[CourseNote] = field(factory=list)
     personalnotes: List[PersonalNote] = field(factory=list)

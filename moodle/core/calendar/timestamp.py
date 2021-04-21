@@ -12,14 +12,15 @@ class Timestamp:
         key (str): Timestamp key
         timestamp (int): Unix timestamp
     """
+
     key: str
     timestamp: int
 
 
 @dataclass
 class Timestamps(ResponsesFactory[Timestamp]):
-    """list of Timestamp
-    """
+    """list of Timestamp"""
+
     timestamps: List[Timestamp] = field(factory=list)
 
     @property
@@ -38,6 +39,7 @@ class Timestamps(ResponsesFactory[Timestamp]):
             hour (Optional[int]): hour
             minute (Optional[int]): minute
         """
+
         key: Optional[str]
         year: int
         month: int

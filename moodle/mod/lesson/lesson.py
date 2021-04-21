@@ -17,6 +17,7 @@ class File:
         isexternalfile (Optional[int]): Whether is an external file.
         repositorytype (Optional[str]): The repository type for the external files.
     """
+
     filename: Optional[str]
     filepath: Optional[str]
     filesize: Optional[int]
@@ -77,6 +78,7 @@ class Lesson:
         introfiles (List[File]): introfiles
         mediafiles (List[File]): mediafiles
     """
+
     id: int
     course: int
     coursemodule: int

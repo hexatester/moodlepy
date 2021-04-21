@@ -15,7 +15,7 @@ class BaseCustomfield(BaseMoodle):
             int: Id of the category
         """
         data = self.moodle.post(
-            'core_customfield_create_category',
+            "core_customfield_create_category",
             component=component,
             area=area,
             itemid=itemid,
@@ -28,7 +28,7 @@ class BaseCustomfield(BaseMoodle):
         Args:
             id (int): category ID to delete
         """
-        self.moodle.post('core_customfield_delete_category', id=id)
+        self.moodle.post("core_customfield_delete_category", id=id)
 
     def delete_field(self, id: int) -> None:
         """Deletes an entry
@@ -36,7 +36,7 @@ class BaseCustomfield(BaseMoodle):
         Args:
             id (int): Custom field ID to delete
         """
-        self.moodle.post('core_customfield_delete_field', id=id)
+        self.moodle.post("core_customfield_delete_field", id=id)
 
     def move_category(self, id: int, beforeid: int = 0) -> None:
         """Drag and drop categories
@@ -46,7 +46,7 @@ class BaseCustomfield(BaseMoodle):
             beforeid (int, optional): Id of the category before which it needs to be moved. Defaults to 0.
         """
         self.moodle.post(
-            'core_customfield_move_category',
+            "core_customfield_move_category",
             id=id,
             beforeid=beforeid,
         )
@@ -60,14 +60,13 @@ class BaseCustomfield(BaseMoodle):
             beforeid (int, optional): Id of the field before which it needs to be moved. Defaults to 0.
         """
         self.moodle.post(
-            'core_customfield_move_field',
+            "core_customfield_move_field",
             id=id,
             categoryid=categoryid,
             beforeid=beforeid,
         )
 
-    def reload_template(self, component: str, area: str,
-                        itemid: int) -> ReloadTemplate:
+    def reload_template(self, component: str, area: str, itemid: int) -> ReloadTemplate:
         """Reloads template
 
         Args:
@@ -79,7 +78,7 @@ class BaseCustomfield(BaseMoodle):
             ReloadTemplate: Response
         """
         data = self.moodle.post(
-            'core_customfield_reload_template',
+            "core_customfield_reload_template",
             component=component,
             area=area,
             itemid=itemid,

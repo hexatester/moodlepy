@@ -12,15 +12,15 @@ from .workshop import BaseWorkshop
 from .mod import Mod
 
 __all__ = [
-    'BaseAssign',
-    'BaseChat',
-    'BaseData',
-    'BaseFolder',
-    'BaseForum',
-    'BaseLesson',
-    'BasePage',
-    'BaseResource',
-    'BaseUrl',
-    'BaseWorkshop',
-    'Mod',
+    "BaseAssign",
+    "BaseChat",
+    "BaseData",
+    "BaseFolder",
+    "BaseForum",
+    "BaseLesson",
+    "BasePage",
+    "BaseResource",
+    "BaseUrl",
+    "BaseWorkshop",
+    "Mod",
 ]

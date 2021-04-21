@@ -7,6 +7,6 @@ class TestWebservice:
         assert isinstance(site_info, SiteInfo)
         assert site_info.siteid == 1
         assert site_info.siteurl == domain
-        assert site_info.sitecalendartype == 'gregorian'
-        assert site_info.usercalendartype == 'gregorian'
+        assert site_info.sitecalendartype == "gregorian"
+        assert site_info.usercalendartype == "gregorian"
         assert site_info.usercanmanageownfiles is True

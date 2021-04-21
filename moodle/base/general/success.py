@@ -11,6 +11,7 @@ class GeneralSuccess:
         success (int): True or False, nor 1 or 0
         warnings (List[Warning]): list of warnings
     """
+
     success: int
     warnings: List[MoodleWarning] = field(factory=list)
 
@@ -18,5 +19,5 @@ class GeneralSuccess:
         if isinstance(self.success, int):
             return self.success == 1
         elif isinstance(self.success, str):
-            return self.success == '1' or self.success == 'true'
+            return self.success == "1" or self.success == "true"
         return bool(self.success)

@@ -25,6 +25,7 @@ class Category:
     Returns:
         Category: Category
     """
+
     id: int
     name: str
     idnumber: Optional[str]
@@ -62,5 +63,6 @@ class Category:
         Returns:
             Criteria: Arg for core_course_get_categories
         """
+
         key: str
         value: Union[str, int]

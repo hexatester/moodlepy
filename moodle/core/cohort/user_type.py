@@ -9,4 +9,5 @@ class UserType(GeneralTypeValue):
                         (numeric value of id) or username (alphanumeric value of username)
         value (str): The value of the cohort
     """
+
     pass

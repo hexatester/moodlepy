@@ -9,5 +9,6 @@ class FilepathFilename:
         filepath (str): Path to the file or directory to delete.
         filename (str): Name of the file to delete.
     """
+
     filepath: str
     filename: str

@@ -13,6 +13,7 @@ class UserFlag:
         workflowstate (Optional[str]): marking workflow state
         allocatedmarker (Optional[int]): allocated marker
     """
+
     userid: int
     locked: Optional[int]
     mailed: Optional[int]
@@ -28,6 +29,7 @@ class UserFlag:
             userid (int): userid of record
             errormessage (Optional[str]): Failure error message
         """
+
         id: int
         userid: int
         errormessage: Optional[str]

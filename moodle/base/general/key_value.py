@@ -10,5 +10,6 @@ class GeneralKeyValue:
         key (str): ...
         value (Any): ...
     """
+
     key: str
     value: Any

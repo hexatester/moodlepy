@@ -29,6 +29,7 @@ class Day:
     haslastdayofevent (int): haslastdayofevent
     popovertitle (str): popovertitle
     """
+
     seconds: int
     minutes: int
     hours: int
@@ -59,6 +60,7 @@ class Week:
     postpadding (List[int]): postpadding
     days (List[Day]): days
     """
+
     prepadding: List[int] = field(factory=list)
     postpadding: List[int] = field(factory=list)
     days: List[Day] = field(factory=list)
@@ -71,6 +73,7 @@ class DayName:
     shortname (str): shortname
     fullname (str): fullnames
     """
+
     dayno: int
     shortname: str
     fullname: str
@@ -99,6 +102,7 @@ class MonthlyView:
     rarrow (str): rarrow
     defaulteventcontext (int): defaulteventcontext
     """
+
     url: str
     courseid: int
     categoryid: Optional[int]

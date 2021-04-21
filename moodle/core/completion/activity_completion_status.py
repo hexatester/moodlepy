@@ -17,6 +17,7 @@ class ActivityCompletion:
         overrideby (Optional[int]): The user id who has overriden the status, or null
         valueused (Optional[int]): Whether the completion status affects the availability of another activity.
     """
+
     cmid: int
     modname: str
     instance: int
@@ -34,6 +35,7 @@ class ActivityCompletionStatus(ResponsesFactory[ActivityCompletion]):
         statuses (List[Activity]): List of activities completion status
         warnings (List[Warning]): list of warnings
     """
+
     statuses: List[ActivityCompletion] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 

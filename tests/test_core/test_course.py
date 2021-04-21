@@ -11,8 +11,7 @@ class TestCourse:
             assert isinstance(co.id, int)
             assert isinstance(co.shortname, str)
             assert isinstance(co.categoryid, int)
-            assert not co.categorysortorder or isinstance(
-                co.categorysortorder, int)
+            assert not co.categorysortorder or isinstance(co.categorysortorder, int)
             assert isinstance(co.fullname, str)
             assert isinstance(co.displayname, str)
             assert not co.idnumber or isinstance(co.idnumber, str)
@@ -29,12 +28,9 @@ class TestCourse:
             assert not co.visible or isinstance(co.visible, int)
             assert not co.groupmode or isinstance(co.groupmode, int)
             assert not co.groupmodeforce or isinstance(co.groupmodeforce, int)
-            assert not co.defaultgroupingid or isinstance(
-                co.defaultgroupingid, int)
-            assert not co.enablecompletion or isinstance(
-                co.enablecompletion, int)
-            assert not co.completionnotify or isinstance(
-                co.completionnotify, int)
+            assert not co.defaultgroupingid or isinstance(co.defaultgroupingid, int)
+            assert not co.enablecompletion or isinstance(co.enablecompletion, int)
+            assert not co.completionnotify or isinstance(co.completionnotify, int)
             assert not co.lang or isinstance(co.lang, str)
             assert not co.forcetheme or isinstance(co.forcetheme, str)
 
@@ -54,8 +50,6 @@ class TestCourse:
             assert isinstance(category.path, str)
             assert not category.idnumber or isinstance(category.idnumber, str)
             assert not category.visible or isinstance(category.visible, int)
-            assert not category.visibleold or isinstance(
-                category.visibleold, int)
-            assert not category.timemodified or isinstance(
-                category.timemodified, int)
+            assert not category.visibleold or isinstance(category.visibleold, int)
+            assert not category.timemodified or isinstance(category.timemodified, int)
             assert not category.theme or isinstance(category.theme, str)

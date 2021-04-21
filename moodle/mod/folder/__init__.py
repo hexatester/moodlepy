@@ -3,4 +3,4 @@ from .view import View
 
 from .base import BaseFolder
 
-__all__ = ['File', 'Folder', 'Folders', 'View', 'BaseFolder']
+__all__ = ["File", "Folder", "Folders", "View", "BaseFolder"]

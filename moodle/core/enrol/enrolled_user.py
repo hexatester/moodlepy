@@ -14,6 +14,7 @@ class Group:
         description (str): group description
         descriptionformat (int): description format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
     """
+
     id: int
     name: str
     description: str
@@ -29,6 +30,7 @@ class Role:
         shortname (str): role shortname
         sortorder (int): role sortorder
     """
+
     roleid: int
     name: str
     shortname: str
@@ -42,6 +44,7 @@ class EnrolledCourse:
     fullname (str): Fullname of the course
     shortname (str): Shortname of the course
     """
+
     id: int
     fullname: str
     shortname: str
@@ -93,6 +96,7 @@ class EnrolledUser(User):
         roles (List[Role]): user roles
         enrolledcourses (List[EnrolledCourse]): Courses where the user is enrolled - limited by which courses the user is able to see
     """
+
     groups: List[Group] = field(factory=list)
     roles: List[Role] = field(factory=list)
     enrolledcourses: List[EnrolledCourse] = field(factory=list)

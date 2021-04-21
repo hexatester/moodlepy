@@ -12,6 +12,7 @@ class CourseFormatOption:
         name (str): course format option name
         value (Union[str, int]): course format option value
     """
+
     name: str
     value: Union[str, int]
 
@@ -25,6 +26,7 @@ class CourseCustomField:
         type (str): The type of the custom field - text, checkbox...
         value (Optional[str]): The value of the custom field
     """
+
     name: str
     shortname: str
     type: str
@@ -66,6 +68,7 @@ class Course:
         courseformatoptions (List[CourseFormatOption]): additional options for particular course format
         customfields (List[CourseCustomField]): Custom fields and associated values
     """
+
     id: int
     shortname: str
     categoryid: int
@@ -105,6 +108,7 @@ class Course:
             id (int): Context instance id
             since (datetime): Check updates since this time stamp
         """
+
         contextlevel: str
         id: int
         since: datetime
@@ -117,6 +121,7 @@ class CourseByField(ResponsesFactory):
         courses (List[Course]): Course
         warnings (List[Warning]): list of warnings
     """
+
     courses: List[Course] = field(factory=list)
     warnings: List[Warning] = field(factory=list)
 
@@ -133,6 +138,7 @@ class SearchResult(ResponsesFactory[Course]):
         courses (List[Course]): course
         warnings (List[Warning]): list of warning
     """
+
     total: int
     courses: List[Course] = field(factory=list)
     warnings: List[Warning] = field(factory=list)
@@ -166,6 +172,7 @@ class CourseBTC:
         showshortname (int): showshortname
         coursecategory (str): coursecategory
     """
+
     id: int
     fullname: str
     shortname: str

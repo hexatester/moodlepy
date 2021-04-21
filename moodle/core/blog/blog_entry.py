@@ -18,6 +18,7 @@ class BlogSummaryFiles:
     param: isexternalfile (Optional[int]): Whether is an external file.
     param: repositorytype (Optional[str]): The repository type for the external files.
     """
+
     filename: Optional[str]
     filepath: Optional[str]
     filesize: Optional[int]
@@ -41,6 +42,7 @@ class BlogAttachmentFile:
     param: isexternalfile: (Optional[int]): Whether is an external file.
     param: repositorytype: (Optional[str]): The repository type for the external files.
     """
+
     filename: Optional[str]
     filepath: Optional[str]
     filesize: Optional[int]
@@ -66,6 +68,7 @@ class BlogTag:
     param: ordering: (int): Tag ordering.
     param: flag: (int): Whether the tag is flagged as inappropriate.
     """
+
     id: int
     name: str
     rawname: str
@@ -105,6 +108,7 @@ class BlogEntry:
     params: attachmentfiles: (List[BlogAttachmentFile]): attachmentfiles
     params: tags: (List[BlogTag]): Tags.
     """
+
     id: int
     module: str
     userid: int
@@ -140,6 +144,7 @@ class BlogEntries(ResponsesFactory[BlogEntry]):
     Returns:
         BlogEntries: Returns blog entries.
     """
+
     entries: List[BlogEntry] = field(factory=list)
     totalentries: int = attrib(default=0)
     warnings: List[MoodleWarning] = field(factory=list)
@@ -163,5 +168,6 @@ class BlogEntries(ResponsesFactory[BlogEntry]):
                                 search   PARAM_RAW    search term
         params: value (str): The value of the filter.
         """
+
         name: str
         value: str

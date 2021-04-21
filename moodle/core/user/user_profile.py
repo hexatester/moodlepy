@@ -55,6 +55,7 @@ class UserProfile(User):
         roles (List[Role]): user roles
         enrolledcourses (List[EnrolledCourse]): Courses where the user is enrolled - limited by which courses the user is able to see
     """
+
     groups: List[UserGroup] = field(factory=list)
     roles: List[UserRole] = field(factory=list)
     enrolledcourses: List[EnrolledCourse] = field(factory=list)

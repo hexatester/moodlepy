@@ -13,6 +13,7 @@ class ContactRequestRecord:
         requesteduserid (int): User to id
         timecreated (int): Time created
     """
+
     id: int
     userid: int
     requesteduserid: int
@@ -26,5 +27,6 @@ class ContactRequest:
         request (Optional[ContactRequestRecord]): request record
         warnings (List[Warning]): list of warnings
     """
+
     request: Optional[ContactRequestRecord]
     warnings: List[MoodleWarning] = field(factory=list)

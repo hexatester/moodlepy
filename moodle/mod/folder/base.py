@@ -15,7 +15,7 @@ class BaseFolder(BaseMoodle):
         Returns:
             Folders: List of Folder
         """
-        res = self.moodle.post('mod_folder_get_folders_by_courses')
+        res = self.moodle.post("mod_folder_get_folders_by_courses")
         return self._tr(Folders, **res)
 
     def view_folder(self, folderid: int) -> View:
@@ -27,5 +27,5 @@ class BaseFolder(BaseMoodle):
         Returns:
             View: Response
         """
-        res = self.moodle.post('mod_folder_view_folder')
+        res = self.moodle.post("mod_folder_view_folder")
         return self._tr(View, **res)

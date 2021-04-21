@@ -9,4 +9,5 @@ class CohortType(GeneralTypeValue):
                         (numeric value of cohortid) or idnumber (alphanumeric value of idnumber)
         value (str): The value of the cohort
     """
+
     pass

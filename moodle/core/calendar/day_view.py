@@ -22,6 +22,7 @@ class DayView:
     params: larrow (str): larrow
     params: rarrow (str): rarrow
     """
+
     events: List[CourseEvent]  # events
     defaulteventcontext: int  # defaulteventcontext
     filter_selector: str  # filter_selector

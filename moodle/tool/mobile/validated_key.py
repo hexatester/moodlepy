@@ -7,4 +7,5 @@ class ValidatedKey(GeneralValidated):
         validated (int): Whether the key is validated or not.
         warnings (List[Warning]): list of warnings
     """
+
     pass

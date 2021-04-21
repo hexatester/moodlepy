@@ -16,6 +16,7 @@ class CourseNote:
     params: usermodified (int): user id of the creator of this note
     params: publishstate (str): state of the note (i.e. draft, public, site)
     """
+
     id: int
     courseid: int
     userid: int

@@ -26,6 +26,7 @@ class StarredCourse:
         showshortname (int): showshortname
         coursecategory (str): coursecategory
     """
+
     id: int
     fullname: str
     shortname: str

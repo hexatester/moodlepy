@@ -14,6 +14,7 @@ class Field:
         editfieldurl (str): edit field url
         id (int): id
     """
+
     name: str
     shortname: str
     type: str
@@ -31,6 +32,7 @@ class Category:
         addfieldmenu (str): addfieldmenu
         fields (List[Field]): list of Field
     """
+
     id: int
     nameeditable: str
     addfieldmenu: str
@@ -48,6 +50,7 @@ class ReloadTemplate:
         usescategories (int): view has categories
         categories (List[Category]): list of Category
     """
+
     component: str
     area: str
     itemid: int

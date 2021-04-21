@@ -15,6 +15,7 @@ class Enrolment:
         timeend (Optional[Union[datetime, int]]): Timestamp when the enrolment end
         suspend (Optional[int]): set to 1 to suspend the enrolment
     """
+
     roleid: int
     userid: int
     courseid: int

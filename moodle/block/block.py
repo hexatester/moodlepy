@@ -5,9 +5,9 @@ from . import RecentlyAccessedItem, StarredCourse
 
 
 class Block(BaseMoodle):
-    def recentlyaccesseditems_get_recent_items(self,
-                                               limit: int = 0
-                                               ) -> List[RecentlyAccessedItem]:
+    def recentlyaccesseditems_get_recent_items(
+        self, limit: int = 0
+    ) -> List[RecentlyAccessedItem]:
         """List of items a user has accessed most recently.
 
         Args:
@@ -17,15 +17,14 @@ class Block(BaseMoodle):
             List[RecentlyAccessedItem]: The most recently accessed activities/resources by the logged user
         """
         data = self.moodle.post(
-            'block_recentlyaccesseditems_get_recent_items',
+            "block_recentlyaccesseditems_get_recent_items",
             limit=limit,
         )
         return self._trs(RecentlyAccessedItem, data)
 
-    def starredcourses_get_starred_courses(self,
-                                           limit: int = 0,
-                                           offset: int = 0
-                                           ) -> List[StarredCourse]:
+    def starredcourses_get_starred_courses(
+        self, limit: int = 0, offset: int = 0
+    ) -> List[StarredCourse]:
         """Get users starred courses.
 
         Args:
@@ -36,7 +35,7 @@ class Block(BaseMoodle):
             List[StarredCourse]: users starred courses
         """
         data = self.moodle.post(
-            'block_starredcourses_get_starred_courses',
+            "block_starredcourses_get_starred_courses",
             limit=limit,
             offset=offset,
         )

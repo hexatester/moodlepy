@@ -17,6 +17,7 @@ class BlockFile:
     param: isexternalfile (Optional[int]): Whether is an external file.
     param: repositorytype (Optional[str]): The repository type for external files
     """
+
     filename: Optional[str]
     filepath: Optional[str]
     filesize: Optional[int]
@@ -37,6 +38,7 @@ class BlockContent:
     param: footer (str) : Block footer.
     param: files (List[BlockFile]) : Block files.
     """
+
     title: str
     content: str
     contentformat: int
@@ -61,6 +63,7 @@ class Block:
     params: visible (Optional[int]): Whether the block is visible.
     params: contents (BlockContent): Block contents (if required).
     """
+
     instanceid: int
     name: str
     region: str
@@ -81,6 +84,7 @@ class Blocks(ResponsesFactory[Block]):
     params: blocks (List[Block]): List of blocks in the course.
     params: warnings (List[Warning]): warning
     """
+
     blocks: List[Block] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 

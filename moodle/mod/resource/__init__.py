@@ -3,4 +3,4 @@ from .view import View
 
 from .base import BaseResource
 
-__all__ = ['File', 'Resource', 'Resources', 'View', 'BaseResource']
+__all__ = ["File", "Resource", "Resources", "View", "BaseResource"]

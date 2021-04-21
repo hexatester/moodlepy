@@ -45,6 +45,7 @@ class CreateUser:
         customfields (List[UserCustomField]): User custom fields (also known as user profil fields)
         preferences (List[UserPreference]): User preferences
     """
+
     createpassword: Optional[int]
     username: str
     auth: str
@@ -76,8 +77,8 @@ class CreateUser:
     address: Optional[str]
     theme: Optional[str]
     mailformat: Optional[int]
-    lang: str = 'en'
-    calendartype: str = 'gregorian'
+    lang: str = "en"
+    calendartype: str = "gregorian"
     customfields: List[UserCustomField] = field(factory=list)
     preferences: List[UserPreference] = field(factory=list)
 
@@ -89,5 +90,6 @@ class CreateUser:
             id (int): user id
             username (string): user name
         """
+
         id: int
         username: str

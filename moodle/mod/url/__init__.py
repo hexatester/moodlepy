@@ -3,4 +3,4 @@ from .view import View
 
 from .base import BaseUrl
 
-__all__ = ['File', 'Url', 'Urls', 'View', 'BaseUrl']
+__all__ = ["File", "Url", "Urls", "View", "BaseUrl"]

@@ -12,9 +12,16 @@ from . import (
 
 
 class BaseUser(BaseMoodle):
-    def add_user_device(self, appid: str, name: str, model: str, platform: str,
-                        version: str, pushid: str,
-                        uuid: str) -> List[Optional[List[MoodleWarning]]]:
+    def add_user_device(
+        self,
+        appid: str,
+        name: str,
+        model: str,
+        platform: str,
+        version: str,
+        pushid: str,
+        uuid: str,
+    ) -> List[Optional[List[MoodleWarning]]]:
         """Store mobile user devices information for PUSH Notifications.
 
         Args:
@@ -31,7 +38,7 @@ class BaseUser(BaseMoodle):
         """
         results: List[Optional[List[MoodleWarning]]] = list()
         data = self.moodle.post(
-            'core_user_add_user_device',
+            "core_user_add_user_device",
             appid=appid,
             name=name,
             model=model,
@@ -56,7 +63,7 @@ class BaseUser(BaseMoodle):
             None: No response
         """
         data = self.moodle.post(
-            'core_user_add_user_private_files',
+            "core_user_add_user_private_files",
             draftid=draftid,
         )
         return data
@@ -67,11 +74,10 @@ class BaseUser(BaseMoodle):
         Returns:
             AgreeSitePolicyResponse: Response
         """
-        data = self.moodle.post('core_user_agree_site_policy')
+        data = self.moodle.post("core_user_agree_site_policy")
         return self._tr(AgreeSitePolicyResponse, **data)
 
-    def create_users(self,
-                     users: List[CreateUser]) -> List[CreateUser.Response]:
+    def create_users(self, users: List[CreateUser]) -> List[CreateUser.Response]:
         """Create users.
 
         Args:
@@ -81,7 +87,7 @@ class BaseUser(BaseMoodle):
             List[CreateUser.Response]: list of created user id and user name
         """
         data = self.moodle.post(
-            'core_user_create_users',
+            "core_user_create_users",
             users=users,
         )
         return self._trs(CreateUser.Response, data)
@@ -96,13 +102,12 @@ class BaseUser(BaseMoodle):
             None: None
         """
         data = self.moodle.post(
-            'core_user_delete_users',
+            "core_user_delete_users",
             userids=userids,
         )
         return data
 
-    def get_course_user_profiles(
-            self, userlist: List[UserList]) -> List[UserProfile]:
+    def get_course_user_profiles(self, userlist: List[UserList]) -> List[UserProfile]:
         """Get course user profiles (each of the profils matching a course id and a user id),.
 
         Args:
@@ -112,17 +117,17 @@ class BaseUser(BaseMoodle):
             List[UserProfile]: list of UserProfile
         """
         data = self.moodle.post(
-            'core_user_get_course_user_profiles',
+            "core_user_get_course_user_profiles",
             userlist=userlist,
         )
         return self._trs(UserProfile, data)
 
     def get_private_files_info(self):
-        data = self.moodle.post('core_user_get_private_files_info')
+        data = self.moodle.post("core_user_get_private_files_info")
         return data
 
     def get_user_preferences(self):
-        data = self.moodle.post('core_user_get_user_preferences')
+        data = self.moodle.post("core_user_get_user_preferences")
         return data
 
     def get_users(self, criteria: List[Criteria]) -> GetUsersResponse:
@@ -139,39 +144,39 @@ class BaseUser(BaseMoodle):
             GetUsersResponse: Response
         """
         data = self.moodle.post(
-            'core_user_get_users',
+            "core_user_get_users",
             criteria=criteria,
         )
         return self._tr(GetUsersResponse, **data)
 
     def get_users_by_field(self):
-        data = self.moodle.post('core_user_get_users_by_field')
+        data = self.moodle.post("core_user_get_users_by_field")
         return data
 
     def remove_user_device(self):
-        data = self.moodle.post('core_user_remove_user_device')
+        data = self.moodle.post("core_user_remove_user_device")
         return data
 
     def set_user_preferences(self):
-        data = self.moodle.post('core_user_set_user_preferences')
+        data = self.moodle.post("core_user_set_user_preferences")
         return data
 
     def update_picture(self):
-        data = self.moodle.post('core_user_update_picture')
+        data = self.moodle.post("core_user_update_picture")
         return data
 
     def update_user_preferences(self):
-        data = self.moodle.post('core_user_update_user_preferences')
+        data = self.moodle.post("core_user_update_user_preferences")
         return data
 
     def update_users(self):
-        data = self.moodle.post('core_user_update_users')
+        data = self.moodle.post("core_user_update_users")
         return data
 
     def view_user_list(self):
-        data = self.moodle.post('core_user_view_user_list')
+        data = self.moodle.post("core_user_view_user_list")
         return data
 
     def view_user_profile(self):
-        data = self.moodle.post('core_user_view_user_profile ')
+        data = self.moodle.post("core_user_view_user_profile ")
         return data

@@ -13,6 +13,7 @@ class TokenPrivateToken:
         privatetoken (str): Private token used for auto-login processes.
         warnings (List[MoodleWarning]): list of warnings
     """
+
     token: str
     privatetoken: str
     warnings: List[MoodleWarning] = field(factory=list)

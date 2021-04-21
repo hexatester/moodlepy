@@ -12,6 +12,7 @@ class ParentPaths(ResponsesFactory[str]):
         parentpaths (List[str]): Path to parent directory of the deleted files.
         warnings (List[Warning]): list of warnings
     """
+
     parentpaths: List[str] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 

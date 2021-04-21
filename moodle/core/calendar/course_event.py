@@ -12,6 +12,7 @@ class CourseEventIcon:
     params: component (str): component
     params: alttext (str): alttext
     """
+
     key: str
     component: str
     alttext: str
@@ -33,6 +34,7 @@ class CourseEventCategory:
     params: nestedname (str): nestedname
     params: url (str): url
     """
+
     id: int
     name: str
     idnumber: str
@@ -73,6 +75,7 @@ class CourseEventCourse:
     params: showshortname (int): showshortname
     params: coursecategory (str): coursecategory
     """
+
     id: int
     fullname: str
     shortname: str
@@ -105,6 +108,7 @@ class CourseEventSubscription:
     params: subscriptionname (Optional[str]): subscriptionname
     params: subscriptionurl (Optional[str]): subscriptionurl
     """
+
     displayeventsource: int
     subscriptionname: Optional[str]
     subscriptionurl: Optional[str]
@@ -123,6 +127,7 @@ class CourseEventAction:
     params: actionable (int): actionable
     params: showitemcount (int): showitemcount
     """
+
     name: str
     url: str
     itemcount: int
@@ -181,6 +186,7 @@ class CourseEvent:
     params: maxdayerror (Optional[str]): maxdayerror
     params: draggable (int): draggable
     """
+
     id: int
     name: str
     description: Optional[str]
@@ -231,8 +237,8 @@ class CourseEvent:
 
 @dataclass
 class CourseEvents(ResponsesFactory[CourseEvent]):
-    """List of [CourseEvent]
-    """
+    """List of [CourseEvent]"""
+
     firstid: int
     lastid: int
     events: List[CourseEvent] = field(factory=list)
@@ -247,6 +253,7 @@ class CourseEvents(ResponsesFactory[CourseEvent]):
         parms: event (CourseEvent): Resulted event
         parms: validationerror (Optional[int]): Default untuk "" Invalid form data
         """
+
         event: CourseEvent
         validationerror: Optional[int] = None
 
@@ -261,6 +268,7 @@ class ActionEventCourses(ResponsesFactory[CourseEvents]):
     Returns:
         ActionEventCourses: ActionEventCourses
     """
+
     groupedbycourse: List[CourseEvents] = field(factory=list)
 
     @property

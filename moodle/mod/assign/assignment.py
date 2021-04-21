@@ -17,6 +17,7 @@ class File:
         isexternalfile (Optional[int]): Whether is an external file.
         repositorytype (Optional[str]): The repository type for external files.
     """
+
     filename: Optional[str]
     filepath: Optional[str]
     filesize: Optional[int]
@@ -38,6 +39,7 @@ class Config:
         name (str): name
         value (str): value
     """
+
     id: Optional[int]
     assignment: Optional[int]
     plugin: str
@@ -86,6 +88,7 @@ class Assignment:
         introfiles (List[File]): Files in the introduction text
         introattachments (List[File]): intro attachments files
     """
+
     id: int
     cmid: int
     course: int
@@ -133,6 +136,7 @@ class AssignmentCourse(ResponsesFactory[Assignment]):
         timemodified (int): last time modified
         assignments (List[Assignment]): assignment info
     """
+
     id: int
     fullname: str
     shortname: str
@@ -151,6 +155,7 @@ class Assignments(ResponsesFactory[AssignmentCourse]):
         courses (List[AssignmentCourse]): List of course with assigments
         warnings (List[Warning]): List of warnings
     """
+
     courses: List[AssignmentCourse] = field(factory=list)
     warnings: List[MoodleWarning] = field(factory=list)
 

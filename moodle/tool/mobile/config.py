@@ -10,6 +10,7 @@ class Setting:
     params: name (str): The name of the setting
     params: value (str): The value of the setting
     """
+
     name: str
     value: str
 

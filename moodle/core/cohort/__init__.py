@@ -11,15 +11,15 @@ from .cohort import Cohort, Cohorts
 from .base import BaseCohort
 
 __all__ = [
-    'CategoryType',
-    'CreateCohort',
-    'UpdateCohort',
-    'DeleteCohort',
-    'CohortMembers',
-    'CohortType',
-    'UserType',
-    'AddCohortMember',
-    'Cohort',
-    'Cohorts',
-    'BaseCohort',
+    "CategoryType",
+    "CreateCohort",
+    "UpdateCohort",
+    "DeleteCohort",
+    "CohortMembers",
+    "CohortType",
+    "UserType",
+    "AddCohortMember",
+    "Cohort",
+    "Cohorts",
+    "BaseCohort",
 ]

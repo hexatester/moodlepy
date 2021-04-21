@@ -4,4 +4,4 @@ from .view_entry import ViewEntry
 
 from .base import BaseBlog
 
-__all__ = ['BlogEntry', 'BlogEntries', 'ViewEntry', 'BaseBlog']
+__all__ = ["BlogEntry", "BlogEntries", "ViewEntry", "BaseBlog"]

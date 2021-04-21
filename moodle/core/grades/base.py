@@ -80,18 +80,20 @@ class BaseGrades(BaseMoodle):
         )
         # TODO : Refactor options of core_grades_create_gradecategory
         data = self.moodle.post(
-            'core_grades_create_gradecategory',
+            "core_grades_create_gradecategory",
             courseid=courseid,
             fullname=fullname,
             options=options,
         )
-        return dict(data).get('categoryid')
+        return dict(data).get("categoryid")
 
-    def get_grades(self,
-                   courseid: int,
-                   component: int = None,
-                   activityid: int = None,
-                   userids: List[int] = None) -> Grades:
+    def get_grades(
+        self,
+        courseid: int,
+        component: int = None,
+        activityid: int = None,
+        userids: List[int] = None,
+    ) -> Grades:
         """**DEPRECATED** Please do not call this function any more. Returns student course total grade and grades for activities. This function does not return category or manual items. This function is suitable for managers or teachers not students.
 
         Args:
@@ -104,8 +106,8 @@ class BaseGrades(BaseMoodle):
             Grades: Student course total grade and grades for activities.
         """
         data = self.moodle.post(
-            'core_grades_get_grades',
-            component=component or '',
+            "core_grades_get_grades",
+            component=component or "",
             activityid=activityid,
             userids=userids or list(),
         )
@@ -130,7 +132,7 @@ class BaseGrades(BaseMoodle):
             dict: gradingpanel
         """
         data = self.moodle.post(
-            'core_grades_grader_gradingpanel_point_fetch',
+            "core_grades_grader_gradingpanel_point_fetch",
             component=component,
             contextid=contextid,
             itemname=itemname,
@@ -162,12 +164,12 @@ class BaseGrades(BaseMoodle):
             dict: gradingpanel
         """
         data = self.moodle.post(
-            'core_grades_grader_gradingpanel_point_store',
+            "core_grades_grader_gradingpanel_point_store",
             component=component,
             contextid=contextid,
             itemname=itemname,
             gradeduserid=gradeduserid,
-            notifyuser=notifyuser or '',
+            notifyuser=notifyuser or "",
             formdata=formdata,
         )
         # TODO : Add type for core_grades_grader_gradingpanel_point_store!
@@ -192,7 +194,7 @@ class BaseGrades(BaseMoodle):
             dict: gradingpanel scale
         """
         data = self.moodle.post(
-            'core_grades_grader_gradingpanel_scale_fetch',
+            "core_grades_grader_gradingpanel_scale_fetch",
             component=component,
             contextid=contextid,
             itemname=itemname,
@@ -224,12 +226,12 @@ class BaseGrades(BaseMoodle):
             [type]: [description]
         """
         data = self.moodle.post(
-            'core_grades_grader_gradingpanel_scale_store',
+            "core_grades_grader_gradingpanel_scale_store",
             component=component,
             contextid=contextid,
             itemname=itemname,
             gradeduserid=gradeduserid,
-            notifyuser=notifyuser or '',
+            notifyuser=notifyuser or "",
             formdata=formdata,
         )
         # TODO : Add type for core_grades_grader_gradingpanel_scale_store!
@@ -291,7 +293,7 @@ class BaseGrades(BaseMoodle):
         )
         # TODO : Refactor itemdetails of core_grades_create_gradecategory
         data = self.moodle.post(
-            'core_grades_update_grades',
+            "core_grades_update_grades",
             source=source,
             courseid=courseid,
             component=component,

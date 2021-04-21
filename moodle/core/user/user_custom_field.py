@@ -14,5 +14,6 @@ class UserCustomField(GeneralTypeValue):
         name (Optional[str]): The name of the custom field
         shortname (Optional[str]): The shortname of the custom field - to be able to build the field class in the code
     """
+
     name: Optional[str] = None
     shortname: Optional[str] = None

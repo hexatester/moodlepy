@@ -21,6 +21,7 @@ class Comment:
         userid (int): User ID
         delete (Optional[int]): Permission to delete=true/false
     """
+
     id: int
     content: str
     format: int
@@ -45,6 +46,7 @@ class Comments(ResponsesFactory[Comment]):
         canpost (Optional[int]): Whether the user can post in this comment area.
         warnings (List[MoodleWarning]): list of MoodleWarnings
     """
+
     comments: List[Comment] = field(factory=list)
     count: Optional[int] = None
     perpage: Optional[int] = None
@@ -67,6 +69,7 @@ class Comments(ResponsesFactory[Comment]):
             itemid (int): associated id
             area (str, optional): string comment area. Default to ""
         """
+
         contextlevel: str
         instanceid: int
         component: str

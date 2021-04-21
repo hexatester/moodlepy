@@ -11,6 +11,7 @@ class BackupCompletionStatus:
         backupid (str): Backup id
         operation (str): operation type
     """
+
     status: int
     progress: float
     backupid: str
