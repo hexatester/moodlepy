@@ -22,7 +22,7 @@ packages = find_packages(exclude=["tests*"])
 requirements = requirements()
 
 with codecs.open("README.md", "r", "utf-8") as fd:
-    fn = os.path.join("telegram", "version.py")
+    fn = os.path.join("moodle", "version.py")
     with open(fn) as fh:
         code = compile(fh.read(), fn, "exec")
         exec(code)
