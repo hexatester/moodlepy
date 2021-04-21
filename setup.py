@@ -43,7 +43,6 @@ with codecs.open("README.md", "r", "utf-8") as fd:
             "Topic :: Software Development :: Libraries :: Python Modules",
             "Topic :: Education",
             "Programming Language :: Python",
-            "Programming Language :: Python :: 3.6",
             "Programming Language :: Python :: 3.7",
             "Programming Language :: Python :: 3.8",
             "Programming Language :: Python :: 3.9",
