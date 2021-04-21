@@ -46,6 +46,7 @@ mypy = "^0.812"
 pre-commit = "^2.7.1"
 rope = "^0.17.0"
 pytest-cov = "^2.10.1"
+pylint = "^2.7.4"
 
 [tool.poetry.scripts]
 moodle = "moodle.__main__:main"
