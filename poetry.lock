@@ -513,7 +513,7 @@ ujson = ["ujson"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "13ba64d2718a79db0b72720d506304131bd0f97625e36741dd8559de90c2db87"
+content-hash = "88e1d96674698b82fdab20b58e3c5654c594421f3531cd35b85e9a1f41f7cbca"
 
 [metadata.files]
 appdirs = [
