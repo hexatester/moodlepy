@@ -42,5 +42,4 @@ urllib3==1.26.4; python_version >= "2.7" and python_full_version < "3.0.0" or py
 virtualenv==20.4.4; python_full_version >= "3.6.1"
 wcwidth==0.2.5; python_version >= "3.5" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.5"
 wrapt==1.12.1; python_version >= "3.6" and python_version < "4.0"
-yapf==0.31.0
 zipp==3.4.1; python_version < "3.8" and python_version >= "3.6"

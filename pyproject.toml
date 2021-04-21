@@ -40,7 +40,6 @@ ujson = ["ujson"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-yapf = "^0.31.0"
 flake8 = "^3.9.1"
 mypy = "^0.812"
 pre-commit = "^2.12.1"
