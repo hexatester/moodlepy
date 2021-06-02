@@ -10,7 +10,7 @@ from moodle import (
 
 
 def test_version():
-    assert __version__ == "0.23.2"
+    assert __version__ == "0.23.3"
 
 
 def test_moodle(moodle: Moodle):
