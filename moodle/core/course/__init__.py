@@ -15,6 +15,7 @@ from .content import (
 )
 from .course_module import CourseModule
 from .navigation_option import NavigationOptions
+from .user_favourite import UserFavourite
 from .view import ViewCourse
 
 from .base import BaseCourse
@@ -38,6 +39,7 @@ __all__ = [
     "Section",
     "CourseModule",
     "NavigationOptions",
+    "UserFavourite",
     "ViewCourse",
     "BaseCourse",
 ]

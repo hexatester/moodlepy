@@ -12,11 +12,29 @@ from . import (
     Section,
     CourseModule,
     NavigationOptions,
+    UserFavourite,
     ViewCourse,
 )
 
 
 class BaseCourse(BaseMoodle):
+    def add_content_item_to_user_favourites(
+        self,
+        componentname: str,
+        contentitemid: int,
+    ):
+        """Adds a content item (activity, resource or their subtypes) to the favourites for the user.
+
+        Args:
+            componentname (str): frankenstyle name of the component to which the content item belongs
+            contentitemid (int): id of the content item
+
+        Returns:
+            UserFavourite: User favorite content or data
+        """
+        res = self.moodle.post("core_course_add_content_item_to_user_favourites")
+        return self._tr(UserFavourite, **res)
+
     def check_updates(
         self,
         courseid: int,
