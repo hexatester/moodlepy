@@ -41,10 +41,10 @@ from moodle import Moodle
 url = 'https://my.domain/webservice/rest/server.php'
 token = 'super secret token'
 moodle = Moodle(url, token)
-raw_site_info = moodle('core_webservice_get_site_info')
+dict_site_info = moodle('core_webservice_get_site_info')
 site_info = moodle.core.webservice.get_site_info()  # return typed site_info
 
-print(raw_site_info)
+print(dict_site_info)
 print(site_info)
 
 # or
@@ -60,11 +60,9 @@ assert site_info == site_info2
 
 ❗️ If the function area does not have a type in the [support table](#moodle-web-service-support), the return value is in accordance with the [Moodle web service documentation](https://sandbox.moodledemo.net/admin/webservice/documentation.php), wich mostly dict.
 
-In the near future all of [Web service functions](https://docs.moodle.org/dev/Web_service_API_functions) will be covered by moodlepy.
+In the future all of [Web service functions](https://docs.moodle.org/dev/Web_service_API_functions) will be covered by moodlepy.
 
 # Moodle Web Service support
-
-❗️ Not all types and methods are supported, since moodlepy is not yet released. (A = Added.)
 
 | Area                 | Functions | Types | Tests | Status |
 | -------------------- | --------- | ----- | ----- | ------ |
