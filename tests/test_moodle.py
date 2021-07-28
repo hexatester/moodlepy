@@ -7,6 +7,7 @@ from moodle import (
     Tool,
     Moodle,
 )
+from moodle.__main__ import main
 
 
 def test_version():
@@ -20,3 +21,7 @@ def test_moodle(moodle: Moodle):
     assert isinstance(moodle.enrol, Enrol)
     assert isinstance(moodle.mod, Mod)
     assert isinstance(moodle.tool, Tool)
+
+
+def test_main():
+    assert callable(main)
