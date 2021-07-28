@@ -584,7 +584,7 @@ ujson = ["ujson"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "8f309abbb8da1d28d54590b621a5a4d94a342b24ac7aabd34b7a82184ddb8bb5"
+content-hash = "6e9e01574c15cfe1f0b0ed877807d5054b61f6d86d030c953c77605097d1ef74"
 
 [metadata.files]
 appdirs = [

@@ -32,7 +32,7 @@ python = "^3.7"
 requests = "^2.24.0"
 attrs = "^21.2.0"
 ujson = {version = "^4.0.2", optional = true}
-cattrs = "^1.4.0"
+cattrs = "^1.7.1"
 
 [tool.poetry.extras]
 ujson = ["ujson"]
