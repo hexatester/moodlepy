@@ -2,6 +2,7 @@ from moodle import BaseMoodle
 from moodle.utils.decorator import lazy
 from . import (
     BaseAssign,
+    BaseBook,
     BaseChat,
     BaseData,
     BaseFolder,
@@ -24,6 +25,11 @@ class Mod(BaseMoodle):
     @lazy
     def chat(self) -> BaseChat:
         return BaseChat(self.moodle)
+
+    @property  # type: ignore
+    @lazy
+    def chat(self) -> BaseBook:
+        return BaseBook(self.moodle)
 
     @property  # type: ignore
     @lazy

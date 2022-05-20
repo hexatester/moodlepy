@@ -1,4 +1,5 @@
 from .assign import BaseAssign
+from .book import BaseBook
 from .chat import BaseChat
 from .data import BaseData
 from .folder import BaseFolder
@@ -13,6 +14,7 @@ from .mod import Mod
 
 __all__ = [
     "BaseAssign",
+    "BaseBook",
     "BaseChat",
     "BaseData",
     "BaseFolder",
