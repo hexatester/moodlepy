@@ -68,8 +68,9 @@ class Mdl:
     def process_response(self, data: Any) -> Any:
         if type(data) == dict:
             if "warnings" in data and data["warnings"]:
-                warning = MoodleWarning(**data["warnings"])  # type: ignore
-                self.logger.warning(str(warning))
+                for warn in data["warnings"]:
+                    warning = MoodleWarning(**warn)  # type: ignore
+                    self.logger.warning(str(warning))
             if "exception" in data or "errorcode" in data:
                 raise MoodleException(**data)  # type: ignore
         return data
