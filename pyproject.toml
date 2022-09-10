@@ -30,9 +30,9 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.7"
 attrs = "^21.2.0"
-cattrs = "^1.7.1"
 ujson = {version = "^5.4.0", optional = true}
 requests = "^2.28.1"
+cattrs = "^22.1.0"
 
 [tool.poetry.extras]
 ujson = ["ujson"]
