@@ -1,7 +1,7 @@
-from typing import List, Optional
+from typing import List
 from moodle import BaseMoodle
 
-from . import Book, Books, View
+from . import Books, View
 
 
 class BaseBook(BaseMoodle):
