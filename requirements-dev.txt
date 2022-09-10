@@ -1,6 +1,6 @@
 astroid==2.9.3; python_version >= "3.6" and python_version < "4.0" and python_full_version >= "3.6.2"
 atomicwrites==1.4.1; python_version >= "3.5" and python_full_version < "3.0.0" and sys_platform == "win32" and (python_version >= "3.5" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.5") or sys_platform == "win32" and python_version >= "3.5" and python_full_version >= "3.4.0" and (python_version >= "3.5" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.5")
-attrs==21.4.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
+attrs==22.1.0; python_version >= "3.5"
 black==22.1.0; python_full_version >= "3.6.2"
 cattrs==22.1.0; python_version >= "3.7" and python_version < "4.0"
 certifi==2022.6.15.1; python_version >= "3.7" and python_version < "4"
