@@ -12,7 +12,7 @@ from moodle.__main__ import main
 
 
 def test_version():
-    assert __version__ == "0.23.7"
+    assert __version__ == "0.23.8"
 
 
 def test_moodle(moodle: Moodle):
