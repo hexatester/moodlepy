@@ -71,7 +71,7 @@ typing_extensions = {version = "*", markers = "python_version >= \"3.7\" and pyt
 
 [[package]]
 name = "certifi"
-version = "2022.6.15"
+version = "2022.6.15.1"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
 optional = false
@@ -563,7 +563,7 @@ ujson = ["ujson"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "8e91f64e12308fd6ce2ba178fce944a9da949f6cd4890ea58b48ae83da1d1f7d"
+content-hash = "bad17c22734ef2016eb39cebf38b683546ce3d6bd779f479da551023040ebb89"
 
 [metadata.files]
 astroid = [
@@ -604,10 +604,7 @@ cattrs = [
     {file = "cattrs-1.10.0-py3-none-any.whl", hash = "sha256:35dd9063244263e63bd0bd24ea61e3015b00272cead084b2c40d788b0f857c46"},
     {file = "cattrs-1.10.0.tar.gz", hash = "sha256:211800f725cdecedcbcf4c753bbd22d248312b37d130f06045434acb7d9b34e1"},
 ]
-certifi = [
-    {file = "certifi-2022.6.15-py3-none-any.whl", hash = "sha256:fe86415d55e84719d75f8b69414f6438ac3547d2078ab91b67e779ef69378412"},
-    {file = "certifi-2022.6.15.tar.gz", hash = "sha256:84c85a9078b11105f04f3036a9482ae10e4621616db313fe045dd24743a0820d"},
-]
+certifi = []
 cfgv = [
     {file = "cfgv-3.3.1-py2.py3-none-any.whl", hash = "sha256:c6a0883f3917a037485059700b9e75da2464e6c27051014ad85ba6aaa5884426"},
     {file = "cfgv-3.3.1.tar.gz", hash = "sha256:f5a830efb9ce7a445376bb66ec94c638a9787422f96264c98edc6bdeed8ab736"},
