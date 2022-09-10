@@ -23,13 +23,13 @@ class Mod(BaseMoodle):
 
     @property  # type: ignore
     @lazy
-    def chat(self) -> BaseChat:
-        return BaseChat(self.moodle)
+    def book(self) -> BaseBook:
+        return BaseBook(self.moodle)
 
     @property  # type: ignore
     @lazy
-    def chat(self) -> BaseBook:
-        return BaseBook(self.moodle)
+    def chat(self) -> BaseChat:
+        return BaseChat(self.moodle)
 
     @property  # type: ignore
     @lazy
