@@ -66,10 +66,14 @@ class Mdl:
         return res.text
 
     def process_response(self, data: Any) -> Any:
-        if type(data) == dict:
+        if isinstance(data, dict):
             if "warnings" in data and data["warnings"]:
-                for warn in data["warnings"]:
-                    warning = MoodleWarning(**warn)  # type: ignore
+                if isinstance(data["warnings"], list):
+                    for warn in data["warnings"]:
+                        warning = MoodleWarning(**warn)  # type: ignore
+                        self.logger.warning(str(warning))
+                elif isinstance(data["warnings"], dict):
+                    warning = MoodleWarning(**data["warnings"])  # type: ignore
                     self.logger.warning(str(warning))
             if "exception" in data or "errorcode" in data:
                 raise MoodleException(**data)  # type: ignore
