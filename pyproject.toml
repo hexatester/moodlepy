@@ -38,7 +38,7 @@ cattrs = "^22.1.0"
 ujson = ["ujson"]
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "7.1.3"
 flake8 = "4.0.1"
 mypy = "0.931"
 pre-commit = "^2.12.1"
