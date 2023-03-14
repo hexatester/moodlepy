@@ -11,7 +11,7 @@ class MoodleException(Exception):
     debuginfo: Optional[str] = ""
 
     def __str__(self):
-        return "Error Code: {}\nException: {}\n Message: {}\n Debug Info: {}".format(
+        return "Error Code: {}\nException: {}\nMessage: {}\nDebug Info: {}".format(
             self.message, self.exception, self.errorcode, self.debuginfo)
 
 
