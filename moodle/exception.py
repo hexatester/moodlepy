@@ -8,9 +8,11 @@ class MoodleException(Exception):
     errorcode: Optional[Any] = ""
     exception: Optional[Any] = ""
     message: Optional[str] = ""
+    debuginfo: Optional[str] = ""
 
     def __str__(self):
-        return self.message or self.exception or self.errorcode
+        return "Error Code: {}\nException: {}\nMessage: {}\nDebug Info: {}".format(
+            self.message, self.exception, self.errorcode, self.debuginfo)
 
 
 class BaseException(Exception):
