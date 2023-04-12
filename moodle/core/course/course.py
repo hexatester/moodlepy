@@ -18,6 +18,18 @@ class CourseFormatOption:
 
 
 @dataclass
+class CourseShortData:
+    """Course short data
+    Args:
+        id (int): course id
+        shortname (str): Course short name
+    """
+
+    id: int
+    shortname: str
+
+
+@dataclass
 class CourseCustomField:
     """Custom Field
     Args:

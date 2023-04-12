@@ -15,6 +15,7 @@ from . import (
     UserFavourite,
     ViewCourse,
 )
+from .course import CourseFormatOption, CourseShortData
 
 
 class BaseCourse(BaseMoodle):
@@ -32,7 +33,9 @@ class BaseCourse(BaseMoodle):
         Returns:
             UserFavourite: User favorite content or data
         """
-        res = self.moodle.post("core_course_add_content_item_to_user_favourites")
+        res = self.moodle.post(
+            "core_course_add_content_item_to_user_favourites"
+        )
         return self._tr(UserFavourite, **res)
 
     def check_updates(
@@ -74,9 +77,25 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_delete_modules")
         return res
 
-    def duplicate_course(self):
-        res = self.moodle.post("core_course_duplicate_course")
-        return res
+    def duplicate_course(
+        self,
+        courseid: int,
+        fullname: str,
+        shortname: str,
+        categoryid: int,
+        visible: int = 1,
+        options: Optional[List[CourseShortData]] = [{}],
+    ) -> CourseShortData:
+        data = self.moodle.post(
+            "core_course_duplicate_course",
+            courseid=courseid,
+            fullname=fullname,
+            shortname=shortname,
+            categoryid=categoryid,
+            visible=visible,
+            options=options,
+        )
+        return self._tr(CourseShortData, **data)
 
     def edit_module(self):
         res = self.moodle.post("core_course_edit_module")
@@ -159,7 +178,9 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_courses", options=options)
         return self._trs(Course, res)
 
-    def get_courses_by_field(self, field: str = "", value: str = "") -> CourseByField:
+    def get_courses_by_field(
+        self, field: str = "", value: str = ""
+    ) -> CourseByField:
         """Get courses matching a specific field (id/s, shortname, idnumber, category)
 
         Args:
@@ -257,7 +278,9 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_user_administration_options")
         return res
 
-    def get_user_navigation_options(self, courseids: List[int]) -> NavigationOptions:
+    def get_user_navigation_options(
+        self, courseids: List[int]
+    ) -> NavigationOptions:
         """Return a list of navigation options in a set of courses that are avaialable or not for the current user.
 
         Args:
