@@ -86,6 +86,20 @@ class BaseCourse(BaseMoodle):
         visible: int = 1,
         options: Optional[List[CourseShortData]] = [{}],
     ) -> CourseShortData:
+        """Duplicate an existing course (creating a new one).
+
+        Args:
+            courseid (int): course to duplicate id
+            fullname (str): duplicated course full name
+            shortname (str): duplicated course short name
+            categoryid (int): duplicated course category parent
+            visible (Optional[int]) duplicated course visible, default to yes
+            options (Optional[List[CourseShortData]]): Course duplication options
+
+        Returns:
+            CourseShortData: new course base infos
+        """
+
         data = self.moodle.post(
             "core_course_duplicate_course",
             courseid=courseid,
