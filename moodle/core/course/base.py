@@ -15,7 +15,8 @@ from . import (
     UserFavourite,
     ViewCourse,
 )
-from .course import CourseFormatOption, CourseShortData
+from .course import CourseTU, CourseFormatOption, CourseShortData
+from moodle.base.warning import MoodleWarnings
 
 
 class BaseCourse(BaseMoodle):
@@ -356,9 +357,17 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_update_categories")
         return res
 
-    def update_courses(self):
-        res = self.moodle.post("core_course_update_courses")
-        return res
+    def update_courses(self, courses: List[CourseTU]) -> MoodleWarnings:
+        """Update courses
+
+        Args:
+            courses (List[CourseTU]): courses to update
+
+        Returns:
+            List[MoodleWarning]: list of warnings
+        """
+        data = self.moodle.post("core_course_update_courses", courses=courses)
+        return self._tr(MoodleWarnings, **data)
 
     def view_course(self, courseid: int, sectionnumber: int) -> ViewCourse:
         res = self.moodle.post("core_course_view_course")

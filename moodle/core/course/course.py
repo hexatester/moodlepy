@@ -214,3 +214,64 @@ class CoursesBTC(ResponsesFactory[CourseBTC]):
     @property
     def items(self) -> List[CourseBTC]:
         return self.courses
+
+
+@dataclass
+class CourseTU:
+    """Course To Update
+    Args:
+        id (int): ID of the course
+        fullname (Optional[str]):  full name
+        shortname (Optional[str]):  course short name
+        categoryid (Optional[int]):  category id
+        idnumber (Optional[str]):  id number
+        summary (Optional[str]):  summary
+        summaryformat (Optional[int]):  summary format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
+        format (Optional[str]):  course format: weeks, topics, social, site,..
+        showgrades (Optional[int]):  1 if grades are shown, otherwise 0
+        newsitems (Optional[int]):  number of recent items appearing on the course page
+        startdate (Optional[int]):  timestamp when the course start
+        enddate (Optional[int]):  timestamp when the course end
+        numsections (Optional[int]):  (deprecated, use courseformatoptions) number of weeks/topics
+        maxbytes (Optional[int]):  largest size of file that can be uploaded into the course
+        showreports (Optional[int]):  are activity report shown (yes = 1, no =0)
+        visible (Optional[int]):  1: available to student, 0:not available
+        hiddensections (Optional[int]):  (deprecated, use courseformatoptions) How the hidden sections in the course are displayed to students
+        groupmode (Optional[int]):  no group, separate, visible
+        groupmodeforce (Optional[int]):  1: yes, 0: no
+        defaultgroupingid (Optional[int]):  default grouping id
+        enablecompletion (Optional[int]):  Enabled, control via completion and activity settings. Disabled, not shown in activity settings.
+        completionnotify (Optional[int]):  1: yes 0: no
+        lang (Optional[str]): forced course language
+        forcetheme (Optional[str]): name of the force theme
+        courseformatoptions (Optional[List[CourseFormatOption]]): additional options for particular course format
+        customfields (Optional[List[CourseCustomField]]): Custom fields
+    """
+
+    id: int
+    fullname: Optional[str]
+    shortname: Optional[str]
+    categoryid: Optional[int]
+    idnumber: Optional[str]
+    summary: Optional[str]
+    summaryformat: Optional[int]
+    format: Optional[str]
+    showgrades: Optional[int]
+    newsitems: Optional[int]
+    startdate: Optional[int]
+    enddate: Optional[int]
+    numsections: Optional[int]
+    maxbytes: Optional[int]
+    showreports: Optional[int]
+    visible: Optional[int]
+    hiddensections: Optional[int]
+    groupmode: Optional[int]
+    groupmodeforce: Optional[int]
+    defaultgroupingid: Optional[int]
+    enablecompletion: Optional[int]
+    completionnotify: Optional[int]
+    lang: Optional[str]
+    forcetheme: Optional[str]
+    courseformatoptions: Optional[List[CourseFormatOption]]
+    customfields: Optional[List[CourseCustomField]]
+
