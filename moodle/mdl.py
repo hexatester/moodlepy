@@ -40,6 +40,18 @@ class Mdl:
         cattr.register_structure_hook(Union[str, int], lambda d, t: d)
 
     def get(self, wsfunction: str, moodlewsrestformat="json", **kwargs) -> Any:
+        """Send get request to webservice
+
+        Args:
+            wsfunction (str): Webservice function
+            moodlewsrestformat (str, optional): Expected format. Defaults to "json".
+
+        Raises:
+            MoodleException: Error from server
+
+        Returns:
+            Any: Raw data (str) or dict
+        """
         params = make_params(self.token, wsfunction, moodlewsrestformat)
         params.update(to_dict(kwargs))
         res = self.session.get(self.url, params=params)
@@ -49,6 +61,20 @@ class Mdl:
         return res.text
 
     def post(self, wsfunction: str, moodlewsrestformat="json", **kwargs: Any) -> Any:
+        """Send post request to webservice
+
+        Args:
+            wsfunction (str): Webservice function
+            moodlewsrestformat (str, optional): Expected format. Defaults to "json".
+
+        Raises:
+            NetworkMoodleException: If request failed
+            EmptyResponseException: If the response empty
+            MoodleException: Error from server
+
+        Returns:
+            Any: Raw data (str) or dict
+        """
         params = make_params(self.token, wsfunction, moodlewsrestformat)
         try:
             res = self.session.post(
@@ -66,6 +92,17 @@ class Mdl:
         return res.text
 
     def process_response(self, data: Any) -> Any:
+        """Process data to handle exception or warnings
+
+        Args:
+            data (Any): Could be dict with warnings or exception
+
+        Raises:
+            MoodleException: Error from server
+
+        Returns:
+            Any: Return data if no exeption
+        """
         if isinstance(data, dict):
             if "warnings" in data and data["warnings"]:
                 if isinstance(data["warnings"], list):

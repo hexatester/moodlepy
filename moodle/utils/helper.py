@@ -18,6 +18,15 @@ def make_params(
 
 
 def to_dict(data: Any, name: str = "") -> Any:
+    """Properly format query string for webservice request
+
+    Args:
+        data (Any): Query to be formated
+        name (str, optional): The key of the data. Defaults to "".
+
+    Returns:
+        Any: Formated data
+    """
     if not data:
         return data
     if isinstance(data, list):
