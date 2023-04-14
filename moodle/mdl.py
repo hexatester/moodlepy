@@ -20,7 +20,7 @@ from moodle.exception import (
     InvalidCredentialException,
     NetworkMoodleException,
 )
-from moodle.utils.helper import make_params, to_dict, fromtimestamp
+from moodle.utils.helper import to_dict, fromtimestamp
 
 
 class Mdl:
@@ -52,7 +52,11 @@ class Mdl:
         Returns:
             Any: Raw data (str) or dict
         """
-        params = make_params(self.token, wsfunction, moodlewsrestformat)
+        params = {
+            "wstoken": self.token,
+            "wsfunction": wsfunction,
+            "moodlewsrestformat": moodlewsrestformat,
+        }
         params.update(to_dict(kwargs))
         res = self.session.get(self.url, params=params)
         if res.ok and moodlewsrestformat == "json":
@@ -75,7 +79,11 @@ class Mdl:
         Returns:
             Any: Raw data (str) or dict
         """
-        params = make_params(self.token, wsfunction, moodlewsrestformat)
+        params = {
+            "wstoken": self.token,
+            "wsfunction": wsfunction,
+            "moodlewsrestformat": moodlewsrestformat,
+        }
         try:
             res = self.session.post(
                 self.url,

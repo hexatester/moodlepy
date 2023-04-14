@@ -7,16 +7,6 @@ from moodle.attr import asdict as asdict_attr
 T = TypeVar("T")
 
 
-def make_params(
-    wstoken: str, wsfunction: str, moodlewsrestformat: str = "json"
-) -> dict:
-    return {
-        "wstoken": wstoken,
-        "wsfunction": wsfunction,
-        "moodlewsrestformat": moodlewsrestformat,
-    }
-
-
 def to_dict(data: Any, name: str = "") -> Any:
     """Properly format query string for webservice request
 
