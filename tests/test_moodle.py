@@ -3,6 +3,7 @@ from moodle import (
     Auth,
     Core,
     Enrol,
+    GradeReport,
     Mdl,
     Mod,
     Tool,
@@ -21,6 +22,7 @@ def test_moodle(moodle: Moodle):
     assert isinstance(moodle.auth, Auth)
     assert isinstance(moodle.core, Core)
     assert isinstance(moodle.enrol, Enrol)
+    assert isinstance(moodle.grade_report, GradeReport)
     assert isinstance(moodle.mod, Mod)
     assert isinstance(moodle.tool, Tool)
 
