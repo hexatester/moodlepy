@@ -6,6 +6,7 @@ from moodle.auth import Auth
 from moodle.block import Block
 from moodle.core import Core
 from moodle.enrol import Enrol
+from moodle.gradereport import GradeReport
 from moodle.mod import Mod
 from moodle.tool import Tool
 
@@ -38,6 +39,11 @@ class Moodle(Mdl):
     @lazy
     def enrol(self) -> Enrol:
         return Enrol(self)
+
+    @property  # type: ignore
+    @lazy
+    def grade_report(self) -> GradeReport:
+        return GradeReport(self)
 
     @property  # type: ignore
     @lazy

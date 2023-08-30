@@ -19,6 +19,7 @@ from .block import Block
 from .core import Core
 from .enrol import Enrol
 from .mod import Mod
+from .gradereport import GradeReport
 
 from .mdl import Mdl
 from .moodle import Moodle
@@ -38,6 +39,7 @@ __all__ = [
     "Core",
     "Block",
     "Enrol",
+    "GradeReport",
     "Mod",
     "Tool",
     "Mdl",
