@@ -63,7 +63,7 @@ assert site_info == site_info2
 
 In the future all of [Web service functions](https://docs.moodle.org/dev/Web_service_API_functions) will be covered by moodlepy.
 
-# Moodle Web Service support
+## Moodle Web Service support
 
 | Area                 | Functions | Types | Tests | Status |
 | -------------------- | --------- | ----- | ----- | ------ |
