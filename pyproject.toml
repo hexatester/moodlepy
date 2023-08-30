@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "moodlepy"
-version = "0.23.10"
+version = "0.24.0"
 description = "Python wrapper for moodle web service."
 authors = ["hexatester <habibrohman@protonmail.com>"]
 license = "MIT"
