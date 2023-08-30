@@ -553,7 +553,7 @@ ujson = ["ujson"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8.10"
-content-hash = "7d857347ccd427f5c27c469b14f544d08c5fab8e0093069bce4e458db34e8be0"
+content-hash = "42b7e2028dfb572faacde9518d64d14b7ea31e262b70f734ad6740dfe6a6c324"
 
 [metadata.files]
 astroid = []

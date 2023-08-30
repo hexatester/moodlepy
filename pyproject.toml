@@ -40,7 +40,7 @@ ujson = ["ujson"]
 [tool.poetry.dev-dependencies]
 pytest = "^7.3.0"
 flake8 = "4.0.1"
-mypy = "^1.2.0"
+mypy = "^1.5.1"
 pre-commit = "2.20.0"
 rope = "^1.7.0"
 pytest-cov = "3.0.0"
