@@ -20,4 +20,4 @@ class EnrolmentMethod:
     type: str
     name: str
     status: str
-    wsfunction: Optional[str]
+    wsfunction: Optional[str] = None

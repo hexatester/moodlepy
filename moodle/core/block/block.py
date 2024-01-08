@@ -18,14 +18,14 @@ class BlockFile:
     param: repositorytype (Optional[str]): The repository type for external files
     """
 
-    filename: Optional[str]
-    filepath: Optional[str]
-    filesize: Optional[int]
-    fileurl: Optional[str]
-    timemodified: Optional[int]
-    mimetype: Optional[str]
-    isexternalfile: Optional[int]
-    repositorytype: Optional[str]
+    filename: Optional[str] = None
+    filepath: Optional[str] = None
+    filesize: Optional[int] = None
+    fileurl: Optional[str] = None
+    timemodified: Optional[int] = None
+    mimetype: Optional[str] = None
+    isexternalfile: Optional[int] = None
+    repositorytype: Optional[str] = None
 
 
 @dataclass
@@ -42,7 +42,7 @@ class BlockContent:
     title: str
     content: str
     contentformat: int
-    footer: Optional[str]
+    footer: Optional[str] = None
     files: List[BlockFile] = field(factory=list)
 
     def __str__(self) -> str:
@@ -67,12 +67,12 @@ class Block:
     instanceid: int
     name: str
     region: str
-    positionid: Optional[int]
     collapsible: bool
     dockable: bool
-    weight: Optional[int]
     visible: bool
-    contents: Optional[BlockContent]
+    positionid: Optional[int] = None
+    weight: Optional[int] = None
+    contents: Optional[BlockContent] = None
 
     def __str__(self) -> str:
         return self.name

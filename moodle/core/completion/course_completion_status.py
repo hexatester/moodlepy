@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from moodle import MoodleWarning
 from moodle.attr import dataclass, field
@@ -28,7 +28,7 @@ class CourseCompletion:
         title (str): Completion criteria Title
         status (str): Completion status (Yes/No) a % or number
         complete (int): Completion status (true/false)
-        timecompleted (int): Timestamp for criteria completetion
+        timecompleted (int): Timestamp for criteria completion
         details (CourseCompletionDetail): details
     """
 
@@ -36,8 +36,8 @@ class CourseCompletion:
     title: str
     status: str
     complete: int
-    timecompleted: int
     details: CourseCompletionDetail
+    timecompleted: Optional[int] = None
 
 
 @dataclass

@@ -18,14 +18,14 @@ class File:
         repositorytype (Optional[str]): The repository type for the external files.
     """
 
-    filename: Optional[str]
-    filepath: Optional[str]
-    filesize: Optional[int]
-    fileurl: Optional[str]
-    timemodified: Optional[int]
-    mimetype: Optional[str]
-    isexternalfile: Optional[int]
-    repositorytype: Optional[str]
+    filename: Optional[str] = None
+    filepath: Optional[str] = None
+    filesize: Optional[int] = None
+    fileurl: Optional[str] = None
+    timemodified: Optional[int] = None
+    mimetype: Optional[str] = None
+    isexternalfile: Optional[int] = None
+    repositorytype: Optional[str] = None
 
 
 @dataclass
@@ -83,45 +83,45 @@ class Lesson:
     course: int
     coursemodule: int
     name: str
-    intro: Optional[str]
     introformat: int
-    practice: Optional[int]
-    modattempts: Optional[int]
-    usepassword: Optional[int]
-    password: Optional[str]
-    dependency: Optional[int]
-    conditions: Optional[str]
-    grade: Optional[int]
-    custom: Optional[int]
-    ongoing: Optional[int]
-    usemaxgrade: Optional[int]
-    maxanswers: Optional[int]
-    maxattempts: Optional[int]
-    review: Optional[int]
-    nextpagedefault: Optional[int]
-    feedback: Optional[int]
-    minquestions: Optional[int]
-    maxpages: Optional[int]
-    timelimit: Optional[int]
-    retake: Optional[int]
-    activitylink: Optional[int]
-    mediafile: Optional[str]
-    mediaheight: Optional[int]
-    mediawidth: Optional[int]
-    mediaclose: Optional[int]
-    slideshow: Optional[int]
-    width: Optional[int]
-    height: Optional[int]
-    bgcolor: Optional[str]
-    displayleft: Optional[int]
-    displayleftif: Optional[int]
-    progressbar: Optional[int]
-    available: Optional[int]
-    deadline: Optional[int]
-    timemodified: Optional[int]
-    completionendreached: Optional[int]
-    completiontimespent: Optional[int]
     allowofflineattempts: int
+    intro: Optional[str] = None
+    practice: Optional[int] = None
+    modattempts: Optional[int] = None
+    usepassword: Optional[int] = None
+    password: Optional[str] = None
+    dependency: Optional[int] = None
+    conditions: Optional[str] = None
+    grade: Optional[int] = None
+    custom: Optional[int] = None
+    ongoing: Optional[int] = None
+    usemaxgrade: Optional[int] = None
+    maxanswers: Optional[int] = None
+    maxattempts: Optional[int] = None
+    review: Optional[int] = None
+    nextpagedefault: Optional[int] = None
+    feedback: Optional[int] = None
+    minquestions: Optional[int] = None
+    maxpages: Optional[int] = None
+    timelimit: Optional[int] = None
+    retake: Optional[int] = None
+    activitylink: Optional[int] = None
+    mediafile: Optional[str] = None
+    mediaheight: Optional[int] = None
+    mediawidth: Optional[int] = None
+    mediaclose: Optional[int] = None
+    slideshow: Optional[int] = None
+    width: Optional[int] = None
+    height: Optional[int] = None
+    bgcolor: Optional[str] = None
+    displayleft: Optional[int] = None
+    displayleftif: Optional[int] = None
+    progressbar: Optional[int] = None
+    available: Optional[int] = None
+    deadline: Optional[int] = None
+    timemodified: Optional[int] = None
+    completionendreached: Optional[int] = None
+    completiontimespent: Optional[int] = None
     introfiles: List[File] = field(factory=list)
     mediafiles: List[File] = field(factory=list)
 

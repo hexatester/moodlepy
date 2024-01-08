@@ -80,24 +80,24 @@ class Cm:
     groupmode: int
     groupingid: int
     completion: int
-    idnumber: Optional[str]
-    added: Optional[datetime]
-    score: Optional[int]
-    indent: Optional[int]
-    visible: Optional[int]
-    visibleoncoursepage: Optional[int]
-    visibleold: Optional[int]
-    completiongradeitemnumber: Optional[int]
-    completionview: Optional[int]
-    completionexpected: Optional[int]
-    showdescription: Optional[int]
-    availability: Optional[str]
-    grade: Optional[float]
-    scale: Optional[str]
-    gradepass: Optional[str]
-    gradecat: Optional[int]
     advancedgrading: List[AdvancedGrading] = field(factory=list)
     outcomes: List[Outcome] = field(factory=list)
+    idnumber: Optional[str] = None
+    added: Optional[datetime] = None
+    score: Optional[int] = None
+    indent: Optional[int] = None
+    visible: Optional[int] = None
+    visibleoncoursepage: Optional[int] = None
+    visibleold: Optional[int] = None
+    completiongradeitemnumber: Optional[int] = None
+    completionview: Optional[int] = None
+    completionexpected: Optional[int] = None
+    showdescription: Optional[int] = None
+    availability: Optional[str] = None
+    grade: Optional[float] = None
+    scale: Optional[str] = None
+    gradepass: Optional[str] = None
+    gradecat: Optional[int] = None
 
     def __str__(self) -> str:
         return self.name

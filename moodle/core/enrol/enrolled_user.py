@@ -97,6 +97,7 @@ class EnrolledUser(User):
         enrolledcourses (List[EnrolledCourse]): Courses where the user is enrolled - limited by which courses the user is able to see
     """
 
+    lastcourseaccess: int = None
     groups: List[Group] = field(factory=list)
     roles: List[Role] = field(factory=list)
     enrolledcourses: List[EnrolledCourse] = field(factory=list)

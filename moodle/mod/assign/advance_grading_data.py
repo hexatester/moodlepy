@@ -17,12 +17,12 @@ class Filling:
     """
 
     criterionid: int
-    levelid: Optional[int]
-    remark: Optional[str]
-    remarkformat: Optional[int]
-    enrichedbenchmark: Optional[float]
-    enrichedbenchmarkstudent: Optional[float]
-    enrichedbenchmarkstudents: Optional[float]
+    levelid: Optional[int] = None
+    remark: Optional[str] = None
+    remarkformat: Optional[int] = None
+    enrichedbenchmark: Optional[float] = None
+    enrichedbenchmarkstudent: Optional[float] = None
+    enrichedbenchmarkstudents: Optional[float] = None
 
 
 @dataclass
@@ -56,6 +56,6 @@ class AdvanceGradingData:
         rubric (Optional[Rubric]): list of Rubric
     """
 
-    erubric: Optional[Rubric]
-    guide: Optional[Rubric]
-    rubric: Optional[Rubric]
+    erubric: Optional[Rubric] = None
+    guide: Optional[Rubric] = None
+    rubric: Optional[Rubric] = None

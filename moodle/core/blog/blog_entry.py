@@ -19,14 +19,14 @@ class BlogSummaryFiles:
     param: repositorytype (Optional[str]): The repository type for the external files.
     """
 
-    filename: Optional[str]
-    filepath: Optional[str]
-    filesize: Optional[int]
-    fileurl: Optional[str]
-    timemodified: Optional[int]
-    mimetype: Optional[str]
-    isexternalfile: Optional[int]
-    repositorytype: Optional[str]
+    filename: Optional[str] = None
+    filepath: Optional[str] = None
+    filesize: Optional[int] = None
+    fileurl: Optional[str] = None
+    timemodified: Optional[int] = None
+    mimetype: Optional[str] = None
+    isexternalfile: Optional[int] = None
+    repositorytype: Optional[str] = None
 
 
 @dataclass
@@ -43,14 +43,14 @@ class BlogAttachmentFile:
     param: repositorytype: (Optional[str]): The repository type for the external files.
     """
 
-    filename: Optional[str]
-    filepath: Optional[str]
-    filesize: Optional[int]
-    fileurl: Optional[str]
-    timemodified: Optional[int]
-    mimetype: Optional[str]
-    isexternalfile: Optional[int]
-    repositorytype: Optional[str]
+    filename: Optional[str] = None
+    filepath: Optional[str] = None
+    filesize: Optional[int] = None
+    fileurl: Optional[str] = None
+    timemodified: Optional[int] = None
+    mimetype: Optional[str] = None
+    isexternalfile: Optional[int] = None
+    repositorytype: Optional[str] = None
 
 
 @dataclass
@@ -119,7 +119,6 @@ class BlogEntry:
     subject: str
     summary: str
     summaryformat: int
-    content: Optional[str]
     uniquehash: str
     rating: int
     format: int
@@ -127,7 +126,8 @@ class BlogEntry:
     publishstate: str
     lastmodified: int
     created: int
-    usermodified: Optional[int]
+    content: Optional[str] = None
+    usermodified: Optional[int] = None
     summaryfiles: List[BlogSummaryFiles] = field(factory=list)
     attachmentfiles: List[BlogAttachmentFile] = field(factory=list)
     tags: List[BlogTag] = field(factory=list)

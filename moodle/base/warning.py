@@ -5,10 +5,10 @@ from moodle.attr import dataclass
 
 @dataclass
 class MoodleWarning:
-    item: Optional[str]
-    itemid: Optional[int]
     warningcode: str
     message: str
+    item: Optional[str] = None
+    itemid: Optional[int] = None
 
     def __str__(self) -> str:
         return self.message

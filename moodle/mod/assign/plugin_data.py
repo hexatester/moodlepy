@@ -22,5 +22,5 @@ class PluginData:
         files_filemanager (Optional[int]): The id of a draft area containing files for this feedback.
     """
 
-    assignfeedbackcomments_editor: Optional[EditorStructure]
-    files_filemanager: Optional[int]
+    assignfeedbackcomments_editor: Optional[EditorStructure] = None
+    files_filemanager: Optional[int] = None

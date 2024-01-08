@@ -27,7 +27,6 @@ class DayView:
     defaulteventcontext: int  # defaulteventcontext
     filter_selector: str  # filter_selector
     courseid: int  # courseid
-    categoryid: Optional[int]  # categoryid
     neweventtimestamp: int  # neweventtimestamp
     date: DateView
     periodname: str  # periodname
@@ -37,3 +36,4 @@ class DayView:
     nextperiod: Period
     larrow: str  # larrow
     rarrow: str  # rarrow
+    categoryid: Optional[int] = None  # categoryid

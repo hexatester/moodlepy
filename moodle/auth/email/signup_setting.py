@@ -31,27 +31,27 @@ class ProfileField:
         param5 (Optional[str]): Profield field settings
     """
 
-    id: Optional[int]
-    shortname: Optional[str]
-    name: Optional[str]
-    datatype: Optional[str]
-    description: Optional[str]
     descriptionformat: int
-    categoryid: Optional[int]
-    categoryname: Optional[str]
-    sortorder: Optional[int]
-    required: Optional[int]
-    locked: Optional[int]
-    visible: Optional[int]
-    forceunique: Optional[int]
-    signup: Optional[int]
-    defaultdata: Optional[str]
     defaultdataformat: int
-    param1: Optional[str]
-    param2: Optional[str]
-    param3: Optional[str]
-    param4: Optional[str]
-    param5: Optional[str]
+    id: Optional[int] = None
+    shortname: Optional[str] = None
+    name: Optional[str] = None
+    datatype: Optional[str] = None
+    description: Optional[str] = None
+    categoryid: Optional[int] = None
+    categoryname: Optional[str] = None
+    sortorder: Optional[int] = None
+    required: Optional[int] = None
+    locked: Optional[int] = None
+    visible: Optional[int] = None
+    forceunique: Optional[int] = None
+    signup: Optional[int] = None
+    defaultdata: Optional[str] = None
+    param1: Optional[str] = None
+    param2: Optional[str] = None
+    param3: Optional[str] = None
+    param4: Optional[str] = None
+    param5: Optional[str] = None
 
 
 @dataclass

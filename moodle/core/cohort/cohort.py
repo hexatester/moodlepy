@@ -24,7 +24,7 @@ class Cohort:
     description: str
     descriptionformat: int
     visible: int
-    theme: Optional[str]
+    theme: Optional[str] = None
 
 
 @dataclass

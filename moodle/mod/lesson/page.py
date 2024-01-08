@@ -38,13 +38,13 @@ class Page:
     display: int
     timecreated: int
     timemodified: int
-    title: Optional[str]
-    contents: Optional[str]
-    contentsformat: Optional[int]
     displayinmenublock: int
     type: int
     typeid: int
     typestring: str
+    title: Optional[str] = None
+    contents: Optional[str] = None
+    contentsformat: Optional[int] = None
 
 
 @dataclass
