@@ -28,5 +28,5 @@ class ContactRequest:
         warnings (List[Warning]): list of warnings
     """
 
-    request: Optional[ContactRequestRecord]
+    request: Optional[ContactRequestRecord] = None
     warnings: List[MoodleWarning] = field(factory=list)

@@ -74,15 +74,15 @@ class Content:
 
     type: str
     filename: str
-    filepath: Optional[str]
     filesize: int
-    fileurl: Optional[str]
-    timecreated: Optional[datetime]
-    timemodified: Optional[datetime]
-    sortorder: Optional[int]
-    userid: Optional[int]
-    author: Optional[str]
-    license: Optional[str]
+    filepath: Optional[str] = None
+    fileurl: Optional[str] = None
+    timecreated: Optional[datetime] = None
+    timemodified: Optional[datetime] = None
+    sortorder: Optional[int] = None
+    userid: Optional[int] = None
+    author: Optional[str] = None
+    license: Optional[str] = None
     mimetype: Optional[str] = None
     isexternalfile: Optional[int] = None
     content: Optional[str] = None
@@ -102,8 +102,8 @@ class Completion:
 
     state: int
     timecompleted: datetime
-    overrideby: Optional[int]
-    valueused: Optional[bool]
+    overrideby: Optional[int] = None
+    valueused: Optional[bool] = None
 
 
 @dataclass
@@ -135,18 +135,18 @@ class Module:
 
     id: int
     name: str
-    instance: Optional[int]
-    visible: Optional[int]
-    uservisible: Optional[int]
-    visibleoncoursepage: Optional[int]
     modicon: str
     modname: str
     modplural: str
     indent: int
-    onclick: Optional[str]
-    afterlink: Optional[str]
-    customdata: Optional[str]
-    completion: Optional[int]
+    instance: Optional[int] = None
+    visible: Optional[int] = None
+    uservisible: Optional[int] = None
+    visibleoncoursepage: Optional[int] = None
+    onclick: Optional[str] = None
+    afterlink: Optional[str] = None
+    customdata: Optional[str] = None
+    completion: Optional[int] = None
     url: Optional[str] = None
     description: Optional[str] = None
     availability: Optional[str] = None
@@ -174,11 +174,11 @@ class Section:
 
     id: int
     name: str
-    visible: Optional[int]
     summary: str
     summaryformat: int
-    section: Optional[int]
-    hiddenbynumsections: Optional[int]
-    uservisible: Optional[int]
+    visible: Optional[int] = None
+    section: Optional[int] = None
+    hiddenbynumsections: Optional[int] = None
+    uservisible: Optional[int] = None
     availabilityinfo: Optional[str] = None
     modules: List[Module] = field(factory=list)

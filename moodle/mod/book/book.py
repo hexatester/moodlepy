@@ -17,14 +17,14 @@ class File:
     repositorytype (Optional[str]): The repository type for external files.
     """
 
-    filename: Optional[str]
-    filepath: Optional[str]
-    filesize: Optional[int]
-    fileurl: Optional[str]
-    timemodified: Optional[int]
-    mimetype: Optional[str]
-    isexternalfile: Optional[int]
-    repositorytype: Optional[str]
+    filename: Optional[str] = None
+    filepath: Optional[str] = None
+    filesize: Optional[int] = None
+    fileurl: Optional[str] = None
+    timemodified: Optional[int] = None
+    mimetype: Optional[str] = None
+    isexternalfile: Optional[int] = None
+    repositorytype: Optional[str] = None
 
 
 @dataclass
@@ -55,17 +55,17 @@ class Book:
     name: str
     intro: str
     introformat: int
-    introfiles: Optional[List[File]]
     numbering: int
     navstyle: int
     customtitles: int
-    revision: Optional[int]
-    timecreated: Optional[int]
-    timemodified: Optional[int]
-    section: Optional[int]
-    visible: Optional[int]
-    groupmode: Optional[int]
-    groupingid: Optional[int]
+    introfiles: Optional[List[File]] = None
+    revision: Optional[int] = None
+    timecreated: Optional[int] = None
+    timemodified: Optional[int] = None
+    section: Optional[int] = None
+    visible: Optional[int] = None
+    groupmode: Optional[int] = None
+    groupingid: Optional[int] = None
 
 
 @dataclass

@@ -15,11 +15,11 @@ class UserFlag:
     """
 
     userid: int
-    locked: Optional[int]
-    mailed: Optional[int]
-    extensionduedate: Optional[int]
-    workflowstate: Optional[str]
-    allocatedmarker: Optional[int]
+    locked: Optional[int] = None
+    mailed: Optional[int] = None
+    extensionduedate: Optional[int] = None
+    workflowstate: Optional[str] = None
+    allocatedmarker: Optional[int] = None
 
     @dataclass
     class Result:
@@ -32,4 +32,4 @@ class UserFlag:
 
         id: int
         userid: int
-        errormessage: Optional[str]
+        errormessage: Optional[str] = None

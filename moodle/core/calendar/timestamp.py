@@ -40,9 +40,9 @@ class Timestamps(ResponsesFactory[Timestamp]):
             minute (Optional[int]): minute
         """
 
-        key: Optional[str]
         year: int
         month: int
         day: int
-        hour: Optional[int]
-        minute: Optional[int]
+        key: Optional[str] = None
+        hour: Optional[int] = None
+        minute: Optional[int] = None

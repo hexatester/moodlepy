@@ -19,14 +19,14 @@ class File:
         repositorytype (Optional[str]): The repository type for external files.
     """
 
-    filename: Optional[str]
-    filepath: Optional[str]
-    filesize: Optional[int]
-    fileurl: Optional[str]
-    timemodified: Optional[int]
-    mimetype: Optional[str]
-    isexternalfile: Optional[int]
-    repositorytype: Optional[str]
+    filename: Optional[str] = None
+    filepath: Optional[str] = None
+    filesize: Optional[int] = None
+    fileurl: Optional[str] = None
+    timemodified: Optional[int] = None
+    mimetype: Optional[str] = None
+    isexternalfile: Optional[int] = None
+    repositorytype: Optional[str] = None
 
 
 @dataclass

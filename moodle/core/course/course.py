@@ -42,7 +42,7 @@ class CourseCustomField:
     name: str
     shortname: str
     type: str
-    value: Optional[str]
+    value: Optional[str] = None
 
 
 @dataclass
@@ -89,19 +89,19 @@ class Course:
     summary: str
     summaryformat: int
     format: str
-    showgrades: Optional[int]
-    newsitems: Optional[int]
     startdate: int
     enddate: int
-    maxbytes: Optional[int]
-    showreports: Optional[int]
-    visible: Optional[int]
-    groupmode: Optional[int]
-    groupmodeforce: Optional[int]
-    defaultgroupingid: Optional[int]
-    enablecompletion: Optional[int]
-    completionnotify: Optional[int]
-    lang: Optional[str]
+    showgrades: Optional[int] = None
+    newsitems: Optional[int] = None
+    maxbytes: Optional[int] = None
+    showreports: Optional[int] = None
+    visible: Optional[int] = None
+    groupmode: Optional[int] = None
+    groupmodeforce: Optional[int] = None
+    defaultgroupingid: Optional[int] = None
+    enablecompletion: Optional[int] = None
+    completionnotify: Optional[int] = None
+    lang: Optional[str] = None
     categorysortorder: Optional[int] = None
     idnumber: Optional[str] = None
     numsections: Optional[int] = None
@@ -249,29 +249,28 @@ class CourseTU:
     """
 
     id: int
-    fullname: Optional[str]
-    shortname: Optional[str]
-    categoryid: Optional[int]
-    idnumber: Optional[str]
-    summary: Optional[str]
-    summaryformat: Optional[int]
-    format: Optional[str]
-    showgrades: Optional[int]
-    newsitems: Optional[int]
-    startdate: Optional[int]
-    enddate: Optional[int]
-    numsections: Optional[int]
-    maxbytes: Optional[int]
-    showreports: Optional[int]
-    visible: Optional[int]
-    hiddensections: Optional[int]
-    groupmode: Optional[int]
-    groupmodeforce: Optional[int]
-    defaultgroupingid: Optional[int]
-    enablecompletion: Optional[int]
-    completionnotify: Optional[int]
-    lang: Optional[str]
-    forcetheme: Optional[str]
-    courseformatoptions: Optional[List[CourseFormatOption]]
-    customfields: Optional[List[CourseCustomField]]
-
+    fullname: Optional[str] = None
+    shortname: Optional[str] = None
+    categoryid: Optional[int] = None
+    idnumber: Optional[str] = None
+    summary: Optional[str] = None
+    summaryformat: Optional[int] = None
+    format: Optional[str] = None
+    showgrades: Optional[int] = None
+    newsitems: Optional[int] = None
+    startdate: Optional[int] = None
+    enddate: Optional[int] = None
+    numsections: Optional[int] = None
+    maxbytes: Optional[int] = None
+    showreports: Optional[int] = None
+    visible: Optional[int] = None
+    hiddensections: Optional[int] = None
+    groupmode: Optional[int] = None
+    groupmodeforce: Optional[int] = None
+    defaultgroupingid: Optional[int] = None
+    enablecompletion: Optional[int] = None
+    completionnotify: Optional[int] = None
+    lang: Optional[str] = None
+    forcetheme: Optional[str] = None
+    courseformatoptions: Optional[List[CourseFormatOption]] = None
+    customfields: Optional[List[CourseCustomField]] = None

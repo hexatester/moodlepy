@@ -18,14 +18,14 @@ class File:
         repositorytype (Optional[str]): The repository type for external files.
     """
 
-    filename: Optional[str]
-    filepath: Optional[str]
-    filesize: Optional[int]
-    fileurl: Optional[str]
-    timemodified: Optional[int]
-    mimetype: Optional[str]
-    isexternalfile: Optional[int]
-    repositorytype: Optional[str]
+    filename: Optional[str] = None
+    filepath: Optional[str] = None
+    filesize: Optional[int] = None
+    fileurl: Optional[str] = None
+    timemodified: Optional[int] = None
+    mimetype: Optional[str] = None
+    isexternalfile: Optional[int] = None
+    repositorytype: Optional[str] = None
 
 
 @dataclass
@@ -40,12 +40,12 @@ class Config:
         value (str): value
     """
 
-    id: Optional[int]
-    assignment: Optional[int]
     plugin: str
     subtype: str
     name: str
     value: str
+    id: Optional[int] = None
+    assignment: Optional[int] = None
 
 
 @dataclass
@@ -116,12 +116,12 @@ class Assignment:
     markingworkflow: int
     markingallocation: int
     requiresubmissionstatement: int
-    preventsubmissionnotingroup: Optional[int]
-    submissionstatement: Optional[str]
     submissionstatementformat: int
     configs: Config
-    intro: Optional[str]
-    introformat: Optional[int]
+    preventsubmissionnotingroup: Optional[int] = None
+    submissionstatement: Optional[str] = None
+    intro: Optional[str] = None
+    introformat: Optional[int] = None
     introfiles: List[File] = field(factory=list)
     introattachments: List[File] = field(factory=list)
 

@@ -24,11 +24,11 @@ class SiteInfo:
     userquota: int
     usermaxuploadfilesize: int
     userhomepage: int
-    userprivateaccesskey: Optional[str]
     siteid: int
     sitecalendartype: str
     usercalendartype: str
-    userissiteadmin: Optional[bool]
     theme: str
     functions: List[Function] = field(factory=list)
     advancedfeatures: List[AdvancedFeatures] = field(factory=list)
+    userprivateaccesskey: Optional[str] = None
+    userissiteadmin: Optional[bool] = None

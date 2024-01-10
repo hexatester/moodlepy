@@ -21,14 +21,14 @@ class Grade:
     """
 
     id: int
-    assignment: Optional[int]
     userid: int
     attemptnumber: int
     timecreated: int
     timemodified: int
     grader: int
     grade: str
-    gradefordisplay: Optional[str]
+    assignment: Optional[int] = None
+    gradefordisplay: Optional[str] = None
 
 
 @dataclass
@@ -80,5 +80,5 @@ class Grades(ResponsesFactory[GradeAssignment]):
         attemptnumber: int
         addattempt: int
         workflowstate: str
-        plugindata: Optional[PluginData]
-        advancedgradingdata: Optional[AdvanceGradingData]
+        plugindata: Optional[PluginData] = None
+        advancedgradingdata: Optional[AdvanceGradingData] = None

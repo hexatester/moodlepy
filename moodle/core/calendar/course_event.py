@@ -38,7 +38,6 @@ class CourseEventCategory:
     id: int
     name: str
     idnumber: str
-    description: Optional[str]
     parent: int
     coursecount: int
     visible: int
@@ -46,6 +45,7 @@ class CourseEventCategory:
     depth: int
     nestedname: str
     url: str
+    description: Optional[str] = None
 
     def __str__(self) -> str:
         return self.name
@@ -88,13 +88,13 @@ class CourseEventCourse:
     fullnamedisplay: str
     viewurl: str
     courseimage: str
-    progress: Optional[int]
     hasprogress: int
     isfavourite: int
     hidden: int
-    timeaccess: Optional[int]
     showshortname: int
     coursecategory: str
+    progress: Optional[int] = None
+    timeaccess: Optional[int] = None
 
     def __str__(self) -> str:
         return self.fullname
@@ -110,8 +110,8 @@ class CourseEventSubscription:
     """
 
     displayeventsource: int
-    subscriptionname: Optional[str]
-    subscriptionurl: Optional[str]
+    subscriptionname: Optional[str] = None
+    subscriptionurl: Optional[str] = None
 
     def __str__(self) -> str:
         return self.subscriptionname or repr(self)
@@ -189,16 +189,7 @@ class CourseEvent:
 
     id: int
     name: str
-    description: Optional[str]
     descriptionformat: int
-    location: Optional[str]
-    categoryid: Optional[int]
-    groupid: Optional[int]
-    userid: Optional[int]
-    repeatid: Optional[int]
-    eventcount: Optional[int]
-    modulename: Optional[str]
-    instance: Optional[int]
     eventtype: str
     timestart: int
     timeduration: int
@@ -218,18 +209,27 @@ class CourseEvent:
     isactionevent: int
     iscourseevent: int
     iscategoryevent: int
-    groupname: Optional[str]
     normalisedeventtype: str
     normalisedeventtypetext: str
     url: str
-    action: Optional[CourseEventAction]
     islastday: int
     popupname: str
-    mindaytimestamp: Optional[int]
-    mindayerror: Optional[str]
-    maxdaytimestamp: Optional[int]
-    maxdayerror: Optional[str]
     draggable: int
+    description: Optional[str] = None
+    location: Optional[str] = None
+    categoryid: Optional[int] = None
+    groupid: Optional[int] = None
+    userid: Optional[int] = None
+    repeatid: Optional[int] = None
+    eventcount: Optional[int] = None
+    modulename: Optional[str] = None
+    instance: Optional[int] = None
+    groupname: Optional[str] = None
+    action: Optional[CourseEventAction] = None
+    mindaytimestamp: Optional[int] = None
+    mindayerror: Optional[str] = None
+    maxdaytimestamp: Optional[int] = None
+    maxdayerror: Optional[str] = None
 
     def __str__(self) -> str:
         return self.name

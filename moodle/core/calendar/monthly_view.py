@@ -47,8 +47,8 @@ class Day:
     navigation: str
     haslastdayofevent: int
     popovertitle: str
-    viewdaylink: Optional[str]
-    viewdaylinktitle: Optional[str]
+    viewdaylink: Optional[str] = None
+    viewdaylinktitle: Optional[str] = None
     events: List[CourseEvent] = field(factory=list)
     calendareventtypes: List[str] = field(factory=list)
 
@@ -105,8 +105,6 @@ class MonthlyView:
 
     url: str
     courseid: int
-    categoryid: Optional[int]
-    filter_selector: Optional[str]
     weeks: Week
     daynames: DayName
     date: DateView
@@ -122,3 +120,5 @@ class MonthlyView:
     larrow: str
     rarrow: str
     defaulteventcontext: int
+    categoryid: Optional[int] = None
+    filter_selector: Optional[str] = None

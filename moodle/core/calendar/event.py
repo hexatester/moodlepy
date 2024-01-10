@@ -31,22 +31,22 @@ class Event:
 
     id: int
     name: str
-    description: Optional[str]
     format: int
     courseid: int
-    categoryid: Optional[int]
-    groupid: Optional[int]
-    userid: Optional[int]
-    repeatid: Optional[int]
-    modulename: Optional[str]
-    instance: Optional[int]
     eventtype: str
     timestart: int
     timeduration: int
     visible: int
     sequence: int
     timemodified: int
-    subscriptionid: Optional[int]
+    description: Optional[str] = None
+    categoryid: Optional[int] = None
+    groupid: Optional[int] = None
+    userid: Optional[int] = None
+    repeatid: Optional[int] = None
+    modulename: Optional[str] = None
+    instance: Optional[int] = None
+    subscriptionid: Optional[int] = None
     uuid: Optional[str] = None
 
     def __str__(self) -> str:

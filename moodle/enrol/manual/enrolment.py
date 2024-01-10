@@ -19,6 +19,6 @@ class Enrolment:
     roleid: int
     userid: int
     courseid: int
-    timestart: Optional[Union[datetime, int]]
-    timeend: Optional[Union[datetime, int]]
-    suspend: Optional[int]
+    timestart: Optional[Union[datetime, int]] = None
+    timeend: Optional[Union[datetime, int]] = None
+    suspend: Optional[int] = None

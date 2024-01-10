@@ -18,14 +18,14 @@ class ForumFile:
     params: repositorytype (Optional[str]): The repository type for external files.
     """
 
-    filename: Optional[str]
-    filepath: Optional[str]
-    filesize: Optional[int]
-    fileurl: Optional[str]
-    timemodified: Optional[int]
-    mimetype: Optional[str]
-    isexternalfile: Optional[int]
-    repositorytype: Optional[str]
+    filename: Optional[str] = None
+    filepath: Optional[str] = None
+    filesize: Optional[int] = None
+    fileurl: Optional[str] = None
+    timemodified: Optional[int] = None
+    mimetype: Optional[str] = None
+    isexternalfile: Optional[int] = None
+    repositorytype: Optional[str] = None
 
 
 @dataclass
@@ -71,8 +71,6 @@ class Forum(MoodleObject):
     name: str
     intro: str
     introformat: int
-    duedate: Optional[int]
-    cutoffdate: Optional[int]
     assessed: int
     assesstimestart: int
     assesstimefinish: int
@@ -91,11 +89,13 @@ class Forum(MoodleObject):
     completionreplies: int
     completionposts: int
     cmid: int
-    numdiscussions: Optional[int]
-    cancreatediscussions: Optional[int]
-    lockdiscussionafter: Optional[int]
-    istracked: Optional[int]
-    unreadpostscount: Optional[int]
+    duedate: Optional[int] = None
+    cutoffdate: Optional[int] = None
+    numdiscussions: Optional[int] = None
+    cancreatediscussions: Optional[int] = None
+    lockdiscussionafter: Optional[int] = None
+    istracked: Optional[int] = None
+    unreadpostscount: Optional[int] = None
     introfiles: List[ForumFile] = field(factory=list)
 
     def __str__(self) -> str:

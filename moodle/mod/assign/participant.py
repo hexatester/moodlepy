@@ -127,39 +127,39 @@ class Participant:
     """
 
     id: int
-    username: Optional[str]
-    firstname: Optional[str]
-    lastname: Optional[str]
     fullname: str
-    email: Optional[str]
-    address: Optional[str]
-    phone1: Optional[str]
-    phone2: Optional[str]
-    icq: Optional[str]
-    skype: Optional[str]
-    yahoo: Optional[str]
-    aim: Optional[str]
-    msn: Optional[str]
-    department: Optional[str]
-    institution: Optional[str]
-    idnumber: Optional[str]
-    interests: Optional[str]
-    firstaccess: Optional[int]
-    lastaccess: Optional[int]
-    suspended: Optional[int]
-    description: Optional[str]
-    descriptionformat: Optional[int]
-    city: Optional[str]
-    url: Optional[str]
-    country: Optional[str]
-    profileimageurlsmall: Optional[str]
-    profileimageurl: Optional[str]
     recordid: int
     submitted: int
     requiregrading: int
     grantedextension: int
-    groupid: Optional[int]
-    groupname: Optional[str]
+    username: Optional[str] = None
+    firstname: Optional[str] = None
+    lastname: Optional[str] = None
+    email: Optional[str] = None
+    address: Optional[str] = None
+    phone1: Optional[str] = None
+    phone2: Optional[str] = None
+    icq: Optional[str] = None
+    skype: Optional[str] = None
+    yahoo: Optional[str] = None
+    aim: Optional[str] = None
+    msn: Optional[str] = None
+    department: Optional[str] = None
+    institution: Optional[str] = None
+    idnumber: Optional[str] = None
+    interests: Optional[str] = None
+    firstaccess: Optional[int] = None
+    lastaccess: Optional[int] = None
+    suspended: Optional[int] = None
+    description: Optional[str] = None
+    descriptionformat: Optional[int] = None
+    city: Optional[str] = None
+    url: Optional[str] = None
+    country: Optional[str] = None
+    profileimageurlsmall: Optional[str] = None
+    profileimageurl: Optional[str] = None
+    groupid: Optional[int] = None
+    groupname: Optional[str] = None
     customfields: List[CustomField] = field(factory=list)
     preferences: List[Preference] = field(factory=list)
     groups: List[Group] = field(factory=list)
