@@ -13,7 +13,7 @@ def domain() -> str:
 @fixture
 def moodle(domain: str) -> Moodle:
     username = "manager"
-    password = "moodle"
+    password = "moodle2024"
     return Moodle.login(domain, username, password)
 
 
