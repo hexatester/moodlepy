@@ -12,7 +12,8 @@ class MoodleException(Exception):
 
     def __str__(self):
         return "Error Code: {}\nException: {}\nMessage: {}\nDebug Info: {}".format(
-            self.message, self.exception, self.errorcode, self.debuginfo)
+            self.message, self.exception, self.errorcode, self.debuginfo
+        )
 
 
 class BaseException(Exception):

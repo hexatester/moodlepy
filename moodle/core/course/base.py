@@ -34,9 +34,7 @@ class BaseCourse(BaseMoodle):
         Returns:
             UserFavourite: User favorite content or data
         """
-        res = self.moodle.post(
-            "core_course_add_content_item_to_user_favourites"
-        )
+        res = self.moodle.post("core_course_add_content_item_to_user_favourites")
         return self._tr(UserFavourite, **res)
 
     def check_updates(
@@ -193,9 +191,7 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_courses", options=options)
         return self._trs(Course, res)
 
-    def get_courses_by_field(
-        self, field: str = "", value: str = ""
-    ) -> CourseByField:
+    def get_courses_by_field(self, field: str = "", value: str = "") -> CourseByField:
         """Get courses matching a specific field (id/s, shortname, idnumber, category)
 
         Args:
@@ -293,9 +289,7 @@ class BaseCourse(BaseMoodle):
         res = self.moodle.post("core_course_get_user_administration_options")
         return res
 
-    def get_user_navigation_options(
-        self, courseids: List[int]
-    ) -> NavigationOptions:
+    def get_user_navigation_options(self, courseids: List[int]) -> NavigationOptions:
         """Return a list of navigation options in a set of courses that are avaialable or not for the current user.
 
         Args:
