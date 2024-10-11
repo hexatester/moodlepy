@@ -12,8 +12,8 @@ class AuthorUrls:
         profileimage (Optional[str]): The URL for the use profile image
     """
 
-    profile: Optional[str]
-    profileimage: Optional[str]
+    profile: Optional[str] = None
+    profileimage: Optional[str] = None
 
 
 @dataclass
@@ -23,7 +23,7 @@ class GroupUrls:
         image (Optional[str]): image
     """
 
-    image: Optional[str]
+    image: Optional[str] = None
 
 
 @dataclass
@@ -47,7 +47,7 @@ class PlagiarismHtml:
         plagiarism (Optional[str]): The HTML source for the Plagiarism Response
     """
 
-    plagiarism: Optional[str]
+    plagiarism: Optional[str] = None
 
 
 @dataclass
@@ -57,7 +57,7 @@ class AttachmentUrls:
         export (Optional[str]): The URL used to export the attachment
     """
 
-    export: Optional[str]
+    export: Optional[str] = None
 
 
 @dataclass
@@ -99,15 +99,15 @@ class Rating:
     """
 
     itemid: int
-    scaleid: Optional[int]
-    userid: Optional[int]
-    aggregate: Optional[float]
-    aggregatestr: Optional[str]
-    aggregatelabel: Optional[str]
-    count: Optional[int]
-    rating: Optional[int]
-    canrate: Optional[int]
-    canviewaggregate: Optional[int]
+    scaleid: Optional[int] = None
+    userid: Optional[int] = None
+    aggregate: Optional[float] = None
+    aggregatestr: Optional[str] = None
+    aggregatelabel: Optional[str] = None
+    count: Optional[int] = None
+    rating: Optional[int] = None
+    canrate: Optional[int] = None
+    canviewaggregate: Optional[int] = None
 
 
 @dataclass
@@ -123,10 +123,10 @@ class RatingScale:
     """
 
     id: int
-    courseid: Optional[int]
-    name: Optional[str]
     max: int
     isnumeric: int
+    courseid: Optional[int] = None
+    name: Optional[str] = None
     items: List[RatingScaleItem] = field(factory=list)
 
 
@@ -146,8 +146,8 @@ class RatingInfo:
     contextid: int
     component: str
     ratingarea: str
-    canviewall: Optional[int]
-    canviewany: Optional[int]
+    canviewall: Optional[int] = None
+    canviewany: Optional[int] = None
     scales: List[RatingScale] = field(factory=list)
     ratings: List[Rating] = field(factory=list)
 
@@ -161,9 +161,9 @@ class Html:
         authorsubheading (Optional[str]): The HTML source to view the author details
     """
 
-    rating: Optional[str]
-    taglist: Optional[str]
-    authorsubheading: Optional[str]
+    rating: Optional[str] = None
+    taglist: Optional[str] = None
+    authorsubheading: Optional[str] = None
 
 
 @dataclass
@@ -253,17 +253,17 @@ class PostUrls:
         discuss (Optional[str]): discuss
     """
 
-    view: Optional[str]
-    viewisolated: Optional[str]
-    viewparent: Optional[str]
-    edit: Optional[str]
-    delete: Optional[str]
-    split: Optional[str]
-    reply: Optional[str]
-    export: Optional[str]
-    markasread: Optional[str]
-    markasunread: Optional[str]
-    discuss: Optional[str]
+    view: Optional[str] = None
+    viewisolated: Optional[str] = None
+    viewparent: Optional[str] = None
+    edit: Optional[str] = None
+    delete: Optional[str] = None
+    split: Optional[str] = None
+    reply: Optional[str] = None
+    export: Optional[str] = None
+    markasread: Optional[str] = None
+    markasunread: Optional[str] = None
+    discuss: Optional[str] = None
 
 
 @dataclass
@@ -302,9 +302,9 @@ class Author:
         urls (AuthorUrls): images
     """
 
-    id: Optional[int]
-    fullname: Optional[str]
     urls: AuthorUrls
+    id: Optional[int] = None
+    fullname: Optional[str] = None
     groups: List[Group] = field(factory=list)
 
 
@@ -343,17 +343,17 @@ class Post:
     author: Author
     discussionid: int
     hasparent: int
-    parentid: Optional[int]
     timecreated: int
-    unread: Optional[int]
     isdeleted: int
     isprivatereply: int
     haswordcount: int
-    wordcount: Optional[int]
     capabilities: Capability
     urls: PostUrls
     html: Html
-    ratinginfo: Optional[RatingInfo]
+    parentid: Optional[int] = None
+    unread: Optional[int] = None
+    wordcount: Optional[int] = None
+    ratinginfo: Optional[RatingInfo] = None
     attachments: List[Attachment] = field(factory=list)
     tags: List[Tag] = field(factory=list)
 

@@ -46,39 +46,39 @@ class CreateUser:
         preferences (List[UserPreference]): User preferences
     """
 
-    createpassword: Optional[int]
     username: str
     auth: str
-    password: Optional[str]
     firstname: str
     lastname: str
     email: str
-    maildisplay: Optional[int]
-    city: Optional[str]
-    country: Optional[str]
-    timezone: Optional[str]
-    description: Optional[str]
-    firstnamephonetic: Optional[str]
-    lastnamephonetic: Optional[str]
-    middlename: Optional[str]
-    alternatename: Optional[str]
-    interests: Optional[str]
-    url: Optional[str]
-    icq: Optional[str]
-    skype: Optional[str]
-    aim: Optional[str]
-    yahoo: Optional[str]
-    msn: Optional[str]
     idnumber: str
-    institution: Optional[str]
-    department: Optional[str]
-    phone1: Optional[str]
-    phone2: Optional[str]
-    address: Optional[str]
-    theme: Optional[str]
-    mailformat: Optional[int]
     lang: str = "en"
     calendartype: str = "gregorian"
+    createpassword: Optional[int] = None
+    password: Optional[str] = None
+    maildisplay: Optional[int] = None
+    city: Optional[str] = None
+    country: Optional[str] = None
+    timezone: Optional[str] = None
+    description: Optional[str] = None
+    firstnamephonetic: Optional[str] = None
+    lastnamephonetic: Optional[str] = None
+    middlename: Optional[str] = None
+    alternatename: Optional[str] = None
+    interests: Optional[str] = None
+    url: Optional[str] = None
+    icq: Optional[str] = None
+    skype: Optional[str] = None
+    aim: Optional[str] = None
+    yahoo: Optional[str] = None
+    msn: Optional[str] = None
+    institution: Optional[str] = None
+    department: Optional[str] = None
+    phone1: Optional[str] = None
+    phone2: Optional[str] = None
+    address: Optional[str] = None
+    theme: Optional[str] = None
+    mailformat: Optional[int] = None
     customfields: List[UserCustomField] = field(factory=list)
     preferences: List[UserPreference] = field(factory=list)
 

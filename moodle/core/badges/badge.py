@@ -41,13 +41,13 @@ class BagdeAlignment:
         targetCode (Optional[str]): Target code
     """
 
-    id: Optional[int]
-    badgeid: Optional[int]
-    targetName: Optional[str]
-    targetUrl: Optional[str]
-    targetDescription: Optional[str]
-    targetFramework: Optional[str]
-    targetCode: Optional[str]
+    id: Optional[int] = None
+    badgeid: Optional[int] = None
+    targetName: Optional[str] = None
+    targetUrl: Optional[str] = None
+    targetDescription: Optional[str] = None
+    targetFramework: Optional[str] = None
+    targetCode: Optional[str] = None
 
 
 @dataclass
@@ -63,9 +63,9 @@ class RelatedBadge:
 
     id: int
     name: str
-    version: Optional[str]
-    language: Optional[str]
-    type: Optional[int]
+    version: Optional[str] = None
+    language: Optional[str] = None
+    type: Optional[int] = None
 
 
 @dataclass
@@ -110,42 +110,42 @@ class Badge:
         relatedbadges (List[RelatedBadge]): Related badges
     """
 
-    id: Optional[int]
     name: str
     description: str
-    timecreated: Optional[int]
-    timemodified: Optional[int]
-    usercreated: Optional[int]
-    usermodified: Optional[int]
     issuername: str
     issuerurl: str
     issuercontact: str
-    expiredate: Optional[int]
-    expireperiod: Optional[int]
-    type: Optional[int]
-    courseid: Optional[int]
-    message: Optional[str]
-    messagesubject: Optional[str]
-    attachment: Optional[int]
-    notification: Optional[int]
-    nextcron: Optional[int]
-    status: Optional[int]
-    issuedid: Optional[int]
     uniquehash: str
     dateissued: int
-    dateexpire: Optional[int]
-    visible: Optional[int]
-    email: Optional[str]
-    version: Optional[str]
-    language: Optional[str]
-    imageauthorname: Optional[str]
-    imageauthoremail: Optional[str]
-    imageauthorurl: Optional[str]
-    imagecaption: Optional[str]
     badgeurl: str
     endorsement: Optional[BagdeEndorsement] = None
     alignment: List[BagdeAlignment] = field(factory=list)
     relatedbadges: List[RelatedBadge] = field(factory=list)
+    id: Optional[int] = None
+    timecreated: Optional[int] = None
+    timemodified: Optional[int] = None
+    usercreated: Optional[int] = None
+    usermodified: Optional[int] = None
+    expiredate: Optional[int] = None
+    expireperiod: Optional[int] = None
+    type: Optional[int] = None
+    courseid: Optional[int] = None
+    message: Optional[str] = None
+    messagesubject: Optional[str] = None
+    attachment: Optional[int] = None
+    notification: Optional[int] = None
+    nextcron: Optional[int] = None
+    status: Optional[int] = None
+    issuedid: Optional[int] = None
+    dateexpire: Optional[int] = None
+    visible: Optional[int] = None
+    email: Optional[str] = None
+    version: Optional[str] = None
+    language: Optional[str] = None
+    imageauthorname: Optional[str] = None
+    imageauthoremail: Optional[str] = None
+    imageauthorurl: Optional[str] = None
+    imagecaption: Optional[str] = None
 
 
 @dataclass

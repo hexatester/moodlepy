@@ -24,8 +24,8 @@ class ActivityCompletion:
     state: int
     timecompleted: int
     tracking: int
-    overrideby: Optional[int]
-    valueused: Optional[int]
+    overrideby: Optional[int] = None
+    valueused: Optional[int] = None
 
 
 @dataclass

@@ -7,8 +7,8 @@ from moodle import MoodleWarning, ResponsesFactory
 @dataclass
 class Update:
     name: str  # Name of the area updated.
-    timeupdated: Optional[datetime]  # Last time was updated
     itemids: List[int]  # The ids of the items updated
+    timeupdated: Optional[datetime] = None  # Last time was updated
 
 
 @dataclass

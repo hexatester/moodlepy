@@ -32,7 +32,7 @@ class Comment:
     time: str
     avatar: str
     userid: int
-    delete: Optional[int]
+    delete: Optional[int] = None
 
 
 @dataclass

@@ -30,6 +30,6 @@ class Note:
         params: errormessage (Optional[str]): error message - if failed
         """
 
-        clientnoteid: Optional[str]
         noteid: int
-        errormessage: Optional[str]
+        clientnoteid: Optional[str] = None
+        errormessage: Optional[str] = None

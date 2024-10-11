@@ -49,39 +49,39 @@ class User:
     """
 
     id: int
-    username: Optional[str]
-    firstname: Optional[str]
-    lastname: Optional[str]
     fullname: str
-    email: Optional[str]
-    address: Optional[str]
-    phone1: Optional[str]
-    phone2: Optional[str]
-    icq: Optional[str]
-    skype: Optional[str]
-    yahoo: Optional[str]
-    aim: Optional[str]
-    msn: Optional[str]
-    department: Optional[str]
-    institution: Optional[str]
-    idnumber: Optional[str]
-    interests: Optional[str]
-    firstaccess: Optional[int]
-    lastaccess: Optional[int]
-    auth: Optional[str]
-    suspended: Optional[int]
-    confirmed: Optional[int]
-    lang: Optional[str]
-    calendartype: Optional[str]
-    theme: Optional[str]
-    timezone: Optional[str]
-    mailformat: Optional[int]
-    description: Optional[str]
-    descriptionformat: Optional[int]
-    city: Optional[str]
-    url: Optional[str]
-    country: Optional[str]
     profileimageurlsmall: str
     profileimageurl: str
+    username: Optional[str] = None
+    firstname: Optional[str] = None
+    lastname: Optional[str] = None
+    email: Optional[str] = None
+    address: Optional[str] = None
+    phone1: Optional[str] = None
+    phone2: Optional[str] = None
+    icq: Optional[str] = None
+    skype: Optional[str] = None
+    yahoo: Optional[str] = None
+    aim: Optional[str] = None
+    msn: Optional[str] = None
+    department: Optional[str] = None
+    institution: Optional[str] = None
+    idnumber: Optional[str] = None
+    interests: Optional[str] = None
+    firstaccess: Optional[int] = None
+    lastaccess: Optional[int] = None
+    auth: Optional[str] = None
+    suspended: Optional[int] = None
+    confirmed: Optional[int] = None
+    lang: Optional[str] = None
+    calendartype: Optional[str] = None
+    theme: Optional[str] = None
+    timezone: Optional[str] = None
+    mailformat: Optional[int] = None
+    description: Optional[str] = None
+    descriptionformat: Optional[int] = None
+    city: Optional[str] = None
+    url: Optional[str] = None
+    country: Optional[str] = None
     customfields: List[UserCustomField] = field(factory=list)
     preferences: List[UserPreference] = field(factory=list)

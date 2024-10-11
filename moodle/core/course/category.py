@@ -28,18 +28,18 @@ class Category:
 
     id: int
     name: str
-    idnumber: Optional[str]
     description: str
     descriptionformat: int
     parent: int
     sortorder: int
     coursecount: int
-    visible: Optional[int]
-    visibleold: Optional[int]
-    timemodified: Optional[int]
     depth: int
     path: str
-    theme: Optional[str]
+    idnumber: Optional[str] = None
+    visible: Optional[int] = None
+    visibleold: Optional[int] = None
+    timemodified: Optional[int] = None
+    theme: Optional[str] = None
 
     def __str__(self) -> str:
         return self.name

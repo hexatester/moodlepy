@@ -7,8 +7,8 @@ from moodle.attr import dataclass, field
 @dataclass
 class CourseUpdate:
     name: str  # Name of the area updated.
-    timeupdated: Optional[int]  # Last time was updated
     itemids: List[int]  # The ids of the items updated
+    timeupdated: Optional[int] = None  # Last time was updated
 
     def __len__(self) -> int:
         return len(self.itemids)
